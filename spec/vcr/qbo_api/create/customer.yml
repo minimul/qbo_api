@@ -1,0 +1,105 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/invoice
+    body:
+      encoding: UTF-8
+      string: '{"DisplayName":"Jane Doe"}'
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json; charset=utf-8
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - OAuth oauth_consumer_key="<CONSUMER_KEY>", oauth_nonce="3cadc674b2f89b989ab2dbf5397136d1",
+        oauth_signature="vBq8%2FLhUSsulo49cpEHISUNJovs%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1446728723", oauth_token="<ACCESS_TOKEN>", oauth_version="1.0"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 500
+      message: Internal Server Error
+    headers:
+      Date:
+      - Thu, 05 Nov 2015 13:05:24 GMT
+      Vary:
+      - Accept-Encoding
+      Via:
+      - 1.1 ipp-gateway-.net
+      Content-Type:
+      - application/xml;charset=UTF-8
+      Content-Length:
+      - '260'
+      Intuit-Tid:
+      - e1c4b4e0-98e4-4b34-ad6a-ef27f7b358a7
+      Qbo-Version:
+      - '1510.283'
+      Errorcause:
+      - 'AuthenticationErrorGeneral: Internal Server Error , statusCode: 500'
+      Message:
+      - General Authentication Error
+      Errorcode:
+      - '100'
+      Connection:
+      - close
+    body:
+      encoding: ASCII-8BIT
+      string: '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><IntuitResponse
+        xmlns="http://schema.intuit.com/finance/v3" time="2015-11-05T05:05:26.790-08:00"><Fault
+        type="AuthenticationFault"><Error code="100"><Message>General Authentication
+        Error</Message><Detail>AuthenticationErrorGeneral: Internal Server Error ,
+        statusCode: 500</Detail></Error></Fault></IntuitResponse>'
+    http_version: 
+  recorded_at: Thu, 05 Nov 2015 13:05:26 GMT
+- request:
+    method: post
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/customer
+    body:
+      encoding: UTF-8
+      string: '{"DisplayName":"Jack Doe"}'
+    headers:
+      Content-Type:
+      - application/json;charset=UTF-8
+      Accept:
+      - application/json
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - OAuth oauth_consumer_key="<CONSUMER_KEY>", oauth_nonce="2c3ea11f8319eb194cb8528e97797fd8",
+        oauth_signature="NidPO689oNmfp9A50NdMr%2F1LH3o%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1446731115", oauth_token="<ACCESS_TOKEN>", oauth_version="1.0"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 05 Nov 2015 13:45:16 GMT
+      Via:
+      - 1.1 ipp-gateway-.net
+      Content-Type:
+      - application/json;charset=UTF-8
+      Cache-Control:
+      - max-age=0, no-cache, no-store, must-revalidate, private
+      Expires:
+      - '0'
+      Intuit-Tid:
+      - df974aea-22a6-43f4-b50f-ad8b9bd8c504
+      Qbo-Version:
+      - '1510.283'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: '{"Customer":{"Taxable":true,"Job":false,"BillWithParent":false,"Balance":0,"BalanceWithJobs":0,"CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"PreferredDeliveryMethod":"Print","domain":"QBO","sparse":false,"Id":"60","SyncToken":"0","MetaData":{"CreateTime":"2015-11-05T05:45:17-08:00","LastUpdatedTime":"2015-11-05T05:45:17-08:00"},"FullyQualifiedName":"Jack
+        Doe","DisplayName":"Jack Doe","PrintOnCheckName":"Jack Doe","Active":true,"DefaultTaxCodeRef":{"value":"2"}},"time":"2015-11-05T05:45:17.857-08:00"}'
+    http_version: 
+  recorded_at: Thu, 05 Nov 2015 13:45:18 GMT
+recorded_with: VCR 2.9.3
