@@ -143,18 +143,26 @@ QboApi.logger = Rails.logger
 ## Spin up an example
 - git clone git://github.com/minimul/qbo_api 
 - cd qbo_api
+- bundle
 - Create a `.env` file
-  - DO NOT check in your `.env` file
+  - If needed create an account at [https://developer.intuit.com](https://developer.intuit.com)
+  - Click `Get started coding`
+  - Create an app with both the `Accounting` & `Payments` selected.
+  - Go to the `Development` tab and copy and paste the consumer key and secret into the `.env` file.
 ```ruby
 export QBO_API_CONSUMER_KEY=<Your QuickBooks apps consumer key>
 export QBO_API_CONSUMER_SECRET=<Your QuickBooks apps consumer secret>
 ```
+- Get your .env variables into your shell
+  - e.g. in bash `source ./.env`
+- Start up the example app
+  - `ruby example/app.rb`
 - Goto `http://localhost:9393`
 - Use the `Connect to QuickBooks` button to connect to your QuickBooks sandbox, which you receive when signing up at [https://developer.intuit.com](https://developer.intuit.com).
 - After successfully connecting to your sandbox run:
   - `http://localhost:9393/customer/5`
   - You should see "Dukes Basketball Camp" displayed
-- Checkout the example (`example/app.rb`) code to see what is going on.
+- Checkout [`example/app.rb`](https://github.com/minimul/qbo_api/blob/master/example/app.rb) to see what is going on under the hood.
 
 ## Contributing
 
