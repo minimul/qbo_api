@@ -141,9 +141,8 @@ QboApi.logger = Rails.logger
 ```
 
 ## Spin up an example
-- git clone git://github.com/minimul/qbo_api 
-- cd qbo_api
-- bundle
+- `git clone git://github.com/minimul/qbo_api && cd qbo_api`
+- `bundle`
 - Create a `.env` file
   - If needed create an account at [https://developer.intuit.com](https://developer.intuit.com)
   - Click `Get started coding`
@@ -168,21 +167,21 @@ export QBO_API_CONSUMER_SECRET=<Your QuickBooks apps consumer secret>
 Bug reports and pull requests are welcome on GitHub at https://github.com/minimul/qbo_api.
 
 #### Running the specs
-- You at least need to add the following values to a `.env` file
-  - DO NOT check in your `.env` file
+- `git clone git://github.com/minimul/qbo_api && cd qbo_api`
+- `bundle`
+- Create a `.env` file
+  - If you are just running the specs then at minimum your `.env` needs to look like the following:
 ```ruby
-export QBO_API_CONSUMER_KEY=<Your QuickBooks apps consumer key>
-export QBO_API_CONSUMER_SECRET=<Your QuickBooks apps consumer secret>
-export QBO_API_ACCESS_TOKEN=<OAuth token against your sandbox>
-export QBO_API_ACCESS_TOKEN_SECRET=<OAuth token secret against your sandbox>
-export QBO_API_COMPANY_ID=<Your sandbox company id>
+export QBO_API_CONSUMER_KEY=
+export QBO_API_CONSUMER_SECRET=
+export QBO_API_ACCESS_TOKEN=
+export QBO_API_ACCESS_TOKEN_SECRET=
+export QBO_API_COMPANY_ID=12345
 ```
-- Note: You can get the access token and secret by using the built-in example.
-- To simply run the specs the values don't have to be valid but the variables do need to be set.
-- `bundle exec rspec spec`
+- `bundle exec rspec spec/`
   
 #### Creating new specs or modifying existing spec that have been recorded using the VCR gem.
-- All specs that require interaction with the API must be recorded against your personal QuickBooks sandbox.
+- All specs that require interaction with the API must be recorded against your personal QuickBooks sandbox. More coming on how to create or modifying existing specs against your sandbox.
 
 ## License
 
