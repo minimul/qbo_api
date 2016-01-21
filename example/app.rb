@@ -5,7 +5,7 @@ require 'omniauth'
 require 'omniauth-quickbooks'
 require 'dotenv'
 require 'qbo_api'
-Dotenv.load '../.env'
+Dotenv.load "#{__dir__}/../.env"
 
 PORT  = 9393
 CONSUMER_KEY = ENV['QBO_API_CONSUMER_KEY']
