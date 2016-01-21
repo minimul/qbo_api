@@ -153,8 +153,7 @@ QboApi.logger = Rails.logger
 export QBO_API_CONSUMER_KEY=<Your QuickBooks apps consumer key>
 export QBO_API_CONSUMER_SECRET=<Your QuickBooks apps consumer secret>
 ```
-- Get your .env variables into your shell
-  - e.g. in bash `source ./.env`
+- Note: the `.env` file will be automatically loaded after you run the next step.
 - Start up the example app
   - `ruby example/app.rb`
 - Goto `http://localhost:9393`

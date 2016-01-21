@@ -13,3 +13,4 @@
 .rspec
 todo.txt
 *.sess
+*.log
