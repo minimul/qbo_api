@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://sandbox-quickbooks.api.intuit.com/v3/query?%2BFROM%2BCustomer=true&query=SELECT%20
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/query?%2BFROM%2BCustomer&query=SELECT%20
     body:
       encoding: US-ASCII
       string: ''
