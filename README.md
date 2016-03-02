@@ -7,6 +7,12 @@ Ruby client for the QuickBooks Online API version 3.
 - Features specs built directly against a QuickBooks Online Sandbox via the VCR gem.
 - Robust error handling.
 
+## Tutorials and Screencasts
+- <a href="http://minimul.com/introducing-a-new-ruby-quickbooks-online-client.html" target="_blank">Why qbo_api is a better choice </a> than the <a href="https://github.com/ruckus/quickbooks-ruby" target="_blank">quickbooks-ruby</a> gem.
+- <a href="http://minimul.com/getting-started-with-the-modern-ruby-quickbooks-online-client-qbo_api-part-1.html" target="_blank">Part 1</a>: Learn how to spin up the <a href="https://github.com/minimul/qbo_api#spin-up-an-example">example app</a>.
+- <a href="http://minimul.com/the-modern-ruby-quickbooks-client-part-2.html" target="_blank">Part 2</a>: <a href="https://github.com/minimul/qbo_api#running-the-specs">Running the specs</a> to aid you in understanding a QuickBooks API transaction. 
+- <a href="http://minimul.com/the-modern-ruby-quickbooks-client-contributing.html" target="_blank">Part 3</a>: <a href="https://github.com/minimul/qbo_api#creating-new-specs-or-modifying-existing-spec-that-have-been-recorded-using-the-vcr-gem">Contributing to the gem</a>.
+
 ## Ruby >= 2.2.2 required
 
 ## Installation
@@ -141,6 +147,7 @@ QboApi.logger = Rails.logger
 ```
 
 ## Spin up an example
+- <a href="http://minimul.com/getting-started-with-the-modern-ruby-quickbooks-online-client-qbo_api-part-1.html" target="_blank">Check out this tutorial and screencast on spinning up an example</a>.
 - `git clone git://github.com/minimul/qbo_api && cd qbo_api`
 - `bundle`
 - Create a `.env` file
@@ -167,6 +174,7 @@ export QBO_API_CONSUMER_SECRET=<Your QuickBooks apps consumer secret>
 Bug reports and pull requests are welcome on GitHub at https://github.com/minimul/qbo_api.
 
 #### Running the specs
+- <a href="http://minimul.com/the-modern-ruby-quickbooks-client-part-2.html" target="_blank">Check out this tutorial and screencast on running the specs</a>
 - `git clone git://github.com/minimul/qbo_api && cd qbo_api`
 - `bundle`
 - Create a `.env` file
@@ -182,6 +190,7 @@ export QBO_API_COMPANY_ID=12345
   
 #### Creating new specs or modifying existing spec that have been recorded using the VCR gem.
 - All specs that require interaction with the API must be recorded against your personal QuickBooks sandbox. More coming on how to create or modifying existing specs against your sandbox.
+- <a href="http://minimul.com/the-modern-ruby-quickbooks-client-contributing.html" target="_blank">Check out this tutorial and screencast on contributing to qbo_api</a>.
 
 ## License
 
