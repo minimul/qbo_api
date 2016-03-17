@@ -1,0 +1,260 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/cdc?changedSince=2011-10-10T09:00:00-07:00
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json;charset=UTF-8
+      Accept:
+      - application/json
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - OAuth oauth_consumer_key="<CONSUMER_KEY>", oauth_nonce="029b695cb4e7066d1a0bec087befa2f1",
+        oauth_signature="4U0nhsOGjHy7bbsOTNVqBYYVg%2BA%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1458246397", oauth_token="<ACCESS_TOKEN>", oauth_version="1.0"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 17 Mar 2016 20:26:38 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=5
+      Strict-Transport-Security:
+      - max-age=15552000
+      Intuit-Tid:
+      - gw-c4552008-9359-4b68-969f-c3a2c26d05c9
+      Qbo-Version:
+      - '1603.466'
+      Cache-Control:
+      - max-age=0, no-cache, no-store, must-revalidate, private
+      Expires:
+      - '0'
+      Via:
+      - 1.1 ipp-gateway-ap05
+    body:
+      encoding: ASCII-8BIT
+      string: '{"Fault":{"Error":[{"Message":"An application error has occurred while
+        processing your request","Detail":"System Failure Error: java.lang.IllegalArgumentException:
+        entities is required","code":"10000","element":"SystemFailureError"}],"type":"SystemFault"},"time":"2016-03-17T13:26:38.386-07:00"}'
+    http_version: 
+  recorded_at: Thu, 17 Mar 2016 20:26:38 GMT
+- request:
+    method: get
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/cdc?changedSince=2011-10-10T09:00:00-07:00&entites=estimates
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json;charset=UTF-8
+      Accept:
+      - application/json
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - OAuth oauth_consumer_key="<CONSUMER_KEY>", oauth_nonce="6a37bb70a34b9c9125cf5be012c6c58a",
+        oauth_signature="5G9i1i5JmKDqIZAbWgL5otLZTG4%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1458246451", oauth_token="<ACCESS_TOKEN>", oauth_version="1.0"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 17 Mar 2016 20:27:33 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=5
+      Strict-Transport-Security:
+      - max-age=15552000
+      Intuit-Tid:
+      - gw-f973e62f-a5cb-4029-8dc4-18fe1ad79b8a
+      Qbo-Version:
+      - '1603.466'
+      Cache-Control:
+      - max-age=0, no-cache, no-store, must-revalidate, private
+      Expires:
+      - '0'
+      Via:
+      - 1.1 ipp-gateway-ap05
+    body:
+      encoding: ASCII-8BIT
+      string: '{"Fault":{"Error":[{"Message":"An application error has occurred while
+        processing your request","Detail":"System Failure Error: java.lang.IllegalArgumentException:
+        entities is required","code":"10000","element":"SystemFailureError"}],"type":"SystemFault"},"time":"2016-03-17T13:27:33.764-07:00"}'
+    http_version: 
+  recorded_at: Thu, 17 Mar 2016 20:27:33 GMT
+- request:
+    method: get
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/cdc?changedSince=2011-10-10T09:00:00-07:00&entities=estimates
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json;charset=UTF-8
+      Accept:
+      - application/json
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - OAuth oauth_consumer_key="<CONSUMER_KEY>", oauth_nonce="06a6dac7303f70cc6aa596ea58647fd0",
+        oauth_signature="IkWcKx69rphI%2Fq2HNHQldpMuGjA%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1458246492", oauth_token="<ACCESS_TOKEN>", oauth_version="1.0"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 17 Mar 2016 20:28:13 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=5
+      Strict-Transport-Security:
+      - max-age=15552000
+      Intuit-Tid:
+      - gw-0bd7e3a0-2641-40a9-a93e-9560619b4a79
+      Qbo-Version:
+      - '1603.466'
+      Cache-Control:
+      - max-age=0, no-cache, no-store, must-revalidate, private
+      Expires:
+      - '0'
+      Via:
+      - 1.1 ipp-gateway-ap05
+    body:
+      encoding: ASCII-8BIT
+      string: '{"Fault":{"Error":[{"Message":"An application error has occurred while
+        processing your request","Detail":"System Failure Error: java.lang.IllegalArgumentException:
+        Invalid entity supplied : entity=estimates","code":"10000","element":"SystemFailureError"}],"type":"SystemFault"},"time":"2016-03-17T13:28:13.263-07:00"}'
+    http_version: 
+  recorded_at: Thu, 17 Mar 2016 20:28:13 GMT
+- request:
+    method: get
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/cdc?changedSince=2011-10-10T09:00:00-07:00&entities=estimate
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json;charset=UTF-8
+      Accept:
+      - application/json
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - OAuth oauth_consumer_key="<CONSUMER_KEY>", oauth_nonce="723824671e8bcd61fe41db8d83b0219a",
+        oauth_signature="WHqcCUpYvlnn2HhhKHdxDJjzcxc%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1458246970", oauth_token="<ACCESS_TOKEN>", oauth_version="1.0"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 17 Mar 2016 20:36:11 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=5
+      Strict-Transport-Security:
+      - max-age=15552000
+      Intuit-Tid:
+      - gw-cf0ec042-baba-4456-a857-fe8fddb6a5e4
+      Qbo-Version:
+      - '1603.466'
+      Cache-Control:
+      - max-age=0, no-cache, no-store, must-revalidate, private
+      Expires:
+      - '0'
+      Via:
+      - 1.1 ipp-gateway-ap06
+    body:
+      encoding: ASCII-8BIT
+      string: '{"CDCResponse":[{"QueryResponse":[{"Estimate":[{"domain":"QBO","sparse":false,"Id":"48","SyncToken":"0","MetaData":{"CreateTime":"2015-10-07T11:42:38-07:00","LastUpdatedTime":"2015-10-07T11:43:20-07:00"},"CustomField":[{"DefinitionId":"1","Name":"Crew
+        #","Type":"StringType"}],"DocNumber":"1001","TxnDate":"2015-10-05","CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"TxnStatus":"Closed","LinkedTxn":[{"TxnId":"49","TxnType":"Invoice"}],"Line":[{"Id":"1","LineNum":1,"Description":"Custom
+        Design","Amount":300.00,"DetailType":"SalesItemLineDetail","SalesItemLineDetail":{"ItemRef":{"value":"4","name":"Design"},"UnitPrice":75,"Qty":4,"TaxCodeRef":{"value":"NON"}}},{"Id":"2","LineNum":2,"Description":"Installation
+        of landscape design","Amount":250.00,"DetailType":"SalesItemLineDetail","SalesItemLineDetail":{"ItemRef":{"value":"7","name":"Installation"},"UnitPrice":50,"Qty":5,"TaxCodeRef":{"value":"NON"}}},{"Id":"3","LineNum":3,"Description":"Rock
+        Fountain","Amount":275.00,"DetailType":"SalesItemLineDetail","SalesItemLineDetail":{"ItemRef":{"value":"5","name":"Rock
+        Fountain"},"UnitPrice":275,"Qty":1,"TaxCodeRef":{"value":"NON"}}},{"Id":"4","LineNum":4,"Description":"Garden
+        Rocks","Amount":180.00,"DetailType":"SalesItemLineDetail","SalesItemLineDetail":{"ItemRef":{"value":"13","name":"Rocks"},"UnitPrice":22.5,"Qty":8,"TaxCodeRef":{"value":"NON"}}},{"Amount":1005.00,"DetailType":"SubTotalLineDetail","SubTotalLineDetail":{}}],"TxnTaxDetail":{"TotalTax":0},"CustomerRef":{"value":"18","name":"Paulsen
+        Medical Supplies"},"CustomerMemo":{"value":"Thank you for your business and
+        have a great day!"},"BillAddr":{"Id":"67","Line1":"Kathy Paulsen","Line2":"Paulsen
+        Medical Supplies","Line3":"900 Main St.","Line4":"Middlefield, CA  94303","Lat":"37.4530553","Long":"-122.1178261"},"ShipAddr":{"Id":"19","Line1":"38921
+        S. Boise Ave","City":"Middlefield","CountrySubDivisionCode":"CA","PostalCode":"94304","Lat":"37.3989376","Long":"-122.1443935"},"TotalAmt":1005.00,"ApplyTaxAfterDiscount":false,"PrintStatus":"NeedToPrint","EmailStatus":"NeedToSend","BillEmail":{"Address":"Medical@intuit.com"},"DeliveryInfo":{"DeliveryType":"Email"}},{"domain":"QBO","sparse":false,"Id":"46","SyncToken":"0","MetaData":{"CreateTime":"2015-10-07T11:36:01-07:00","LastUpdatedTime":"2015-10-08T12:42:59-07:00"},"CustomField":[{"DefinitionId":"1","Name":"Crew
+        #","Type":"StringType"}],"DocNumber":"1001","TxnDate":"2015-10-05","CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"TxnStatus":"Closed","LinkedTxn":[{"TxnId":"69","TxnType":"Invoice"}],"Line":[{"Id":"1","LineNum":1,"Description":"Pest
+        Control Services","Amount":70.00,"DetailType":"SalesItemLineDetail","SalesItemLineDetail":{"ItemRef":{"value":"10","name":"Pest
+        Control"},"UnitPrice":35,"Qty":2,"TaxCodeRef":{"value":"NON"}}},{"Amount":70.00,"DetailType":"SubTotalLineDetail","SubTotalLineDetail":{}}],"TxnTaxDetail":{"TotalTax":0},"CustomerRef":{"value":"20","name":"Red
+        Rock Diner"},"CustomerMemo":{"value":"Thank you for your business and have
+        a great day!"},"BillAddr":{"Id":"65","Line1":"Stephanie Martini","Line2":"Red
+        Rock Diner","Line3":"500 Red Rock Rd.","Line4":"Bayshore, CA  94326","Lat":"INVALID","Long":"INVALID"},"ShipAddr":{"Id":"21","Line1":"500
+        Red Rock Rd.","City":"Bayshore","CountrySubDivisionCode":"CA","PostalCode":"94326","Lat":"INVALID","Long":"INVALID"},"TotalAmt":70.00,"ApplyTaxAfterDiscount":false,"PrintStatus":"NeedToPrint","EmailStatus":"NotSet","BillEmail":{"Address":"qbwebsamplecompany@yahoo.com"}},{"domain":"QBO","sparse":false,"Id":"41","SyncToken":"0","MetaData":{"CreateTime":"2015-10-07T11:20:06-07:00","LastUpdatedTime":"2015-10-08T13:41:59-07:00"},"CustomField":[{"DefinitionId":"1","Name":"Crew
+        #","Type":"StringType"}],"DocNumber":"1001","TxnDate":"2015-09-27","CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"TxnStatus":"Closed","LinkedTxn":[{"TxnId":"103","TxnType":"Invoice"}],"Line":[{"Id":"1","LineNum":1,"Description":"Rock
+        Fountain","Amount":275.00,"DetailType":"SalesItemLineDetail","SalesItemLineDetail":{"ItemRef":{"value":"5","name":"Rock
+        Fountain"},"UnitPrice":275,"Qty":1,"TaxCodeRef":{"value":"NON"}}},{"Id":"2","LineNum":2,"Description":"Custom
+        Design","Amount":262.50,"DetailType":"SalesItemLineDetail","SalesItemLineDetail":{"ItemRef":{"value":"4","name":"Design"},"UnitPrice":75,"Qty":3.5,"TaxCodeRef":{"value":"NON"}}},{"Id":"3","LineNum":3,"Description":"Fountain
+        Pump","Amount":45.00,"DetailType":"SalesItemLineDetail","SalesItemLineDetail":{"ItemRef":{"value":"11","name":"Pump"},"UnitPrice":22.5,"Qty":2,"TaxCodeRef":{"value":"NON"}}},{"Amount":582.50,"DetailType":"SubTotalLineDetail","SubTotalLineDetail":{}}],"TxnTaxDetail":{"TotalTax":0},"CustomerRef":{"value":"10","name":"Geeta
+        Kalapatapu"},"CustomerMemo":{"value":"Thank you for your business and have
+        a great day!"},"BillAddr":{"Id":"59","Line1":"Geeta Kalapatapu","Line2":"1987
+        Main St.","Line3":"Middlefield, CA  94303","Lat":"37.4530553","Long":"-122.1178261"},"ShipAddr":{"Id":"10","Line1":"1987
+        Main St.","City":"Middlefield","CountrySubDivisionCode":"CA","PostalCode":"94303","Lat":"37.445013","Long":"-122.1391443"},"TotalAmt":582.50,"ApplyTaxAfterDiscount":false,"PrintStatus":"NeedToPrint","EmailStatus":"NotSet","BillEmail":{"Address":"Geeta@Kalapatapu.com"}},{"domain":"QBO","sparse":false,"Id":"100","SyncToken":"0","MetaData":{"CreateTime":"2015-10-08T13:37:55-07:00","LastUpdatedTime":"2015-10-09T13:16:17-07:00"},"CustomField":[{"DefinitionId":"1","Name":"Crew
+        #","Type":"StringType"}],"DocNumber":"1001","TxnDate":"2015-10-06","CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"TxnStatus":"Closed","LinkedTxn":[{"TxnId":"130","TxnType":"Invoice"}],"Line":[{"Id":"1","LineNum":1,"Description":"Rock
+        Fountain","Amount":275.00,"DetailType":"SalesItemLineDetail","SalesItemLineDetail":{"ItemRef":{"value":"5","name":"Rock
+        Fountain"},"UnitPrice":275,"Qty":1,"TaxCodeRef":{"value":"TAX"}}},{"Id":"2","LineNum":2,"Description":"Fountain
+        Pump","Amount":12.75,"DetailType":"SalesItemLineDetail","SalesItemLineDetail":{"ItemRef":{"value":"11","name":"Pump"},"UnitPrice":12.75,"Qty":1,"TaxCodeRef":{"value":"TAX"}}},{"Id":"3","LineNum":3,"Description":"Concrete
+        for fountain installation","Amount":47.50,"DetailType":"SalesItemLineDetail","SalesItemLineDetail":{"ItemRef":{"value":"3","name":"Concrete"},"UnitPrice":9.5,"Qty":5,"TaxCodeRef":{"value":"TAX"}}},{"Amount":335.25,"DetailType":"SubTotalLineDetail","SubTotalLineDetail":{}}],"TxnTaxDetail":{"TxnTaxCodeRef":{"value":"2"},"TotalTax":26.82,"TaxLine":[{"Amount":26.82,"DetailType":"TaxLineDetail","TaxLineDetail":{"TaxRateRef":{"value":"3"},"PercentBased":true,"TaxPercent":8,"NetAmountTaxable":335.25}}]},"CustomerRef":{"value":"24","name":"Sonnenschein
+        Family Store"},"CustomerMemo":{"value":"Thank you for your business and have
+        a great day!"},"BillAddr":{"Id":"86","Line1":"Russ Sonnenschein","Line2":"Sonnenschein
+        Family Store","Line3":"5647 Cypress Hill Ave.","Line4":"Middlefield, CA  94303","Lat":"37.4238562","Long":"-122.1141681"},"ShipAddr":{"Id":"25","Line1":"5647
+        Cypress Hill Ave.","City":"Middlefield","CountrySubDivisionCode":"CA","PostalCode":"94303","Lat":"37.4238562","Long":"-122.1141681"},"TotalAmt":362.07,"ApplyTaxAfterDiscount":false,"PrintStatus":"NeedToPrint","EmailStatus":"NotSet","BillEmail":{"Address":"Familiystore@intuit.com"}}],"startPosition":1,"maxResults":4}]}],"time":"2016-03-17T13:36:11.240-07:00"}'
+    http_version: 
+  recorded_at: Thu, 17 Mar 2016 20:36:11 GMT
+recorded_with: VCR 2.9.3

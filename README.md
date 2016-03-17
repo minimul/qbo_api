@@ -105,6 +105,14 @@ QboApi.logger = Rails.logger
   p response['DisplayName'] # => "Dukes Basketball Camp"
 ```
 
+### Change data capture (CDC) query
+```ruby
+  response = api.cdc('estimate&changedSince=2011-10-10T09:00:00-07:00')
+  expect(response['CDCResponse'].size).to eq 1
+  ids = response['CDCResponse'][0]['QueryResponse'][0]['Estimate'].collect{ |e| e['Id'] }
+  p ids
+```
+
 ### Respond to an error
 ```ruby
   customer = { DisplayName: 'Weiskopf Consulting' } 

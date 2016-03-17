@@ -51,6 +51,11 @@ class QboApi
     request(:get, entity: entity, path: path)
   end
 
+  def cdc(query)
+    path = "#{realm_id}/cdc?entities=#{query}"
+    request(:get, path: path)
+  end
+
   def get(entity, id)
     path = "#{realm_id}/#{entity.to_s}/#{id}"
     request(:get, entity: entity, path: path)
@@ -110,19 +115,15 @@ class QboApi
   end
 
   def response(resp, entity: nil)
-    j = JSON.parse(resp.body)
+    data = JSON.parse(resp.body)
     if entity
-      if qr = j['QueryResponse']
-        qr.empty? ? nil : qr.fetch(singular(entity))
-      else
-        j.fetch(singular(entity))
-      end
+      entity_response(data, entity)
     else
-      j
+      data
     end
   rescue => e
     # Catch fetch key errors and just return JSON
-    j
+    data
   end
 
   def esc(query)
@@ -130,6 +131,14 @@ class QboApi
   end
 
   private
+
+  def entity_response(data, entity)
+    if qr = data['QueryResponse']
+      qr.empty? ? nil : qr.fetch(singular(entity))
+    else
+      data.fetch(singular(entity))
+    end
+  end
 
   def oauth_data
     {
