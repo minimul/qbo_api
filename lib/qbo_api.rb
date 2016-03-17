@@ -96,7 +96,7 @@ class QboApi
     end while (results ? results.size == max : false)
   end
 
-  def request(method, entity:, path:, payload: nil)
+  def request(method, path:, entity: nil, payload: nil)
     raw_response = connection.send(method) do |req|
       case method
       when :get, :delete
