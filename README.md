@@ -107,7 +107,8 @@ QboApi.logger = Rails.logger
 
 ### Change data capture (CDC) query
 ```ruby
-  response = api.cdc('estimate&changedSince=2011-10-10T09:00:00-07:00')
+  response = api.cdc(entities: 'estimate', changed_since: '2011-10-10T09:00:00-07:00')
+  # You can also send in a Time object e.g. changed_since: Time.now 
   expect(response['CDCResponse'].size).to eq 1
   ids = response['CDCResponse'][0]['QueryResponse'][0]['Estimate'].collect{ |e| e['Id'] }
   p ids
