@@ -59,24 +59,22 @@ class QboApi
   end
 
   def get(entity, id)
-    path = "#{realm_id}/#{entity.to_s}/#{id}"
+    path = "#{entity_path(entity)}/#{id}"
     request(:get, entity: entity, path: path)
   end
 
   def create(entity, payload:)
-    path = "#{realm_id}/#{entity}"
-    request(:post, entity: entity, path: path, payload: payload)
+    request(:post, entity: entity, path: entity_path(entity), payload: payload)
   end
 
   def update(entity, id:, payload:)
-    path = "#{realm_id}/#{entity}"
     payload.merge!(set_update(entity, id))
-    request(:post, entity: entity, path: path, payload: payload)
+    request(:post, entity: entity, path: entity_path(entity), payload: payload)
   end
 
   def delete(entity, id:)
     raise QboApi::NotImplementedError unless is_transaction_entity?(entity)
-    path = "#{realm_id}/#{entity}?operation=delete"
+    path = "#{entity_path(entity)}?operation=delete"
     payload = set_update(entity, id)
     request(:post, entity: entity, path: path, payload: payload)
   end

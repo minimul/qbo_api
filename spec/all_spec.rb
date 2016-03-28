@@ -42,5 +42,16 @@ describe "QboApi" do
       end
     end
 
+    it 'retrieves sales receipts' do
+      api = QboApi.new(creds.to_h) 
+      VCR.use_cassette("qbo_api/all/sales_receipts", record: :none) do
+        gather = []
+        api.all(:sales_receipts) do |s| 
+          gather << s['Id']
+        end
+        expect(gather.first).to eq "47"
+      end
+    end
+
   end
 end
