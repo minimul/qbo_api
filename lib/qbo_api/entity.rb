@@ -13,6 +13,10 @@ class QboApi
       end
     end
 
+    def entity_path(entity)
+      "#{realm_id}/#{singular(entity).downcase}"
+    end
+
     def snake_to_camel(sym)
       sym.to_s.split('_').collect(&:capitalize).join
     end
@@ -78,8 +82,18 @@ class QboApi
 
     def extract_entity_from_query(query, to_sym: false)
       if m = query.match(/from\s+(\w+)\s/i)
-        (to_sym ? m[1].downcase.to_sym : m[1].capitalize) if m[1]
+        (to_sym ? underscore(m[1]).to_sym : m[1]) if m[1]
       end
+    end
+
+    private
+
+    def underscore(entity)
+      entity.gsub(/::/, '/')
+            .gsub(/([A-Z]+)([A-Z][a-z])/,'\1_\2')
+            .gsub(/([a-z\d])([A-Z])/,'\1_\2')
+            .tr("-", "_")
+            .downcase
     end
 
   end

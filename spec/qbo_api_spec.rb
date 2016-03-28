@@ -57,9 +57,9 @@ describe QboApi do
   it '.extract_entity_from_query' do
     api = QboApi.new(creds.to_h) 
     expect(api.extract_entity_from_query('Select * FROM Invoice WHERE')).to eq "Invoice"
-    expect(api.extract_entity_from_query('Select count(*) fROM invoice WHERE DisplayName =')).to eq "Invoice"
+    expect(api.extract_entity_from_query('Select count(*) fROM PurchaseOrder WHERE DisplayName =')).to eq "PurchaseOrder"
     expect(api.extract_entity_from_query('Select # invoice WHERE')).to be nil
-    expect(api.extract_entity_from_query(%{Select * FROM VENDOR WHERE FamilyName = 'Johnson'}, to_sym: true)).to eq :vendor
+    expect(api.extract_entity_from_query(%{Select * FROM SalesReceipt WHERE FamilyName = 'Johnson'}, to_sym: true)).to eq :sales_receipt
   end
 
   it '.get_endpoint' do

@@ -54,7 +54,37 @@ describe "QboApi" do
         expect(response.fetch('PrimaryPhone').fetch('FreeFormNumber')).to eq "(415) 444-1234"
       end
     end
-  end
+
+    it 'a sales receipt' do
+      #QboApi.log = true
+      api = QboApi.new(creds.to_h) 
+      sales_receipt = {
+        Line: [
+          {
+            "Description": "Custom Design",
+            "Amount": 337.5,
+            "DetailType": "SalesItemLineDetail",
+            "SalesItemLineDetail": {
+              "ItemRef": {
+                "value": "4",
+                "name": "Design"
+              },
+              "UnitPrice": 75,
+              "Qty": 4.5,
+              "TaxCodeRef": {
+                "value": "NON"
+              }
+            }
+          }
+        ]
+      }
+      VCR.use_cassette("qbo_api/update/sales_receipt", record: :none) do
+        # SalesReceipt = 17 is part of default sandbox
+        response = api.update(:sales_receipt, id: 17, payload: sales_receipt)
+        expect(response['SyncToken']).to eq "1"
+      end
+    end
+  end #= end '.update
 
   context '.delete' do
     it 'an invoice' do
