@@ -220,6 +220,15 @@ export QBO_API_COMPANY_ID=12345
 - All specs that require interaction with the API must be recorded against your personal QuickBooks sandbox. More coming on how to create or modifying existing specs against your sandbox.
 - <a href="http://minimul.com/the-modern-ruby-quickbooks-client-contributing.html" target="_blank">Check out this tutorial and screencast on contributing to qbo_api</a>.
 
+#### Protip: Once your .env file is completely filled out you can use the console to play around in your sandbox
+```
+bin/console
+>> require_relative 'spec/spec_helper'
+>> VCR.configure { |c| c.allow_http_connections_when_no_cassette = true }
+>> q = QboApi.new(creds.to_h)
+>> q.get :customer, 1
+```
+
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
