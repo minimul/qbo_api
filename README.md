@@ -36,7 +36,26 @@ Or install it yourself as:
 ### Initialize
 ```ruby
   q = account.qbo_account # or wherever you are storing the OAuth creds
-  qbo_api = QboApi.new(token: q.token, token_secret: q.secret, realm_id: q.companyid)
+  qbo_api = QboApi.new(token: q.token,
+                       token_secret: q.secret,
+                       realm_id: q.companyid,
+                       consumer_key: '*****',
+                       consumer_secret: '********')
+```
+
+### Super fast way to use QboApi no matter your current tech stack as long as Ruby > 2.2.2 is installed
+```
+- cd ~/<local dir>
+- git clone git@github.com:minimul/qbo_api.git && cd qbo_api
+- bundle
+- bin/console
+- QboApi.production = true
+- qboapi = QboApi.new(token: "qyprd2uvCOdRq8xzoSSiiiiii",
+                      token_secret:"g8wcyQEtwxxxxxxm",
+                      realm_id: "12314xxxxxx7",
+                      consumer_key: "qyprdwzcxxxxxxbIWsIMIy9PYI",
+                      consumer_secret: "CyDN4wpxxxxxxxPMv7hDhmh4")
+- qboapi.get :customer, 1
 ```
 
 ### Configuration options
