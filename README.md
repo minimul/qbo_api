@@ -197,6 +197,9 @@ export QBO_API_CONSUMER_SECRET=<Your QuickBooks apps consumer secret>
   - You should see "Dukes Basketball Camp" displayed
 - Checkout [`example/app.rb`](https://github.com/minimul/qbo_api/blob/master/example/app.rb) to see what is going on under the hood.
 
+## Webhooks
+- <a href="http://minimul.com/getting-started-with-quickbooks-online-webhooks.html" target="_blank">Check out this tutorial and screencast on handling a webhook request</a>. Also checkout [`example/app.rb`](https://github.com/minimul/qbo_api/blob/master/example/app.rb) for the request handling code.
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/minimul/qbo_api.

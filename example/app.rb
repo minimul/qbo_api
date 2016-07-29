@@ -1,6 +1,8 @@
 require "bundler/setup"
 require 'sinatra'
 require 'json'
+require 'openssl'
+require 'base64'
 require 'omniauth'
 require 'omniauth-quickbooks'
 require 'dotenv'
@@ -10,11 +12,20 @@ Dotenv.load "#{__dir__}/../.env"
 PORT  = 9393
 CONSUMER_KEY = ENV['QBO_API_CONSUMER_KEY']
 CONSUMER_SECRET = ENV['QBO_API_CONSUMER_SECRET']
+VERIFIER_TOKEN = ENV['QBO_API_VERIFIER_TOKEN']
 
 set :port, PORT
-use Rack::Session::Cookie
+use Rack::Session::Cookie, secret: '34233adasf'
 use OmniAuth::Builder do
   provider :quickbooks, CONSUMER_KEY, CONSUMER_SECRET
+end
+
+helpers do
+  def verify_webhook(data, hmac_header)
+    digest  = OpenSSL::Digest.new('sha256')
+    calculated_hmac = Base64.encode64(OpenSSL::HMAC.digest(digest, VERIFIER_TOKEN, data)).strip
+    calculated_hmac == hmac_header
+  end
 end
 
 get '/' do
@@ -30,6 +41,14 @@ get '/customer/:id' do
     @resp = api.get :customer, params[:id]
   end
   erb :customer
+end
+
+post '/webhooks' do
+  request.body.rewind
+  data = request.body.read
+  puts JSON.parse data
+  verified = verify_webhook(data, env['HTTP_INTUIT_SIGNATURE'])
+  puts "Verified: #{verified}"
 end
 
 def oauth_data
