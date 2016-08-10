@@ -133,6 +133,32 @@ QboApi.logger = Rails.logger
   p ids
 ```
 
+### Batch operations (limit 30 operations in 1 batch request)
+```ruby
+  payload = {
+      "BatchItemRequest":
+      [
+        {
+          "bId": "bid1",
+          "operation": "create",
+          "Vendor": {
+            "DisplayName": "Smith Family Store"
+          }
+        }, {
+          "bId": "bid2",
+          "operation": "delete",
+          "Invoice": {
+            "Id": "129",
+            "SyncToken": "0"
+          }
+        }
+      ]
+  }
+  response = api.batch(payload)
+  expect(response['BatchItemResponse'].size).to eq 2
+  expect(batch_response.detect{ |b| b["bId"] == "bid1" }["Vendor"]["DisplayName"]).to eq "Smith Family Store"
+```
+
 ### Respond to an error
 ```ruby
   customer = { DisplayName: 'Weiskopf Consulting' } 

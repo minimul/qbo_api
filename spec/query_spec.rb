@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "QboApi" do
+describe "QboApi::Query" do
   context ".cdc" do
     it 'should grab estimates via change data capture query' do
       api = QboApi.new(creds.to_h) 

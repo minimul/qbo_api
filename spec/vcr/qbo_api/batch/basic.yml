@@ -1,0 +1,77 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/batch
+    body:
+      encoding: UTF-8
+      string: '{"BatchItemRequest":[{"bId":"bid1","operation":"create","Vendor":{"DisplayName":"Smith
+        Family Store"}},{"bId":"bid2","operation":"delete","Invoice":{"Id":"129","SyncToken":"0"}},{"bId":"bid3","operation":"update","SalesReceipt":{"domain":"QBO","sparse":true,"Id":"11","SyncToken":"0","PrivateNote":"A
+        private note."}},{"bId":"bid4","Query":"select * from SalesReceipt where TotalAmt
+        > ''300.00''"}]}'
+    headers:
+      Content-Type:
+      - application/json;charset=UTF-8
+      Accept:
+      - application/json
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - OAuth oauth_consumer_key="<CONSUMER_KEY>", oauth_nonce="3c026c726ef78ec096892668b9e9d78c",
+        oauth_signature="N15%2BAdeiPJtBLbxIZU8nGUkFLhA%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1470830604", oauth_token="<ACCESS_TOKEN>", oauth_version="1.0"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 10 Aug 2016 12:03:27 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Content-Length:
+      - '3747'
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=5
+      Strict-Transport-Security:
+      - max-age=15552000
+      Intuit-Tid:
+      - gw-af34341a-87db-4850-88eb-ccd1b785bb18
+      Set-Cookie:
+      - JSESSIONID=24A22734922647C53DF8871F2400BAD6.c50-pprdsbxas800; Path=/; Secure;
+        HttpOnly
+      Qbo-Version:
+      - '1607.722'
+      X-Newrelic-App-Data:
+      - PxQEVFFbAQoTVVZaAAgOU1ETGhE1AwE2QgNWEVlbQFtcC2VOfw5BDwVaXhsDB21BWThOE1VeAlY4HkAAPkkADV0SWQxBZBsYb0pbAEUCW0BIBhlRSlIWBQBQVlAGBRtVXQYaEQcFUwYEAA5UWQwDVgoEWlUTPA==
+      Cache-Control:
+      - max-age=0, no-cache, no-store, must-revalidate, private
+      Expires:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: '{"BatchItemResponse":[{"Vendor":{"Balance":0,"Vendor1099":false,"CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"domain":"QBO","sparse":false,"Id":"61","SyncToken":"0","MetaData":{"CreateTime":"2016-08-10T05:03:25-07:00","LastUpdatedTime":"2016-08-10T05:03:25-07:00"},"DisplayName":"Smith
+        Family Store","PrintOnCheckName":"Smith Family Store","Active":true},"bId":"bid1"},{"Invoice":{"domain":"QBO","status":"Deleted","Id":"129"},"bId":"bid2"},{"SalesReceipt":{"domain":"QBO","sparse":false,"Id":"11","SyncToken":"1","MetaData":{"CreateTime":"2015-10-06T14:59:48-07:00","LastUpdatedTime":"2016-08-10T05:03:26-07:00"},"CustomField":[{"DefinitionId":"1","Name":"Crew
+        #","Type":"StringType"}],"DocNumber":"1003","TxnDate":"2015-10-04","CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"PrivateNote":"A private note.","Line":[{"Id":"1","LineNum":1,"Description":"Custom
+        Design","Amount":337.50,"DetailType":"SalesItemLineDetail","SalesItemLineDetail":{"ItemRef":{"value":"4","name":"Design"},"UnitPrice":75,"Qty":4.5,"TaxCodeRef":{"value":"NON"}}},{"Amount":337.50,"DetailType":"SubTotalLineDetail","SubTotalLineDetail":{}}],"TxnTaxDetail":{"TotalTax":0},"CustomerRef":{"value":"6","name":"Dylan
+        Sollfrank"},"CustomerMemo":{"value":"Thank you for your business and have
+        a great day!"},"BillAddr":{"Id":"49","Line1":"Dylan Sollfrank","Lat":"INVALID","Long":"INVALID"},"TotalAmt":337.50,"ApplyTaxAfterDiscount":false,"PrintStatus":"NotSet","EmailStatus":"NotSet","Balance":0,"PaymentMethodRef":{"value":"2","name":"Check"},"PaymentRefNum":"10264","DepositToAccountRef":{"value":"35","name":"Checking"}},"bId":"bid3"},{"QueryResponse":{"SalesReceipt":[{"domain":"QBO","sparse":false,"Id":"11","SyncToken":"1","MetaData":{"CreateTime":"2015-10-06T14:59:48-07:00","LastUpdatedTime":"2016-08-10T05:03:26-07:00"},"CustomField":[{"DefinitionId":"1","Name":"Crew
+        #","Type":"StringType"}],"DocNumber":"1003","TxnDate":"2015-10-04","CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"PrivateNote":"A private note.","Line":[{"Id":"1","LineNum":1,"Description":"Custom
+        Design","Amount":337.50,"DetailType":"SalesItemLineDetail","SalesItemLineDetail":{"ItemRef":{"value":"4","name":"Design"},"UnitPrice":75,"Qty":4.5,"TaxCodeRef":{"value":"NON"}}},{"Amount":337.50,"DetailType":"SubTotalLineDetail","SubTotalLineDetail":{}}],"TxnTaxDetail":{"TotalTax":0},"CustomerRef":{"value":"6","name":"Dylan
+        Sollfrank"},"CustomerMemo":{"value":"Thank you for your business and have
+        a great day!"},"BillAddr":{"Id":"49","Line1":"Dylan Sollfrank","Lat":"INVALID","Long":"INVALID"},"TotalAmt":337.50,"ApplyTaxAfterDiscount":false,"PrintStatus":"NotSet","EmailStatus":"NotSet","Balance":0,"PaymentMethodRef":{"value":"2","name":"Check"},"PaymentRefNum":"10264","DepositToAccountRef":{"value":"35","name":"Checking"}},{"domain":"QBO","sparse":false,"Id":"17","SyncToken":"1","MetaData":{"CreateTime":"2015-10-06T15:12:39-07:00","LastUpdatedTime":"2016-03-28T09:01:45-07:00"},"CustomField":[{"DefinitionId":"1","Name":"Crew
+        #","Type":"StringType"}],"DocNumber":"1008","TxnDate":"2016-03-28","CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"Line":[{"Id":"2","LineNum":1,"Description":"Custom Design","Amount":337.50,"DetailType":"SalesItemLineDetail","SalesItemLineDetail":{"ItemRef":{"value":"4","name":"Design"},"UnitPrice":75,"Qty":4.5,"TaxCodeRef":{"value":"NON"}}},{"Amount":337.50,"DetailType":"SubTotalLineDetail","SubTotalLineDetail":{}}],"TxnTaxDetail":{"TotalTax":0},"TotalAmt":337.50,"ApplyTaxAfterDiscount":false,"PrintStatus":"NeedToPrint","EmailStatus":"NotSet","Balance":0,"DepositToAccountRef":{"value":"4","name":"Undeposited
+        Funds"}}],"startPosition":1,"maxResults":2},"bId":"bid4"}],"time":"2016-08-10T05:03:25.498-07:00"}'
+    http_version: 
+  recorded_at: Wed, 10 Aug 2016 12:03:27 GMT
+recorded_with: VCR 2.9.3

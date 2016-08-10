@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "QboApi" do
+describe "QboApi Create Update Delete" do
   context ".create" do
 
     it 'an invoice' do

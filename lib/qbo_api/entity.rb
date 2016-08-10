@@ -73,6 +73,7 @@ class QboApi
     def supporting_entities
       %w{
         Attachable
+        Batch
         CompanyInfo
         Entitlements
         ExchangeRate

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "QboApi" do
+describe "QboApi Import All entities" do
   context ".all" do
     it 'retrieves all customers' do
       api = QboApi.new(creds.to_h) 
