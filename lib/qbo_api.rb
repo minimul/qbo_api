@@ -6,6 +6,7 @@ require 'faraday'
 require 'faraday_middleware'
 require 'faraday/detailed_logger'
 require_relative 'qbo_api/configuration'
+require_relative 'qbo_api/supporting'
 require_relative 'qbo_api/error'
 require_relative 'qbo_api/raise_http_exception'
 require_relative 'qbo_api/entity'
@@ -13,6 +14,7 @@ require_relative 'qbo_api/util'
 
 class QboApi
   extend Configuration
+  include Supporting
   include Entity
   include Util
   attr_reader :realm_id
@@ -51,11 +53,6 @@ class QboApi
     path = "#{realm_id}/query?query=#{query}"
     entity = extract_entity_from_query(query, to_sym: true)
     request(:get, entity: entity, path: path)
-  end
-
-  def cdc(entities:, changed_since:)
-    path = "#{realm_id}/cdc?entities=#{entities}&changedSince=#{cdc_time(changed_since)}"
-    request(:get, path: path)
   end
 
   def get(entity, id)
