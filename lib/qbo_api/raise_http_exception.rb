@@ -19,6 +19,8 @@ module FaradayMiddleware
           raise QboApi::Forbidden.new(error_message(response))
         when 404
           raise QboApi::NotFound.new(error_message(response))
+        when 429
+          raise QboApi::TooManyRequests.new(error_message(response))
         when 500
           raise QboApi::InternalServerError.new(error_message(response))
         when 503
