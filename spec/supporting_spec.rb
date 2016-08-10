@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe QboApi do
+describe "QboApi::Supporting" do
   context ".batch" do
     it 'does 4 operations in one request' do
       api = QboApi.new(creds.to_h)
