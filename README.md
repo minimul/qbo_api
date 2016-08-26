@@ -71,6 +71,10 @@ QboApi.log = true
 ```ruby
 QboApi.logger = Rails.logger
 ```
+- To run all create, modify, and delete requests with unique [RequestIds](https://developer.intuit.com/hub/blog/2015/04/06/15346).
+```ruby
+QboApi.request_id = true
+```
 
 ### Create
 ```ruby

@@ -33,6 +33,7 @@ VCR.configure do |config|
     uri1, uri2 = req_1.uri, req_2.uri
     if uri1 =~ /intuit\.com/ && uri2 =~ /intuit\.com/
       strip_url_company_id(req_1.uri, req_2.uri)
+      strip_request_id_value(req_1.uri, req_2.uri)
       regexp_trail_id = %r(/\d+/?\z)
       if uri1.match(regexp_trail_id)
         r1_without_id = uri1.gsub(regexp_trail_id, "")
@@ -52,6 +53,15 @@ VCR.configure do |config|
       ref.sub!(regexp_company_id, '')
     end
   end
+
+  def strip_request_id_value(*args)
+    regexp = %r(requestid=(.*?)$)
+    args.each do |ref|
+      m = ref.match(regexp)
+      ref.sub!(m[1], '') if m
+    end
+  end
+
   config.default_cassette_options = { match_requests_on: [:method, :for_intuit] }
 end
 

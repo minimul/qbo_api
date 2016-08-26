@@ -1,6 +1,7 @@
 require 'qbo_api/version'
 require 'json'
-#require 'rack'
+require 'uri'
+require 'securerandom'
 require 'logger'
 require 'faraday'
 require 'faraday_middleware'
@@ -71,7 +72,7 @@ class QboApi
 
   def delete(entity, id:)
     raise QboApi::NotImplementedError unless is_transaction_entity?(entity)
-    path = "#{entity_path(entity)}?operation=delete"
+    path = add_param_to_path(path: entity_path(entity), param: [:operation, :delete])
     payload = set_update(entity, id)
     request(:post, entity: entity, path: path, payload: payload)
   end
@@ -104,7 +105,7 @@ class QboApi
       when :get, :delete
         req.url URI.encode(path)
       when :post, :put
-        req.url path
+        req.url add_request_id_to(path)
         req.body = JSON.generate(payload)
       end
     end
