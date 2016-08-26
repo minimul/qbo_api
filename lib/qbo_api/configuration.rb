@@ -24,5 +24,13 @@ class QboApi
     def production=(value)
       @production = value
     end
+
+    def request_id
+      @request_id ||= false
+    end
+
+    def request_id=(value)
+      @request_id = value
+    end
   end
 end

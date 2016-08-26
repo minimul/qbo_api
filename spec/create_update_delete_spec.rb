@@ -3,6 +3,10 @@ require 'spec_helper'
 describe "QboApi Create Update Delete" do
   context ".create" do
 
+    after do
+      QboApi.request_id = false
+    end
+
     it 'an invoice' do
       invoice = {
         "Line": [
@@ -29,8 +33,9 @@ describe "QboApi Create Update Delete" do
       end
     end
 
-    it 'a customer' do
-      customer = { DisplayName: 'Jack Doe' } 
+    it 'a customer using a request id' do
+      customer = { DisplayName: 'Doe, Jane' } 
+      QboApi.request_id = true
       api = QboApi.new(creds.to_h) 
       VCR.use_cassette("qbo_api/create/customer", record: :none) do
         response = api.create(:customer, payload: customer)
