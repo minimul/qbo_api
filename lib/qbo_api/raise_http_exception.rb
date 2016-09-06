@@ -9,8 +9,6 @@ module FaradayMiddleware
       @app.call(env).on_complete do |response|
         case response.status
         when 200
-          # 200 responses can have errors
-          raise QboApi::BadRequest.new(error_message(response)) if response.body =~ /Fault.*Error.*Message/
         when 400
           raise QboApi::BadRequest.new(error_message(response))
         when 401
