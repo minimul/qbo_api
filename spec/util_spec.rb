@@ -37,10 +37,10 @@ describe QboApi::Util do
       QboApi.request_id = true
       api = QboApi.new(creds.to_h)
       path = api.entity_path(:sales_receipt)
-      path = api.add_param_to_path(path: path, param: [:operation, :delete])
-      path = api.add_param_to_path(path: path, param: [:test, :true])
+      path = api.add_params_to_path(path: path, params: { operation: :delete, test: :true})
       path = api.add_request_id_to(path)
       expect(path).to match /&requestid=.*$/
     end
+
   end
 end

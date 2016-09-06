@@ -163,6 +163,14 @@ QboApi.request_id = true
   expect(batch_response.detect{ |b| b["bId"] == "bid1" }["Vendor"]["DisplayName"]).to eq "Smith Family Store"
 ```
 
+### Reports
+
+```ruby
+        params = { start_date: '2015-01-01', end_date: '2015-07-31', customer: 1, summarize_column_by: 'Customers' }
+        response = api.reports(name: 'ProfitAndLoss', params: params)
+        p response["Header"]["ReportName"]) #=> 'ProfitAndLoss'
+```
+
 ### Respond to an error
 ```ruby
   customer = { DisplayName: 'Weiskopf Consulting' } 

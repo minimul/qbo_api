@@ -1,0 +1,101 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/reports/GeneralLedger
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json;charset=UTF-8
+      Accept:
+      - application/json
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - OAuth oauth_consumer_key="<CONSUMER_KEY>", oauth_nonce="188f214c8f23d5bd117d491072f38b64",
+        oauth_signature="7%2BUbs9BMjZNOVnJfozZhCXvNCFI%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1472854329", oauth_token="<ACCESS_TOKEN>", oauth_version="1.0"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Fri, 02 Sep 2016 22:12:10 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Content-Length:
+      - '7945'
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=5
+      Strict-Transport-Security:
+      - max-age=15552000
+      Intuit-Tid:
+      - gw-4bd205b1-b625-4d75-85b9-0fd8018eec8e
+      Set-Cookie:
+      - JSESSIONID=F084C56C3D18D37038FDBBCE3B70433C.c50-pprdsbxas800; Path=/; Secure;
+        HttpOnly
+      Qbo-Version:
+      - '1608.1630'
+      X-Newrelic-App-Data:
+      - PxQEVFFbAQoTVVZaAAgOU1ETGhE1AwE2QgNWEVlbQFtcC2VOfw5BDwVaXhsDB21BWThOE1VeAlY4HkAAPkkADV0SWQxBZBsYb0pLBEEOQRYXahgmAw1dQVEILQdTVlIURh0GHVJKU0wCUgtaAA8BCh9VFUMIVApUUFVSWVMCD1UAXVEEFWw=
+      Cache-Control:
+      - max-age=0, no-cache, no-store, must-revalidate, private
+      Expires:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: '{"Header":{"Time":"2016-09-02T15:12:10-07:00","ReportName":"GeneralLedger","DateMacro":"this
+        month-to-date","ReportBasis":"Accrual","StartPeriod":"2016-09-01","EndPeriod":"2016-09-02","Currency":"USD","Option":[{"Name":"NoReportData","Value":"false"}]},"Columns":{"Column":[{"ColTitle":"Date","ColType":"tx_date"},{"ColTitle":"Transaction
+        Type","ColType":"txn_type"},{"ColTitle":"Num","ColType":"doc_num"},{"ColTitle":"Name","ColType":"name"},{"ColTitle":"Memo/Description","ColType":"memo"},{"ColTitle":"Split","ColType":"split_acc"},{"ColTitle":"Amount","ColType":"subt_nat_amount"},{"ColTitle":"Balance","ColType":"rbal_nat_amount"}]},"Rows":{"Row":[{"Header":{"ColData":[{"value":"Checking","id":"35"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"976.00"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Checking"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Savings","id":"36"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"800.00"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Savings"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Accounts
+        Receivable (A/R)","id":"84"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"4804.02"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Accounts Receivable (A/R)"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Inventory
+        Asset","id":"81"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"731.25"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Inventory Asset"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Undeposited
+        Funds","id":"4"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"2400.02"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Undeposited Funds"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Truck","id":"38"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"Header":{"ColData":[{"value":"Original
+        Cost"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"13495.00"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Original Cost"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"}]},"Summary":{"ColData":[{"value":"Total
+        for Truck"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Accounts
+        Payable (A/P)","id":"33"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"1602.67"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Accounts Payable (A/P)"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Mastercard","id":"41"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"157.72"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Mastercard"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Board
+        of Equalization Payable","id":"90"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"370.94"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Board of Equalization Payable"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Loan
+        Payable","id":"43"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"4000.00"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Loan Payable"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Notes
+        Payable","id":"44"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"25000.00"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Notes Payable"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Opening
+        Balance Equity","id":"34"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"-9337.50"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Opening Balance Equity"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Design
+        income","id":"82"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"337.50"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Design income"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Retained
+        Earnings","id":"2"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"1074.96"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Retained Earnings"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"}]}}'
+    http_version: 
+  recorded_at: Fri, 02 Sep 2016 22:12:10 GMT
+recorded_with: VCR 2.9.3

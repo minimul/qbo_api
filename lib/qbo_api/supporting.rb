@@ -11,5 +11,11 @@ class QboApi
       request(:post, path: path, payload: payload)
     end
 
+    def reports(name:, params: nil)
+      path = "#{realm_id}/reports/#{name}"
+      path = add_params_to_path(path: path, params: params) if params
+      request(:get, path: path)
+    end
+
   end
 end

@@ -4,6 +4,7 @@ require 'rspec'
 require 'webmock/rspec'
 require 'vcr'
 require 'dotenv'
+require 'awesome_print'
 Dotenv.load
 
 def creds

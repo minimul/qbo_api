@@ -13,6 +13,27 @@ describe "QboApi::Supporting" do
     end
   end
 
+  context ".reports" do
+    it 'for Profit and Loss with query params' do
+      api = QboApi.new(creds.to_h)
+      VCR.use_cassette("qbo_api/reports/profit_and_loss", record: :none) do
+        params = { start_date: '2015-01-01', end_date: '2015-07-31', customer: 1, summarize_column_by: 'Customers' }
+        name = 'ProfitAndLoss'
+        response = api.reports(name: name, params: params)
+        expect(response["Header"]["ReportName"]).to eq name
+      end
+    end
+
+    it 'for General Ledger with no query params' do
+      api = QboApi.new(creds.to_h)
+      VCR.use_cassette("qbo_api/reports/gl", record: :none) do
+        name = 'GeneralLedger'
+        response = api.reports(name: name)
+        expect(response["Header"]["ReportName"]).to eq name
+      end
+    end
+  end
+
   def batch_payload
     {
       "BatchItemRequest": 

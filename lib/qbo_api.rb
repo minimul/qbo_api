@@ -72,7 +72,7 @@ class QboApi
 
   def delete(entity, id:)
     raise QboApi::NotImplementedError unless is_transaction_entity?(entity)
-    path = add_param_to_path(path: entity_path(entity), param: [:operation, :delete])
+    path = add_params_to_path(path: entity_path(entity), params: { operation: :delete })
     payload = set_update(entity, id)
     request(:post, entity: entity, path: path, payload: payload)
   end

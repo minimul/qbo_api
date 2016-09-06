@@ -27,6 +27,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'omniauth-quickbooks'
   spec.add_development_dependency 'dotenv'
   spec.add_development_dependency 'vcr'
+  spec.add_development_dependency 'awesome_print'
   spec.add_runtime_dependency 'faraday'
   spec.add_runtime_dependency 'faraday_middleware'
   spec.add_runtime_dependency 'faraday-detailed_logger'
