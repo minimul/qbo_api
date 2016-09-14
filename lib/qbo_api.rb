@@ -78,13 +78,15 @@ class QboApi
   end
 
   # TODO: Need specs for disconnect and reconnect
-  # https://developer.intuit.com/docs/0100_accounting/0060_authentication_and_authorization/oauth_management_api
+  # https://developer.intuit.com/docs/0100_quickbooks_online/0100_essentials/0085_develop_quickbooks_apps/0004_authentication_and_authorization/oauth_management_api#/Reconnect
   def disconnect
-    response = connection(url: APP_CONNECTION_URL).get('/disconnect')
+    path = "#{APP_CONNECTION_URL}/disconnect"
+    request(:get, path: path)
   end
 
   def reconnect
-    response = connection(url: APP_CONNECTION_URL).get('/reconnect')
+    path = "#{APP_CONNECTION_URL}/reconnect"
+    request(:get, path: path)
   end
 
   def all(entity, max: 1000, select: nil, &block)
