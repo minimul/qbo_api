@@ -4,7 +4,7 @@ class QboApi
       if time.is_a?(String)
         time
       else
-        time.to_s.sub(' ', 'T').sub(' ', '').insert(-3, ':')
+        time.iso8601
       end
     end
 
