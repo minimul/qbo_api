@@ -29,6 +29,21 @@ class QboApi
       uri.to_s
     end
 
+    def join_or_start_where_clause!(select:)
+      if select.match(/where/i)
+        str = ' AND '
+      else
+        str = ' WHERE '
+      end
+      str
+    end
+
+    def build_all_query(entity, select: nil, inactive: false)
+      select ||= "SELECT * FROM #{singular(entity)}"
+      select += join_or_start_where_clause!(select: select) + 'Active IN ( true, false )' if inactive
+      select
+    end
+
   end
 end
 

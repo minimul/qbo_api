@@ -117,6 +117,12 @@ QboApi.request_id = true
   p response['status'] # => "Deleted"
 ```
 
+### Deactivate (only works for name list entities)
+```ruby
+  response = qbo_api.deactivate(:employee, id: 55)
+  p response['Active'] # => false
+```
+
 ### Search with irregular characters
 ```ruby
   name = qbo_api.esc "Amy's Bird Sanctuary"
@@ -206,9 +212,14 @@ See [docs](https://developer.intuit.com/docs/0100_quickbooks_online/0100_essenti
 
 ### Import/retrieve all
 ```ruby
-  # retrieves all customers
+  # retrieves all active customers
   qbo_api.all(:customers) do |c|
     p "#{c['Id']} #{c['DisplayName']}"
+  end
+
+  # retrieves all active or inactive employees
+  qbo_api.all(:employees, inactive: true) do |e|
+    p "#{e['Id']} #{e['DisplayName']}"
   end
 
   # retrieves all vendors by groups of 5

@@ -1,0 +1,171 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/query?query=SELECT%20*%20FROM%20EmployeeSELECT%20*%20FROM%20Employee%20WHERE%20Active%20IN%20(%20true,%20false%20)%20MAXRESULTS%201000%20STARTPOSITION%201
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json;charset=UTF-8
+      Accept:
+      - application/json
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - OAuth oauth_consumer_key="<CONSUMER_KEY>", oauth_nonce="97f0b675fb28133bdc37b7e3db338389",
+        oauth_signature="8dKF1vrFY%2B9kZY9nd4FyG4JnUSo%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1475530944", oauth_token="<ACCESS_TOKEN>", oauth_version="1.0"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Mon, 03 Oct 2016 21:42:25 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '440'
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=5
+      Strict-Transport-Security:
+      - max-age=15552000
+      Intuit-Tid:
+      - gw-c4af4f1c-2748-4d8a-8a06-419d9b746c61
+      X-Newrelic-App-Data:
+      - PxQEVFFbAQoTVVlVBgQCVlMTGhE1AwE2QgNWEVlbQFtcC2VOfw5BDwVaXhsDB21BWThOVgcBa0lOExoDTFZPUh5SAVINAAAEC0kJTRMHVVdTB1JSX1VcCwAFWFAFE2o=
+      Vary:
+      - Accept-Encoding
+    body:
+      encoding: UTF-8
+      string: '{"Fault":{"Error":[{"Message":"Error parsing query","Detail":"QueryParserError:
+        Encountered \" \"*\" \"* \"\" at line 1, column 30.\nWas expecting one of:\n    <EOF>
+        \n    \",\" ...\n    \"as\" ...\n    \"iterator\" ...\n    \"maxresults\"
+        ...\n    \"order\" ...\n    \"orderby\" ...\n    \"startposition\" ...\n    \"where\"
+        ...\n    <IDENTIFIER> ...\n    ","code":"4000"}],"type":"ValidationFault"},"time":"2016-10-03T14:42:25.033-07:00"}'
+    http_version: 
+  recorded_at: Mon, 03 Oct 2016 21:42:25 GMT
+- request:
+    method: get
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/query?query=SELECT%20COUNT(*)%20FROM%20Employee%20WHERE%20Active%20IN%20(true,%20false)%20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json;charset=UTF-8
+      Accept:
+      - application/json
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - OAuth oauth_consumer_key="<CONSUMER_KEY>", oauth_nonce="b2ab35f5e5a685a4125a61c143062f70",
+        oauth_signature="Z0rvBrJRKgexjjq5NPZReyXn4is%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1475579032", oauth_token="<ACCESS_TOKEN>", oauth_version="1.0"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Tue, 04 Oct 2016 11:03:53 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Content-Length:
+      - '73'
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=5
+      Strict-Transport-Security:
+      - max-age=15552000
+      Intuit-Tid:
+      - gw-acd8bf60-1cbc-4bc9-af4e-3b105375a1a4
+      Set-Cookie:
+      - JSESSIONID=6FE41B55051C2B1948904C24CFADDC7C.c50-pprdsbxas900; Path=/; Secure;
+        HttpOnly
+      Qbo-Version:
+      - '1608.1652'
+      X-Newrelic-App-Data:
+      - PxQEVFFbAQoTVVlVBgQCVlMTGhE1AwE2QgNWEVlbQFtcC2VOfw5BDwVaXhsDB21BWThOE1VeAlY4HkAAPkkADV0SWQxBZBsYb0pIFFQTSkBIBhlRSlMWAwNUUlcGAgFfSAEaEVtUW1YGA1wAAV1VAVBXDwITPA==
+      Cache-Control:
+      - max-age=0, no-cache, no-store, must-revalidate, private
+      Expires:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: '{"QueryResponse":{"totalCount":2},"time":"2016-10-04T04:03:53.319-07:00"}'
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 11:03:53 GMT
+- request:
+    method: get
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/query?query=SELECT%20*%20FROM%20Employee%20WHERE%20Active%20IN%20(%20true,%20false%20)%20MAXRESULTS%201000%20STARTPOSITION%201
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json;charset=UTF-8
+      Accept:
+      - application/json
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - OAuth oauth_consumer_key="<CONSUMER_KEY>", oauth_nonce="56cc57f8e6c09751fbcbef9ddd77975a",
+        oauth_signature="nyPdMlcWv2Istp5o3z5ZGm7jenY%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1475579033", oauth_token="<ACCESS_TOKEN>", oauth_version="1.0"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Tue, 04 Oct 2016 11:03:52 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Content-Length:
+      - '809'
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=5
+      Strict-Transport-Security:
+      - max-age=15552000
+      Intuit-Tid:
+      - gw-0d4fc324-0d4d-445d-ba8c-73e068f4a0c9
+      Set-Cookie:
+      - JSESSIONID=17588E87BBDB0BDF6A0DB676CE5220C9.c50-pprdsbxas900; Path=/; Secure;
+        HttpOnly
+      Qbo-Version:
+      - '1608.1652'
+      X-Newrelic-App-Data:
+      - PxQEVFFbAQoTVVlVBgQCVlMTGhE1AwE2QgNWEVlbQFtcC2VOfw5BDwVaXhsDB21BWThOE1VeAlY4HkAAPkkADV0SWQxBZBsYb0pIFFQTSkBIBhlRSlMWAwNTUVIOAQ5KVB0UB1tWBVUIUgBXWggDAwZXCENs
+      Cache-Control:
+      - max-age=0, no-cache, no-store, must-revalidate, private
+      Expires:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: '{"QueryResponse":{"Employee":[{"BillableTime":false,"domain":"QBO","sparse":false,"Id":"55","SyncToken":"1","MetaData":{"CreateTime":"2015-10-07T11:21:48-07:00","LastUpdatedTime":"2016-10-04T03:51:17-07:00"},"GivenName":"Emily","FamilyName":"Platt","DisplayName":"Emily
+        Platt (deleted)","PrintOnCheckName":"Emily Platt","Active":false},{"BillableTime":false,"BirthDate":"1984-10-02","HiredDate":"2015-09-08","domain":"QBO","sparse":false,"Id":"54","SyncToken":"1","MetaData":{"CreateTime":"2015-10-07T11:21:28-07:00","LastUpdatedTime":"2015-10-07T11:46:26-07:00"},"GivenName":"John","FamilyName":"Johnson","DisplayName":"John
+        Johnson","PrintOnCheckName":"John Johnson","Active":true,"PrimaryPhone":{"FreeFormNumber":"(540)
+        555-9645"}}],"startPosition":1,"maxResults":2},"time":"2016-10-04T04:03:54.097-07:00"}'
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 11:03:54 GMT
+recorded_with: VCR 2.9.3
