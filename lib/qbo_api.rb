@@ -71,10 +71,18 @@ class QboApi
   end
 
   def delete(entity, id:)
-    raise QboApi::NotImplementedError unless is_transaction_entity?(entity)
+    err_msg = "Delete is only for transaction entities. Use .deactivate instead"
+    raise QboApi::NotImplementedError.new, err_msg unless is_transaction_entity?(entity)
     path = add_params_to_path(path: entity_path(entity), params: { operation: :delete })
     payload = set_update(entity, id)
     request(:post, entity: entity, path: path, payload: payload)
+  end
+
+  def deactivate(entity, id:)
+    err_msg = "Deactivate is only for name list entities. Use .delete instead"
+    raise QboApi::NotImplementedError.new, err_msg unless is_name_list_entity?(entity)
+    payload = set_update(entity, id).merge('sparse': true, 'Active': false)
+    request(:post, entity: entity, path: entity_path(entity), payload: payload)
   end
 
   # TODO: Need specs for disconnect and reconnect
@@ -89,8 +97,8 @@ class QboApi
     request(:get, path: path)
   end
 
-  def all(entity, max: 1000, select: nil, &block)
-    select ||= "SELECT * FROM #{singular(entity)}"
+  def all(entity, max: 1000, select: nil, inactive: false, &block)
+    select = build_all_query(entity, select: select, inactive: inactive)
     pos = 0
     begin
       pos = pos == 0 ? pos + 1 : pos + max

@@ -101,9 +101,24 @@ describe "QboApi Create Update Delete" do
       end
     end
 
-    it 'only of a transaction entity' do
+    it 'only a transaction entity' do
       api = QboApi.new(creds.to_h) 
-      expect { response = api.delete(:customer, id: 145) }.to raise_error QboApi::NotImplementedError
+      expect { response = api.delete(:customer, id: 145) }.to raise_error QboApi::NotImplementedError, /^Delete is only for/
+    end
+  end
+
+  context '.deactivate' do
+    it 'an employee' do
+      api = QboApi.new(creds.to_h) 
+      VCR.use_cassette("qbo_api/deactivate/employee", record: :none) do
+        response = api.deactivate(:employee, id: 55)
+        expect(response['Active']).to eq false
+      end
+    end
+
+    it 'only a name list entity' do
+      api = QboApi.new(creds.to_h) 
+      expect { response = api.deactivate(:refund_receipt, id: 145) }.to raise_error QboApi::NotImplementedError, /^Deactivate is only for/
     end
   end
 end
