@@ -294,9 +294,7 @@ export QBO_API_COMPANY_ID=12345
 
 #### Protip: Once your .env file is completely filled out you can use the console to play around in your sandbox
 ```
-bin/console
->> require_relative 'spec/spec_helper'
->> VCR.configure { |c| c.allow_http_connections_when_no_cassette = true }
+bin/console test
 >> q = QboApi.new(creds.to_h)
 >> q.get :customer, 1
 ```
