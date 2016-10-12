@@ -3,6 +3,11 @@
 require "bundler/setup"
 require "qbo_api"
 
+if ARGV[0] == "test"
+  require_relative '../spec/support/credentials'
+  ARGV[0] = nil # needed to avoid irb error
+end
+
 # You can add fixtures and/or initialization code here to make experimenting
 # with your gem easier. You can also use a different console, if you like.
 
