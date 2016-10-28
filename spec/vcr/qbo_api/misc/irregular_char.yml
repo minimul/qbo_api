@@ -330,104 +330,6 @@ http_interactions:
   recorded_at: Thu, 05 Nov 2015 22:27:09 GMT
 - request:
     method: get
-    uri: https://sandbox-quickbooks.api.intuit.com/v3/query?query=SELECT%20*%20FROM%20Customer%20WHERE%20DisplayName%20=%20%27Amy%5C%5C%27s%20Bird%20Sanctuary%27
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Content-Type:
-      - application/json;charset=UTF-8
-      Accept:
-      - application/json
-      User-Agent:
-      - Faraday v0.9.2
-      Authorization:
-      - OAuth oauth_consumer_key="<CONSUMER_KEY>", oauth_nonce="f88c1eca31f67db5da46d5495d8f3152",
-        oauth_signature="PZKMafV6wG9z%2F4GU%2FpeFSAPb%2Fvw%3D", oauth_signature_method="HMAC-SHA1",
-        oauth_timestamp="1446762465", oauth_token="<ACCESS_TOKEN>", oauth_version="1.0"
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Date:
-      - Thu, 05 Nov 2015 22:27:46 GMT
-      Via:
-      - 1.1 ipp-gateway-.net
-      Content-Type:
-      - application/json;charset=UTF-8
-      Cache-Control:
-      - max-age=0, no-cache, no-store, must-revalidate, private
-      Expires:
-      - '0'
-      Intuit-Tid:
-      - da2dea9a-ecda-46f2-bb11-465c228d78cf
-      Qbo-Version:
-      - '1510.283'
-      Transfer-Encoding:
-      - chunked
-    body:
-      encoding: ASCII-8BIT
-      string: '{"Fault":{"Error":[{"Message":"Error parsing query","Detail":"QueryParserError:
-        Encountered \" <IDENTIFIER> \"s \"\" at line 1, column 51.\nWas expecting
-        one of:\n    <EOF> \n    <AND> ...\n    \"iterator\" ...\n    \"maxresults\"
-        ...\n    <OR> ...\n    \"order\" ...\n    \"orderby\" ...\n    \"startposition\"
-        ...\n    ","code":"4000"}],"type":"ValidationFault"},"time":"2015-11-05T14:27:47.358-08:00"}'
-    http_version: 
-  recorded_at: Thu, 05 Nov 2015 22:27:47 GMT
-- request:
-    method: get
-    uri: https://sandbox-quickbooks.api.intuit.com/v3/query?query=SELECT%20*%20FROM%20Customer%20WHERE%20DisplayName%20=%20%27Amy%27s%20Bird%20Sanctuary%27
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Content-Type:
-      - application/json;charset=UTF-8
-      Accept:
-      - application/json
-      User-Agent:
-      - Faraday v0.9.2
-      Authorization:
-      - OAuth oauth_consumer_key="<CONSUMER_KEY>", oauth_nonce="b5590802ae15c6cf719b4b716fa35076",
-        oauth_signature="6MQFOyF8L0IsnKV8HL8S%2Bnwbi40%3D", oauth_signature_method="HMAC-SHA1",
-        oauth_timestamp="1446762648", oauth_token="<ACCESS_TOKEN>", oauth_version="1.0"
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Date:
-      - Thu, 05 Nov 2015 22:30:49 GMT
-      Content-Type:
-      - application/json;charset=UTF-8
-      Intuit-Tid:
-      - 655c5a06-52b3-4cfc-9781-c66c7f6c3d07
-      Via:
-      - 1.1 ipp-gateway-.net
-      Cache-Control:
-      - max-age=0, no-cache, no-store, must-revalidate, private
-      Expires:
-      - '0'
-      Qbo-Version:
-      - '1510.283'
-      Transfer-Encoding:
-      - chunked
-    body:
-      encoding: ASCII-8BIT
-      string: '{"Fault":{"Error":[{"Message":"Error parsing query","Detail":"QueryParserError:
-        Encountered \" <IDENTIFIER> \"s \"\" at line 1, column 49.\nWas expecting
-        one of:\n    <EOF> \n    <AND> ...\n    \"iterator\" ...\n    \"maxresults\"
-        ...\n    <OR> ...\n    \"order\" ...\n    \"orderby\" ...\n    \"startposition\"
-        ...\n    ","code":"4000"}],"type":"ValidationFault"},"time":"2015-11-05T14:30:49.945-08:00"}'
-    http_version: 
-  recorded_at: Thu, 05 Nov 2015 22:30:50 GMT
-- request:
-    method: get
     uri: https://sandbox-quickbooks.api.intuit.com/v3/query?query=SELECT%20*%20FROM%20Customer%20WHERE%20DisplayName%20=%20%27Amys%20Bird%20Sanctuarys%20Bird%20Sanctuary%27
     body:
       encoding: US-ASCII
@@ -473,6 +375,163 @@ http_interactions:
   recorded_at: Thu, 05 Nov 2015 22:32:00 GMT
 - request:
     method: get
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/query?query=SELECT%20*%20FROM%20Customer%20WHERE%20DisplayName%20=%20%27Amy%27%5C%5C%27s%20Bird%20Sanctuary%27
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json;charset=UTF-8
+      Accept:
+      - application/json
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - OAuth oauth_consumer_key="<CONSUMER_KEY>", oauth_nonce="4e55080a4caccce3dd819f8a580af0bc",
+        oauth_signature="uEK1LsbfmDo6dg%2BWh9j06VnQ7tg%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1477593445", oauth_token="<ACCESS_TOKEN>", oauth_version="1.0"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 27 Oct 2016 18:37:27 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '257'
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=5
+      Strict-Transport-Security:
+      - max-age=15552000
+      Intuit-Tid:
+      - gw-dd56260d-bf5c-4b5d-abaf-f107f26af145
+      X-Newrelic-App-Data:
+      - PxQEVFFbAQoTVVZaAAgOU1ETGhE1AwE2QgNWEVlbQFtcC2VOfw5BDwVaXhsDB21BWThOVgcBa0lOExoDTFZPUh5SClUPDgAEB0kJTRNTAgFXA1MHBFsIAgcFAlQEExsABV1FVj8=
+      Vary:
+      - Accept-Encoding
+    body:
+      encoding: UTF-8
+      string: '{"Fault":{"Error":[{"Message":"Error parsing query","Detail":"QueryParserError:
+        Invalid content. Lexical error at line 1, column 49.  Encountered: \"\\\\\"
+        (92), after : \"\"","code":"4000"}],"type":"ValidationFault"},"time":"2016-10-27T11:37:27.681-07:00"}'
+    http_version: 
+  recorded_at: Thu, 27 Oct 2016 18:37:27 GMT
+- request:
+    method: get
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/query?query=SELECT%20*%20FROM%20Customer%20WHERE%20DisplayName%20=%20%27Amy%5C%5C%27s%20Bird%20Sanctuary%27
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json;charset=UTF-8
+      Accept:
+      - application/json
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - OAuth oauth_consumer_key="<CONSUMER_KEY>", oauth_nonce="37312a807cdb2dcdb5f8ff4d40969a92",
+        oauth_signature="3e03TyAde1ojrHCu1FG%2FuQRkPLk%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1477600076", oauth_token="<ACCESS_TOKEN>", oauth_version="1.0"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 27 Oct 2016 20:27:57 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '404'
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=5
+      Strict-Transport-Security:
+      - max-age=15552000
+      Intuit-Tid:
+      - gw-a0d5a456-48c7-4c88-8c88-41ce21f7b04d
+      X-Newrelic-App-Data:
+      - PxQEVFFbAQoTVVZaAAgOU1ETGhE1AwE2QgNWEVlbQFtcC2VOfw5BDwVaXhsDB21BWThOVgcBa0lOExoDTFZPUh5TDFsPDQICCkkJTRMFAwNUAAcFAFNcCgBVB1RWExsABV1FVj8=
+      Vary:
+      - Accept-Encoding
+    body:
+      encoding: UTF-8
+      string: '{"Fault":{"Error":[{"Message":"Error parsing query","Detail":"QueryParserError:
+        Encountered \" <IDENTIFIER> \"s \"\" at line 1, column 51.\nWas expecting
+        one of:\n    <EOF> \n    <AND> ...\n    \"iterator\" ...\n    \"maxresults\"
+        ...\n    <OR> ...\n    \"order\" ...\n    \"orderby\" ...\n    \"startposition\"
+        ...\n    ","code":"4000"}],"type":"ValidationFault"},"time":"2016-10-27T13:27:57.496-07:00"}'
+    http_version: 
+  recorded_at: Thu, 27 Oct 2016 20:27:58 GMT
+- request:
+    method: get
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/query?query=SELECT%20*%20FROM%20Customer%20WHERE%20DisplayName%20=%20%27Amy%27s%20Bird%20Sanctuary%27
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json;charset=UTF-8
+      Accept:
+      - application/json
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - OAuth oauth_consumer_key="<CONSUMER_KEY>", oauth_nonce="b94da431582cd2f438965c3e75e144c6",
+        oauth_signature="%2F53y28l26lRbfLrkX%2BLZzKYSBh0%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1477651707", oauth_token="<ACCESS_TOKEN>", oauth_version="1.0"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Fri, 28 Oct 2016 10:48:28 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '404'
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=5
+      Strict-Transport-Security:
+      - max-age=15552000
+      Intuit-Tid:
+      - gw-a4b5cac8-8b8f-480c-bfcc-bfddc5d4e13a
+      X-Newrelic-App-Data:
+      - PxQEVFFbAQoTVVZaAAgOU1ETGhE1AwE2QgNWEVlbQFtcC2VOfw5BDwVaXhsDB21BWThOVgcBa0lOExoDTFZPUh5SD1cKAAIEClEVUR1DCgRXBQ5UAwEJCgBcA1pRVBVKAlBaQAc7
+      Vary:
+      - Accept-Encoding
+    body:
+      encoding: UTF-8
+      string: '{"Fault":{"Error":[{"Message":"Error parsing query","Detail":"QueryParserError:
+        Encountered \" <IDENTIFIER> \"s \"\" at line 1, column 49.\nWas expecting
+        one of:\n    <EOF> \n    <AND> ...\n    \"iterator\" ...\n    \"maxresults\"
+        ...\n    <OR> ...\n    \"order\" ...\n    \"orderby\" ...\n    \"startposition\"
+        ...\n    ","code":"4000"}],"type":"ValidationFault"},"time":"2016-10-28T03:48:28.797-07:00"}'
+    http_version: 
+  recorded_at: Fri, 28 Oct 2016 10:48:28 GMT
+- request:
+    method: get
     uri: https://sandbox-quickbooks.api.intuit.com/v3/query?query=SELECT%20*%20FROM%20Customer%20WHERE%20DisplayName%20=%20%27Amy%5C%27s%20Bird%20Sanctuary%27
     body:
       encoding: US-ASCII
@@ -485,9 +544,9 @@ http_interactions:
       User-Agent:
       - Faraday v0.9.2
       Authorization:
-      - OAuth oauth_consumer_key="<CONSUMER_KEY>", oauth_nonce="25c36b8f05d48d4ae027a2598bc0bc99",
-        oauth_signature="OLQ3Dy1iS0L3NLps6pmCd7agtWI%3D", oauth_signature_method="HMAC-SHA1",
-        oauth_timestamp="1446762736", oauth_token="<ACCESS_TOKEN>", oauth_version="1.0"
+      - OAuth oauth_consumer_key="<CONSUMER_KEY>", oauth_nonce="aa5114b8693ad6c3ff5880be272ed23c",
+        oauth_signature="2uDfe3yhPRWJaSw7C%2FmxNVCb6fs%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1477652059", oauth_token="<ACCESS_TOKEN>", oauth_version="1.0"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -495,31 +554,42 @@ http_interactions:
       code: 200
       message: OK
     headers:
+      Server:
+      - nginx
       Date:
-      - Thu, 05 Nov 2015 22:32:18 GMT
-      Via:
-      - 1.1 ipp-gateway-.net
+      - Fri, 28 Oct 2016 10:54:20 GMT
       Content-Type:
       - application/json;charset=UTF-8
+      Content-Length:
+      - '1064'
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=5
+      Strict-Transport-Security:
+      - max-age=15552000
+      Intuit-Tid:
+      - gw-b7761447-d6f9-4347-8d2e-63f0a9c6f692
+      Set-Cookie:
+      - JSESSIONID=1A0D3AF242B43DE7B80DDE9590E47878.c50-pprdsbxas800; Path=/; Secure;
+        HttpOnly
+      Qbo-Version:
+      - '1610.1162'
+      X-Newrelic-App-Data:
+      - PxQEVFFbAQoTVVZaAAgOU1ETGhE1AwE2QgNWEVlbQFtcC2VOfw5BDwVaXhsDB21BWThOE1VeAlY4HkAAPkkADV0SWQxBZBsYb0pIFFQTSkBIBhlRSlMWAwVXV1cPBAZKVB0UAFpfAQMCWwkAAAwNUwFVDUMdB1IOF1Nq
       Cache-Control:
       - max-age=0, no-cache, no-store, must-revalidate, private
       Expires:
       - '0'
-      Intuit-Tid:
-      - bfcb94b4-f9c1-4f3f-93b5-02990fe46796
-      Qbo-Version:
-      - '1510.283'
-      Transfer-Encoding:
-      - chunked
     body:
-      encoding: ASCII-8BIT
+      encoding: UTF-8
       string: '{"QueryResponse":{"Customer":[{"Taxable":true,"BillAddr":{"Id":"2","Line1":"4581
         Finch St.","City":"Bayshore","CountrySubDivisionCode":"CA","PostalCode":"94326","Lat":"INVALID","Long":"INVALID"},"ShipAddr":{"Id":"2","Line1":"4581
         Finch St.","City":"Bayshore","CountrySubDivisionCode":"CA","PostalCode":"94326","Lat":"INVALID","Long":"INVALID"},"Job":false,"BillWithParent":false,"Balance":239.00,"BalanceWithJobs":239.00,"CurrencyRef":{"value":"USD","name":"United
         States Dollar"},"PreferredDeliveryMethod":"Print","domain":"QBO","sparse":false,"Id":"1","SyncToken":"0","MetaData":{"CreateTime":"2015-10-01T16:48:43-07:00","LastUpdatedTime":"2015-11-05T07:12:28-08:00"},"GivenName":"Amy","FamilyName":"Lauterbach","FullyQualifiedName":"Amy''s
         Bird Sanctuary","CompanyName":"Amy''s Bird Sanctuary","DisplayName":"Amy''s
         Bird Sanctuary","PrintOnCheckName":"Amy''s Bird Sanctuary","Active":true,"PrimaryPhone":{"FreeFormNumber":"(650)
-        555-3311"},"PrimaryEmailAddr":{"Address":"Birds@Intuit.com"}}],"startPosition":1,"maxResults":1},"time":"2015-11-05T14:32:18.348-08:00"}'
+        555-3311"},"PrimaryEmailAddr":{"Address":"Birds@Intuit.com"}}],"startPosition":1,"maxResults":1},"time":"2016-10-28T03:54:20.940-07:00"}'
     http_version: 
-  recorded_at: Thu, 05 Nov 2015 22:32:18 GMT
+  recorded_at: Fri, 28 Oct 2016 10:54:21 GMT
 recorded_with: VCR 2.9.3

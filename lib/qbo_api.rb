@@ -51,7 +51,7 @@ class QboApi
   end
 
   def query(query)
-    path = "#{realm_id}/query?query=#{query}"
+    path = "#{realm_id}/query?query=#{CGI.escape(query)}"
     entity = extract_entity_from_query(query, to_sym: true)
     request(:get, entity: entity, path: path)
   end
@@ -113,7 +113,7 @@ class QboApi
     raw_response = connection.send(method) do |req|
       case method
       when :get, :delete
-        req.url URI.encode(path)
+        req.url path
       when :post, :put
         req.url add_request_id_to(path)
         req.body = JSON.generate(payload)
@@ -132,10 +132,6 @@ class QboApi
   rescue => e
     # Catch fetch key errors and just return JSON
     data
-  end
-
-  def esc(query)
-    query.gsub("'", "\\\\'")
   end
 
   private

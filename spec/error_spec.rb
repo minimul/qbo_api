@@ -2,11 +2,10 @@ require 'spec_helper'
 
 describe "QboApi Error handling" do
   it 'handles a 404 error' do
-    api = QboApi.new(creds.to_h) 
-    sql = "SELECT & FROM Customer"
+    api = QboApi.new(creds.to_h.merge(token: 12345))
     VCR.use_cassette("qbo_api/error/401", record: :none) do
       expect {
-        response = api.query(sql) 
+        response = api.get :customer, 1
       }.to raise_error QboApi::Unauthorized
     end
   end

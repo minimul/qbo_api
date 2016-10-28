@@ -1,5 +1,10 @@
 class QboApi
   module Util
+
+    def esc(query)
+      query.gsub("'", "\\\\'")
+    end
+
     def cdc_time(time)
       if time.is_a?(String)
         time

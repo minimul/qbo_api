@@ -1,0 +1,331 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/query?query=SELECT%20*%20FROM%20Vendor%20WHERE%20DisplayName%20=%20%27Robertson%202526%20Associates%27
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json;charset=UTF-8
+      Accept:
+      - application/json
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - OAuth oauth_consumer_key="<CONSUMER_KEY>", oauth_nonce="8134dcc88decead78688e5ba51347d8e",
+        oauth_signature="74LX1kxyFzPrght%2BH2CT%2FEtYUN0%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1477592603", oauth_token="<ACCESS_TOKEN>", oauth_version="1.0"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 27 Oct 2016 18:23:20 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Content-Length:
+      - '59'
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=5
+      Strict-Transport-Security:
+      - max-age=15552000
+      Intuit-Tid:
+      - gw-9a12fad8-8b5c-49e1-b72f-febe7c84d5ac
+      Set-Cookie:
+      - JSESSIONID=B3A0C2385066BD61F73DC321E50FFA81.c50-pprdsbxas801; Path=/; Secure;
+        HttpOnly
+      Qbo-Version:
+      - '1610.1162'
+      X-Newrelic-App-Data:
+      - PxQEVFFbAQoTVVZaAAgOU1ETGhE1AwE2QgNWEVlbQFtcC2VOfw5BDwVaXhsDB21BWThOE1VeAlY4HkAAPkkADV0SWQxBZBsYb0pIFFQTSkBIBhlRSlMWAgJVUVIACQZKVB0UCgFQVABRVA0ED1oHBANVCUMdB1IOF1Nq
+      Cache-Control:
+      - max-age=0, no-cache, no-store, must-revalidate, private
+      Expires:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: '{"QueryResponse":{},"time":"2016-10-27T11:23:24.953-07:00"}'
+    http_version: 
+  recorded_at: Thu, 27 Oct 2016 18:23:25 GMT
+- request:
+    method: get
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/query?amp%3B%2BAssociates%27&query=SELECT%20*%20FROM%20Vendor%20WHERE%20DisplayName%20=%20%27Robertson%20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json;charset=UTF-8
+      Accept:
+      - application/json
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - OAuth oauth_consumer_key="<CONSUMER_KEY>", oauth_nonce="7a1eae114d8f2ef61804f0ff6e84e3b5",
+        oauth_signature="CcJmKLPE0%2F33RhYAQNaEs1d8aP0%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1477600725", oauth_token="<ACCESS_TOKEN>", oauth_version="1.0"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 27 Oct 2016 20:38:42 GMT
+      Content-Type:
+      - text/xml
+      Content-Length:
+      - '912'
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=5
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+        <IntuitResponse time="2016-10-27T13:38:42.096-07:00" xmlns="http://schema.intuit.com/finance/v3">
+            <Fault type="AUTHENTICATION">
+                <Error code="3200">
+                    <Message>message=ApplicationAuthenticationFailed; errorCode=003200; statusCode=401</Message>
+                    <Detail>SignatureBaseString: GET&amp;https%3A%2F%2Fsandbox-quickbooks.api.intuit.com%2Fv3%2Fcompany%2F<COMPANY_ID>%2Fquery&amp;amp%253B%2520Associates%2527%3D%26oauth_consumer_key%3D<CONSUMER_KEY>%26oauth_nonce%3D7a1eae114d8f2ef61804f0ff6e84e3b5%26oauth_signature_method%3DHMAC-SHA1%26oauth_timestamp%3D1477600725%26oauth_token%3D<ACCESS_TOKEN>%26oauth_version%3D1.0%26query%3DSELECT%2520%252A%2520FROM%2520Vendor%2520WHERE%2520DisplayName%2520%253D%2520%2527Robertson%2520</Detail>
+                </Error>
+            </Fault>
+        </IntuitResponse>
+    http_version: 
+  recorded_at: Thu, 27 Oct 2016 20:38:46 GMT
+- request:
+    method: get
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/query?%2BAssociates%27&query=SELECT%20*%20FROM%20Vendor%20WHERE%20DisplayName%20=%20%27Robertson%20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json;charset=UTF-8
+      Accept:
+      - application/json
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - OAuth oauth_consumer_key="<CONSUMER_KEY>", oauth_nonce="3d6c7853062665ae7edced1b546d02f9",
+        oauth_signature="P4%2BMAvBVsltDpvwUoyyLBZg9hgI%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1477601342", oauth_token="<ACCESS_TOKEN>", oauth_version="1.0"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 27 Oct 2016 20:49:03 GMT
+      Content-Type:
+      - text/xml
+      Content-Length:
+      - '904'
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=5
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+        <IntuitResponse time="2016-10-27T13:49:03.291-07:00" xmlns="http://schema.intuit.com/finance/v3">
+            <Fault type="AUTHENTICATION">
+                <Error code="3200">
+                    <Message>message=ApplicationAuthenticationFailed; errorCode=003200; statusCode=401</Message>
+                    <Detail>SignatureBaseString: GET&amp;https%3A%2F%2Fsandbox-quickbooks.api.intuit.com%2Fv3%2Fcompany%2F<COMPANY_ID>%2Fquery&amp;%2520Associates%2527%3D%26oauth_consumer_key%3D<CONSUMER_KEY>%26oauth_nonce%3D3d6c7853062665ae7edced1b546d02f9%26oauth_signature_method%3DHMAC-SHA1%26oauth_timestamp%3D1477601342%26oauth_token%3D<ACCESS_TOKEN>%26oauth_version%3D1.0%26query%3DSELECT%2520%252A%2520FROM%2520Vendor%2520WHERE%2520DisplayName%2520%253D%2520%2527Robertson%2520</Detail>
+                </Error>
+            </Fault>
+        </IntuitResponse>
+    http_version: 
+  recorded_at: Thu, 27 Oct 2016 20:49:03 GMT
+- request:
+    method: get
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/query?query=SELECT%20*%20FROM%20Vendor%20WHERE%20DisplayName%20=%20%27Robertson%20%252526%20Associates%27
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json;charset=UTF-8
+      Accept:
+      - application/json
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - OAuth oauth_consumer_key="<CONSUMER_KEY>", oauth_nonce="d784d5c434f9ffdc68afe0195b4b849d",
+        oauth_signature="zbmshQ%2BoNeNrESLfFKFr6WMNGjs%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1477601398", oauth_token="<ACCESS_TOKEN>", oauth_version="1.0"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 27 Oct 2016 20:49:54 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Content-Length:
+      - '59'
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=5
+      Strict-Transport-Security:
+      - max-age=15552000
+      Intuit-Tid:
+      - gw-7d89a53c-a6f6-48ca-a64b-ecfeb0111e26
+      Set-Cookie:
+      - JSESSIONID=CF26E518A72032E30CB25E9B36DDE9DD.c50-pprdsbxas801; Path=/; Secure;
+        HttpOnly
+      Qbo-Version:
+      - '1610.1162'
+      X-Newrelic-App-Data:
+      - PxQEVFFbAQoTVVZaAAgOU1ETGhE1AwE2QgNWEVlbQFtcC2VOfw5BDwVaXhsDB21BWThOE1VeAlY4HkAAPkkADV0SWQxBZBsYb0pIFFQTSkBIBhlRSlMWAwVQV1sPBAVVSAEaEQNWUFsJVw1QCVwBUwtXClQTTVUDCEVSPA==
+      Cache-Control:
+      - max-age=0, no-cache, no-store, must-revalidate, private
+      Expires:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: '{"QueryResponse":{},"time":"2016-10-27T13:49:59.551-07:00"}'
+    http_version: 
+  recorded_at: Thu, 27 Oct 2016 20:49:59 GMT
+- request:
+    method: get
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/query?query=SELECT%20*%20FROM%20Vendor%20WHERE%20DisplayName%20=%20%27Robertson%20%2526%20Associates%27
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json;charset=UTF-8
+      Accept:
+      - application/json
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - OAuth oauth_consumer_key="<CONSUMER_KEY>", oauth_nonce="cdbc1e09f5bf8e1b1470fdfb7df88234",
+        oauth_signature="HQILc5t68JfpX%2FDvggbtZ0B2aiQ%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1477651480", oauth_token="<ACCESS_TOKEN>", oauth_version="1.0"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Fri, 28 Oct 2016 10:44:42 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Content-Length:
+      - '59'
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=5
+      Strict-Transport-Security:
+      - max-age=15552000
+      Intuit-Tid:
+      - gw-c5a02f07-efc7-4794-8e7d-a983336382df
+      Set-Cookie:
+      - JSESSIONID=C495E63A9706EA5E90731373F94BDF8D.c50-pprdsbxas803; Path=/; Secure;
+        HttpOnly
+      Qbo-Version:
+      - '1610.1162'
+      X-Newrelic-App-Data:
+      - PxQEVFFbAQoTVVZaAAgOU1ETGhE1AwE2QgNWEVlbQFtcC2VOfw5BDwVaXhsDB21BWThOE1VeAlY4HkAAPkkADV0SWQxBZBsYb0pIFFQTSkBIBhlRSlMWBQRRUlQCAxtWSBNXClFeUVEFV1pVDA8EAAYGG01XAF8RAWs=
+      Cache-Control:
+      - max-age=0, no-cache, no-store, must-revalidate, private
+      Expires:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: '{"QueryResponse":{},"time":"2016-10-28T03:44:41.960-07:00"}'
+    http_version: 
+  recorded_at: Fri, 28 Oct 2016 10:44:42 GMT
+- request:
+    method: get
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/query?query=SELECT%20*%20FROM%20Vendor%20WHERE%20DisplayName%20=%20%27Robertson%20%26%20Associates%27
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json;charset=UTF-8
+      Accept:
+      - application/json
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - OAuth oauth_consumer_key="<CONSUMER_KEY>", oauth_nonce="2a3990ce2ee6aab8f7cb1113f120019f",
+        oauth_signature="GZn6kv%2FkZhjMdCEvb6g894CZd0A%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1477652061", oauth_token="<ACCESS_TOKEN>", oauth_version="1.0"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Fri, 28 Oct 2016 10:54:16 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Content-Length:
+      - '765'
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=5
+      Strict-Transport-Security:
+      - max-age=15552000
+      Intuit-Tid:
+      - gw-b4062036-6a3f-41c9-a5ac-d4969e8e2fd0
+      Set-Cookie:
+      - JSESSIONID=ACB44E66660DA8118B962F6B78B71C18.c50-pprdsbxas801; Path=/; Secure;
+        HttpOnly
+      Qbo-Version:
+      - '1610.1162'
+      X-Newrelic-App-Data:
+      - PxQEVFFbAQoTVVZaAAgOU1ETGhE1AwE2QgNWEVlbQFtcC2VOfw5BDwVaXhsDB21BWThOE1VeAlY4HkAAPkkADV0SWQxBZBsYb0pIFFQTSkBIBhlRSlMWAwhXV1oPCQNKVB0UA1teU1UBBA8EC10DBlUDX0MdB1IOF1Nq
+      Cache-Control:
+      - max-age=0, no-cache, no-store, must-revalidate, private
+      Expires:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: '{"QueryResponse":{"Vendor":[{"BillAddr":{"Id":"43","Line1":"P.O. Box
+        147","City":"Bayshore","CountrySubDivisionCode":"CA","PostalCode":"94326","Lat":"45.2720537","Long":"-79.7935909"},"Balance":315.00,"AcctNum":"000005641","Vendor1099":false,"CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"domain":"QBO","sparse":false,"Id":"49","SyncToken":"0","MetaData":{"CreateTime":"2015-10-02T10:38:12-07:00","LastUpdatedTime":"2015-10-09T12:36:59-07:00"},"GivenName":"Jenny","FamilyName":"Robertson","CompanyName":"Robertson
+        & Associates","DisplayName":"Robertson & Associates","PrintOnCheckName":"Robertson
+        & Associates","Active":true,"PrimaryPhone":{"FreeFormNumber":"(650) 557-1111"}}],"startPosition":1,"maxResults":1},"time":"2016-10-28T03:54:21.584-07:00"}'
+    http_version: 
+  recorded_at: Fri, 28 Oct 2016 10:54:21 GMT
+recorded_with: VCR 2.9.3
