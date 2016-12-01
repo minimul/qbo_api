@@ -45,23 +45,27 @@ describe "QboApi Create Update Delete" do
   end
 
   context '.update' do
-    it 'a customer' do
+    after do
+    end
+
+    it 'a customer using a minor version configuration' do
       customer = { 
         DisplayName: 'Jack Doe',
         PrimaryPhone: {
           FreeFormNumber: "(415) 444-1234"
         }
       }
+      QboApi.minor_version = 8
       api = QboApi.new(creds.to_h) 
       VCR.use_cassette("qbo_api/update/customer", record: :none) do
         # Use the id of the created customer above
         response = api.update(:customer, id: 60, payload: customer)
         expect(response.fetch('PrimaryPhone').fetch('FreeFormNumber')).to eq "(415) 444-1234"
       end
+      QboApi.minor_version = false
     end
 
-    it 'a sales receipt' do
-      #QboApi.log = true
+    it 'a sales receipt with minor version and request id set for the individual request' do
       api = QboApi.new(creds.to_h) 
       sales_receipt = {
         Line: [
@@ -85,8 +89,8 @@ describe "QboApi Create Update Delete" do
       }
       VCR.use_cassette("qbo_api/update/sales_receipt", record: :none) do
         # SalesReceipt = 17 is part of default sandbox
-        response = api.update(:sales_receipt, id: 17, payload: sales_receipt)
-        expect(response['SyncToken']).to eq "1"
+        response = api.update(:sales_receipt, id: 17, payload: sales_receipt, params: { minorversion: 4, requestid: api.uuid })
+        expect(response['SyncToken'].to_i).to be > 0
       end
     end
   end #= end '.update

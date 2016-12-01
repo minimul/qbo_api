@@ -17,9 +17,24 @@ class QboApi
       SecureRandom.uuid
     end
 
+    def finalize_path(path, params: nil)
+      path = add_request_id_to(path)
+      path = add_minor_version_to(path)
+      path = add_params_to_path(path: path, params: params) if params
+      path
+    end
+
     def add_request_id_to(path)
       if QboApi.request_id
         add_params_to_path(path: path, params: { "requestid" => uuid })
+      else
+        path
+      end
+    end
+
+    def add_minor_version_to(path)
+      if minor_version = QboApi.minor_version
+        add_params_to_path(path: path, params: { "minorversion" => minor_version })
       else
         path
       end

@@ -71,10 +71,25 @@ QboApi.log = true
 ```ruby
 QboApi.logger = Rails.logger
 ```
-- To run all create, modify, and delete requests with unique [RequestIds](https://developer.intuit.com/hub/blog/2015/04/06/15346).
+- To run all requests with unique [RequestIds](https://developer.intuit.com/hub/blog/2015/04/06/15346).
 ```ruby
 QboApi.request_id = true
 ```
+- To run individual requests with a RequestId then do something like this:
+```ruby
+  resp = qbo_api.create(:bill, payload: bill_hash, params: { requestid: qbo_api.uuid })
+  # Works with .get, .create, .update, .query methods
+```
+- To run all requests with a [Minor version](https://developer.intuit.com/docs/0100_quickbooks_online/0200_dev_guides/accounting/minor_versions).
+```ruby
+QboApi.minor_version = 8
+```
+- To run individual requests with a minor version then do something like this:
+```ruby
+  resp = qbo_api.get(:item, 8, params: { minorversion: 8 })
+  # Works with .get, .create, .update, .query methods
+```
+
 
 ### Create
 ```ruby
