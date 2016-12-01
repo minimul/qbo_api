@@ -19,6 +19,44 @@ describe QboApi::Util do
     end
   end
 
+  context '.finalize_path' do
+    after do
+      QboApi.minor_version = false
+      QboApi.request_id = false
+    end
+
+    it "add global minor version and request id plus another parameter" do
+      QboApi.minor_version = 4
+      QboApi.request_id = true
+      api = QboApi.new(creds.to_h)
+      path = api.entity_path(:tax_code)
+      path = api.finalize_path(path, params: { other: 12345 })
+      expect(path).to match /other=12345$/
+    end
+  end
+
+  context '.add_minor_version_to' do
+
+    after do
+      QboApi.minor_version = false
+    end
+
+    it 'is not added by default' do
+      api = QboApi.new(creds.to_h)
+      path = api.entity_path(:invoice)
+      path = api.add_minor_version_to(path)
+      expect(path).to_not match /minorversion/
+    end
+
+    it 'is added when configuration minor_version = 8' do
+      QboApi.minor_version = 8
+      api = QboApi.new(creds.to_h)
+      path = api.entity_path(:purchase_order)
+      path = api.add_minor_version_to(path)
+      expect(path).to match /minorversion=8/
+    end
+  end
+
   context '.add_request_id_to' do
 
     after do

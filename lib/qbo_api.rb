@@ -50,24 +50,24 @@ class QboApi
     end
   end
 
-  def query(query)
+  def query(query, params: nil)
     path = "#{realm_id}/query?query=#{CGI.escape(query)}"
     entity = extract_entity_from_query(query, to_sym: true)
-    request(:get, entity: entity, path: path)
+    request(:get, entity: entity, path: path, params: params)
   end
 
-  def get(entity, id)
+  def get(entity, id, params: nil)
     path = "#{entity_path(entity)}/#{id}"
-    request(:get, entity: entity, path: path)
+    request(:get, entity: entity, path: path, params: params)
   end
 
-  def create(entity, payload:)
-    request(:post, entity: entity, path: entity_path(entity), payload: payload)
+  def create(entity, payload:, params: nil)
+    request(:post, entity: entity, path: entity_path(entity), payload: payload, params: params)
   end
 
-  def update(entity, id:, payload:)
+  def update(entity, id:, payload:, params: nil)
     payload.merge!(set_update(entity, id))
-    request(:post, entity: entity, path: entity_path(entity), payload: payload)
+    request(:post, entity: entity, path: entity_path(entity), payload: payload, params: params)
   end
 
   def delete(entity, id:)
@@ -109,13 +109,14 @@ class QboApi
     end while (results ? results.size == max : false)
   end
 
-  def request(method, path:, entity: nil, payload: nil)
+  def request(method, path:, entity: nil, payload: nil, params: nil)
     raw_response = connection.send(method) do |req|
+      path = finalize_path(path, params: params)
       case method
       when :get, :delete
         req.url path
       when :post, :put
-        req.url add_request_id_to(path)
+        req.url path
         req.body = JSON.generate(payload)
       end
     end

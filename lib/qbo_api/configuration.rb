@@ -32,5 +32,13 @@ class QboApi
     def request_id=(value)
       @request_id = value
     end
+
+    def minor_version
+      @minor_version ||= false
+    end
+
+    def minor_version=(value)
+      @minor_version = value
+    end
   end
 end
