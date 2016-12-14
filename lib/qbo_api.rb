@@ -111,7 +111,7 @@ class QboApi
 
   def request(method, path:, entity: nil, payload: nil, params: nil)
     raw_response = connection.send(method) do |req|
-      path = finalize_path(path, params: params)
+      path = finalize_path(path, method: method, params: params)
       case method
       when :get, :delete
         req.url path
