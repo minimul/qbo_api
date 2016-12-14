@@ -30,8 +30,16 @@ describe QboApi::Util do
       QboApi.request_id = true
       api = QboApi.new(creds.to_h)
       path = api.entity_path(:tax_code)
-      path = api.finalize_path(path, params: { other: 12345 })
+      path = api.finalize_path(path, method: :post, params: { other: 12345 })
       expect(path).to match /other=12345$/
+    end
+
+    it "requestid is not implemented for non-post requests" do
+      QboApi.request_id = true
+      api = QboApi.new(creds.to_h)
+      path = api.entity_path(:tax_code)
+      path = api.finalize_path(path, method: :get, params: { other: 12345 })
+      expect(path).to_not match /requestid=/
     end
   end
 

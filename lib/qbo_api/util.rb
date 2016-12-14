@@ -17,8 +17,8 @@ class QboApi
       SecureRandom.uuid
     end
 
-    def finalize_path(path, params: nil)
-      path = add_request_id_to(path)
+    def finalize_path(path, method:, params: nil)
+      path = add_request_id_to(path) if method == :post
       path = add_minor_version_to(path)
       path = add_params_to_path(path: path, params: params) if params
       path
