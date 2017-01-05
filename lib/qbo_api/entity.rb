@@ -4,9 +4,9 @@ class QboApi
     def singular(entity)
       e = snake_to_camel(entity)
       case e
-      when 'Classes'
+      when 'Classes', 'Class'
         'Class'
-      when /^(Entitlements|Preferences)$/
+      when 'Entitlements', 'Preferences'
         e
       else
         e.chomp('s')
