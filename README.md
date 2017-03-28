@@ -13,6 +13,13 @@ Ruby client for the QuickBooks Online API version 3.
 - <a href="http://minimul.com/the-modern-ruby-quickbooks-client-part-2.html" target="_blank">Part 2</a>: <a href="https://github.com/minimul/qbo_api#running-the-specs">Running the specs</a> to aid you in understanding a QuickBooks API transaction. 
 - <a href="http://minimul.com/the-modern-ruby-quickbooks-client-contributing.html" target="_blank">Part 3</a>: <a href="https://github.com/minimul/qbo_api#creating-new-specs-or-modifying-existing-spec-that-have-been-recorded-using-the-vcr-gem">Contributing to the gem</a>.
 
+## The Book
+
+<a href="https://leanpub.com/minimul-qbo-guide-vol-1" target="_blank">
+  <img src="http://img.minimul.com/shared/crow-cover.png" alt="The QBO book">
+</a>
+
+
 ## Ruby >= 2.2.2 required
 
 ## Installation
