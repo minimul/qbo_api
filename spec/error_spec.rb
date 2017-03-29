@@ -36,7 +36,7 @@ describe "QboApi Error handling" do
 
   it 'handles a validation error' do
     customer = { DisplayName: 'Weiskopf Consulting' } 
-    api = QboApi.new(creds.to_h) 
+    api = QboApi.new(creds.to_h)
     VCR.use_cassette("qbo_api/error/validation", record: :none) do
       begin
         response = api.create(:customer, payload: customer)
@@ -46,4 +46,13 @@ describe "QboApi Error handling" do
       end
     end
   end
+
+  it "handles XML error in which the first error does not have a 'Detail' error" do
+    xml = fixture('no_detail.xml')
+    f = FaradayMiddleware::RaiseHttpException.new(double('app'))
+    err = f.send(:error_body, xml)
+    expect(err[0][:error_detail]).to eq ""
+    expect(err[1][:error_detail]).to match /does have detail/
+  end
+
 end

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<IntuitResponse xmlns="http://schema.intuit.com/finance/v3" time="2017-03-29T05:39:07.929-07:00">
+  <Fault type="AUTHENTICATION">
+    <Error code="3200">
+      <Message>message=ApplicationAuthenticationFailed; errorCode=003200; statusCode=401</Message>
+    </Error>
+    <Error code="3200">
+      <Message>message=ApplicationAuthenticationFailed; errorCode=003200; statusCode=401</Message>
+      <Detail>This error does have detail</Detail>
+    </Error>
+  </Fault>
+</IntuitResponse>

@@ -71,7 +71,7 @@ module FaradayMiddleware
           fault_type: res.at('Fault')['type'],
           error_code: res.at('Error')['code'],
           error_message: e.at('Message').content,
-          error_detail: e.at('Detail').content
+          error_detail: (detail = e.at('Detail')) ? detail.content : ''
         }
       end
     end
