@@ -41,6 +41,7 @@ Or install it yourself as:
 ## Usage
 
 ### Initialize
+#### OAuth
 ```ruby
   q = account.qbo_account # or wherever you are storing the OAuth creds
   qbo_api = QboApi.new(token: q.token,
@@ -48,6 +49,10 @@ Or install it yourself as:
                        realm_id: q.companyid,
                        consumer_key: '*****',
                        consumer_secret: '********')
+```
+#### OAuth2
+```ruby
+  qbo_api = QboApi.new(access_token: 'REWR342532asdfae!$4asdfa', realm_id: 32095430444)
 ```
 
 ### Super fast way to use QboApi no matter your current tech stack as long as Ruby > 2.2.2 is installed
@@ -57,11 +62,14 @@ Or install it yourself as:
 - bundle
 - bin/console
 - QboApi.production = true
+- # OAuth 1
 - qboapi = QboApi.new(token: "qyprd2uvCOdRq8xzoSSiiiiii",
                       token_secret:"g8wcyQEtwxxxxxxm",
                       realm_id: "12314xxxxxx7",
                       consumer_key: "qyprdwzcxxxxxxbIWsIMIy9PYI",
                       consumer_secret: "CyDN4wpxxxxxxxPMv7hDhmh4")
+- # OAuth 2
+- qboapi = QboApi.new(access_token: "qyprd2uvCOdRq8xzoSSiiiiii", realm_id: "12314xxxxxx7")
 - qboapi.get :customer, 1
 ```
 
@@ -264,8 +272,31 @@ See [docs](https://developer.intuit.com/docs/0100_quickbooks_online/0100_essenti
   p qbo_api.is_transaction_entity?(:customer) # => false
   p qbo_api.is_name_list_entity?(:vendors) # => true
 ```
+## OAuth2: Spin up an example
+### If you signed up for a Intuit developer account after July 17th, 2017 follow this example
+- `git clone git://github.com/minimul/qbo_api && cd qbo_api`
+- `bundle`
+- Create a `.env` file
+  - If needed create an account at [https://developer.intuit.com](https://developer.intuit.com)
+  - Click `Get started coding`
+  - Create an app with both the `Accounting` & `Payments` selected.
+  - Go to the `Development` tab and copy and paste the client id and client secret into the `.env` file.
+```ruby
+export QBO_API_CLIENT_ID=<Your QuickBooks Apps Client ID>
+export QBO_API_CONSUMER_SECRET=<Your QuickBooks Apps Client Secret>
+```
+- Note: the `.env` file will be automatically loaded after you run the next step.
+- Start up the example app
+  - `ruby example/app.rb`
+- Goto `http://localhost:9393/oauth2`
+- Use the `Connect to QuickBooks` button to connect to your QuickBooks sandbox, which you receive when signing up at [https://developer.intuit.com](https://developer.intuit.com).
+- After successfully connecting to your sandbox run:
+  - `http://localhost:9393/oauth2/customer/5`
+  - You should see "Dukes Basketball Camp" displayed
+- Checkout [`example/app.rb`](https://github.com/minimul/qbo_api/blob/master/example/app.rb) to see what is going on under the hood.
 
-## Spin up an example
+## OAuth1: Spin up an example
+### OLD LEGACY - SEE OAUTH2 EXAMPLE ABOVE
 - <a href="http://minimul.com/getting-started-with-the-modern-ruby-quickbooks-online-client-qbo_api-part-1.html" target="_blank">Check out this tutorial and screencast on spinning up an example</a>.
 - `git clone git://github.com/minimul/qbo_api && cd qbo_api`
 - `bundle`
@@ -306,6 +337,7 @@ export QBO_API_CONSUMER_KEY=
 export QBO_API_CONSUMER_SECRET=
 export QBO_API_ACCESS_TOKEN=
 export QBO_API_ACCESS_TOKEN_SECRET=
+export QBO_API_OAUTH2_ACCESS_TOKEN=
 export QBO_API_COMPANY_ID=12345
 ```
 - `bundle exec rspec spec/`
