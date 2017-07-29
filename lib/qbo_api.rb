@@ -28,12 +28,13 @@ class QboApi
   PAYMENTS_API_BASE_URL      = 'https://sandbox.api.intuit.com/quickbooks/v4/payments'
   APP_CONNECTION_URL         = APP_CENTER_BASE + '/api/v1/connection'
 
-  def initialize(token:, token_secret:, realm_id:, consumer_key: CONSUMER_KEY, 
-                 consumer_secret: CONSUMER_SECRET, endpoint: :accounting)
-    @consumer_key = consumer_key
-    @consumer_secret = consumer_secret
+  def initialize(token: nil, token_secret: nil, access_token: nil, realm_id:,
+                 consumer_key: nil, consumer_secret: nil, endpoint: :accounting)
+    @consumer_key = consumer_key || (defined?(CONSUMER_KEY) ? CONSUMER_KEY : nil)
+    @consumer_secret = consumer_secret || (defined?(CONSUMER_SECRET) ? CONSUMER_SECRET : nil)
     @token = token
     @token_secret = token_secret
+    @access_token = access_token
     @realm_id = realm_id
     @endpoint = endpoint
   end
@@ -42,7 +43,13 @@ class QboApi
     Faraday.new(url: url) do |faraday|
       faraday.headers['Content-Type'] = 'application/json;charset=UTF-8'
       faraday.headers['Accept'] = "application/json"
-      faraday.request :oauth, oauth_data 
+      if @token != nil
+        faraday.request :oauth, oauth_data
+      elsif @access_token != nil
+        faraday.request :oauth2, @access_token, token_type: 'bearer'
+      else
+        raise QboApi::Error.new error_body: "Must set either the token or access_token"
+      end
       faraday.request :url_encoded
       faraday.use FaradayMiddleware::RaiseHttpException
       faraday.response :detailed_logger, QboApi.logger if QboApi.log

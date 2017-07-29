@@ -10,6 +10,7 @@ VCR.configure do |config|
   config.cassette_library_dir = File.expand_path("../vcr", __FILE__)
   config.hook_into :webmock
   config.filter_sensitive_data('<ACCESS_TOKEN>') { URI.encode_www_form_component(creds.token) }
+  config.filter_sensitive_data('<OAUTH2_ACCESS_TOKEN>') { URI.encode_www_form_component(oauth2_creds.access_token) }
   config.filter_sensitive_data('<CONSUMER_KEY>') { URI.encode_www_form_component(creds.consumer_key) }
   config.filter_sensitive_data('<COMPANY_ID>') { URI.encode_www_form_component(creds.realm_id) }
   
