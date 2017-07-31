@@ -284,7 +284,7 @@ See [docs](https://developer.intuit.com/docs/0100_quickbooks_online/0100_essenti
   - Go to the `Development` tab and copy and paste the client id and client secret into the `.env` file.
 ```ruby
 export QBO_API_CLIENT_ID=<Your QuickBooks Apps Client ID>
-export QBO_API_CONSUMER_SECRET=<Your QuickBooks Apps Client Secret>
+export QBO_API_CLIENT_SECRET=<Your QuickBooks Apps Client Secret>
 ```
 - Note: the `.env` file will be automatically loaded after you run the next step.
 - Start up the example app
