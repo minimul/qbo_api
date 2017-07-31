@@ -1,6 +1,6 @@
 
-#200 OK	The request succeeded.  However, the response body may contain a <Fault> element, indicating an error. 
-#400 Bad request	Generally, the request cannot be fulfilled due to bad syntax. In some cases, this response code is returned for a request with bad authorization data.  
+#200 OK	The request succeeded.  However, the response body may contain a <Fault> element, indicating an error.
+#400 Bad request	Generally, the request cannot be fulfilled due to bad syntax. In some cases, this response code is returned for a request with bad authorization data.
 #401 Unauthorized	Authentication or authorization has failed.
 #403 Forbidden	The resource is forbidden.
 #404 Not Found	The resource is not found.

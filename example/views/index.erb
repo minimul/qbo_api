@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="UTF-8">
-  <title>QBO Connect</title>
+  <head>
+    <meta charset="UTF-8">
+    <title>QBO Connect</title>
 
-  <script type="text/javascript" src="<%= @app_center %>/Content/IA/intuit.ipp.anywhere-1.3.1.js"></script>
-  <script>
-    intuit.ipp.anywhere.setup({
-      grantUrl: "http://localhost:<%= @port %>/auth/quickbooks",
-      datasources: {
-        quickbooks : true,
-        payments : true
-      }
-    });
-  </script>
-</head>
-<body>
-  <% if session[:token] %>
-    <p><%= @auth_data %></p>
-  <% end %>
+    <script type="text/javascript" src="<%= @app_center %>/Content/IA/intuit.ipp.anywhere-1.3.1.js"></script>
+    <script>
+      intuit.ipp.anywhere.setup({
+        grantUrl: "http://localhost:<%= @port %>/auth/quickbooks",
+        datasources: {
+          quickbooks : true,
+          payments : true
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <% if session[:token] %>
+      <p><%= @auth_data %></p>
+    <% end %>
 
-<ipp:connectToIntuit></ipp:connectToIntuit>
-  <p><a href="/oauth2">OAuth2 Connect Page</a></p>
-</body>
+    <ipp:connectToIntuit></ipp:connectToIntuit>
+    <p><a href="/oauth2">OAuth2 Connect Page</a></p>
+  </body>
 </html>

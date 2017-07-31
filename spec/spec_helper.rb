@@ -13,7 +13,7 @@ VCR.configure do |config|
   config.filter_sensitive_data('<OAUTH2_ACCESS_TOKEN>') { URI.encode_www_form_component(oauth2_creds.access_token) }
   config.filter_sensitive_data('<CONSUMER_KEY>') { URI.encode_www_form_component(creds.consumer_key) }
   config.filter_sensitive_data('<COMPANY_ID>') { URI.encode_www_form_component(creds.realm_id) }
-  
+
   uri_matcher = VCR.request_matchers[:uri]
   # Don't check sandbox company id or trailing URL id
   # This enables multiple different sandboxes to be used
