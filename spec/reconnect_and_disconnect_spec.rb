@@ -3,7 +3,7 @@ require 'spec_helper'
 describe QboApi do
   context 'reconnect' do
     it 'out of bounds' do
-      api = QboApi.new(creds.to_h) 
+      api = QboApi.new(creds.to_h)
       VCR.use_cassette("qbo_api/reconnect/out_of_bounds", record: :none) do
         response = api.reconnect
         expect(response['ErrorCode']).to eq 212

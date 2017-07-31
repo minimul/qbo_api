@@ -3,7 +3,7 @@ require 'spec_helper'
 describe QboApi::Util do
 
   it 'allow string to pass thru cdc_time' do
-    api = QboApi.new(creds.to_h) 
+    api = QboApi.new(creds.to_h)
     expect(api.cdc_time("str")).to eq "str"
   end
 

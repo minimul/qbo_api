@@ -8,7 +8,7 @@ describe "QboApi::Supporting" do
         response = api.batch(batch_payload)
         batch_response = response['BatchItemResponse']
         expect(batch_response.size).to eq 4
-        expect(batch_response.detect{ |b| b["bId"] == "bid1" }["Vendor"]["DisplayName"]).to eq "Smith Family Store" 
+        expect(batch_response.detect{ |b| b["bId"] == "bid1" }["Vendor"]["DisplayName"]).to eq "Smith Family Store"
       end
     end
   end
@@ -36,7 +36,7 @@ describe "QboApi::Supporting" do
 
   def batch_payload
     {
-      "BatchItemRequest": 
+      "BatchItemRequest":
       [
         {
           "bId": "bid1",
@@ -51,7 +51,7 @@ describe "QboApi::Supporting" do
             "Id": "129",
             "SyncToken": "0"
           }
-        }, { 
+        }, {
           "bId": "bid3",
           "operation": "update",
           "SalesReceipt": {
@@ -59,7 +59,7 @@ describe "QboApi::Supporting" do
             "sparse": true,
             "Id": "11",
             "SyncToken": "0",
-            "PrivateNote":"A private note."       
+            "PrivateNote":"A private note."
           }
         }, {
           "bId": "bid4",

@@ -110,8 +110,8 @@ end
 
 get '/auth/quickbooks/callback' do
   auth = env["omniauth.auth"][:credentials]
-  session[:token] = auth[:token] 
-  session[:secret] = auth[:secret] 
+  session[:token] = auth[:token]
+  session[:secret] = auth[:secret]
   session[:realm_id] = params['realmId']
   '<!DOCTYPE html><html lang="en"><head></head><body><script>window.opener.location.reload(); window.close();</script></body></html>'
 end
