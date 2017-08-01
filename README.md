@@ -274,7 +274,7 @@ See [docs](https://developer.intuit.com/docs/0100_quickbooks_online/0100_essenti
 ```
 ## OAuth2: Spin up an example
 ### If you signed up for a Intuit developer account after July 17th, 2017 follow this example
-- <a href="https://youtu.be/d8G1XGG9A0M" target="_blank">Check out this screencast on spinning up the OAuth2 example</a>.
+- <a href="http://minimul.com/access-the-quickbooks-online-api-with-oauth2.html" target="_blank">Check out this article on spinning up the OAuth2 example</a>.
 - `git clone git://github.com/minimul/qbo_api && cd qbo_api`
 - `bundle`
 - Create a `.env` file
