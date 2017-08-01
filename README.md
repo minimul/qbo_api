@@ -351,6 +351,7 @@ export QBO_API_COMPANY_ID=12345
 ```
 bin/console test
 >> q = QboApi.new(creds.to_h)
+>> q = QboApi.new(oauth2_creds.to_h) # FOR OAuth2
 >> q.get :customer, 1
 ```
 
