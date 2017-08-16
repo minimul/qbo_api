@@ -105,15 +105,13 @@ class QboApi
   end
 
   def all(entity, max: 1000, select: nil, inactive: false, &block)
-    select = build_all_query(entity, select: select, inactive: inactive)
-    pos = 0
-    begin
-      pos = pos == 0 ? pos + 1 : pos + max
-      results = query("#{select} MAXRESULTS #{max} STARTPOSITION #{pos}")
-      results.each do |entry|
-        yield(entry)
-      end if results
-    end while (results ? results.size == max : false)
+    enumerator = create_all_enumerator(entity, max: max, select: select, inactive: inactive)
+
+    if block_given?
+      enumerator.each(&block)
+    else
+      enumerator
+    end
   end
 
   def request(method, path:, entity: nil, payload: nil, params: nil)
@@ -143,6 +141,20 @@ class QboApi
   end
 
   private
+
+  def create_all_enumerator(entity, max: 1000, select: nil, inactive: false)
+    Enumerator.new do |enum_yielder|
+      select = build_all_query(entity, select: select, inactive: inactive)
+      pos = 0
+      begin
+        pos = pos == 0 ? pos + 1 : pos + max
+        results = query("#{select} MAXRESULTS #{max} STARTPOSITION #{pos}")
+        results.each do |entry|
+          enum_yielder.yield(entry)
+        end if results
+      end while (results ? results.size == max : false)
+    end
+  end
 
   def entity_response(data, entity)
     if qr = data['QueryResponse']
