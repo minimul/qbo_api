@@ -243,23 +243,23 @@ See [docs](https://developer.intuit.com/docs/0100_quickbooks_online/0100_essenti
 ### Import/retrieve all
 ```ruby
   # retrieves all active customers
-  qbo_api.all(:customers) do |c|
+  qbo_api.all(:customers).each do |c|
     p "#{c['Id']} #{c['DisplayName']}"
   end
 
   # retrieves all active or inactive employees
-  qbo_api.all(:employees, inactive: true) do |e|
+  qbo_api.all(:employees, inactive: true).each do |e|
     p "#{e['Id']} #{e['DisplayName']}"
   end
 
   # retrieves all vendors by groups of 5
-  qbo_api.all(:vendor, max: 5) do |v|
+  qbo_api.all(:vendor, max: 5).each do |v|
     p v['DisplayName']
   end
   
   # retrieves all customers by groups of 2 using a custom select query
   where = "WHERE Id IN ('5', '6', '7', '8', '9', '10')"
-  qbo_api.all(:customer, max: 2, select: "SELECT * FROM Customer #{where}") do |c|
+  qbo_api.all(:customer, max: 2, select: "SELECT * FROM Customer #{where}").each do |c|
     p c['DisplayName']
   end
 ```
