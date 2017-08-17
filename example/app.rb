@@ -63,9 +63,10 @@ get '/oauth2-redirect' do
     client = oauth2_client
     client.authorization_code = code
     if resp = client.access_token!
+      session[:refresh_token] = resp.refresh_token
       session[:access_token] = resp.access_token
       session[:realm_id] = params[:realmId]
-      "<p>Success! Here is your access_token => #{resp.access_token}</p><p><a href='/oauth2/customer/5'>Click here</a> to make an API call</p>"
+      erb :oauth2_redirect
     else
       "Something went wrong. Try the process again"
     end
