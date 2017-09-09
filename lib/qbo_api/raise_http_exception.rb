@@ -55,7 +55,7 @@ module FaradayMiddleware
       r = res['Fault']['Error']
       r.collect do |e|
         {
-          fault_type: e['type'],
+          fault_type: res['Fault']['type'],
           error_code: e['code'],
           error_message: e['Message'],
           error_detail: e['Detail']
