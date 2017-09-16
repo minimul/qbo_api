@@ -73,6 +73,9 @@ Or install it yourself as:
 - qboapi.get :customer, 1
 ```
 
+### TLS v1.2
+Intuit will be [requiring](https://developer.intuit.com/hub/blog/2017/08/03/upgrading-your-apps-to-support-tls-1-2) API client connections to be negotiated over TLS1.2 by December 31st, 2017. Using the default HTTP client (Net::HTTP) with Faraday this is the case with QboApi, however, if you are using another HTTP client you may need to directly set the TLS version negotiation manually.
+
 ### Configuration options
 - By default this client runs against a QBO sandbox. To run against the production QBO API URL do:
 ```ruby
