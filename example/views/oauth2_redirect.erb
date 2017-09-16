@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <style type="text/css" media="all">
+    ul li span {
+      vertical-align: top;
+    } 
+  </style>
+</head>
+<body>
+  <h1>OAuth2 Process Success!</h1>
+  <ul>
+    <li><span>Access token:</span> <textarea rows="8" cols="160"><%= session[:access_token] %></textarea></li>
+    <li><span>Refresh token:</span> <textarea rows="4" cols="60"><%= session[:refresh_token] %></textarea></li>
+  </ul>
+  <div>
+    <p>
+      <a href='/oauth2/customer/5'>Click here</a> to make an API call
+    </p>
+  </div>
+  
+</body>
+</html>
