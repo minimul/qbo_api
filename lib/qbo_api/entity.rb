@@ -82,7 +82,7 @@ class QboApi
     end
 
     def extract_entity_from_query(query, to_sym: false)
-      if m = query.match(/from\s+(\w+)\s/i)
+      if m = query.match(/from\s+(\w+)(?:$|\s)/i)
         (to_sym ? underscore(m[1]).to_sym : m[1]) if m[1]
       end
     end
