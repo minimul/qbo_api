@@ -11,7 +11,7 @@ require 'qbo_api'
 
 Dotenv.load "#{__dir__}/../.env"
 
-PORT  = 9393
+PORT  = ENV.fetch("PORT", 9393)
 CONSUMER_KEY = ENV['QBO_API_CONSUMER_KEY']
 CONSUMER_SECRET = ENV['QBO_API_CONSUMER_SECRET']
 CLIENT_ID = ENV['QBO_API_CLIENT_ID']
