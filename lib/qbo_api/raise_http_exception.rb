@@ -52,13 +52,14 @@ module FaradayMiddleware
 
     def parse_json(body)
       res = ::JSON.parse(body)
-      r = res['Fault']['Error']
-      r.collect do |e|
+      fault = res['Fault'] || res['fault']
+      errors = fault['Error'] || fault['error']
+      errors.collect do |error|
         {
-          fault_type: res['Fault']['type'],
-          error_code: e['code'],
-          error_message: e['Message'],
-          error_detail: e['Detail']
+          fault_type: fault['type'],
+          error_code: error['code'],
+          error_message: error['Message'] || error['message'],
+          error_detail: error['Detail'] || error['detail']
         }
       end
     end
