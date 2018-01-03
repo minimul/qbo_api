@@ -42,13 +42,13 @@ class QboApi
   def connection(url: get_endpoint)
     @connection ||= Faraday.new(url: url) do |faraday|
       faraday.headers['Content-Type'] = 'application/json;charset=UTF-8'
-      faraday.headers['Accept'] = "application/json"
+      faraday.headers['Accept'] = 'application/json'
       if @token != nil
         faraday.request :oauth, oauth_data
       elsif @access_token != nil
         faraday.request :oauth2, @access_token, token_type: 'bearer'
       else
-        raise QboApi::Error.new error_body: "Must set either the token or access_token"
+        raise QboApi::Error.new error_body: 'Must set either the token or access_token'
       end
       faraday.request :url_encoded
       faraday.use FaradayMiddleware::RaiseHttpException
@@ -140,7 +140,31 @@ class QboApi
     data
   end
 
+  def upload_attachment(payload:, attachment:)
+    content_type = payload['ContentType'] || payload[:ContentType]
+    file_name = payload['FileName'] || payload[:FileName]
+    raw_response = attachment_connection.post do |request|
+      request.url "#{realm_id}/upload"
+      request.body = {
+          'file_metadata_01':
+              Faraday::UploadIO.new(StringIO.new(JSON.generate(payload)), 'application/json', 'attachment.json'),
+          'file_content_01':
+              Faraday::UploadIO.new(attachment, content_type, file_name)
+      }
+    end
+    response(raw_response, entity: :attachable)
+  end
+
   private
+
+  def attachment_connection
+    return @attachment_connection if @attachment_connection
+    multipart_connection = connection.dup
+    multipart_connection.headers['Content-Type'] = 'multipart/form-data'
+    multipart_middleware_index = multipart_connection.builder.handlers.index(Faraday::Request::UrlEncoded) || 1
+    multipart_connection.builder.insert(multipart_middleware_index, Faraday::Request::Multipart)
+    @attachment_connection = multipart_connection
+  end
 
   def create_all_enumerator(entity, max: 1000, select: nil, inactive: false)
     Enumerator.new do |enum_yielder|
@@ -159,6 +183,8 @@ class QboApi
   def entity_response(data, entity)
     if qr = data['QueryResponse']
       qr.empty? ? nil : qr.fetch(singular(entity))
+    elsif ar = data['AttachableResponse']
+      ar.first.fetch(singular(entity))
     else
       data.fetch(singular(entity))
     end
