@@ -40,7 +40,7 @@ class QboApi
   end
 
   def connection(url: get_endpoint)
-    Faraday.new(url: url) do |faraday|
+    @connection ||= Faraday.new(url: url) do |faraday|
       faraday.headers['Content-Type'] = 'application/json;charset=UTF-8'
       faraday.headers['Accept'] = "application/json"
       if @token != nil
