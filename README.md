@@ -167,9 +167,42 @@ QboApi.minor_version = 8
   p response['DisplayName'] # => "Dukes Basketball Camp"
 ```
 
+### Uploading an attachment
+```ruby
+  payload = {"AttachableRef":
+              [
+                {"EntityRef": 
+                  {
+                    "type": "Invoice", 
+                    "value": "111"
+                  }
+                }
+              ],
+             "FileName": "test.txt",
+             "ContentType": "text/plain"
+            }
+  # `attachment` can be either an IO stream or string path to a local file
+  response = qbo_api.upload_attachment(payload: payload, attachment: '/tmp/test.txt')
+  p response['Id'] # => 5000000000000091308
+```
+
+Be aware that any errors will not raise a `QboApi::Error`, but will be returned in the following format:
+```ruby
+  {"AttachableResponse"=>
+    [{"Fault"=>
+       {"Error"=>
+         [{"Message"=>"Object Not Found",
+           "Detail"=>
+            "Object Not Found : Something you're trying to use has been made inactive. Check the fields with accounts, customers, items, vendors or employees.",
+           "code"=>"610",
+           "element"=>""}],
+        "type"=>"ValidationFault"}}],
+   "time"=>"2018-01-03T13:06:31.406-08:00"}
+```
+
 ### Change data capture (CDC) query
 ```ruby
-  response = api.cdc(entities: 'estimate', changed_since: '2011-10-10T09:00:00-07:00')
+  response = qbo_api.cdc(entities: 'estimate', changed_since: '2011-10-10T09:00:00-07:00')
   # You can also send in a Time object e.g. changed_since: Time.now 
   expect(response['CDCResponse'].size).to eq 1
   ids = response['CDCResponse'][0]['QueryResponse'][0]['Estimate'].collect{ |e| e['Id'] }
