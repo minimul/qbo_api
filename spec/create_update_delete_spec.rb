@@ -120,6 +120,14 @@ describe "QboApi Create Update Delete" do
       end
     end
 
+    it 'an account' do
+      api = QboApi.new(creds.to_h)
+      VCR.use_cassette("qbo_api/deactivate/account", record: :none) do
+        response = api.deactivate(:account, id: 5)
+        expect(response['Active']).to eq false
+      end
+    end
+
     it 'only a name list entity' do
       api = QboApi.new(creds.to_h)
       expect { response = api.deactivate(:refund_receipt, id: 145) }.to raise_error QboApi::NotImplementedError, /^Deactivate is only for/
