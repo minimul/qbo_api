@@ -156,15 +156,38 @@ QboApi.minor_version = 8
   p response['Active'] # => false
 ```
 
-### Search with irregular characters
-```ruby
-  name = qbo_api.esc "Amy's Bird Sanctuary"
-  response = qbo_api.query(%{SELECT * FROM Customer WHERE DisplayName = '#{name}'})
-```
 ### Get an entity by its id
 ```ruby
   response = qbo_api.get(:customer, 5)
   p response['DisplayName'] # => "Dukes Basketball Camp"
+```
+
+### Get an entity by one its Filter attributes
+```ruby
+  response = qbo_api.get(:customer, ["DisplayName", "Dukes Basketball Camp"])
+  p response['Id'] # => 5
+```
+
+### Get an entity by one its Filter attributes using a LIKE search
+```ruby
+  response = qbo_api.get(:customer, ["DisplayName", "LIKE", "Dukes%"])
+  p response['Id'] # => 5
+```
+
+### Get an entity by one its Filter attributes using a IN search
+```ruby
+  response = qbo_api.get(:vendor, ["DisplayName", "IN", "(true, false)"])
+  p response.size # => 28
+```
+
+### Search with irregular characters
+```ruby
+  # Use the .esc() method
+  name = qbo_api.esc "Amy's Bird Sanctuary"
+  response = qbo_api.query(%{SELECT * FROM Customer WHERE DisplayName = '#{name}'})
+  # OR USE .get() method, which will automatically escape
+  response = qbo_api.get(:customer, ["DisplayName", "Amy's Bird Sanctuary"])
+  p response['Id'] # => 1
 ```
 
 ### Uploading an attachment
@@ -277,6 +300,7 @@ See [docs](https://developer.intuit.com/docs/0100_quickbooks_online/0100_essenti
 ```
 
 ### Import/retrieve all
+*Note: There is some overlap with the `all` and the `get` methods. The `get` method is limited to 1000 results where the `all` method will return all the results no matter the number.*
 ```ruby
   # retrieves all active customers
   qbo_api.all(:customers).each do |c|
