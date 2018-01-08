@@ -10,8 +10,11 @@ class QboApi
     def get(entity, type, params: nil)
       if type.is_a?(Array)
         query_str = get_query_str(entity, type)
-        resp = query(query_str, params: params)
-        resp.size == 1 ? resp[0] : resp
+        if resp = query(query_str, params: params)
+          resp.size == 1 ? resp[0] : resp
+        else
+          false
+        end
       else
         path = "#{entity_path(entity)}/#{type}"
         request(:get, entity: entity, path: path, params: params)
