@@ -13,6 +13,8 @@ require_relative 'qbo_api/raise_http_exception'
 require_relative 'qbo_api/entity'
 require_relative 'qbo_api/util'
 require_relative 'qbo_api/attachment'
+require_relative 'qbo_api/setter'
+require_relative 'qbo_api/builder'
 
 class QboApi
   extend Configuration
@@ -20,6 +22,9 @@ class QboApi
   include Entity
   include Util
   include Attachment
+  include Setter
+  include Builder
+
   attr_reader :realm_id
 
   REQUEST_TOKEN_URL          = 'https://oauth.intuit.com/oauth/v1/get_request_token'
@@ -90,11 +95,10 @@ class QboApi
   def deactivate(entity, id:)
     err_msg = "Deactivate is only for name list entities. Use .delete instead"
     raise QboApi::NotImplementedError.new, err_msg unless is_name_list_entity?(entity)
-    payload = set_update(entity, id).merge('sparse': true, 'Active': false)
+    payload = set_deactivate(entity, id)
     request(:post, entity: entity, path: entity_path(entity), payload: payload)
   end
 
-  # TODO: Need specs for disconnect and reconnect
   # https://developer.intuit.com/docs/0100_quickbooks_online/0100_essentials/0085_develop_quickbooks_apps/0004_authentication_and_authorization/oauth_management_api#/Reconnect
   def disconnect
     path = "#{APP_CONNECTION_URL}/disconnect"
@@ -175,11 +179,6 @@ class QboApi
       token: @token,
       token_secret: @token_secret
     }
-  end
-
-  def set_update(entity, id)
-    resp = get(entity, id)
-    { Id: resp['Id'], SyncToken: resp['SyncToken'] }
   end
 
   def get_endpoint
