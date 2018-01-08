@@ -5,6 +5,32 @@ describe QboApi do
     expect(QboApi::VERSION).not_to be nil
   end
 
+  it 'get an entity by its id' do
+    api = QboApi.new(creds.to_h)
+    VCR.use_cassette("qbo_api/get/id", record: :none) do
+      response = api.get(:customer, 5)
+      expect(response['DisplayName']).to eq "Dukes Basketball Camp"
+    end
+  end
+
+  it 'search with irregular character' do
+    api = QboApi.new(creds.to_h)
+    VCR.use_cassette("qbo_api/misc/irregular_char", record: :none) do
+      name = "Amy's Bird Sanctuary"
+      response = api.query(%{SELECT * FROM Customer WHERE DisplayName = '#{api.esc(name)}'})
+      expect(response.first['DisplayName']).to eq name
+    end
+  end
+
+  it 'search with ampersand' do
+    api = QboApi.new(creds.to_h)
+    VCR.use_cassette("qbo_api/misc/ampersand", record: :none) do
+      name = "Robertson & Associates"
+      response = api.query(%{SELECT * FROM Vendor WHERE DisplayName = '#{name}'})
+      expect(response.first['DisplayName']).to eq name
+    end
+  end
+
   it '.snake_to_camel' do
     api = QboApi.new(creds.to_h)
     res = %w(SalesReceipt CreditMemo Customer)
