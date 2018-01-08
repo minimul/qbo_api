@@ -15,8 +15,6 @@ require_relative 'qbo_api/util'
 require_relative 'qbo_api/attachment'
 require_relative 'qbo_api/setter'
 require_relative 'qbo_api/builder'
-require_relative 'qbo_api/finder'
-require_relative 'qbo_api/all'
 
 class QboApi
   extend Configuration
@@ -26,8 +24,6 @@ class QboApi
   include Attachment
   include Setter
   include Builder
-  include Finder
-  include All
 
   attr_reader :realm_id
 
@@ -68,6 +64,17 @@ class QboApi
     end
   end
 
+  def query(query, params: nil)
+    path = "#{realm_id}/query?query=#{CGI.escape(query)}"
+    entity = extract_entity_from_query(query, to_sym: true)
+    request(:get, entity: entity, path: path, params: params)
+  end
+
+  def get(entity, id, params: nil)
+    path = "#{entity_path(entity)}/#{id}"
+    request(:get, entity: entity, path: path, params: params)
+  end
+
   def create(entity, payload:, params: nil)
     request(:post, entity: entity, path: entity_path(entity), payload: payload, params: params)
   end
@@ -103,6 +110,16 @@ class QboApi
     request(:get, path: path)
   end
 
+  def all(entity, max: 1000, select: nil, inactive: false, &block)
+    enumerator = create_all_enumerator(entity, max: max, select: select, inactive: inactive)
+
+    if block_given?
+      enumerator.each(&block)
+    else
+      enumerator
+    end
+  end
+
   def request(method, path:, entity: nil, payload: nil, params: nil)
     raw_response = connection.send(method) do |req|
       path = finalize_path(path, method: method, params: params)
@@ -130,6 +147,20 @@ class QboApi
   end
 
   private
+
+  def create_all_enumerator(entity, max: 1000, select: nil, inactive: false)
+    Enumerator.new do |enum_yielder|
+      select = build_all_query(entity, select: select, inactive: inactive)
+      pos = 0
+      begin
+        pos = pos == 0 ? pos + 1 : pos + max
+        results = query("#{select} MAXRESULTS #{max} STARTPOSITION #{pos}")
+        results.each do |entry|
+          enum_yielder.yield(entry)
+        end if results
+      end while (results ? results.size == max : false)
+    end
+  end
 
   def entity_response(data, entity)
     if qr = data['QueryResponse']
