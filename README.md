@@ -162,19 +162,19 @@ QboApi.minor_version = 8
   p response['DisplayName'] # => "Dukes Basketball Camp"
 ```
 
-### Get an entity by one its Filter attributes
+### Get an entity by one of its filter attributes
 ```ruby
   response = qbo_api.get(:customer, ["DisplayName", "Dukes Basketball Camp"])
   p response['Id'] # => 5
 ```
 
-### Get an entity by one its Filter attributes using a LIKE search
+### Get an entity by one of its filter attributes using a LIKE search
 ```ruby
   response = qbo_api.get(:customer, ["DisplayName", "LIKE", "Dukes%"])
   p response['Id'] # => 5
 ```
 
-### Get an entity by one its Filter attributes using a IN search
+### Get an entity by one of its filter attributes using a IN search
 ```ruby
   response = qbo_api.get(:vendor, ["DisplayName", "IN", "(true, false)"])
   p response.size # => 28
