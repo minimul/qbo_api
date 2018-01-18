@@ -1,5 +1,10 @@
 class QboApi
   module Util
+    attr_writer :minor_version
+
+    def minor_version
+      @minor_version || QboApi.minor_version
+    end
 
     def esc(query)
       query.gsub("'", "\\\\'")
@@ -33,7 +38,7 @@ class QboApi
     end
 
     def add_minor_version_to(path)
-      if minor_version = QboApi.minor_version
+      if minor_version = self.minor_version
         add_params_to_path(path: path, params: { "minorversion" => minor_version })
       else
         path
