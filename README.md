@@ -12,7 +12,9 @@ Ruby client for the QuickBooks Online API version 3.
 - <a href="http://minimul.com/getting-started-with-the-modern-ruby-quickbooks-online-client-qbo_api-part-1.html" target="_blank">Part 1</a>: Learn how to spin up the <a href="https://github.com/minimul/qbo_api#spin-up-an-example">example app</a>.
 - <a href="http://minimul.com/the-modern-ruby-quickbooks-client-part-2.html" target="_blank">Part 2</a>: <a href="https://github.com/minimul/qbo_api#running-the-specs">Running the specs</a> to aid you in understanding a QuickBooks API transaction. 
 - <a href="http://minimul.com/the-modern-ruby-quickbooks-client-contributing.html" target="_blank">Part 3</a>: <a href="https://github.com/minimul/qbo_api#creating-new-specs-or-modifying-existing-spec-that-have-been-recorded-using-the-vcr-gem">Contributing to the gem</a>.
-
+### Important Note: The videos are out of date. 
+If you signed up for a Intuit developer account after July 17th, 2017 then you will have to
+follow <a href='#OAuth2-example'>OAuth2: Spin up an example</a>
 ## The Book
 
 <a href="https://leanpub.com/minimul-qbo-guide-vol-1" target="_blank">
@@ -156,15 +158,38 @@ QboApi.minor_version = 8
   p response['Active'] # => false
 ```
 
-### Search with irregular characters
-```ruby
-  name = qbo_api.esc "Amy's Bird Sanctuary"
-  response = qbo_api.query(%{SELECT * FROM Customer WHERE DisplayName = '#{name}'})
-```
 ### Get an entity by its id
 ```ruby
   response = qbo_api.get(:customer, 5)
   p response['DisplayName'] # => "Dukes Basketball Camp"
+```
+
+### Get an entity by one of its filter attributes
+```ruby
+  response = qbo_api.get(:customer, ["DisplayName", "Dukes Basketball Camp"])
+  p response['Id'] # => 5
+```
+
+### Get an entity by one of its filter attributes using a LIKE search
+```ruby
+  response = qbo_api.get(:customer, ["DisplayName", "LIKE", "Dukes%"])
+  p response['Id'] # => 5
+```
+
+### Get an entity by one of its filter attributes using a IN search
+```ruby
+  response = qbo_api.get(:vendor, ["DisplayName", "IN", "(true, false)"])
+  p response.size # => 28
+```
+
+### Search with irregular characters
+```ruby
+  # Use the .esc() method
+  name = qbo_api.esc "Amy's Bird Sanctuary"
+  response = qbo_api.query(%{SELECT * FROM Customer WHERE DisplayName = '#{name}'})
+  # OR USE .get() method, which will automatically escape
+  response = qbo_api.get(:customer, ["DisplayName", "Amy's Bird Sanctuary"])
+  p response['Id'] # => 1
 ```
 
 ### Uploading an attachment
@@ -277,6 +302,7 @@ See [docs](https://developer.intuit.com/docs/0100_quickbooks_online/0100_essenti
 ```
 
 ### Import/retrieve all
+*Note: There is some overlap with the `all` and the `get` methods. The `get` method is limited to 1000 results where the `all` method will return all the results no matter the number.*
 ```ruby
   # retrieves all active customers
   qbo_api.all(:customers).each do |c|
@@ -308,7 +334,7 @@ See [docs](https://developer.intuit.com/docs/0100_quickbooks_online/0100_essenti
   p qbo_api.is_transaction_entity?(:customer) # => false
   p qbo_api.is_name_list_entity?(:vendors) # => true
 ```
-## OAuth2: Spin up an example
+## <a name='OAuth2-example'>OAuth2: Spin up an example</a>
 ### If you signed up for a Intuit developer account after July 17th, 2017 follow this example
 - <a href="http://minimul.com/access-the-quickbooks-online-api-with-oauth2.html" target="_blank">Check out this article on spinning up the OAuth2 example</a>.
 - `git clone git://github.com/minimul/qbo_api && cd qbo_api`

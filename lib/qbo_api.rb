@@ -12,12 +12,23 @@ require_relative 'qbo_api/error'
 require_relative 'qbo_api/raise_http_exception'
 require_relative 'qbo_api/entity'
 require_relative 'qbo_api/util'
+require_relative 'qbo_api/attachment'
+require_relative 'qbo_api/setter'
+require_relative 'qbo_api/builder'
+require_relative 'qbo_api/finder'
+require_relative 'qbo_api/all'
 
 class QboApi
   extend Configuration
   include Supporting
   include Entity
   include Util
+  include Attachment
+  include Setter
+  include Builder
+  include Finder
+  include All
+
   attr_reader :realm_id
 
   REQUEST_TOKEN_URL          = 'https://oauth.intuit.com/oauth/v1/get_request_token'
@@ -57,17 +68,6 @@ class QboApi
     end
   end
 
-  def query(query, params: nil)
-    path = "#{realm_id}/query?query=#{CGI.escape(query)}"
-    entity = extract_entity_from_query(query, to_sym: true)
-    request(:get, entity: entity, path: path, params: params)
-  end
-
-  def get(entity, id, params: nil)
-    path = "#{entity_path(entity)}/#{id}"
-    request(:get, entity: entity, path: path, params: params)
-  end
-
   def create(entity, payload:, params: nil)
     request(:post, entity: entity, path: entity_path(entity), payload: payload, params: params)
   end
@@ -88,11 +88,10 @@ class QboApi
   def deactivate(entity, id:)
     err_msg = "Deactivate is only for name list entities. Use .delete instead"
     raise QboApi::NotImplementedError.new, err_msg unless is_name_list_entity?(entity)
-    payload = set_update(entity, id).merge('sparse': true, 'Active': false)
+    payload = set_deactivate(entity, id)
     request(:post, entity: entity, path: entity_path(entity), payload: payload)
   end
 
-  # TODO: Need specs for disconnect and reconnect
   # https://developer.intuit.com/docs/0100_quickbooks_online/0100_essentials/0085_develop_quickbooks_apps/0004_authentication_and_authorization/oauth_management_api#/Reconnect
   def disconnect
     path = "#{APP_CONNECTION_URL}/disconnect"
@@ -102,16 +101,6 @@ class QboApi
   def reconnect
     path = "#{APP_CONNECTION_URL}/reconnect"
     request(:get, path: path)
-  end
-
-  def all(entity, max: 1000, select: nil, inactive: false, &block)
-    enumerator = create_all_enumerator(entity, max: max, select: select, inactive: inactive)
-
-    if block_given?
-      enumerator.each(&block)
-    else
-      enumerator
-    end
   end
 
   def request(method, path:, entity: nil, payload: nil, params: nil)
@@ -140,45 +129,7 @@ class QboApi
     data
   end
 
-  def upload_attachment(payload:, attachment:)
-    content_type = payload['ContentType'] || payload[:ContentType]
-    file_name = payload['FileName'] || payload[:FileName]
-    raw_response = attachment_connection.post do |request|
-      request.url "#{realm_id}/upload"
-      request.body = {
-          'file_metadata_01':
-              Faraday::UploadIO.new(StringIO.new(JSON.generate(payload)), 'application/json', 'attachment.json'),
-          'file_content_01':
-              Faraday::UploadIO.new(attachment, content_type, file_name)
-      }
-    end
-    response(raw_response, entity: :attachable)
-  end
-
   private
-
-  def attachment_connection
-    return @attachment_connection if @attachment_connection
-    multipart_connection = connection.dup
-    multipart_connection.headers['Content-Type'] = 'multipart/form-data'
-    multipart_middleware_index = multipart_connection.builder.handlers.index(Faraday::Request::UrlEncoded) || 1
-    multipart_connection.builder.insert(multipart_middleware_index, Faraday::Request::Multipart)
-    @attachment_connection = multipart_connection
-  end
-
-  def create_all_enumerator(entity, max: 1000, select: nil, inactive: false)
-    Enumerator.new do |enum_yielder|
-      select = build_all_query(entity, select: select, inactive: inactive)
-      pos = 0
-      begin
-        pos = pos == 0 ? pos + 1 : pos + max
-        results = query("#{select} MAXRESULTS #{max} STARTPOSITION #{pos}")
-        results.each do |entry|
-          enum_yielder.yield(entry)
-        end if results
-      end while (results ? results.size == max : false)
-    end
-  end
 
   def entity_response(data, entity)
     if qr = data['QueryResponse']
@@ -197,11 +148,6 @@ class QboApi
       token: @token,
       token_secret: @token_secret
     }
-  end
-
-  def set_update(entity, id)
-    resp = get(entity, id)
-    { Id: resp['Id'], SyncToken: resp['SyncToken'] }
   end
 
   def get_endpoint
