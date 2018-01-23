@@ -1,10 +1,11 @@
 require 'spec_helper'
 
 describe "QboApi Import All entities" do
+  let(:api){ QboApi.new(creds.to_h) }
+  
   context ".all" do
     context "backwards compatability (with block)" do
       it 'retrieves all customers' do
-        api = QboApi.new(creds.to_h)
         counter = []
         VCR.use_cassette("qbo_api/all/customers", record: :none) do
           result = api.query("SELECT COUNT(*) FROM Customer")
@@ -18,7 +19,6 @@ describe "QboApi Import All entities" do
     end
 
     it 'retrieves all customers' do
-      api = QboApi.new(creds.to_h)
       VCR.use_cassette("qbo_api/all/customers", record: :none) do
         result = api.query("SELECT COUNT(*) FROM Customer")
         count = result['QueryResponse']['totalCount']
@@ -28,7 +28,6 @@ describe "QboApi Import All entities" do
     end
 
     it 'retrieves all employees including inactive ones' do
-      api = QboApi.new(creds.to_h)
       VCR.use_cassette("qbo_api/all/employees_including_active", record: :none) do
         result = api.query("SELECT COUNT(*) FROM Employee WHERE Active IN (true, false) ")
         count = result['QueryResponse']['totalCount']
@@ -38,7 +37,6 @@ describe "QboApi Import All entities" do
     end
 
     it 'retrieves all vendors by groups of 5' do
-      api = QboApi.new(creds.to_h)
       VCR.use_cassette("qbo_api/all/vendors_by_5", record: :none) do
         result = api.query("SELECT COUNT(*) FROM Vendor")
         count = result['QueryResponse']['totalCount']
@@ -48,7 +46,6 @@ describe "QboApi Import All entities" do
     end
 
     it 'retrieves all customers, including inactive ones, by groups of 2 by alternate select query' do
-      api = QboApi.new(creds.to_h)
       where = "WHERE Id IN ('5', '6', '7', '8', '9', '10')"
       VCR.use_cassette("qbo_api/all/alt_select", record: :none) do
         result = api.query("SELECT count(*) FROM Customer #{where}")
@@ -59,7 +56,6 @@ describe "QboApi Import All entities" do
     end
 
     it 'retrieves sales receipts' do
-      api = QboApi.new(creds.to_h)
       VCR.use_cassette("qbo_api/all/sales_receipts", record: :none) do
         first_id = api.all(:sales_receipts).first['Id']
         expect(first_id).to eq "47"
