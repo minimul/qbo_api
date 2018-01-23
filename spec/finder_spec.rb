@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe QboApi::Finder do
 
-  let(:api) { QboApi.new(creds.to_h)}
+  let(:api) { QboApi.new(creds.to_h) }
 
   it '.to_quote_or_not' do
     ['true', 'false', 'CURRENT_DATE', '( true, false)'].each do |str|

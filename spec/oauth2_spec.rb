@@ -8,12 +8,14 @@ describe QboApi do
       expect { api.get :customer, 5 }.to raise_error QboApi::Error, "Must set either the token or access_token"
     end
 
-    it 'to do a basic .get request' do
-      creds = oauth2_creds
-      api = QboApi.new(creds.to_h)
-      VCR.use_cassette("qbo_api/oauth2/basic_get", record: :none) do
-        response = api.get(:customer, 5)
-        expect(response['DisplayName']).to eq "Dukes Basketball Camp"
+    if ENV['QBO_API_OAUTH2_ACCESS_TOKEN']
+      #if the OAUTH2 access token is not nil then the creds will be the OAuth2 creds
+      it 'to do a basic .get request' do
+        api = QboApi.new(creds.to_h)
+        VCR.use_cassette("qbo_api/oauth2/basic_get", record: :none) do
+          response = api.get(:customer, 5)
+          expect(response['DisplayName']).to eq "Dukes Basketball Camp"
+        end
       end
     end
   end

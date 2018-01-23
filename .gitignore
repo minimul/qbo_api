@@ -9,9 +9,13 @@
 /tmp/
 .env
 .ruby-version
+.ruby-gemset
+.byebug_history
 *.gem
 .rspec
 todo.txt
 *.sess
 *.log
+spec/temp/spec_status.txt
+*.swp
 scrap.txt

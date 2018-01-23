@@ -1,6 +1,9 @@
 require 'spec_helper'
 
 describe "QboApi Create Update Delete" do
+
+  let(:api){ QboApi.new(creds.to_h) }
+
   context ".create" do
 
     after do
@@ -25,7 +28,6 @@ describe "QboApi Create Update Delete" do
           "value": "1"
         }
       }
-      api = QboApi.new(creds.to_h)
       VCR.use_cassette("qbo_api/create/invoice", record: :none) do
         response = api.create(:invoice, payload: invoice)
         #p response['Id']
@@ -36,7 +38,6 @@ describe "QboApi Create Update Delete" do
     it 'a customer using a request id' do
       customer = { DisplayName: 'Doe, Jane' }
       QboApi.request_id = true
-      api = QboApi.new(creds.to_h)
       VCR.use_cassette("qbo_api/create/customer", record: :none) do
         response = api.create(:customer, payload: customer)
         expect(response['Id']).to_not be_nil
@@ -56,7 +57,6 @@ describe "QboApi Create Update Delete" do
         }
       }
       QboApi.minor_version = 8
-      api = QboApi.new(creds.to_h)
       VCR.use_cassette("qbo_api/update/customer", record: :none) do
         # Use the id of the created customer above
         response = api.update(:customer, id: 60, payload: customer)
@@ -66,7 +66,6 @@ describe "QboApi Create Update Delete" do
     end
 
     it 'a sales receipt with minor version and request id set for the individual request' do
-      api = QboApi.new(creds.to_h)
       sales_receipt = {
         Line: [
           {
@@ -97,7 +96,6 @@ describe "QboApi Create Update Delete" do
 
   context '.delete' do
     it 'an invoice' do
-      api = QboApi.new(creds.to_h)
       VCR.use_cassette("qbo_api/delete/invoice", record: :none) do
         # Use the id of the created invoice above
         response = api.delete(:invoice, id: 145)
@@ -106,14 +104,12 @@ describe "QboApi Create Update Delete" do
     end
 
     it 'only a transaction entity' do
-      api = QboApi.new(creds.to_h)
       expect { response = api.delete(:customer, id: 145) }.to raise_error QboApi::NotImplementedError, /^Delete is only for/
     end
   end
 
   context '.deactivate' do
     it 'an employee' do
-      api = QboApi.new(creds.to_h)
       VCR.use_cassette("qbo_api/deactivate/employee", record: :none) do
         response = api.deactivate(:employee, id: 55)
         expect(response['Active']).to eq false
@@ -121,7 +117,6 @@ describe "QboApi Create Update Delete" do
     end
 
     it 'an account' do
-      api = QboApi.new(creds.to_h)
       VCR.use_cassette("qbo_api/deactivate/account", record: :none) do
         response = api.deactivate(:account, id: 5)
         expect(response['Active']).to eq false
@@ -129,7 +124,6 @@ describe "QboApi Create Update Delete" do
     end
 
     it 'only a name list entity' do
-      api = QboApi.new(creds.to_h)
       expect { response = api.deactivate(:refund_receipt, id: 145) }.to raise_error QboApi::NotImplementedError, /^Deactivate is only for/
     end
   end

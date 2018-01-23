@@ -1,9 +1,12 @@
 require 'spec_helper'
 
 describe "QboApi::Supporting" do
+
+  let(:api){ QboApi.new(creds.to_h) }
+
+
   context ".batch" do
     it 'does 4 operations in one request' do
-      api = QboApi.new(creds.to_h)
       VCR.use_cassette("qbo_api/batch/basic", record: :none) do
         response = api.batch(batch_payload)
         batch_response = response['BatchItemResponse']
@@ -15,7 +18,6 @@ describe "QboApi::Supporting" do
 
   context ".reports" do
     it 'for Profit and Loss with query params' do
-      api = QboApi.new(creds.to_h)
       VCR.use_cassette("qbo_api/reports/profit_and_loss", record: :none) do
         params = { start_date: '2015-01-01', end_date: '2015-07-31', customer: 1, summarize_column_by: 'Customers' }
         name = 'ProfitAndLoss'
@@ -25,7 +27,6 @@ describe "QboApi::Supporting" do
     end
 
     it 'for General Ledger with no query params' do
-      api = QboApi.new(creds.to_h)
       VCR.use_cassette("qbo_api/reports/gl", record: :none) do
         name = 'GeneralLedger'
         response = api.reports(name: name)

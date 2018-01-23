@@ -2,6 +2,8 @@ require 'spec_helper'
 
 describe "QboApi Attachment" do
 
+  let(:api){ QboApi.new(creds.to_h) }
+
   it 'for an invoice is successfully created' do
     payload = {
       "AttachableRef":
@@ -16,7 +18,6 @@ describe "QboApi Attachment" do
        "FileName": "no_detail.xml",
        "ContentType": "text/xml"
     }
-    api = QboApi.new(creds.to_h)
     VCR.use_cassette("qbo_api/create/attachment_for_invoice", record: :none) do
       response = api.upload_attachment(payload: payload, attachment: fixture_path + '/no_detail.xml')
       expect(response['Id']).to_not be_nil
@@ -37,7 +38,6 @@ describe "QboApi Attachment" do
        "FileName": "no_detail.xml",
        "ContentType": "text/xml"
     }
-    api = QboApi.new(creds.to_h)
     VCR.use_cassette("qbo_api/error/attachment_estimate", record: :none) do
       response = api.upload_attachment(payload: payload, attachment: fixture_path + '/no_detail.xml')
       expect(response).to include { ['AttachableResponse'].first['Fault'] }

@@ -1,12 +1,14 @@
 require 'spec_helper'
 
 describe QboApi do
+
+  let(:api){ QboApi.new(creds.to_h) }
+
   it 'has a version number' do
     expect(QboApi::VERSION).not_to be nil
   end
 
   it '.snake_to_camel' do
-    api = QboApi.new(creds.to_h)
     res = %w(SalesReceipt CreditMemo Customer)
     %i(sales_receipt credit_memo customer).each_with_index do |s, index|
       expect(api.snake_to_camel(s)).to eq res[index]
@@ -14,7 +16,6 @@ describe QboApi do
   end
 
   it '.singular' do
-    api = QboApi.new(creds.to_h)
     res = %w(Invoice Preferences Entitlements Class Vendor)
     %i(invoices preferences entitlements classes vendor).each_with_index do |s, index|
       expect(api.singular(s)).to eq res[index]
@@ -22,7 +23,6 @@ describe QboApi do
   end
 
   it '.is_transaction_entity?' do
-    api = QboApi.new(creds.to_h)
     expect(api.is_transaction_entity?(:invoice)).to be true
     expect(api.is_transaction_entity?(:invoices)).to be true
     expect(api.is_transaction_entity?(:customer)).to be false
@@ -30,7 +30,6 @@ describe QboApi do
   end
 
   it '.is_name_list_entity?' do
-    api = QboApi.new(creds.to_h)
     expect(api.is_name_list_entity?(:vendors)).to be true
     expect(api.is_name_list_entity?(:classes)).to be true
     expect(api.is_name_list_entity?(:payment_method)).to be true
@@ -38,7 +37,6 @@ describe QboApi do
   end
 
   it '.extract_entity_from_query' do
-    api = QboApi.new(creds.to_h)
     expect(api.extract_entity_from_query('Select * FROM Invoice WHERE')).to eq "Invoice"
     expect(api.extract_entity_from_query('Select count(*) fROM PurchaseOrder WHERE DisplayName =')).to eq "PurchaseOrder"
     expect(api.extract_entity_from_query('Select # invoice WHERE')).to be nil
@@ -46,7 +44,6 @@ describe QboApi do
   end
 
   it '.get_endpoint' do
-    api = QboApi.new(creds.to_h)
     expect(api.send(:get_endpoint)).to eq QboApi::V3_ENDPOINT_BASE_URL
     QboApi.production = true
     expect(api.send(:get_endpoint)).to_not match /sandbox/
