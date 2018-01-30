@@ -8,7 +8,7 @@ class QboApi
         request.url "#{realm_id}/upload"
         request.body = {
             'file_metadata_01':
-                Faraday::UploadIO.new(StringIO.new(JSON.generate(payload)), 'application/json', 'attachment.json'),
+                Faraday::UploadIO.new(StringIO.new(payload.to_json), 'application/json', 'attachment.json'),
             'file_content_01':
                 Faraday::UploadIO.new(attachment, content_type, file_name)
         }
