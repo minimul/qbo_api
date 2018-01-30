@@ -85,7 +85,7 @@ If ActiveSupport is loaded, you can achieve proper serialization with the follow
 ActiveSupport::JSON::Encoding.use_standard_json_time_format = true
 ActiveSupport::JSON::Encoding.time_precision = 0
 ```
-If you're not using ActiveSupport, you'll need to use the `DateTime#iso8601` method to convert your DateTimes to strings before passing them to a QboApi instance. Failure to do so will result in a raised QboApi::BadRequest exception.
+If you're not using ActiveSupport, you'll need to use `#iso8601` method to convert your `Time`/`DateTime` instances to strings before passing them to a QboApi instance. Failure to do so will result in a raised QboApi::BadRequest exception.
 
 ### Configuration options
 - By default this client runs against a QBO sandbox. To run against the production QBO API URL do:
