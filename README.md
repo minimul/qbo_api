@@ -78,6 +78,15 @@ Or install it yourself as:
 ### TLS v1.2
 Intuit will be [requiring](https://developer.intuit.com/hub/blog/2017/08/03/upgrading-your-apps-to-support-tls-1-2) API client connections to be negotiated over TLS1.2 by December 31st, 2017. Using the default HTTP client (Net::HTTP) with Faraday this is the case with QboApi, however, if you are using another HTTP client you may need to directly set the TLS version negotiation manually.
 
+### DateTime serialization
+Some QBO entities have attributes of type DateTime (e.g., Time Activities with StartTime and EndTime). All DateTimes passed to the QBO API must be serialized in ISO 8601 format. 
+If ActiveSupport is loaded, you can achieve proper serialization with the following configuration:
+```ruby
+ActiveSupport::JSON::Encoding.use_standard_json_time_format = true
+ActiveSupport::JSON::Encoding.time_precision = 0
+```
+If you're not using ActiveSupport, you'll need to use `#iso8601` method to convert your `Time`/`DateTime` instances to strings before passing them to a QboApi instance. Failure to do so will result in a raised QboApi::BadRequest exception.
+
 ### Configuration options
 - By default this client runs against a QBO sandbox. To run against the production QBO API URL do:
 ```ruby

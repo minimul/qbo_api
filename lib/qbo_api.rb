@@ -111,7 +111,7 @@ class QboApi
         req.url path
       when :post, :put
         req.url path
-        req.body = JSON.generate(payload)
+        req.body = payload.to_json
       end
     end
     response(raw_response, entity: entity)
