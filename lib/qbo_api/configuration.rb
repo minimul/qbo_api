@@ -40,5 +40,14 @@ class QboApi
     def minor_version=(value)
       @minor_version = value
     end
+
+    def refresh_proc
+      @refresh_proc
+    end
+
+    def refresh_proc=(value)
+      @refresh_proc = value
+    end
+    
   end
 end

@@ -9,7 +9,9 @@ require 'faraday/detailed_logger'
 require_relative 'qbo_api/configuration'
 require_relative 'qbo_api/supporting'
 require_relative 'qbo_api/error'
+require_relative 'qbo_api/error'
 require_relative 'qbo_api/raise_http_exception'
+require_relative 'qbo_api/oauth2'
 require_relative 'qbo_api/entity'
 require_relative 'qbo_api/util'
 require_relative 'qbo_api/attachment'
@@ -23,6 +25,7 @@ class QboApi
   include Supporting
   include Entity
   include Util
+  include OAuth2
   include Attachment
   include Setter
   include Builder
@@ -40,12 +43,16 @@ class QboApi
   APP_CONNECTION_URL         = APP_CENTER_BASE + '/api/v1/connection'
 
   def initialize(token: nil, token_secret: nil, access_token: nil, realm_id:,
+                 refresh_token: nil, client_id: nil, client_secret: nil,
                  consumer_key: nil, consumer_secret: nil, endpoint: :accounting)
     @consumer_key = consumer_key || (defined?(CONSUMER_KEY) ? CONSUMER_KEY : nil)
     @consumer_secret = consumer_secret || (defined?(CONSUMER_SECRET) ? CONSUMER_SECRET : nil)
+    @client_id = client_id || (defined?(CLIENT_ID) ? CLIENT_ID : nil)
+    @client_secret = client_secret || (defined?(CLIENT_SECRET) ? CLIENT_SECRET : nil)
     @token = token
     @token_secret = token_secret
     @access_token = access_token
+    @refresh_token = refresh_token
     @realm_id = realm_id
     @endpoint = endpoint
   end
@@ -54,12 +61,14 @@ class QboApi
     @connection ||= Faraday.new(url: url) do |faraday|
       faraday.headers['Content-Type'] = 'application/json;charset=UTF-8'
       faraday.headers['Accept'] = 'application/json'
-      if @token != nil
+      if @token
         faraday.request :oauth, oauth_data
-      elsif @access_token != nil
+      elsif @access_token
         faraday.request :oauth2, @access_token, token_type: 'bearer'
+      elsif @refresh_token
+        faraday.request FaradayMiddleware::QboOAuth2Refresh, self
       else
-        raise QboApi::Error.new error_body: 'Must set either the token or access_token'
+        raise QboApi::Error.new error_body: 'Must set either the token, refresh_token, or access_token'
       end
       faraday.request :url_encoded
       faraday.use FaradayMiddleware::RaiseHttpException
