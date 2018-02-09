@@ -65,7 +65,7 @@ class QboApi
       elsif @access_token
         faraday.request :oauth2, @access_token, token_type: 'bearer'
       elsif @refresh_token
-        faraday.request FaradayMiddleware::QboOAuth2Refresh, self
+        faraday.request FaradayMiddleware::QboOAuth2, self
       else
         raise QboApi::Error.new error_body: 'Must set either the token, refresh_token, or access_token'
       end
