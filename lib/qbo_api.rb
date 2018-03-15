@@ -120,6 +120,7 @@ class QboApi
     end
   rescue => e
     # Catch fetch key errors and just return JSON
+    QboApi.logger.debug { "[Quickbooks] response parsing error: #{e.inspect}" }
     data
   end
 
