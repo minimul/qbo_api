@@ -1,9 +1,16 @@
+sudo: false
 language: ruby
 rvm:
   - 2.2.2
   - 2.3.0
 
-sudo: false
+before_script:
+  - cp .env.test .env
+
+script:
+  - bundle exec rspec spec/
+
+
 notifications:
   email:
     - christian@minimul.com
