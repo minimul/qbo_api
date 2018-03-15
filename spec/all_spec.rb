@@ -7,7 +7,7 @@ describe "QboApi Import All entities" do
     context "backwards compatability (with block)" do
       it 'retrieves all customers' do
         counter = []
-        VCR.use_cassette("qbo_api/all/customers", record: :none) do
+        use_cassette("qbo_api/all/customers") do
           result = api.query("SELECT COUNT(*) FROM Customer")
           count = result['QueryResponse']['totalCount']
           response = api.all(:customers) do |c|
@@ -19,7 +19,7 @@ describe "QboApi Import All entities" do
     end
 
     it 'retrieves all customers' do
-      VCR.use_cassette("qbo_api/all/customers", record: :none) do
+      use_cassette("qbo_api/all/customers") do
         result = api.query("SELECT COUNT(*) FROM Customer")
         count = result['QueryResponse']['totalCount']
         response = api.all(:customers)
@@ -28,7 +28,7 @@ describe "QboApi Import All entities" do
     end
 
     it 'retrieves all employees including inactive ones' do
-      VCR.use_cassette("qbo_api/all/employees_including_active", record: :none) do
+      use_cassette("qbo_api/all/employees_including_active") do
         result = api.query("SELECT COUNT(*) FROM Employee WHERE Active IN (true, false) ")
         count = result['QueryResponse']['totalCount']
         response = api.all(:employees, inactive: true)
@@ -37,7 +37,7 @@ describe "QboApi Import All entities" do
     end
 
     it 'retrieves all vendors by groups of 5' do
-      VCR.use_cassette("qbo_api/all/vendors_by_5", record: :none) do
+      use_cassette("qbo_api/all/vendors_by_5") do
         result = api.query("SELECT COUNT(*) FROM Vendor")
         count = result['QueryResponse']['totalCount']
         response = api.all(:vendor, max: 5)
@@ -47,7 +47,7 @@ describe "QboApi Import All entities" do
 
     it 'retrieves all customers, including inactive ones, by groups of 2 by alternate select query' do
       where = "WHERE Id IN ('5', '6', '7', '8', '9', '10')"
-      VCR.use_cassette("qbo_api/all/alt_select", record: :none) do
+      use_cassette("qbo_api/all/alt_select") do
         result = api.query("SELECT count(*) FROM Customer #{where}")
         count = result['QueryResponse']['totalCount']
         response = api.all(:customer, max: 2, select: "SELECT * FROM Customer #{where}", inactive: true)
@@ -56,7 +56,7 @@ describe "QboApi Import All entities" do
     end
 
     it 'retrieves sales receipts' do
-      VCR.use_cassette("qbo_api/all/sales_receipts", record: :none) do
+      use_cassette("qbo_api/all/sales_receipts") do
         first_id = api.all(:sales_receipts).first['Id']
         expect(first_id).to eq "47"
       end

@@ -7,7 +7,7 @@ describe QboApi do
 
   context 'reconnect' do
     it 'out of bounds' do
-      VCR.use_cassette("qbo_api/reconnect/out_of_bounds", record: :none) do
+      use_cassette("qbo_api/reconnect/out_of_bounds") do
         response = api.reconnect
         expect(response['ErrorCode']).to eq 212
         expect(response['OAuthToken']).to be_nil
