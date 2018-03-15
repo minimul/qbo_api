@@ -38,6 +38,7 @@ class QboApi
   V3_ENDPOINT_BASE_URL       = 'https://sandbox-quickbooks.api.intuit.com/v3/company/'
   PAYMENTS_API_BASE_URL      = 'https://sandbox.api.intuit.com/quickbooks/v4/payments'
   APP_CONNECTION_URL         = APP_CENTER_BASE + '/api/v1/connection'
+  LOG_TAG = "[QuickBooks]"
 
   def initialize(token: nil, token_secret: nil, access_token: nil, realm_id:,
                  consumer_key: nil, consumer_secret: nil, endpoint: :accounting)
@@ -57,7 +58,7 @@ class QboApi
       add_authorization_middleware(faraday)
       faraday.request :url_encoded
       faraday.use FaradayMiddleware::RaiseHttpException
-      faraday.response :detailed_logger, QboApi.logger if QboApi.log
+      faraday.response :detailed_logger, QboApi.logger, LOG_TAG if QboApi.log
       faraday.adapter  Faraday.default_adapter
     end
   end
@@ -120,7 +121,7 @@ class QboApi
     end
   rescue => e
     # Catch fetch key errors and just return JSON
-    QboApi.logger.debug { "[Quickbooks] response parsing error: #{e.inspect}" }
+    QboApi.logger.debug { "#{LOG_TAG} response parsing error: #{e.inspect}" }
     data
   end
 
