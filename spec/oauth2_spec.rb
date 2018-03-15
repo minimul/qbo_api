@@ -12,7 +12,7 @@ describe QboApi do
       #if the OAUTH2 access token is not nil then the creds will be the OAuth2 creds
       it 'to do a basic .get request' do
         api = QboApi.new(creds.to_h)
-        VCR.use_cassette("qbo_api/oauth2/basic_get", record: :none) do
+        use_cassette("qbo_api/oauth2/basic_get") do
           response = api.get(:customer, 5)
           expect(response['DisplayName']).to eq "Dukes Basketball Camp"
         end

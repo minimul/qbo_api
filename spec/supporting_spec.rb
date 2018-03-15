@@ -7,7 +7,7 @@ describe "QboApi::Supporting" do
 
   context ".batch" do
     it 'does 4 operations in one request' do
-      VCR.use_cassette("qbo_api/batch/basic", record: :none) do
+      use_cassette("qbo_api/batch/basic") do
         response = api.batch(batch_payload)
         batch_response = response['BatchItemResponse']
         expect(batch_response.size).to eq 4
@@ -18,7 +18,7 @@ describe "QboApi::Supporting" do
 
   context ".reports" do
     it 'for Profit and Loss with query params' do
-      VCR.use_cassette("qbo_api/reports/profit_and_loss", record: :none) do
+      use_cassette("qbo_api/reports/profit_and_loss") do
         params = { start_date: '2015-01-01', end_date: '2015-07-31', customer: 1, summarize_column_by: 'Customers' }
         name = 'ProfitAndLoss'
         response = api.reports(name: name, params: params)
@@ -27,7 +27,7 @@ describe "QboApi::Supporting" do
     end
 
     it 'for General Ledger with no query params' do
-      VCR.use_cassette("qbo_api/reports/gl", record: :none) do
+      use_cassette("qbo_api/reports/gl") do
         name = 'GeneralLedger'
         response = api.reports(name: name)
         expect(response["Header"]["ReportName"]).to eq name
