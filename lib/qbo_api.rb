@@ -42,9 +42,10 @@ class QboApi
     @access_token = access_token
     @realm_id = realm_id
     @endpoint = endpoint
+    @endpoint_url = get_endpoint
   end
 
-  def connection(url: get_endpoint)
+  def connection(url: @endpoint_url)
     @connection ||= authorized_json_connection(url: url)
   end
 
