@@ -54,13 +54,7 @@ class QboApi
     @connection ||= Faraday.new(url: url) do |faraday|
       faraday.headers['Content-Type'] = 'application/json;charset=UTF-8'
       faraday.headers['Accept'] = 'application/json'
-      if @token != nil
-        faraday.request :oauth, oauth_data
-      elsif @access_token != nil
-        faraday.request :oauth2, @access_token, token_type: 'bearer'
-      else
-        raise QboApi::Error.new error_body: 'Must set either the token or access_token'
-      end
+      add_authorization_middleware(faraday)
       faraday.request :url_encoded
       faraday.use FaradayMiddleware::RaiseHttpException
       faraday.response :detailed_logger, QboApi.logger if QboApi.log
@@ -141,15 +135,6 @@ class QboApi
     end
   end
 
-  def oauth_data
-    {
-      consumer_key: @consumer_key,
-      consumer_secret: @consumer_secret,
-      token: @token,
-      token_secret: @token_secret
-    }
-  end
-
   def get_endpoint
     prod = self.class.production
     case @endpoint
@@ -158,6 +143,29 @@ class QboApi
     when :payments
       prod ? PAYMENTS_API_BASE_URL.sub("sandbox.", '') : PAYMENTS_API_BASE_URL
     end
+  end
+
+  def add_authorization_middleware(faraday)
+    if @token != nil
+      gem 'simple_oauth'
+      require 'simple_oauth'
+      faraday.request :oauth, oauth_data
+    elsif @access_token != nil
+      faraday.request :oauth2, @access_token, token_type: 'bearer'
+    else
+      raise QboApi::Error.new error_body: 'Must set either the token or access_token'
+    end
+  end
+
+  # Use with simple_oauth OAuth1 middleware
+  # @see #add_authorization_middleware
+  def oauth_data
+    {
+      consumer_key: @consumer_key,
+      consumer_secret: @consumer_secret,
+      token: @token,
+      token_secret: @token_secret
+    }
   end
 
 end
