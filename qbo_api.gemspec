@@ -24,6 +24,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'webmock'
   spec.add_development_dependency 'sinatra'
   spec.add_development_dependency 'rack-oauth2'
+  spec.add_development_dependency 'simple_oauth'
   spec.add_development_dependency 'omniauth'
   spec.add_development_dependency 'omniauth-quickbooks'
   spec.add_development_dependency 'shotgun'
@@ -33,6 +34,5 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'faraday'
   spec.add_runtime_dependency 'faraday_middleware'
   spec.add_runtime_dependency 'faraday-detailed_logger'
-  spec.add_runtime_dependency 'simple_oauth'
   spec.add_runtime_dependency 'nokogiri'
 end
