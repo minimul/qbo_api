@@ -16,8 +16,6 @@ class QboApi
       response(raw_response, entity: :attachable)
     end
 
-    private
-
     def attachment_connection
       return @attachment_connection if @attachment_connection
       @attachment_connection = authorized_multipart_connection(url: get_endpoint)
