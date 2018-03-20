@@ -55,6 +55,20 @@ class QboApi
       end
     end
 
+    # Part of the OAuth1 API
+    # https://developer.intuit.com/docs/0100_quickbooks_online/0100_essentials/0085_develop_quickbooks_apps/0004_authentication_and_authorization/oauth_management_api#/Reconnect
+    def disconnect
+      path = "#{APP_CONNECTION_URL}/disconnect"
+      request(:get, path: path)
+    end
+
+    # Part of the OAuth1 API
+    # https://developer.intuit.com/docs/0100_quickbooks_online/0100_essentials/0085_develop_quickbooks_apps/0004_authentication_and_authorization/oauth_management_api#/Reconnect
+    def reconnect
+      path = "#{APP_CONNECTION_URL}/reconnect"
+      request(:get, path: path)
+    end
+
     private
 
     def entity_response(data, entity)
@@ -78,6 +92,7 @@ class QboApi
 
     def add_authorization_middleware(faraday)
       if @token != nil
+        # Part of the OAuth1 API
         gem 'simple_oauth'
         require 'simple_oauth'
         faraday.request :oauth, oauth_data
@@ -88,6 +103,7 @@ class QboApi
       end
     end
 
+    # Part of the OAuth1 API
     # Use with simple_oauth OAuth1 middleware
     # @see #add_authorization_middleware
     def oauth_data

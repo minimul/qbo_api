@@ -78,17 +78,6 @@ class QboApi
     request(:post, entity: entity, path: entity_path(entity), payload: payload)
   end
 
-  # https://developer.intuit.com/docs/0100_quickbooks_online/0100_essentials/0085_develop_quickbooks_apps/0004_authentication_and_authorization/oauth_management_api#/Reconnect
-  def disconnect
-    path = "#{APP_CONNECTION_URL}/disconnect"
-    request(:get, path: path)
-  end
-
-  def reconnect
-    path = "#{APP_CONNECTION_URL}/reconnect"
-    request(:get, path: path)
-  end
-
   private
 
   def get_endpoint
