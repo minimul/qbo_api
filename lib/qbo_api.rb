@@ -142,7 +142,7 @@ class QboApi
     end
     entity_name = entity_name(entity)
     entity_body.fetch(entity_name) do
-      QboApi.logger.debug { "[Quickbooks] entity name not in response body: entity=#{entity.inspect} entity_name=#{entity_name.inspect} body=#{data.inspect}" }
+      QboApi.logger.debug { "#{LOG_TAG} entity name not in response body: entity=#{entity.inspect} entity_name=#{entity_name.inspect} body=#{data.inspect}" }
       data
     end
   end
