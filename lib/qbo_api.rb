@@ -132,12 +132,9 @@ class QboApi
 
   def entity_response(data, entity)
     if data.key?('QueryResponse')
-      # e.g. {"QueryResponse":{"totalCount":29}, "time":"2015 -11-05T04:30:59.195-08:00"}
       entity_body = data['QueryResponse']
-      # NOTE(BF): convert an empty QueryResponse into nil
       return nil if entity_body.empty?
     elsif data.key?('AttachableResponse')
-      # e.g. {"AttachableResponse":[{"Fault":{"Error":[{"Message":"A business validation error has occurred while processing your request","Detail":"Business Validation Error: The entity Estimate 75 that you are trying to link does not exist.","code":"6000","element":""}],"type":"ValidationFault"}}]}
       entity_body = data['AttachableResponse']
       entity_body &&= entity_body.first
     else
@@ -146,7 +143,6 @@ class QboApi
     entity_name = entity_name(entity)
     entity_body.fetch(entity_name) do
       QboApi.logger.debug { "[Quickbooks] entity name not in response body: entity=#{entity.inspect} entity_name=#{entity_name.inspect} body=#{data.inspect}" }
-      # NOTE(BF): Return full response body when entity name not in entity body
       data
     end
   end
