@@ -23,16 +23,16 @@ class QboApi
     #   get(:customer, ["DisplayName", "LIKE", "Dukes%"])
     #   get(:vendor, ["DisplayName", "IN", "(true, false)"])
     #   get(:customer, ["DisplayName", "Amy's Bird Sanctuary"])
-    def get(entity, type, params: nil)
-      if type.is_a?(Array)
-        query_str = get_query_str(entity, type)
+    def get(entity, id_or_query_filter_args, params: nil)
+      if id_or_query_filter_args.is_a?(Array)
+        query_str = get_query_str(entity, id_or_query_filter_args)
         if resp = query(query_str, params: params)
           resp.size == 1 ? resp[0] : resp
         else
           false
         end
       else
-        path = "#{entity_path(entity)}/#{type}"
+        path = "#{entity_path(entity)}/#{id_or_query_filter_args}"
         request(:get, entity: entity, path: path, params: params)
       end
     end
@@ -63,6 +63,13 @@ class QboApi
 
     private
 
+    def get_query_str(entity, query_filter_args)
+      filterable_field = query_filter_args[0]
+      operator = query_filter_args.size == 2 ? '=' : query_filter_args[1]
+      value = query_filter_args.size == 2 ? query_filter_args[1] : query_filter_args[2]
+      "SELECT * FROM #{singular(entity)} WHERE #{filterable_field} #{operator} #{to_quote_or_not(value)}"
+    end
+
     def to_quote_or_not(str)
       inside_parens_regex = '\(.*\)'
       if str.match(/^(#{inside_parens_regex}|true|false|CURRENT_DATE)$/)
@@ -70,17 +77,6 @@ class QboApi
       else
         %{'#{esc(str)}'}
       end
-    end
-
-    def get_query_str(entity, type)
-      if type.size == 2
-        operator = '='
-        value = type[1]
-      else
-        operator = type[1]
-        value = type[2]
-      end
-      "SELECT * FROM #{singular(entity)} WHERE #{type[0]} #{operator} #{to_quote_or_not(value)}"
     end
 
     def create_all_enumerator(entity, max: 1000, select: nil, inactive: false, params: nil)
