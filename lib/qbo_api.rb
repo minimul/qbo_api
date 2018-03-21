@@ -131,19 +131,21 @@ class QboApi
   private
 
   def entity_response(data, entity)
+    entity_name = entity_name(entity)
     if data.key?('QueryResponse')
       entity_body = data['QueryResponse']
       return nil if entity_body.empty?
+      entity_body.fetch(entity_name, data)
     elsif data.key?('AttachableResponse')
       entity_body = data['AttachableResponse']
       entity_body &&= entity_body.first
+      entity_body.fetch(entity_name, data)
     else
       entity_body = data
-    end
-    entity_name = entity_name(entity)
-    entity_body.fetch(entity_name) do
-      QboApi.logger.debug { "#{LOG_TAG} entity name not in response body: entity=#{entity.inspect} entity_name=#{entity_name.inspect} body=#{data.inspect}" }
-      data
+      entity_body.fetch(entity_name) do
+        QboApi.logger.debug { "#{LOG_TAG} entity name not in response body: entity=#{entity.inspect} entity_name=#{entity_name.inspect} body=#{data.inspect}" }
+        data
+      end
     end
   end
 
