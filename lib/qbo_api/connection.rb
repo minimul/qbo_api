@@ -32,7 +32,7 @@ class QboApi
 
     def raw_request(method, conn:, path:, payload: nil, params: nil)
       path = finalize_path(path, method: method, params: params)
-      @last_response = conn.public_send(method) do |req|
+      conn.public_send(method) do |req|
         case method
         when :get, :delete
           req.url path
@@ -42,10 +42,6 @@ class QboApi
         else raise ArgumentError, "Unhandled request method '#{method.inspect}'"
         end
       end
-    end
-
-    def last_response
-      return @last_response if defined(@last_response)
     end
 
     def response(resp, entity: nil)
