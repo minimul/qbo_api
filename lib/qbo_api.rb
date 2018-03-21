@@ -38,6 +38,7 @@ class QboApi
   V3_ENDPOINT_BASE_URL       = 'https://sandbox-quickbooks.api.intuit.com/v3/company/'
   PAYMENTS_API_BASE_URL      = 'https://sandbox.api.intuit.com/quickbooks/v4/payments'
   APP_CONNECTION_URL         = APP_CENTER_BASE + '/api/v1/connection'
+  LOG_TAG = "[QuickBooks]"
 
   def initialize(token: nil, token_secret: nil, access_token: nil, realm_id:,
                  consumer_key: nil, consumer_secret: nil, endpoint: :accounting)
@@ -57,7 +58,7 @@ class QboApi
       add_authorization_middleware(faraday)
       faraday.request :url_encoded
       faraday.use FaradayMiddleware::RaiseHttpException
-      faraday.response :detailed_logger, QboApi.logger if QboApi.log
+      faraday.response :detailed_logger, QboApi.logger, LOG_TAG if QboApi.log
       faraday.adapter  Faraday.default_adapter
     end
   end
@@ -112,26 +113,39 @@ class QboApi
   end
 
   def response(resp, entity: nil)
-    data = JSON.parse(resp.body)
-    if entity
-      entity_response(data, entity)
-    else
-      data
-    end
+    data = parse_response_body(resp)
+    entity ? entity_response(data, entity) : data
   rescue => e
-    # Catch fetch key errors and just return JSON
+    QboApi.logger.debug { "#{LOG_TAG} response parsing error: entity=#{entity.inspect} body=#{resp.body.inspect} exception=#{e.inspect}" }
     data
+  end
+
+  def parse_response_body(resp)
+    body = resp.body
+    case resp.headers['Content-Type']
+    when /json/ then JSON.parse(body)
+    else body
+    end
   end
 
   private
 
   def entity_response(data, entity)
-    if qr = data['QueryResponse']
-      qr.empty? ? nil : qr.fetch(singular(entity))
-    elsif ar = data['AttachableResponse']
-      ar.first.fetch(singular(entity))
+    entity_name = entity_name(entity)
+    if data.key?('QueryResponse')
+      entity_body = data['QueryResponse']
+      return nil if entity_body.empty?
+      entity_body.fetch(entity_name, data)
+    elsif data.key?('AttachableResponse')
+      entity_body = data['AttachableResponse']
+      entity_body &&= entity_body.first
+      entity_body.fetch(entity_name, data)
     else
-      data.fetch(singular(entity))
+      entity_body = data
+      entity_body.fetch(entity_name) do
+        QboApi.logger.debug { "#{LOG_TAG} entity name not in response body: entity=#{entity.inspect} entity_name=#{entity_name.inspect} body=#{data.inspect}" }
+        data
+      end
     end
   end
 
@@ -168,4 +182,7 @@ class QboApi
     }
   end
 
+  def entity_name(entity)
+    singular(entity)
+  end
 end
