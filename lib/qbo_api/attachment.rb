@@ -17,8 +17,7 @@ class QboApi
     end
 
     def attachment_connection
-      return @attachment_connection if @attachment_connection
-      @attachment_connection = authorized_multipart_connection(url: @endpoint_url)
+      @attachment_connection ||= authorized_multipart_connection(@endpoint_url)
     end
 
   end

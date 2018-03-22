@@ -46,7 +46,7 @@ class QboApi
   end
 
   def connection(url: @endpoint_url)
-    @connection ||= authorized_json_connection(url: url)
+    @connection ||= authorized_json_connection(url)
   end
 
   private
