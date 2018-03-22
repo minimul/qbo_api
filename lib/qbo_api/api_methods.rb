@@ -79,7 +79,7 @@ class QboApi
     def to_quote_or_not(str)
       inside_parens_regex = '\(.*\)'
       if str.match(/^(#{inside_parens_regex}|true|false|CURRENT_DATE)$/)
-          str
+        str
       else
         %{'#{esc(str)}'}
       end
