@@ -17,7 +17,7 @@ class QboApi
     end
 
     def attachment_connection
-      @attachment_connection ||= authorized_multipart_connection(@endpoint_url)
+      @attachment_connection ||= authorized_multipart_connection(endpoint_url)
     end
 
   end
