@@ -26,17 +26,22 @@ class QboApi
     end
 
     def request(method, path:, entity: nil, payload: nil, params: nil)
-      raw_response = connection.send(method) do |req|
-        path = finalize_path(path, method: method, params: params)
+      raw_response = raw_request(method, conn: connection, path: path, params: params, payload: payload)
+      response(raw_response, entity: entity)
+    end
+
+    def raw_request(method, conn:, path:, payload: nil, params: nil)
+      path = finalize_path(path, method: method, params: params)
+      conn.public_send(method) do |req|
         case method
         when :get, :delete
           req.url path
         when :post, :put
           req.url path
           req.body = payload.to_json
+        else raise ArgumentError, "Unhandled request method '#{method.inspect}'"
         end
       end
-      response(raw_response, entity: entity)
     end
 
     def response(resp, entity: nil)
