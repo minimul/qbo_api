@@ -91,7 +91,7 @@ class QboApi
         pos = 0
         begin
           pos = pos == 0 ? pos + 1 : pos + max
-          results = query(offset_query_string(select, limit: max, offset: pos))
+          results = query(offset_query_string(select, limit: max, offset: pos), params: params)
           results.each do |entry|
             enum_yielder.yield(entry)
           end if results
