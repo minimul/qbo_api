@@ -11,10 +11,7 @@ require_relative 'qbo_api/raise_http_exception'
 require_relative 'qbo_api/entity'
 require_relative 'qbo_api/util'
 require_relative 'qbo_api/attachment'
-require_relative 'qbo_api/setter'
-require_relative 'qbo_api/builder'
-require_relative 'qbo_api/finder'
-require_relative 'qbo_api/all'
+require_relative 'qbo_api/api_methods'
 
 class QboApi
   extend Configuration
@@ -23,10 +20,7 @@ class QboApi
   include Entity
   include Util
   include Attachment
-  include Setter
-  include Builder
-  include Finder
-  include All
+  include ApiMethods
 
   attr_reader :realm_id
 
@@ -52,30 +46,6 @@ class QboApi
 
   def connection(url: get_endpoint)
     @connection ||= authorized_json_connection(url: url)
-  end
-
-  def create(entity, payload:, params: nil)
-    request(:post, entity: entity, path: entity_path(entity), payload: payload, params: params)
-  end
-
-  def update(entity, id:, payload:, params: nil)
-    payload.merge!(set_update(entity, id))
-    request(:post, entity: entity, path: entity_path(entity), payload: payload, params: params)
-  end
-
-  def delete(entity, id:)
-    err_msg = "Delete is only for transaction entities. Use .deactivate instead"
-    raise QboApi::NotImplementedError.new, err_msg unless is_transaction_entity?(entity)
-    path = add_params_to_path(path: entity_path(entity), params: { operation: :delete })
-    payload = set_update(entity, id)
-    request(:post, entity: entity, path: path, payload: payload)
-  end
-
-  def deactivate(entity, id:)
-    err_msg = "Deactivate is only for name list entities. Use .delete instead"
-    raise QboApi::NotImplementedError.new, err_msg unless is_name_list_entity?(entity)
-    payload = set_deactivate(entity, id)
-    request(:post, entity: entity, path: entity_path(entity), payload: payload)
   end
 
   private
