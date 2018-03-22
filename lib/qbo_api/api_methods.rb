@@ -67,6 +67,97 @@ class QboApi
       request(:post, entity: entity, path: entity_path(entity), payload: payload)
     end
 
+    # https://developer.intuit.com/docs/api/accounting/invoice
+    # Get an invoice as PDF
+    # Operation:
+    #
+    #   GET /v3/company/<realmID>/invoice/<invoiceId>/pdf
+    #   Content type: application/pdf
+    #
+    # This resource returns the specified object in the response body as
+    # an Adobe Portable Document Format (PDF) file. The resulting PDF file is
+    # formatted according to custom form styles in the company settings.
+    #    %PDF-1.4
+    #    ...
+    #    %%EOF
+    def get_invoice_pdf(invoice_id)
+      headers = { 'Content-Type' => 'application/pdf', 'Accept' => 'application/pdf' }
+      connection = build_connection(@endpoint_url, headers: headers) do |conn|
+        add_exception_middleware(conn)
+        add_authorization_middleware(conn)
+        add_connection_adapter(conn)
+      end
+      path = "#{entity_path(:invoice)}/#{invoice_id}/pdf"
+      raw_response = raw_request(:get, conn: connection, path: path)
+      raw_response.body
+    end
+
+    # https://developer.intuit.com/docs/api/accounting/invoice
+    # Operation:
+    #
+    # Using email address supplied in Invoice.BillEmail.EmailAddress:
+    #
+    # POST /v3/company/<realmID>/invoice/<invoiceId>/send
+    #   Content type: application/octet-stream
+    #
+    # Specifying an explicit email address:
+    #
+    # POST /v3/company/<realmID>/invoice/<invoiceId>/send?sendTo=<emailAddr>
+    #   Content type: application/octet-stream
+    #
+    # Once email is sent, the following actions happen:
+    #
+    #    The Invoice.EmailStatus parameter is set to EmailSent.
+    #    The Invoice.DeliveryInfo element is populated with sending information<./li>
+    #    The Invoice.BillEmail.Address parameter is updated to the address specified with the value of the sendTo query parameter, if specified.
+    # For example
+    #       "EmailStatus": "EmailSent",
+    #       "DeliveryInfo":
+    #            {
+    #                "DeliveryType": "Email",
+    #                "DeliveryTime": "2014-12-17T11:50:52-08:00"
+    #            },
+    #        "BillEmail": {
+    #          "Address": "test@intuit.com"
+    #        },
+    def deliver_invoice(invoice_id, send_to: nil, params: nil)
+      headers = {
+        'Accept' => 'application/json;charset=UTF-8',
+        'Content-Type' => 'application/octet-stream'
+      }
+      connection = build_connection(@endpoint_url, headers: headers) do |conn|
+        add_authorization_middleware(conn)
+        add_exception_middleware(conn)
+        add_connection_adapter(conn)
+      end
+      params ||= {}
+      params[:sendTo] = send_to if send_to
+      path = "#{entity_path(:invoice)}/#{invoice_id}/send"
+      raw_response = raw_request(:get, conn: connection, path: path, params: params)
+      response(raw_response, entity: :invoice)
+    end
+
+    # https://developer.intuit.com/docs/api/accounting/invoice
+    # Void an invoice
+    #
+    # Operation: POST /v3/company/<realmID>/invoice?operation=void
+    # Content type: application/json
+    #
+    # Use this operation to void an existing invoice object;
+    # include a minimum of Invoice.Id and the current Invoice.SyncToken.
+    #
+    # The transaction remains active but
+    # all amounts and quantities are zeroed
+    # and the string, Voided, is injected into Invoice.PrivateNote, prepended to existing text if present.
+    #
+    # Example:
+    #
+    #  "PrivateNote": "Voided",
+    #  "Balance": 0
+    def void_invoice(invoice_id)
+      # TODO
+    end
+
     private
 
     def get_query_str(entity, query_filter_args)
