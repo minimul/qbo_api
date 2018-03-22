@@ -22,7 +22,11 @@ class QboApi
   include Attachment
   include ApiMethods
 
-  attr_reader :realm_id
+  attr_accessor :token, :token_secret
+  attr_accessor :access_token
+  attr_accessor :realm_id
+  attr_accessor :consumer_key, :consumer_secret
+  attr_accessor :endpoint
 
   REQUEST_TOKEN_URL          = 'https://oauth.intuit.com/oauth/v1/get_request_token'
   ACCESS_TOKEN_URL           = 'https://oauth.intuit.com/oauth/v1/get_access_token'
@@ -33,16 +37,23 @@ class QboApi
   APP_CONNECTION_URL         = APP_CENTER_BASE + '/api/v1/connection'
   LOG_TAG = "[QuickBooks]"
 
-  def initialize(token: nil, token_secret: nil, access_token: nil, realm_id:,
-                 consumer_key: nil, consumer_secret: nil, endpoint: :accounting)
-    @consumer_key = consumer_key || (defined?(CONSUMER_KEY) ? CONSUMER_KEY : nil)
-    @consumer_secret = consumer_secret || (defined?(CONSUMER_SECRET) ? CONSUMER_SECRET : nil)
-    @token = token
-    @token_secret = token_secret
-    @access_token = access_token
-    @realm_id = realm_id
-    @endpoint = endpoint
+  # @param attributes [Hash<Symbol,String>]
+  def initialize(attributes = {})
+    raise ArgumentError, "missing keyword: realm_id" unless attributes.key?(:realm_id)
+    attributes = default_attributes.merge!(attributes)
+    attributes[:consumer_key] ||= (defined?(CONSUMER_KEY) ? CONSUMER_KEY : nil)
+    attributes[:consumer_secret] ||=(defined?(CONSUMER_SECRET) ? CONSUMER_SECRET : nil)
+    attributes.each do |attribute, value|
+      public_send("#{attribute}=", value)
+    end
     @endpoint_url = get_endpoint
+  end
+
+  def default_attributes
+    {
+      token: nil, token_secret: nil, access_token: nil,
+      consumer_key: nil, consumer_secret: nil, endpoint: :accounting
+    }
   end
 
   def connection(url: @endpoint_url)
