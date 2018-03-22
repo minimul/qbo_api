@@ -85,12 +85,18 @@ class QboApi
         pos = 0
         begin
           pos = pos == 0 ? pos + 1 : pos + max
-          results = query("#{select} MAXRESULTS #{max} STARTPOSITION #{pos}", params: params)
+          results = query(offset_query_string(select, limit: max, offset: pos))
           results.each do |entry|
             enum_yielder.yield(entry)
           end if results
         end while (results ? results.size == max : false)
       end
+    end
+
+    # NOTE(BF): QuickBooks offsets start at 1, but our convention is to index at 0.
+    # That is, to get an offset of index 0, pass in 1, and so forth.
+    def offset_query_string(query_string, limit:, offset:)
+      "#{query_string} MAXRESULTS #{limit} STARTPOSITION #{offset}"
     end
 
     def join_or_start_where_clause!(select:)
