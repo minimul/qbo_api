@@ -57,11 +57,11 @@ class QboApi
 
   def get_endpoint
     prod = self.class.production
-    case @endpoint
-    when :accounting
-      prod ? V3_ENDPOINT_BASE_URL.sub("sandbox-", '') : V3_ENDPOINT_BASE_URL
-    when :payments
-      prod ? PAYMENTS_API_BASE_URL.sub("sandbox.", '') : PAYMENTS_API_BASE_URL
+    {
+      accounting: prod ? V3_ENDPOINT_BASE_URL.sub("sandbox-", '') : V3_ENDPOINT_BASE_URL,
+      payments: prod ? PAYMENTS_API_BASE_URL.sub("sandbox.", '') : PAYMENTS_API_BASE_URL
+    }.fetch(endpoint) do
+      raise KeyError, "Invalid endpoint: #{endpoint.inspect}"
     end
   end
 end
