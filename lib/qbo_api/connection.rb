@@ -4,6 +4,11 @@ require 'faraday/detailed_logger'
 
 class QboApi
   module Connection
+    AUTHORIZATION_MIDDLEWARES = []
+
+    def Connection.add_authorization_middleware(strategy_name)
+      Connection::AUTHORIZATION_MIDDLEWARES << strategy_name
+    end
 
     def authorized_json_connection(url, headers: nil)
       headers ||= {}
@@ -81,20 +86,6 @@ class QboApi
       end
     end
 
-    # Part of the OAuth1 API
-    # https://developer.intuit.com/docs/0100_quickbooks_online/0100_essentials/0085_develop_quickbooks_apps/0004_authentication_and_authorization/oauth_management_api#/Reconnect
-    def disconnect
-      path = "#{APP_CONNECTION_URL}/disconnect"
-      request(:get, path: path)
-    end
-
-    # Part of the OAuth1 API
-    # https://developer.intuit.com/docs/0100_quickbooks_online/0100_essentials/0085_develop_quickbooks_apps/0004_authentication_and_authorization/oauth_management_api#/Reconnect
-    def reconnect
-      path = "#{APP_CONNECTION_URL}/reconnect"
-      request(:get, path: path)
-    end
-
     private
 
     def entity_response(data, entity)
@@ -125,33 +116,22 @@ class QboApi
     end
 
     def add_authorization_middleware(conn)
-      if @token != nil
-        # Part of the OAuth1 API
-        gem 'simple_oauth'
-        require 'simple_oauth'
-        conn.request :oauth, oauth_data
-      elsif @access_token != nil
-        conn.request :oauth2, @access_token, token_type: 'bearer'
-      else
-        raise QboApi::Error.new error_body: 'Must set either the token or access_token'
+      Connection::AUTHORIZATION_MIDDLEWARES.find(proc do
+        raise QboApi::Error.new error_body: 'Add a configured authorization_middleware'
+      end) do |strategy_name|
+        next unless public_send("use_#{strategy_name}_middleware?")
+        public_send("add_#{strategy_name}_authorization_middleware", conn)
+        true
       end
-    end
-
-    # Part of the OAuth1 API
-    # Use with simple_oauth OAuth1 middleware
-    # @see #add_authorization_middleware
-    def oauth_data
-      {
-        consumer_key: @consumer_key,
-        consumer_secret: @consumer_secret,
-        token: @token,
-        token_secret: @token_secret
-      }
     end
 
     def entity_name(entity)
       singular(entity)
     end
 
+    require_relative 'connection/oauth1'
+    include OAuth1
+    require_relative 'connection/oauth2'
+    include OAuth2
   end
 end
