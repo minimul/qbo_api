@@ -19,21 +19,27 @@ class QboApi
 
     # @example
     #   get(:customer, 5)
-    #   get(:customer, ["DisplayName", "Dukes Basketball Camp"])
-    #   get(:customer, ["DisplayName", "LIKE", "Dukes%"])
-    #   get(:vendor, ["DisplayName", "IN", "(true, false)"])
-    #   get(:customer, ["DisplayName", "Amy's Bird Sanctuary"])
+    # @see #get_by_query_filter
     def get(entity, id_or_query_filter_args, params: nil)
       if id_or_query_filter_args.is_a?(Array)
-        query_str = get_query_str(entity, id_or_query_filter_args)
-        if resp = query(query_str, params: params)
-          resp.size == 1 ? resp[0] : resp
-        else
-          false
-        end
+        get_by_query_filter(entity, id_or_query_filter_args, params: params)
       else
         path = "#{entity_path(entity)}/#{id_or_query_filter_args}"
         request(:get, entity: entity, path: path, params: params)
+      end
+    end
+
+    # @example
+    #   get_by_query_filter(:customer, ["DisplayName", "Dukes Basketball Camp"])
+    #   get_by_query_filter(:customer, ["DisplayName", "LIKE", "Dukes%"])
+    #   get_by_query_filter(:vendor, ["DisplayName", "IN", "(true, false)"])
+    #   get_by_query_filter(:customer, ["DisplayName", "Amy's Bird Sanctuary"])
+    def get_by_query_filter(entity, query_filter_args, params: nil)
+      query_str = get_query_str(entity, query_filter_args)
+      if resp = query(query_str, params: params)
+        resp.size == 1 ? resp[0] : resp
+      else
+        false
       end
     end
 
@@ -73,7 +79,7 @@ class QboApi
     def to_quote_or_not(str)
       inside_parens_regex = '\(.*\)'
       if str.match(/^(#{inside_parens_regex}|true|false|CURRENT_DATE)$/)
-          str
+        str
       else
         %{'#{esc(str)}'}
       end
@@ -85,7 +91,7 @@ class QboApi
         pos = 0
         begin
           pos = pos == 0 ? pos + 1 : pos + max
-          results = query(offset_query_string(select, limit: max, offset: pos))
+          results = query(offset_query_string(select, limit: max, offset: pos), params: params)
           results.each do |entry|
             enum_yielder.yield(entry)
           end if results

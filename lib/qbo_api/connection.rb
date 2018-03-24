@@ -5,24 +5,45 @@ require 'faraday/detailed_logger'
 class QboApi
   module Connection
 
-    def authorized_json_connection(url:)
-      Faraday.new(url: url) do |faraday|
-        faraday.headers['Content-Type'] = 'application/json;charset=UTF-8'
-        faraday.headers['Accept'] = 'application/json'
-        add_authorization_middleware(faraday)
-        faraday.request :url_encoded
-        faraday.use FaradayMiddleware::RaiseHttpException
-        faraday.response :detailed_logger, QboApi.logger, LOG_TAG if QboApi.log
-        faraday.adapter  Faraday.default_adapter
+    def authorized_json_connection(url, headers: nil)
+      headers ||= {}
+      headers['Accept'] ||= 'application/json;charset=UTF-8' # required "we'll only accept JSON". Can be changed to any `+json` media type.
+      headers['Content-Type'] ||= 'application/json' # required when request has a body, else harmless
+      build_connection(url, headers: headers) do |conn|
+        add_authorization_middleware(conn)
+        add_exception_middleware(conn)
+        conn.request :url_encoded
+        add_connection_adapter(conn)
       end
     end
 
-    def authorized_multipart_connection(url:)
-      multipart_connection = authorized_json_connection(url: url)
-      multipart_connection.headers['Content-Type'] = 'multipart/form-data'
-      multipart_middleware_index = multipart_connection.builder.handlers.index(Faraday::Request::UrlEncoded) || 1
-      multipart_connection.builder.insert(multipart_middleware_index, Faraday::Request::Multipart)
-      multipart_connection
+    def authorized_multipart_connection(url)
+      headers = { 'Content-Type' => 'multipart/form-data' }
+      build_connection(url, headers: headers) do |conn|
+        add_authorization_middleware(conn)
+        add_exception_middleware(conn)
+        conn.request :multipart
+        add_connection_adapter(conn)
+      end
+    end
+
+    # @example
+    #   connection = build_connection('https://oauth.platform.intuit.com', headers: { 'Accept' => 'application/json' }) do |conn|
+    #     conn.basic_auth(client_id, client_secret)
+    #     conn.request :url_encoded # application/x-www-form-urlencoded
+    #     conn.use FaradayMiddleware::ParseJson, parser_options: { symbolize_names: true }
+    #     conn.use Faraday::Response::RaiseError
+    #   end
+    #   raw_response = connection.post {|req|
+    #     req.body = { grant_type: :refresh_token, refresh_token: current_refresh_token }
+    #     req.url '/oauth2/v1/tokens/bearer'
+    #   }
+    def build_connection(url, headers: nil)
+      Faraday.new(url: url) { |conn|
+        conn.response :detailed_logger, QboApi.logger, LOG_TAG if QboApi.log
+        conn.headers.update(headers) if headers
+        yield conn if block_given?
+      }
     end
 
     def request(method, path:, entity: nil, payload: nil, params: nil)
@@ -95,14 +116,22 @@ class QboApi
       end
     end
 
-    def add_authorization_middleware(faraday)
+    def add_connection_adapter(conn)
+      conn.adapter Faraday.default_adapter
+    end
+
+    def add_exception_middleware(conn)
+      conn.use FaradayMiddleware::RaiseHttpException
+    end
+
+    def add_authorization_middleware(conn)
       if @token != nil
         # Part of the OAuth1 API
         gem 'simple_oauth'
         require 'simple_oauth'
-        faraday.request :oauth, oauth_data
+        conn.request :oauth, oauth_data
       elsif @access_token != nil
-        faraday.request :oauth2, @access_token, token_type: 'bearer'
+        conn.request :oauth2, @access_token, token_type: 'bearer'
       else
         raise QboApi::Error.new error_body: 'Must set either the token or access_token'
       end
