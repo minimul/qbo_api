@@ -23,6 +23,8 @@ module FaradayMiddleware
           raise QboApi::InternalServerError.new(error_message(response))
         when 503
           raise QboApi::ServiceUnavailable.new(error_message(response))
+        when 504
+          raise QboApi::GatewayTimeout.new(error_message(response))
         end
       end
     end
