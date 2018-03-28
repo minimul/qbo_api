@@ -5,7 +5,9 @@ describe QboApi do
   context "Use OAuth2" do
     it 'but must set an access_token' do
       api = QboApi.new realm_id: 'test'
-      expect { api.get :customer, 5 }.to raise_error QboApi::Error, "Must set either the token or access_token"
+      expect { api.get :customer, 5 }.to raise_error(QboApi::Error) {|e|
+        expect(e.message).to match(/authorization_middleware/)
+      }
     end
 
     if ENV['QBO_API_OAUTH2_ACCESS_TOKEN']
