@@ -12,8 +12,8 @@ class QboApi
 
     def authorized_json_connection(url, headers: nil)
       headers ||= {}
-      headers['Accept'] ||= 'application/json;charset=UTF-8' # required "we'll only accept JSON". Can be changed to any `+json` media type.
-      headers['Content-Type'] ||= 'application/json' # required when request has a body, else harmless
+      headers['Accept'] ||= 'application/json' # required "we'll only accept JSON". Can be changed to any `+json` media type.
+      headers['Content-Type'] ||= 'application/json;charset=UTF-8' # required when request has a body, else harmless
       build_connection(url, headers: headers) do |conn|
         add_authorization_middleware(conn)
         add_exception_middleware(conn)

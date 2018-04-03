@@ -102,16 +102,16 @@ http_interactions:
       encoding: US-ASCII
       string: ''
     headers:
-      Content-Type:
-      - application/json;charset=UTF-8
       Accept:
       - application/json
+      Content-Type:
+      - application/json;charset=UTF-8
       User-Agent:
-      - Faraday v0.9.2
+      - Faraday v0.14.0
       Authorization:
-      - OAuth oauth_consumer_key="<CONSUMER_KEY>", oauth_nonce="e603739203fb6db351b308005a66cbe8",
-        oauth_signature="pTXGCv%2BzIOeruJebg8x8lZ333HA%3D", oauth_signature_method="HMAC-SHA1",
-        oauth_timestamp="1480601630", oauth_token="<ACCESS_TOKEN>", oauth_version="1.0"
+      - OAuth oauth_consumer_key="<CONSUMER_KEY>", oauth_nonce="9b1c6c283c23552292f6afaee40ad659",
+        oauth_signature="y4DNAA2i8iQj3jbATZivvBKkOMo%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1522785222", oauth_token="<ACCESS_TOKEN>", oauth_version="1.0"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -122,11 +122,11 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Thu, 01 Dec 2016 14:13:51 GMT
+      - Tue, 03 Apr 2018 19:53:43 GMT
       Content-Type:
       - application/json;charset=UTF-8
-      Content-Length:
-      - '571'
+      Transfer-Encoding:
+      - chunked
       Connection:
       - keep-alive
       Keep-Alive:
@@ -134,43 +134,43 @@ http_interactions:
       Strict-Transport-Security:
       - max-age=15552000
       Intuit-Tid:
-      - gw-323cb419-a829-4afb-8dbb-66e91f497e9a
+      - 8432e371-ed8d-eaa9-157f-282fcb465f2b
       Set-Cookie:
-      - JSESSIONID=9DAA3D16BE4B6BD689B4EA2A8202A433.c50-pprdsbxas801; Path=/; Secure;
-        HttpOnly
+      - JSESSIONID=A44E3987277978BAA35AA7CF17891B32.c50-pprdsbxas803; Domain=qbo.intuit.com;
+        Path=/; Secure; HttpOnly
       Qbo-Version:
-      - '1611.1350'
-      X-Newrelic-App-Data:
-      - PxQEVFFbAQoTVVZaAAgOU1ETGhE1AwE2QgNWEVlbQFtcC2VOfw5BDwVaXhsDB21BWThOE1VeAlY4HkAAPkkADV0SWQxBZBsYb0paFEIVXA8BRGtOTEEUAx5UTVIZAANVXAMEB1RKU04SAF4BCQEBVgtcX1lUWVBQUBQbBwcPS1Zt
+      - '1803.784'
       Cache-Control:
       - max-age=0, no-cache, no-store, must-revalidate, private
       Expires:
       - '0'
+      Service-Time:
+      - total=159, db=80
     body:
-      encoding: UTF-8
+      encoding: ASCII-8BIT
       string: '{"Customer":{"Taxable":true,"Job":false,"BillWithParent":false,"Balance":0,"BalanceWithJobs":0,"CurrencyRef":{"value":"USD","name":"United
-        States Dollar"},"PreferredDeliveryMethod":"Print","domain":"QBO","sparse":false,"Id":"60","SyncToken":"2","MetaData":{"CreateTime":"2015-11-05T05:45:17-08:00","LastUpdatedTime":"2016-08-27T04:12:01-07:00"},"FullyQualifiedName":"Jack
+        States Dollar"},"PreferredDeliveryMethod":"Print","domain":"QBO","sparse":false,"Id":"60","SyncToken":"3","MetaData":{"CreateTime":"2015-11-05T05:45:17-08:00","LastUpdatedTime":"2016-12-01T06:13:52-08:00"},"FullyQualifiedName":"Jack
         Doe","DisplayName":"Jack Doe","PrintOnCheckName":"Jack Doe","Active":true,"PrimaryPhone":{"FreeFormNumber":"(415)
-        444-1234"},"DefaultTaxCodeRef":{"value":"2"}},"time":"2016-12-01T06:13:51.681-08:00"}'
+        444-1234"},"DefaultTaxCodeRef":{"value":"2"}},"time":"2018-04-03T12:53:43.106-07:00"}'
     http_version: 
-  recorded_at: Thu, 01 Dec 2016 14:13:51 GMT
+  recorded_at: Tue, 03 Apr 2018 19:53:43 GMT
 - request:
     method: post
     uri: https://sandbox-quickbooks.api.intuit.com/v3/customer?minorversion=8
     body:
       encoding: UTF-8
-      string: '{"DisplayName":"Jack Doe","PrimaryPhone":{"FreeFormNumber":"(415) 444-1234"},"Id":"60","SyncToken":"2"}'
+      string: '{"DisplayName":"Jack Doe","PrimaryPhone":{"FreeFormNumber":"(415) 444-1234"},"Id":"60","SyncToken":"3"}'
     headers:
-      Content-Type:
-      - application/json;charset=UTF-8
       Accept:
       - application/json
+      Content-Type:
+      - application/json;charset=UTF-8
       User-Agent:
-      - Faraday v0.9.2
+      - Faraday v0.14.0
       Authorization:
-      - OAuth oauth_consumer_key="<CONSUMER_KEY>", oauth_nonce="7af7060dd0b0c0e8b2662f08cc998a9e",
-        oauth_signature="xFKJ8KIEs1A7Lfh9GZcmIGSN9i8%3D", oauth_signature_method="HMAC-SHA1",
-        oauth_timestamp="1480601631", oauth_token="<ACCESS_TOKEN>", oauth_version="1.0"
+      - OAuth oauth_consumer_key="<CONSUMER_KEY>", oauth_nonce="8b5b916c77a6131d3a5305f8b20e2a48",
+        oauth_signature="WSjO8N%2F9PkHciwJVAiYCEb%2BVVTM%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1522785223", oauth_token="<ACCESS_TOKEN>", oauth_version="1.0"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -181,11 +181,11 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Thu, 01 Dec 2016 14:13:52 GMT
+      - Tue, 03 Apr 2018 19:53:43 GMT
       Content-Type:
       - application/json;charset=UTF-8
-      Content-Length:
-      - '571'
+      Transfer-Encoding:
+      - chunked
       Connection:
       - keep-alive
       Keep-Alive:
@@ -193,24 +193,24 @@ http_interactions:
       Strict-Transport-Security:
       - max-age=15552000
       Intuit-Tid:
-      - gw-aff355d8-f2b3-4987-908a-84e11823b390
+      - c1f06ebb-ed9d-3ed9-b135-0e8c8980b466
       Set-Cookie:
-      - JSESSIONID=9E9DD66E13E1136F4C5D760CDACD9B8E.c50-pprdsbxas801; Path=/; Secure;
-        HttpOnly
+      - JSESSIONID=6E0DB1C263BF71F2F81653668F79A466.c50-pprdsbxas803; Domain=qbo.intuit.com;
+        Path=/; Secure; HttpOnly
       Qbo-Version:
-      - '1611.1350'
-      X-Newrelic-App-Data:
-      - PxQEVFFbAQoTVVZaAAgOU1ETGhE1AwE2QgNWEVlbQFtcC2VOfw5BDwVaXhsDB21BWThOE1VeAlY4HkAAPkkADV0SWQxBZBsYb0paFEIVXA8BRBVNVk0IHwBKUVsGBQ9RUAkaAlJVT0AEAV1XAV0BBVYGDgABA1ZVRhpRAAoQXW4=
+      - '1803.784'
       Cache-Control:
       - max-age=0, no-cache, no-store, must-revalidate, private
       Expires:
       - '0'
+      Service-Time:
+      - total=114, db=34
     body:
-      encoding: UTF-8
+      encoding: ASCII-8BIT
       string: '{"Customer":{"Taxable":true,"Job":false,"BillWithParent":false,"Balance":0,"BalanceWithJobs":0,"CurrencyRef":{"value":"USD","name":"United
-        States Dollar"},"PreferredDeliveryMethod":"Print","domain":"QBO","sparse":false,"Id":"60","SyncToken":"3","MetaData":{"CreateTime":"2015-11-05T05:45:17-08:00","LastUpdatedTime":"2016-12-01T06:13:52-08:00"},"FullyQualifiedName":"Jack
+        States Dollar"},"PreferredDeliveryMethod":"Print","domain":"QBO","sparse":false,"Id":"60","SyncToken":"4","MetaData":{"CreateTime":"2015-11-05T05:45:17-08:00","LastUpdatedTime":"2018-04-03T12:53:43-07:00"},"FullyQualifiedName":"Jack
         Doe","DisplayName":"Jack Doe","PrintOnCheckName":"Jack Doe","Active":true,"PrimaryPhone":{"FreeFormNumber":"(415)
-        444-1234"},"DefaultTaxCodeRef":{"value":"2"}},"time":"2016-12-01T06:13:52.481-08:00"}'
+        444-1234"},"DefaultTaxCodeRef":{"value":"2"}},"time":"2018-04-03T12:53:43.774-07:00"}'
     http_version: 
-  recorded_at: Thu, 01 Dec 2016 14:13:52 GMT
-recorded_with: VCR 2.9.3
+  recorded_at: Tue, 03 Apr 2018 19:53:43 GMT
+recorded_with: VCR 3.0.3
