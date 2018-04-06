@@ -59,7 +59,9 @@ end
 # @yield the cassette
 # @yield an Integer (unix epoch time) for use in creating unique ids per cassette
 def use_cassette(name, options={})
-  options = {record: :none}.merge!(options)
+  # Set VCR_RECORD=once to re_record
+  record_option = ENV.fetch("VCR_RECORD") { "none" }.to_sym
+  options = {record: record_option }.merge!(options)
   VCR.use_cassette(name, options) do |cassette|
     yield cassette, Time.now.to_i
   end
