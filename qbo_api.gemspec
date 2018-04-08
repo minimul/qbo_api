@@ -22,12 +22,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec"
   spec.add_development_dependency 'webmock'
-  spec.add_development_dependency 'sinatra'
-  spec.add_development_dependency 'rack-oauth2'
   spec.add_development_dependency 'simple_oauth'
-  spec.add_development_dependency 'omniauth'
-  spec.add_development_dependency 'omniauth-quickbooks'
-  spec.add_development_dependency 'shotgun'
   spec.add_development_dependency 'dotenv'
   spec.add_development_dependency 'vcr'
   spec.add_development_dependency 'awesome_print'
