@@ -30,6 +30,12 @@ BASE_APP_CONFIG = proc do
   set :sessions, :true
   set :port, PORT
 
+  before do
+    # Rewrite trailing slashes
+    next unless request.path_info =~ %r{/(.+)/$}
+    redirect(Regexp.last_match[1], 301)
+  end
+
   post '/webhooks' do
     request.body.rewind
     data = request.body.read
