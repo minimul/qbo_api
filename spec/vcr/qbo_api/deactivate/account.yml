@@ -7,16 +7,14 @@ http_interactions:
       encoding: US-ASCII
       string: ''
     headers:
-      Content-Type:
-      - application/json;charset=UTF-8
       Accept:
       - application/json
+      Content-Type:
+      - application/json;charset=UTF-8
       User-Agent:
-      - Faraday v0.13.1
+      - Faraday v0.14.0
       Authorization:
-      - OAuth oauth_consumer_key="<CONSUMER_KEY>", oauth_nonce="6b15306b976204b8c31553465de0030f",
-        oauth_signature="3x5b%2F79DvhLSURy4R3DBnoTL4hQ%3D", oauth_signature_method="HMAC-SHA1",
-        oauth_timestamp="1515183332", oauth_token="<ACCESS_TOKEN>", oauth_version="1.0"
+      - Bearer <OAUTH2_ACCESS_TOKEN>
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -27,11 +25,11 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Fri, 05 Jan 2018 20:15:33 GMT
+      - Sun, 08 Apr 2018 21:17:18 GMT
       Content-Type:
       - application/json;charset=UTF-8
-      Content-Length:
-      - '495'
+      Transfer-Encoding:
+      - chunked
       Connection:
       - keep-alive
       Keep-Alive:
@@ -39,25 +37,25 @@ http_interactions:
       Strict-Transport-Security:
       - max-age=15552000
       Intuit-Tid:
-      - 54cf4555-5adc-01c2-1e08-a1cb1db5178a
+      - dbaf97fc-d8db-6521-9772-94c09272a410
       Set-Cookie:
-      - JSESSIONID=99A6387CDC3230F7EF02553D8818328D.c50-pprdsbxas900; Domain=qbo.intuit.com;
+      - JSESSIONID=82FDBBAFE0D568D064E299BEE1BA386B.c50-pprdsbxas800; Domain=qbo.intuit.com;
         Path=/; Secure; HttpOnly
       Qbo-Version:
-      - '1712.1280'
+      - '1803.859'
       Cache-Control:
       - max-age=0, no-cache, no-store, must-revalidate, private
       Expires:
       - '0'
       Service-Time:
-      - total=118, db=79
+      - total=29, db=13
     body:
-      encoding: UTF-8
+      encoding: ASCII-8BIT
       string: '{"Account":{"Name":"Fees Billed","SubAccount":false,"FullyQualifiedName":"Fees
         Billed","Active":true,"Classification":"Revenue","AccountType":"Income","AccountSubType":"ServiceFeeIncome","CurrentBalance":0,"CurrentBalanceWithSubAccounts":0,"CurrencyRef":{"value":"USD","name":"United
-        States Dollar"},"domain":"QBO","sparse":false,"Id":"5","SyncToken":"0","MetaData":{"CreateTime":"2015-10-01T14:42:07-07:00","LastUpdatedTime":"2015-10-01T14:42:07-07:00"}},"time":"2018-01-05T12:15:33.542-08:00"}'
+        States Dollar"},"domain":"QBO","sparse":false,"Id":"5","SyncToken":"0","MetaData":{"CreateTime":"2018-03-04T14:42:07-08:00","LastUpdatedTime":"2018-03-04T14:42:07-08:00"}},"time":"2018-04-08T14:17:18.714-07:00"}'
     http_version: 
-  recorded_at: Fri, 05 Jan 2018 20:15:33 GMT
+  recorded_at: Sun, 08 Apr 2018 21:17:18 GMT
 - request:
     method: post
     uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/account
@@ -66,16 +64,14 @@ http_interactions:
       string: '{"Id":"5","SyncToken":"0","sparse":true,"Active":false,"Name":"Fees
         Billed"}'
     headers:
-      Content-Type:
-      - application/json;charset=UTF-8
       Accept:
       - application/json
+      Content-Type:
+      - application/json;charset=UTF-8
       User-Agent:
-      - Faraday v0.13.1
+      - Faraday v0.14.0
       Authorization:
-      - OAuth oauth_consumer_key="<CONSUMER_KEY>", oauth_nonce="d7b906e6eb9e299f68e48de63e69d4fb",
-        oauth_signature="SAKZT%2B59EftgzYEa7aiuD%2FzgkEo%3D", oauth_signature_method="HMAC-SHA1",
-        oauth_timestamp="1515183333", oauth_token="<ACCESS_TOKEN>", oauth_version="1.0"
+      - Bearer <OAUTH2_ACCESS_TOKEN>
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -86,11 +82,11 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Fri, 05 Jan 2018 20:15:35 GMT
+      - Sun, 08 Apr 2018 21:17:19 GMT
       Content-Type:
       - application/json;charset=UTF-8
-      Content-Length:
-      - '516'
+      Transfer-Encoding:
+      - chunked
       Connection:
       - keep-alive
       Keep-Alive:
@@ -98,23 +94,23 @@ http_interactions:
       Strict-Transport-Security:
       - max-age=15552000
       Intuit-Tid:
-      - f40439ba-f1c4-91dc-8dde-ea817756ae70
+      - 6ac2ce11-d84d-c5d7-cb3f-e7dac0b57d6b
       Set-Cookie:
-      - JSESSIONID=66D1218DC31C987DE5041F896316DEBA.c50-pprdsbxas902; Domain=qbo.intuit.com;
+      - JSESSIONID=2F88CBD9C3FBDD84731968CEB02A5898.c50-pprdsbxas803; Domain=qbo.intuit.com;
         Path=/; Secure; HttpOnly
       Qbo-Version:
-      - '1712.1280'
+      - '1803.859'
       Cache-Control:
       - max-age=0, no-cache, no-store, must-revalidate, private
       Expires:
       - '0'
       Service-Time:
-      - total=955, db=616
+      - total=280, db=190
     body:
-      encoding: UTF-8
+      encoding: ASCII-8BIT
       string: '{"Account":{"Name":"Fees Billed (deleted)","SubAccount":false,"FullyQualifiedName":"Fees
         Billed (deleted)","Active":false,"Classification":"Revenue","AccountType":"Income","AccountSubType":"ServiceFeeIncome","CurrentBalance":0,"CurrentBalanceWithSubAccounts":0,"CurrencyRef":{"value":"USD","name":"United
-        States Dollar"},"domain":"QBO","sparse":false,"Id":"5","SyncToken":"1","MetaData":{"CreateTime":"2015-10-01T14:42:07-07:00","LastUpdatedTime":"2018-01-05T12:15:34-08:00"}},"time":"2018-01-05T12:15:34.477-08:00"}'
+        States Dollar"},"domain":"QBO","sparse":false,"Id":"5","SyncToken":"1","MetaData":{"CreateTime":"2018-03-04T14:42:07-08:00","LastUpdatedTime":"2018-04-08T14:17:19-07:00"}},"time":"2018-04-08T14:17:19.089-07:00"}'
     http_version: 
-  recorded_at: Fri, 05 Jan 2018 20:15:35 GMT
-recorded_with: VCR 3.0.3
+  recorded_at: Sun, 08 Apr 2018 21:17:19 GMT
+recorded_with: VCR 4.0.0

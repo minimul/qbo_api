@@ -225,7 +225,7 @@ describe QboApi::ApiMethods do
     it 'retrieves sales receipts' do
       use_cassette("qbo_api/all/sales_receipts") do
         first_id = api.all(:sales_receipts).first['Id']
-        expect(first_id).to eq "47"
+        expect(first_id).to eq "17"
       end
     end
   end

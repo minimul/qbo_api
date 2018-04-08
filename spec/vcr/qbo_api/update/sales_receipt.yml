@@ -2,123 +2,19 @@
 http_interactions:
 - request:
     method: get
-    uri: https://sandbox-quickbooks.api.intuit.com/v3/sales_receipt/47
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/salesreceipt/17
     body:
       encoding: US-ASCII
       string: ''
     headers:
-      Content-Type:
-      - application/json;charset=UTF-8
       Accept:
       - application/json
-      User-Agent:
-      - Faraday v0.9.2
-      Authorization:
-      - OAuth oauth_consumer_key="<CONSUMER_KEY>", oauth_nonce="ce6974184dc0b107835510193a313523",
-        oauth_signature="6mf4Rw9%2B8MppL1TV4eIkeYKKxCE%3D", oauth_signature_method="HMAC-SHA1",
-        oauth_timestamp="1459175598", oauth_token="<ACCESS_TOKEN>", oauth_version="1.0"
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-  response:
-    status:
-      code: 500
-      message: Internal Server Error
-    headers:
-      Server:
-      - nginx
-      Date:
-      - Mon, 28 Mar 2016 14:33:19 GMT
-      Content-Type:
-      - application/json
-      Content-Length:
-      - '280'
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - timeout=5
-      Strict-Transport-Security:
-      - max-age=15552000
-      Intuit-Tid:
-      - gw-056bd2fe-0031-4748-ada3-814492d1acdc
-      Vary:
-      - Accept-Encoding
-      Via:
-      - 1.1 ipp-gateway-ap06
-    body:
-      encoding: ASCII-8BIT
-      string: '{"Fault":{"Error":[{"Message":"An application error has occurred while
-        processing your request","Detail":"System Failure Error: Could not find resource
-        for relative : /v3/company/<COMPANY_ID>/sales_receipt/47 of full path: https://internal.sandbox.qbo.intuit.com/qbo50/v3/company/<COMPANY_ID>/sales_receipt/47","code":"10000"}],"type":"SystemFault"},"time":"2016-03-28T07:33:19.968-07:00"}'
-    http_version: 
-  recorded_at: Mon, 28 Mar 2016 14:33:20 GMT
-- request:
-    method: get
-    uri: https://sandbox-quickbooks.api.intuit.com/v3/SalesReceipt/47
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
       Content-Type:
       - application/json;charset=UTF-8
-      Accept:
-      - application/json
       User-Agent:
-      - Faraday v0.9.2
+      - Faraday v0.14.0
       Authorization:
-      - OAuth oauth_consumer_key="<CONSUMER_KEY>", oauth_nonce="9031548a27800a23857882a4459f081e",
-        oauth_signature="MRf251rksDP7Tlr5vqwhNQJ0Q90%3D", oauth_signature_method="HMAC-SHA1",
-        oauth_timestamp="1459178855", oauth_token="<ACCESS_TOKEN>", oauth_version="1.0"
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-  response:
-    status:
-      code: 500
-      message: Internal Server Error
-    headers:
-      Server:
-      - nginx
-      Date:
-      - Mon, 28 Mar 2016 15:27:37 GMT
-      Content-Type:
-      - application/json
-      Content-Length:
-      - '280'
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - timeout=5
-      Strict-Transport-Security:
-      - max-age=15552000
-      Intuit-Tid:
-      - gw-e21656e7-8d83-4ac7-95e1-40d90264310a
-      Vary:
-      - Accept-Encoding
-      Via:
-      - 1.1 ipp-gateway-ap06
-    body:
-      encoding: ASCII-8BIT
-      string: '{"Fault":{"Error":[{"Message":"An application error has occurred while
-        processing your request","Detail":"System Failure Error: Could not find resource
-        for relative : /v3/company/<COMPANY_ID>/SalesReceipt/47 of full path: https://internal.sandbox.qbo.intuit.com/qbo50/v3/company/<COMPANY_ID>/SalesReceipt/47","code":"10000"}],"type":"SystemFault"},"time":"2016-03-28T08:27:37.281-07:00"}'
-    http_version: 
-  recorded_at: Mon, 28 Mar 2016 15:27:37 GMT
-- request:
-    method: get
-    uri: https://sandbox-quickbooks.api.intuit.com/v3/query?query=SELECT%20*%20FROM%20SalesReceipt%20MAXRESULTS%201000%20STARTPOSITION%201
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Content-Type:
-      - application/json;charset=UTF-8
-      Accept:
-      - application/json
-      User-Agent:
-      - Faraday v0.9.2
-      Authorization:
-      - OAuth oauth_consumer_key="<CONSUMER_KEY>", oauth_nonce="6ea538f6b73088ab93217f0dab9048d9",
-        oauth_signature="zk900l7aeoiZQbmwk644%2BIKgqO4%3D", oauth_signature_method="HMAC-SHA1",
-        oauth_timestamp="1459179548", oauth_token="<ACCESS_TOKEN>", oauth_version="1.0"
+      - Bearer <OAUTH2_ACCESS_TOKEN>
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -129,7 +25,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Mon, 28 Mar 2016 15:39:09 GMT
+      - Sun, 08 Apr 2018 21:17:14 GMT
       Content-Type:
       - application/json;charset=UTF-8
       Transfer-Encoding:
@@ -141,64 +37,44 @@ http_interactions:
       Strict-Transport-Security:
       - max-age=15552000
       Intuit-Tid:
-      - gw-3a11a241-9e4a-4397-ac6a-22bb974199d2
+      - 1cbfdffd-9b29-fc26-799a-20512333786b
+      Set-Cookie:
+      - JSESSIONID=EE131DB5C8C3507A7C6794244306DCC2.c50-pprdsbxas800; Domain=qbo.intuit.com;
+        Path=/; Secure; HttpOnly
       Qbo-Version:
-      - '1603.483'
+      - '1803.859'
       Cache-Control:
       - max-age=0, no-cache, no-store, must-revalidate, private
       Expires:
       - '0'
-      Via:
-      - 1.1 ipp-gateway-ap05
+      Service-Time:
+      - total=434, db=271
     body:
       encoding: ASCII-8BIT
-      string: '{"QueryResponse":{"SalesReceipt":[{"domain":"QBO","sparse":false,"Id":"47","SyncToken":"0","MetaData":{"CreateTime":"2015-10-07T11:40:52-07:00","LastUpdatedTime":"2015-10-07T11:40:52-07:00"},"CustomField":[{"DefinitionId":"1","Name":"Crew
-        #","Type":"StringType"}],"DocNumber":"1014","TxnDate":"2015-10-05","CurrencyRef":{"value":"USD","name":"United
-        States Dollar"},"Line":[{"Id":"1","LineNum":1,"Description":"Weekly Gardening
-        Service","Amount":140.00,"DetailType":"SalesItemLineDetail","SalesItemLineDetail":{"ItemRef":{"value":"6","name":"Gardening"},"UnitPrice":35,"Qty":4,"TaxCodeRef":{"value":"NON"}}},{"Amount":140.00,"DetailType":"SubTotalLineDetail","SubTotalLineDetail":{}}],"TxnTaxDetail":{"TotalTax":0},"CustomerRef":{"value":"4","name":"Diego
-        Rodriguez"},"CustomerMemo":{"value":"Thank you for your business and have
-        a great day!"},"BillAddr":{"Id":"66","Line1":"Diego Rodriguez","Line2":"321
-        Channing","Line3":"Palo Alto, CA  94303","Lat":"37.4530553","Long":"-122.1178261"},"TotalAmt":140.00,"ApplyTaxAfterDiscount":false,"PrintStatus":"NotSet","EmailStatus":"NotSet","BillEmail":{"Address":"Diego@Rodriguez.com"},"Balance":0,"DepositToAccountRef":{"value":"4","name":"Undeposited
-        Funds"}},{"domain":"QBO","sparse":false,"Id":"38","SyncToken":"0","MetaData":{"CreateTime":"2015-10-07T11:15:46-07:00","LastUpdatedTime":"2015-10-07T11:15:46-07:00"},"CustomField":[{"DefinitionId":"1","Name":"Crew
-        #","Type":"StringType"}],"DocNumber":"1011","TxnDate":"2015-10-07","CurrencyRef":{"value":"USD","name":"United
-        States Dollar"},"Line":[{"Id":"1","LineNum":1,"Description":"Pest Control
-        Services","Amount":87.50,"DetailType":"SalesItemLineDetail","SalesItemLineDetail":{"ItemRef":{"value":"10","name":"Pest
-        Control"},"UnitPrice":35,"Qty":2.5,"TaxCodeRef":{"value":"NON"}}},{"Amount":87.50,"DetailType":"SubTotalLineDetail","SubTotalLineDetail":{}},{"Amount":8.75,"DetailType":"DiscountLineDetail","DiscountLineDetail":{"PercentBased":true,"DiscountPercent":10,"DiscountAccountRef":{"value":"86","name":"Discounts
-        given"}}}],"TxnTaxDetail":{"TotalTax":0},"CustomerRef":{"value":"15","name":"Pye''s
-        Cakes"},"CustomerMemo":{"value":"Thank you for your business and have a great
-        day!"},"BillAddr":{"Id":"57","Line1":"Karen Pye","Line2":"Pye''s Cakes","Line3":"350
-        Mountain View Dr.","Line4":"South Orange, NJ  07079","Lat":"40.7489277","Long":"-74.2609903"},"ShipAddr":{"Id":"15","Line1":"350
-        Mountain View Dr.","City":"South Orange","CountrySubDivisionCode":"NJ","PostalCode":"07079","Lat":"40.7633073","Long":"-74.2426072"},"TotalAmt":78.75,"ApplyTaxAfterDiscount":false,"PrintStatus":"NotSet","EmailStatus":"NotSet","BillEmail":{"Address":"karen@pye.com"},"Balance":0,"PaymentMethodRef":{"value":"1","name":"Cash"},"DepositToAccountRef":{"value":"4","name":"Undeposited
-        Funds"}},{"domain":"QBO","sparse":false,"Id":"17","SyncToken":"0","MetaData":{"CreateTime":"2015-10-06T15:12:39-07:00","LastUpdatedTime":"2015-10-06T15:12:39-07:00"},"CustomField":[{"DefinitionId":"1","Name":"Crew
-        #","Type":"StringType"}],"DocNumber":"1008","TxnDate":"2015-09-14","CurrencyRef":{"value":"USD","name":"United
+      string: '{"SalesReceipt":{"domain":"QBO","sparse":false,"Id":"17","SyncToken":"0","MetaData":{"CreateTime":"2018-03-09T15:12:39-08:00","LastUpdatedTime":"2018-03-09T15:12:39-08:00"},"CustomField":[{"DefinitionId":"1","Name":"Crew
+        #","Type":"StringType"}],"DocNumber":"1008","TxnDate":"2018-02-15","CurrencyRef":{"value":"USD","name":"United
         States Dollar"},"Line":[{"Id":"1","LineNum":1,"Description":"Custom Design","Amount":225.00,"DetailType":"SalesItemLineDetail","SalesItemLineDetail":{"ItemRef":{"value":"4","name":"Design"},"UnitPrice":75,"Qty":3,"TaxCodeRef":{"value":"NON"}}},{"Amount":225.00,"DetailType":"SubTotalLineDetail","SubTotalLineDetail":{}}],"TxnTaxDetail":{"TotalTax":0},"CustomerRef":{"value":"14","name":"Kate
         Whelan"},"CustomerMemo":{"value":"Thank you for your business and have a great
         day!"},"BillAddr":{"Id":"54","Line1":"Kate Whelan","Line2":"45 First St.","Line3":"Menlo
         Park, CA  94304 USA","Lat":"37.3813444","Long":"-122.1802812"},"ShipAddr":{"Id":"14","Line1":"45
-        First St.","City":"Menlo Park","Country":"USA","CountrySubDivisionCode":"CA","PostalCode":"94304","Lat":"37.4585825","Long":"-122.1352789"},"TotalAmt":225.00,"ApplyTaxAfterDiscount":false,"PrintStatus":"NeedToPrint","EmailStatus":"NotSet","BillEmail":{"Address":"Kate@Whelan.com"},"Balance":0,"DepositToAccountRef":{"value":"35","name":"Checking"}},{"domain":"QBO","sparse":false,"Id":"11","SyncToken":"0","MetaData":{"CreateTime":"2015-10-06T14:59:48-07:00","LastUpdatedTime":"2015-10-06T14:59:48-07:00"},"CustomField":[{"DefinitionId":"1","Name":"Crew
-        #","Type":"StringType"}],"DocNumber":"1003","TxnDate":"2015-10-04","CurrencyRef":{"value":"USD","name":"United
-        States Dollar"},"Line":[{"Id":"1","LineNum":1,"Description":"Custom Design","Amount":337.50,"DetailType":"SalesItemLineDetail","SalesItemLineDetail":{"ItemRef":{"value":"4","name":"Design"},"UnitPrice":75,"Qty":4.5,"TaxCodeRef":{"value":"NON"}}},{"Amount":337.50,"DetailType":"SubTotalLineDetail","SubTotalLineDetail":{}}],"TxnTaxDetail":{"TotalTax":0},"CustomerRef":{"value":"6","name":"Dylan
-        Sollfrank"},"CustomerMemo":{"value":"Thank you for your business and have
-        a great day!"},"BillAddr":{"Id":"49","Line1":"Dylan Sollfrank","Lat":"INVALID","Long":"INVALID"},"TotalAmt":337.50,"ApplyTaxAfterDiscount":false,"PrintStatus":"NotSet","EmailStatus":"NotSet","Balance":0,"PaymentMethodRef":{"value":"2","name":"Check"},"PaymentRefNum":"10264","DepositToAccountRef":{"value":"35","name":"Checking"}}],"startPosition":1,"maxResults":4},"time":"2016-03-28T08:39:09.682-07:00"}'
+        First St.","City":"Menlo Park","Country":"USA","CountrySubDivisionCode":"CA","PostalCode":"94304","Lat":"37.4585825","Long":"-122.1352789"},"TotalAmt":225.00,"ApplyTaxAfterDiscount":false,"PrintStatus":"NeedToPrint","EmailStatus":"NotSet","BillEmail":{"Address":"Kate@Whelan.com"},"Balance":0,"DepositToAccountRef":{"value":"35","name":"Checking"}},"time":"2018-04-08T14:17:13.713-07:00"}'
     http_version: 
-  recorded_at: Mon, 28 Mar 2016 15:39:09 GMT
+  recorded_at: Sun, 08 Apr 2018 21:17:14 GMT
 - request:
     method: post
-    uri: https://sandbox-quickbooks.api.intuit.com/v3/salesreceipt
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/salesreceipt?minorversion=4&requestid=b6421f79-893d-46ac-bd2e-f85ff1497fdc
     body:
       encoding: UTF-8
       string: '{"Line":[{"Description":"Custom Design","Amount":337.5,"DetailType":"SalesItemLineDetail","SalesItemLineDetail":{"ItemRef":{"value":"4","name":"Design"},"UnitPrice":75,"Qty":4.5,"TaxCodeRef":{"value":"NON"}}}],"Id":"17","SyncToken":"0"}'
     headers:
-      Content-Type:
-      - application/json;charset=UTF-8
       Accept:
       - application/json
+      Content-Type:
+      - application/json;charset=UTF-8
       User-Agent:
-      - Faraday v0.9.2
+      - Faraday v0.14.0
       Authorization:
-      - OAuth oauth_consumer_key="<CONSUMER_KEY>", oauth_nonce="dd4abdc2371e5eeee9dfd63aaa998549",
-        oauth_signature="RvR73Nqd%2BqGzR83Vf%2Bc%2FkKp7fZw%3D", oauth_signature_method="HMAC-SHA1",
-        oauth_timestamp="1459180904", oauth_token="<ACCESS_TOKEN>", oauth_version="1.0"
+      - Bearer <OAUTH2_ACCESS_TOKEN>
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -209,7 +85,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Mon, 28 Mar 2016 16:01:46 GMT
+      - Sun, 08 Apr 2018 21:17:15 GMT
       Content-Type:
       - application/json;charset=UTF-8
       Transfer-Encoding:
@@ -221,198 +97,24 @@ http_interactions:
       Strict-Transport-Security:
       - max-age=15552000
       Intuit-Tid:
-      - gw-278903bf-e9f5-4a1b-b58d-3feddfbbef39
+      - 78311cac-05b8-41b8-3fa6-7a739c8c3ffb
+      Set-Cookie:
+      - JSESSIONID=4E726479BBFEAF65390EA8B3DD9719B8.c50-pprdsbxas802; Domain=qbo.intuit.com;
+        Path=/; Secure; HttpOnly
       Qbo-Version:
-      - '1603.483'
+      - '1803.859'
       Cache-Control:
       - max-age=0, no-cache, no-store, must-revalidate, private
       Expires:
       - '0'
-      Via:
-      - 1.1 ipp-gateway-ap05
+      Service-Time:
+      - total=952, db=601
     body:
       encoding: ASCII-8BIT
-      string: '{"SalesReceipt":{"domain":"QBO","sparse":false,"Id":"17","SyncToken":"1","MetaData":{"CreateTime":"2015-10-06T15:12:39-07:00","LastUpdatedTime":"2016-03-28T09:01:45-07:00"},"CustomField":[{"DefinitionId":"1","Name":"Crew
-        #","Type":"StringType"}],"DocNumber":"1008","TxnDate":"2016-03-28","CurrencyRef":{"value":"USD","name":"United
+      string: '{"SalesReceipt":{"domain":"QBO","sparse":false,"Id":"17","SyncToken":"1","MetaData":{"CreateTime":"2018-03-09T15:12:39-08:00","LastUpdatedTime":"2018-04-08T14:17:14-07:00"},"CustomField":[{"DefinitionId":"1","Name":"Crew
+        #","Type":"StringType"}],"DocNumber":"1008","TxnDate":"2018-04-08","CurrencyRef":{"value":"USD","name":"United
         States Dollar"},"Line":[{"Id":"2","LineNum":1,"Description":"Custom Design","Amount":337.50,"DetailType":"SalesItemLineDetail","SalesItemLineDetail":{"ItemRef":{"value":"4","name":"Design"},"UnitPrice":75,"Qty":4.5,"TaxCodeRef":{"value":"NON"}}},{"Amount":337.50,"DetailType":"SubTotalLineDetail","SubTotalLineDetail":{}}],"TxnTaxDetail":{"TotalTax":0},"TotalAmt":337.50,"ApplyTaxAfterDiscount":false,"PrintStatus":"NeedToPrint","EmailStatus":"NotSet","Balance":0,"DepositToAccountRef":{"value":"4","name":"Undeposited
-        Funds"}},"time":"2016-03-28T09:01:45.194-07:00"}'
+        Funds"}},"time":"2018-04-08T14:17:14.481-07:00"}'
     http_version: 
-  recorded_at: Mon, 28 Mar 2016 16:01:46 GMT
-- request:
-    method: post
-    uri: https://sandbox-quickbooks.api.intuit.com/v3/salesreceipt?minorversion=4
-    body:
-      encoding: UTF-8
-      string: '{"Line":[{"Description":"Custom Design","Amount":337.5,"DetailType":"SalesItemLineDetail","SalesItemLineDetail":{"ItemRef":{"value":"4","name":"Design"},"UnitPrice":75,"Qty":4.5,"TaxCodeRef":{"value":"NON"}}}],"Id":"17","SyncToken":"1"}'
-    headers:
-      Content-Type:
-      - application/json;charset=UTF-8
-      Accept:
-      - application/json
-      User-Agent:
-      - Faraday v0.9.2
-      Authorization:
-      - OAuth oauth_consumer_key="<CONSUMER_KEY>", oauth_nonce="c6ca0a259d78083edd3061ed4b65097e",
-        oauth_signature="YlyxfSiDnEaA0%2BLcChjFZYFURQ0%3D", oauth_signature_method="HMAC-SHA1",
-        oauth_timestamp="1480602675", oauth_token="<ACCESS_TOKEN>", oauth_version="1.0"
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Server:
-      - nginx
-      Date:
-      - Thu, 01 Dec 2016 14:31:17 GMT
-      Content-Type:
-      - application/json;charset=UTF-8
-      Content-Length:
-      - '899'
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - timeout=5
-      Strict-Transport-Security:
-      - max-age=15552000
-      Intuit-Tid:
-      - gw-26d6cdbd-e4e5-4d41-a2b8-7e585f52aa0d
-      Set-Cookie:
-      - JSESSIONID=CC43B52909F39C221E9EA925D4DAC7BA.c50-pprdsbxas802; Path=/; Secure;
-        HttpOnly
-      Qbo-Version:
-      - '1611.1350'
-      X-Newrelic-App-Data:
-      - PxQEVFFbAQoTVVZaAAgOU1ETGhE1AwE2QgNWEVlbQFtcC2VOfw5BDwVaXhsDB21BWThOE1VeAlY4HkAAPkkADV0SWQxBZBsYb0pKAF0EQBABVVIIFhcaHwBKUU4HHwBRUgQDBFNTT1ADVBRAAV1WBgVXC1hUVQUGXVQOBERPXlJcFwQ/
-      Cache-Control:
-      - max-age=0, no-cache, no-store, must-revalidate, private
-      Expires:
-      - '0'
-    body:
-      encoding: UTF-8
-      string: '{"SalesReceipt":{"domain":"QBO","sparse":false,"Id":"17","SyncToken":"2","MetaData":{"CreateTime":"2015-10-06T15:12:39-07:00","LastUpdatedTime":"2016-12-01T06:31:16-08:00"},"CustomField":[{"DefinitionId":"1","Name":"Crew
-        #","Type":"StringType"}],"DocNumber":"1008","TxnDate":"2016-12-01","CurrencyRef":{"value":"USD","name":"United
-        States Dollar"},"Line":[{"Id":"3","LineNum":1,"Description":"Custom Design","Amount":337.50,"DetailType":"SalesItemLineDetail","SalesItemLineDetail":{"ItemRef":{"value":"4","name":"Design"},"UnitPrice":75,"Qty":4.5,"TaxCodeRef":{"value":"NON"}}},{"Amount":337.50,"DetailType":"SubTotalLineDetail","SubTotalLineDetail":{}}],"TxnTaxDetail":{"TotalTax":0},"TotalAmt":337.50,"ApplyTaxAfterDiscount":false,"PrintStatus":"NeedToPrint","EmailStatus":"NotSet","Balance":0,"DepositToAccountRef":{"value":"4","name":"Undeposited
-        Funds"}},"time":"2016-12-01T06:31:16.354-08:00"}'
-    http_version: 
-  recorded_at: Thu, 01 Dec 2016 14:31:17 GMT
-- request:
-    method: get
-    uri: https://sandbox-quickbooks.api.intuit.com/v3/salesreceipt/17
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Content-Type:
-      - application/json;charset=UTF-8
-      Accept:
-      - application/json
-      User-Agent:
-      - Faraday v0.9.2
-      Authorization:
-      - OAuth oauth_consumer_key="<CONSUMER_KEY>", oauth_nonce="02dd9f3dda747f460e6aa5099ef5dd6e",
-        oauth_signature="wEbYIDpPs7j3hppuKVX%2F7N3uJj0%3D", oauth_signature_method="HMAC-SHA1",
-        oauth_timestamp="1480603148", oauth_token="<ACCESS_TOKEN>", oauth_version="1.0"
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Server:
-      - nginx
-      Date:
-      - Thu, 01 Dec 2016 14:39:10 GMT
-      Content-Type:
-      - application/json;charset=UTF-8
-      Content-Length:
-      - '899'
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - timeout=5
-      Strict-Transport-Security:
-      - max-age=15552000
-      Intuit-Tid:
-      - gw-62f4ef73-f7e4-4903-8317-4c6d266bea98
-      Set-Cookie:
-      - JSESSIONID=229988A454BF8DBB5DAF4976E49005B3.c50-pprdsbxas802; Path=/; Secure;
-        HttpOnly
-      Qbo-Version:
-      - '1611.1350'
-      X-Newrelic-App-Data:
-      - PxQEVFFbAQoTVVZaAAgOU1ETGhE1AwE2QgNWEVlbQFtcC2VOfw5BDwVaXhsDB21BWThOE1VeAlY4HkAAPkkADV0SWQxBZBsYb0pKAF0EQBABVVIIFhdkHBpGTVIZARtWSgAFBFBQWlEDTghOGl1SAVJQAVgFUAMGAFNTUQdBFFVRCBIHag==
-      Cache-Control:
-      - max-age=0, no-cache, no-store, must-revalidate, private
-      Expires:
-      - '0'
-    body:
-      encoding: UTF-8
-      string: '{"SalesReceipt":{"domain":"QBO","sparse":false,"Id":"17","SyncToken":"2","MetaData":{"CreateTime":"2015-10-06T15:12:39-07:00","LastUpdatedTime":"2016-12-01T06:31:16-08:00"},"CustomField":[{"DefinitionId":"1","Name":"Crew
-        #","Type":"StringType"}],"DocNumber":"1008","TxnDate":"2016-12-01","CurrencyRef":{"value":"USD","name":"United
-        States Dollar"},"Line":[{"Id":"3","LineNum":1,"Description":"Custom Design","Amount":337.50,"DetailType":"SalesItemLineDetail","SalesItemLineDetail":{"ItemRef":{"value":"4","name":"Design"},"UnitPrice":75,"Qty":4.5,"TaxCodeRef":{"value":"NON"}}},{"Amount":337.50,"DetailType":"SubTotalLineDetail","SubTotalLineDetail":{}}],"TxnTaxDetail":{"TotalTax":0},"TotalAmt":337.50,"ApplyTaxAfterDiscount":false,"PrintStatus":"NeedToPrint","EmailStatus":"NotSet","Balance":0,"DepositToAccountRef":{"value":"4","name":"Undeposited
-        Funds"}},"time":"2016-12-01T06:39:10.038-08:00"}'
-    http_version: 
-  recorded_at: Thu, 01 Dec 2016 14:39:10 GMT
-- request:
-    method: post
-    uri: https://sandbox-quickbooks.api.intuit.com/v3/salesreceipt?minorversion=4&requestid=
-    body:
-      encoding: UTF-8
-      string: '{"Line":[{"Description":"Custom Design","Amount":337.5,"DetailType":"SalesItemLineDetail","SalesItemLineDetail":{"ItemRef":{"value":"4","name":"Design"},"UnitPrice":75,"Qty":4.5,"TaxCodeRef":{"value":"NON"}}}],"Id":"17","SyncToken":"2"}'
-    headers:
-      Content-Type:
-      - application/json;charset=UTF-8
-      Accept:
-      - application/json
-      User-Agent:
-      - Faraday v0.9.2
-      Authorization:
-      - OAuth oauth_consumer_key="<CONSUMER_KEY>", oauth_nonce="8491b15d2a35a5fd66d1679edf92f1f1",
-        oauth_signature="%2B9rv%2BHDB1iAz%2BierZU%2BhkO%2F0HxE%3D", oauth_signature_method="HMAC-SHA1",
-        oauth_timestamp="1480603150", oauth_token="<ACCESS_TOKEN>", oauth_version="1.0"
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Server:
-      - nginx
-      Date:
-      - Thu, 01 Dec 2016 14:39:10 GMT
-      Content-Type:
-      - application/json;charset=UTF-8
-      Content-Length:
-      - '899'
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - timeout=5
-      Strict-Transport-Security:
-      - max-age=15552000
-      Intuit-Tid:
-      - gw-60d1f5c0-4ff9-4c15-b024-63baa0dce652
-      Set-Cookie:
-      - JSESSIONID=BCEF1EF1A04C33F10E13DB9E33F73862.c50-pprdsbxas802; Path=/; Secure;
-        HttpOnly
-      Qbo-Version:
-      - '1611.1350'
-      X-Newrelic-App-Data:
-      - PxQEVFFbAQoTVVZaAAgOU1ETGhE1AwE2QgNWEVlbQFtcC2VOfw5BDwVaXhsDB21BWThOE1VeAlY4HkAAPkkADV0SWQxBZBsYb0pKAF0EQBABVVIIFhcaHwBKUU4HHwZVXAIHBVdQT1ADVBRADQFSBgUGC1AFAlEHUFUBBERPXlJcFwQ/
-      Cache-Control:
-      - max-age=0, no-cache, no-store, must-revalidate, private
-      Expires:
-      - '0'
-    body:
-      encoding: UTF-8
-      string: '{"SalesReceipt":{"domain":"QBO","sparse":false,"Id":"17","SyncToken":"3","MetaData":{"CreateTime":"2015-10-06T15:12:39-07:00","LastUpdatedTime":"2016-12-01T06:39:10-08:00"},"CustomField":[{"DefinitionId":"1","Name":"Crew
-        #","Type":"StringType"}],"DocNumber":"1008","TxnDate":"2016-12-01","CurrencyRef":{"value":"USD","name":"United
-        States Dollar"},"Line":[{"Id":"4","LineNum":1,"Description":"Custom Design","Amount":337.50,"DetailType":"SalesItemLineDetail","SalesItemLineDetail":{"ItemRef":{"value":"4","name":"Design"},"UnitPrice":75,"Qty":4.5,"TaxCodeRef":{"value":"NON"}}},{"Amount":337.50,"DetailType":"SubTotalLineDetail","SubTotalLineDetail":{}}],"TxnTaxDetail":{"TotalTax":0},"TotalAmt":337.50,"ApplyTaxAfterDiscount":false,"PrintStatus":"NeedToPrint","EmailStatus":"NotSet","Balance":0,"DepositToAccountRef":{"value":"4","name":"Undeposited
-        Funds"}},"time":"2016-12-01T06:39:10.765-08:00"}'
-    http_version: 
-  recorded_at: Thu, 01 Dec 2016 14:39:10 GMT
-recorded_with: VCR 2.9.3
+  recorded_at: Sun, 08 Apr 2018 21:17:15 GMT
+recorded_with: VCR 4.0.0

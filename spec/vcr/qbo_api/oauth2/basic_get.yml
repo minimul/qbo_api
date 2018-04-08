@@ -2,17 +2,17 @@
 http_interactions:
 - request:
     method: get
-    uri: https://sandbox-quickbooks.api.intuit.com/v3/customer/5
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/customer/5
     body:
       encoding: US-ASCII
       string: ''
     headers:
-      Content-Type:
-      - application/json;charset=UTF-8
       Accept:
       - application/json
+      Content-Type:
+      - application/json;charset=UTF-8
       User-Agent:
-      - Faraday v0.12.2
+      - Faraday v0.14.0
       Authorization:
       - Bearer <OAUTH2_ACCESS_TOKEN>
       Accept-Encoding:
@@ -25,11 +25,11 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Sat, 29 Jul 2017 11:24:33 GMT
+      - Sun, 08 Apr 2018 21:17:31 GMT
       Content-Type:
       - application/json;charset=UTF-8
-      Content-Length:
-      - '1050'
+      Transfer-Encoding:
+      - chunked
       Connection:
       - keep-alive
       Keep-Alive:
@@ -37,27 +37,27 @@ http_interactions:
       Strict-Transport-Security:
       - max-age=15552000
       Intuit-Tid:
-      - 0d07c5ea-5f58-40d8-78a3-841b32e274f2
+      - fe6667fd-8d37-e9a8-f4f2-480419088dc7
       Set-Cookie:
-      - JSESSIONID=34608DA5EC0625BFA81991258F40025D.c50-pprdsbxas802; Path=/; Secure;
-        HttpOnly
+      - JSESSIONID=2767E960354BD309349D78BDC176BB35.c50-pprdsbxas801; Domain=qbo.intuit.com;
+        Path=/; Secure; HttpOnly
       Qbo-Version:
-      - '1707.889'
+      - '1803.859'
       Cache-Control:
       - max-age=0, no-cache, no-store, must-revalidate, private
       Expires:
       - '0'
       Service-Time:
-      - total=112, db=67
+      - total=248, db=149
     body:
-      encoding: UTF-8
+      encoding: ASCII-8BIT
       string: '{"Customer":{"Taxable":true,"BillAddr":{"Id":"6","Line1":"25 Court
         St.","City":"Tucson","CountrySubDivisionCode":"AZ","PostalCode":"85719","Lat":"32.2841116","Long":"-110.9744298"},"ShipAddr":{"Id":"6","Line1":"25
         Court St.","City":"Tucson","CountrySubDivisionCode":"AZ","PostalCode":"85719","Lat":"32.2841116","Long":"-110.9744298"},"Job":false,"BillWithParent":false,"Balance":0,"BalanceWithJobs":0,"CurrencyRef":{"value":"USD","name":"United
-        States Dollar"},"PreferredDeliveryMethod":"Print","domain":"QBO","sparse":false,"Id":"5","SyncToken":"1","MetaData":{"CreateTime":"2015-10-01T16:54:59-07:00","LastUpdatedTime":"2016-08-27T01:37:57-07:00"},"GivenName":"Peter","FamilyName":"Dukes","FullyQualifiedName":"Dukes
+        States Dollar"},"PreferredDeliveryMethod":"Print","domain":"QBO","sparse":false,"Id":"5","SyncToken":"1","MetaData":{"CreateTime":"2018-03-04T16:54:59-08:00","LastUpdatedTime":"2018-03-11T13:28:29-07:00"},"GivenName":"Peter","FamilyName":"Dukes","FullyQualifiedName":"Dukes
         Basketball Camp","CompanyName":"Dukes Basketball Camp","DisplayName":"Dukes
         Basketball Camp","PrintOnCheckName":"Dukes Basketball Camp","Active":true,"PrimaryPhone":{"FreeFormNumber":"(520)
-        420-5638"},"PrimaryEmailAddr":{"Address":"Dukes_bball@intuit.com"},"DefaultTaxCodeRef":{"value":"2"}},"time":"2017-07-29T04:24:33.063-07:00"}'
+        420-5638"},"PrimaryEmailAddr":{"Address":"Dukes_bball@intuit.com"},"DefaultTaxCodeRef":{"value":"2"}},"time":"2018-04-08T14:17:31.225-07:00"}'
     http_version: 
-  recorded_at: Sat, 29 Jul 2017 11:24:33 GMT
-recorded_with: VCR 3.0.3
+  recorded_at: Sun, 08 Apr 2018 21:17:31 GMT
+recorded_with: VCR 4.0.0
