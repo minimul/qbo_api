@@ -2,21 +2,19 @@
 http_interactions:
 - request:
     method: get
-    uri: https://sandbox-quickbooks.api.intuit.com/v3/customer/5
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/customer/5
     body:
       encoding: US-ASCII
       string: ''
     headers:
-      Content-Type:
-      - application/json
       Accept:
-      - application/json; charset=utf-8
+      - application/json
+      Content-Type:
+      - application/json;charset=UTF-8
       User-Agent:
-      - Faraday v0.9.2
+      - Faraday v0.14.0
       Authorization:
-      - OAuth oauth_consumer_key="<CONSUMER_KEY>", oauth_nonce="477b3a2367a4d84da99e318df2e08481",
-        oauth_signature="GRC1xDHmxIOoZfiBQNvKKnaweDc%3D", oauth_signature_method="HMAC-SHA1",
-        oauth_timestamp="1446723774", oauth_token="<ACCESS_TOKEN>", oauth_version="1.0"
+      - Bearer <OAUTH2_ACCESS_TOKEN>
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -24,31 +22,42 @@ http_interactions:
       code: 200
       message: OK
     headers:
+      Server:
+      - nginx
       Date:
-      - Thu, 05 Nov 2015 11:42:55 GMT
-      Via:
-      - 1.1 ipp-gateway-.net
+      - Sun, 08 Apr 2018 21:17:06 GMT
       Content-Type:
       - application/json;charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=5
+      Strict-Transport-Security:
+      - max-age=15552000
+      Intuit-Tid:
+      - 5aa228ac-f0af-6736-f9ec-4773697a26a1
+      Set-Cookie:
+      - JSESSIONID=EEB2E9DB48811D11C7E770CD95B8FC7F.c50-pprdsbxas801; Domain=qbo.intuit.com;
+        Path=/; Secure; HttpOnly
+      Qbo-Version:
+      - '1803.859'
       Cache-Control:
       - max-age=0, no-cache, no-store, must-revalidate, private
       Expires:
       - '0'
-      Intuit-Tid:
-      - fc48d93c-6246-40a0-a3e1-ffceb115ac7b
-      Qbo-Version:
-      - '1510.283'
-      Transfer-Encoding:
-      - chunked
+      Service-Time:
+      - total=646, db=608
     body:
       encoding: ASCII-8BIT
       string: '{"Customer":{"Taxable":true,"BillAddr":{"Id":"6","Line1":"25 Court
         St.","City":"Tucson","CountrySubDivisionCode":"AZ","PostalCode":"85719","Lat":"32.2841116","Long":"-110.9744298"},"ShipAddr":{"Id":"6","Line1":"25
         Court St.","City":"Tucson","CountrySubDivisionCode":"AZ","PostalCode":"85719","Lat":"32.2841116","Long":"-110.9744298"},"Job":false,"BillWithParent":false,"Balance":0,"BalanceWithJobs":0,"CurrencyRef":{"value":"USD","name":"United
-        States Dollar"},"PreferredDeliveryMethod":"Print","domain":"QBO","sparse":false,"Id":"5","SyncToken":"1","MetaData":{"CreateTime":"2015-10-01T16:54:59-07:00","LastUpdatedTime":"2015-10-08T13:28:29-07:00"},"GivenName":"Peter","FamilyName":"Dukes","FullyQualifiedName":"Dukes
+        States Dollar"},"PreferredDeliveryMethod":"Print","domain":"QBO","sparse":false,"Id":"5","SyncToken":"1","MetaData":{"CreateTime":"2018-03-04T16:54:59-08:00","LastUpdatedTime":"2018-03-11T13:28:29-07:00"},"GivenName":"Peter","FamilyName":"Dukes","FullyQualifiedName":"Dukes
         Basketball Camp","CompanyName":"Dukes Basketball Camp","DisplayName":"Dukes
         Basketball Camp","PrintOnCheckName":"Dukes Basketball Camp","Active":true,"PrimaryPhone":{"FreeFormNumber":"(520)
-        420-5638"},"PrimaryEmailAddr":{"Address":"Dukes_bball@intuit.com"},"DefaultTaxCodeRef":{"value":"2"}},"time":"2015-11-05T03:42:57.026-08:00"}'
+        420-5638"},"PrimaryEmailAddr":{"Address":"Dukes_bball@intuit.com"},"DefaultTaxCodeRef":{"value":"2"}},"time":"2018-04-08T14:17:05.979-07:00"}'
     http_version: 
-  recorded_at: Thu, 05 Nov 2015 11:42:58 GMT
-recorded_with: VCR 2.9.3
+  recorded_at: Sun, 08 Apr 2018 21:17:06 GMT
+recorded_with: VCR 4.0.0

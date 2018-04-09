@@ -2,21 +2,19 @@
 http_interactions:
 - request:
     method: get
-    uri: https://sandbox-quickbooks.api.intuit.com/v3/customer/60
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/customer/60?minorversion=8
     body:
       encoding: US-ASCII
       string: ''
     headers:
-      Content-Type:
-      - application/json;charset=UTF-8
       Accept:
       - application/json
+      Content-Type:
+      - application/json;charset=UTF-8
       User-Agent:
-      - Faraday v0.9.2
+      - Faraday v0.14.0
       Authorization:
-      - OAuth oauth_consumer_key="<CONSUMER_KEY>", oauth_nonce="4daad0ad5f82c1daf1249ce381d5e1bf",
-        oauth_signature="Z9GX5QkxgfJ6nqaln1nFyjtfFQ8%3D", oauth_signature_method="HMAC-SHA1",
-        oauth_timestamp="1446734634", oauth_token="<ACCESS_TOKEN>", oauth_version="1.0"
+      - Bearer <OAUTH2_ACCESS_TOKEN>
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -24,84 +22,46 @@ http_interactions:
       code: 200
       message: OK
     headers:
+      Server:
+      - nginx
       Date:
-      - Thu, 05 Nov 2015 14:43:55 GMT
+      - Sun, 08 Apr 2018 21:17:12 GMT
       Content-Type:
       - application/json;charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=5
+      Strict-Transport-Security:
+      - max-age=15552000
       Intuit-Tid:
-      - 650bf326-5865-4f66-82bf-98f7dbfcce53
-      Via:
-      - 1.1 ipp-gateway-.net
+      - 01c4e39d-27e4-baf0-af73-5ba2a0214674
+      Set-Cookie:
+      - JSESSIONID=1E0E622BD40ACF26BDA6F4A99E7EAFF1.c50-pprdsbxas802; Domain=qbo.intuit.com;
+        Path=/; Secure; HttpOnly
+      Qbo-Version:
+      - '1803.859'
       Cache-Control:
       - max-age=0, no-cache, no-store, must-revalidate, private
       Expires:
       - '0'
-      Qbo-Version:
-      - '1510.283'
-      Transfer-Encoding:
-      - chunked
+      Service-Time:
+      - total=188, db=110
     body:
       encoding: ASCII-8BIT
       string: '{"Customer":{"Taxable":true,"Job":false,"BillWithParent":false,"Balance":0,"BalanceWithJobs":0,"CurrencyRef":{"value":"USD","name":"United
-        States Dollar"},"PreferredDeliveryMethod":"Print","domain":"QBO","sparse":false,"Id":"60","SyncToken":"0","MetaData":{"CreateTime":"2015-11-05T05:45:17-08:00","LastUpdatedTime":"2015-11-05T05:45:17-08:00"},"FullyQualifiedName":"Jack
-        Doe","DisplayName":"Jack Doe","PrintOnCheckName":"Jack Doe","Active":true,"DefaultTaxCodeRef":{"value":"2"}},"time":"2015-11-05T06:43:56.787-08:00"}'
+        States Dollar"},"PreferredDeliveryMethod":"Print","domain":"QBO","sparse":false,"Id":"60","SyncToken":"0","MetaData":{"CreateTime":"2018-04-07T21:05:41-07:00","LastUpdatedTime":"2018-04-07T21:05:41-07:00"},"FullyQualifiedName":"whois","DisplayName":"whois","PrintOnCheckName":"whois","Active":true,"DefaultTaxCodeRef":{"value":"2"}},"time":"2018-04-08T14:17:12.296-07:00"}'
     http_version: 
-  recorded_at: Thu, 05 Nov 2015 14:43:56 GMT
+  recorded_at: Sun, 08 Apr 2018 21:17:12 GMT
 - request:
     method: post
-    uri: https://sandbox-quickbooks.api.intuit.com/v3/customer
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/customer?minorversion=8
     body:
       encoding: UTF-8
       string: '{"DisplayName":"Jack Doe","PrimaryPhone":{"FreeFormNumber":"(415) 444-1234"},"Id":"60","SyncToken":"0"}'
     headers:
-      Content-Type:
-      - application/json;charset=UTF-8
-      Accept:
-      - application/json
-      User-Agent:
-      - Faraday v0.9.2
-      Authorization:
-      - OAuth oauth_consumer_key="<CONSUMER_KEY>", oauth_nonce="7bb6f378678ccf3efb21dee670ca087b",
-        oauth_signature="5JyB1bSvnPBH76ozjDQJX2lF4So%3D", oauth_signature_method="HMAC-SHA1",
-        oauth_timestamp="1446734636", oauth_token="<ACCESS_TOKEN>", oauth_version="1.0"
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Date:
-      - Thu, 05 Nov 2015 14:43:57 GMT
-      Content-Type:
-      - application/json;charset=UTF-8
-      Intuit-Tid:
-      - c3eeab8c-a7d1-4ccc-83e3-0a049bdca59e
-      Via:
-      - 1.1 ipp-gateway-.net
-      Cache-Control:
-      - max-age=0, no-cache, no-store, must-revalidate, private
-      Expires:
-      - '0'
-      Qbo-Version:
-      - '1510.283'
-      Transfer-Encoding:
-      - chunked
-    body:
-      encoding: ASCII-8BIT
-      string: '{"Customer":{"Taxable":true,"Job":false,"BillWithParent":false,"Balance":0,"BalanceWithJobs":0,"CurrencyRef":{"value":"USD","name":"United
-        States Dollar"},"PreferredDeliveryMethod":"Print","domain":"QBO","sparse":false,"Id":"60","SyncToken":"1","MetaData":{"CreateTime":"2015-11-05T05:45:17-08:00","LastUpdatedTime":"2015-11-05T06:43:57-08:00"},"FullyQualifiedName":"Jack
-        Doe","DisplayName":"Jack Doe","PrintOnCheckName":"Jack Doe","Active":true,"PrimaryPhone":{"FreeFormNumber":"(415)
-        444-1234"},"DefaultTaxCodeRef":{"value":"2"}},"time":"2015-11-05T06:43:57.722-08:00"}'
-    http_version: 
-  recorded_at: Thu, 05 Nov 2015 14:43:57 GMT
-- request:
-    method: get
-    uri: https://sandbox-quickbooks.api.intuit.com/v3/customer/60?minorversion=8
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
       Accept:
       - application/json
       Content-Type:
@@ -109,9 +69,7 @@ http_interactions:
       User-Agent:
       - Faraday v0.14.0
       Authorization:
-      - OAuth oauth_consumer_key="<CONSUMER_KEY>", oauth_nonce="9b1c6c283c23552292f6afaee40ad659",
-        oauth_signature="y4DNAA2i8iQj3jbATZivvBKkOMo%3D", oauth_signature_method="HMAC-SHA1",
-        oauth_timestamp="1522785222", oauth_token="<ACCESS_TOKEN>", oauth_version="1.0"
+      - Bearer <OAUTH2_ACCESS_TOKEN>
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -122,7 +80,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Tue, 03 Apr 2018 19:53:43 GMT
+      - Sun, 08 Apr 2018 21:17:13 GMT
       Content-Type:
       - application/json;charset=UTF-8
       Transfer-Encoding:
@@ -134,83 +92,24 @@ http_interactions:
       Strict-Transport-Security:
       - max-age=15552000
       Intuit-Tid:
-      - 8432e371-ed8d-eaa9-157f-282fcb465f2b
+      - 8438da57-739e-4909-d148-2c185a4f08f4
       Set-Cookie:
-      - JSESSIONID=A44E3987277978BAA35AA7CF17891B32.c50-pprdsbxas803; Domain=qbo.intuit.com;
+      - JSESSIONID=BD0E63A311C05A96F0774CA6FB467481.c50-pprdsbxas803; Domain=qbo.intuit.com;
         Path=/; Secure; HttpOnly
       Qbo-Version:
-      - '1803.784'
+      - '1803.859'
       Cache-Control:
       - max-age=0, no-cache, no-store, must-revalidate, private
       Expires:
       - '0'
       Service-Time:
-      - total=159, db=80
+      - total=261, db=172
     body:
       encoding: ASCII-8BIT
       string: '{"Customer":{"Taxable":true,"Job":false,"BillWithParent":false,"Balance":0,"BalanceWithJobs":0,"CurrencyRef":{"value":"USD","name":"United
-        States Dollar"},"PreferredDeliveryMethod":"Print","domain":"QBO","sparse":false,"Id":"60","SyncToken":"3","MetaData":{"CreateTime":"2015-11-05T05:45:17-08:00","LastUpdatedTime":"2016-12-01T06:13:52-08:00"},"FullyQualifiedName":"Jack
+        States Dollar"},"PreferredDeliveryMethod":"Print","domain":"QBO","sparse":false,"Id":"60","SyncToken":"1","MetaData":{"CreateTime":"2018-04-07T21:05:41-07:00","LastUpdatedTime":"2018-04-08T14:17:12-07:00"},"FullyQualifiedName":"Jack
         Doe","DisplayName":"Jack Doe","PrintOnCheckName":"Jack Doe","Active":true,"PrimaryPhone":{"FreeFormNumber":"(415)
-        444-1234"},"DefaultTaxCodeRef":{"value":"2"}},"time":"2018-04-03T12:53:43.106-07:00"}'
+        444-1234"},"DefaultTaxCodeRef":{"value":"2"}},"time":"2018-04-08T14:17:12.885-07:00"}'
     http_version: 
-  recorded_at: Tue, 03 Apr 2018 19:53:43 GMT
-- request:
-    method: post
-    uri: https://sandbox-quickbooks.api.intuit.com/v3/customer?minorversion=8
-    body:
-      encoding: UTF-8
-      string: '{"DisplayName":"Jack Doe","PrimaryPhone":{"FreeFormNumber":"(415) 444-1234"},"Id":"60","SyncToken":"3"}'
-    headers:
-      Accept:
-      - application/json
-      Content-Type:
-      - application/json;charset=UTF-8
-      User-Agent:
-      - Faraday v0.14.0
-      Authorization:
-      - OAuth oauth_consumer_key="<CONSUMER_KEY>", oauth_nonce="8b5b916c77a6131d3a5305f8b20e2a48",
-        oauth_signature="WSjO8N%2F9PkHciwJVAiYCEb%2BVVTM%3D", oauth_signature_method="HMAC-SHA1",
-        oauth_timestamp="1522785223", oauth_token="<ACCESS_TOKEN>", oauth_version="1.0"
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Server:
-      - nginx
-      Date:
-      - Tue, 03 Apr 2018 19:53:43 GMT
-      Content-Type:
-      - application/json;charset=UTF-8
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - timeout=5
-      Strict-Transport-Security:
-      - max-age=15552000
-      Intuit-Tid:
-      - c1f06ebb-ed9d-3ed9-b135-0e8c8980b466
-      Set-Cookie:
-      - JSESSIONID=6E0DB1C263BF71F2F81653668F79A466.c50-pprdsbxas803; Domain=qbo.intuit.com;
-        Path=/; Secure; HttpOnly
-      Qbo-Version:
-      - '1803.784'
-      Cache-Control:
-      - max-age=0, no-cache, no-store, must-revalidate, private
-      Expires:
-      - '0'
-      Service-Time:
-      - total=114, db=34
-    body:
-      encoding: ASCII-8BIT
-      string: '{"Customer":{"Taxable":true,"Job":false,"BillWithParent":false,"Balance":0,"BalanceWithJobs":0,"CurrencyRef":{"value":"USD","name":"United
-        States Dollar"},"PreferredDeliveryMethod":"Print","domain":"QBO","sparse":false,"Id":"60","SyncToken":"4","MetaData":{"CreateTime":"2015-11-05T05:45:17-08:00","LastUpdatedTime":"2018-04-03T12:53:43-07:00"},"FullyQualifiedName":"Jack
-        Doe","DisplayName":"Jack Doe","PrintOnCheckName":"Jack Doe","Active":true,"PrimaryPhone":{"FreeFormNumber":"(415)
-        444-1234"},"DefaultTaxCodeRef":{"value":"2"}},"time":"2018-04-03T12:53:43.774-07:00"}'
-    http_version: 
-  recorded_at: Tue, 03 Apr 2018 19:53:43 GMT
-recorded_with: VCR 3.0.3
+  recorded_at: Sun, 08 Apr 2018 21:17:13 GMT
+recorded_with: VCR 4.0.0

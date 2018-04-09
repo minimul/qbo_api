@@ -2,21 +2,19 @@
 http_interactions:
 - request:
     method: get
-    uri: https://sandbox-quickbooks.api.intuit.com/v3/employee/55
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/employee/55
     body:
       encoding: US-ASCII
       string: ''
     headers:
-      Content-Type:
-      - application/json;charset=UTF-8
       Accept:
       - application/json
+      Content-Type:
+      - application/json;charset=UTF-8
       User-Agent:
-      - Faraday v0.9.2
+      - Faraday v0.14.0
       Authorization:
-      - OAuth oauth_consumer_key="<CONSUMER_KEY>", oauth_nonce="bfe9d85018f891f6eaef6f5fd4d0773a",
-        oauth_signature="fwPfwWFGqE0sLTF1%2FpyFImbZqhg%3D", oauth_signature_method="HMAC-SHA1",
-        oauth_timestamp="1475578275", oauth_token="<ACCESS_TOKEN>", oauth_version="1.0"
+      - Bearer <OAUTH2_ACCESS_TOKEN>
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -27,11 +25,11 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Tue, 04 Oct 2016 10:51:14 GMT
+      - Sun, 08 Apr 2018 21:17:17 GMT
       Content-Type:
       - application/json;charset=UTF-8
-      Content-Length:
-      - '346'
+      Transfer-Encoding:
+      - chunked
       Connection:
       - keep-alive
       Keep-Alive:
@@ -39,41 +37,39 @@ http_interactions:
       Strict-Transport-Security:
       - max-age=15552000
       Intuit-Tid:
-      - gw-31a35f66-002e-4b5b-a7bb-7213a68cad7c
+      - 2af7d103-8d6a-b779-cb8e-0b18001854ef
       Set-Cookie:
-      - JSESSIONID=C473F8BF874E9AFCB36EE640E3C87E97.c50-pprdsbxas900; Path=/; Secure;
-        HttpOnly
+      - JSESSIONID=23DA4D6B35493846EA9932D259F5429B.c50-pprdsbxas801; Domain=qbo.intuit.com;
+        Path=/; Secure; HttpOnly
       Qbo-Version:
-      - '1608.1652'
-      X-Newrelic-App-Data:
-      - PxQEVFFbAQoTVVlVBgQCVlMTGhE1AwE2QgNWEVlbQFtcC2VOfw5BDwVaXhsDB21BWThOE1VeAlY4HkAAPkkADV0SWQxBZBsYb0pcDEENXBsBU2tOTEEUAx5UTVIZAQRXXQUAA1NKU04SVV0EXlxRAlZcCAJSWARRAhRq
+      - '1803.859'
       Cache-Control:
       - max-age=0, no-cache, no-store, must-revalidate, private
       Expires:
       - '0'
+      Service-Time:
+      - total=47, db=20
     body:
-      encoding: UTF-8
-      string: '{"Employee":{"BillableTime":false,"domain":"QBO","sparse":false,"Id":"55","SyncToken":"0","MetaData":{"CreateTime":"2015-10-07T11:21:48-07:00","LastUpdatedTime":"2015-10-07T11:21:48-07:00"},"GivenName":"Emily","FamilyName":"Platt","DisplayName":"Emily
-        Platt","PrintOnCheckName":"Emily Platt","Active":true},"time":"2016-10-04T03:51:16.268-07:00"}'
+      encoding: ASCII-8BIT
+      string: '{"Employee":{"BillableTime":false,"domain":"QBO","sparse":false,"Id":"55","SyncToken":"0","MetaData":{"CreateTime":"2018-03-10T11:21:48-08:00","LastUpdatedTime":"2018-03-10T11:21:48-08:00"},"GivenName":"Emily","FamilyName":"Platt","DisplayName":"Emily
+        Platt","PrintOnCheckName":"Emily Platt","Active":true},"time":"2018-04-08T14:17:17.514-07:00"}'
     http_version: 
-  recorded_at: Tue, 04 Oct 2016 10:51:16 GMT
+  recorded_at: Sun, 08 Apr 2018 21:17:17 GMT
 - request:
     method: post
-    uri: https://sandbox-quickbooks.api.intuit.com/v3/employee
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/employee
     body:
       encoding: UTF-8
       string: '{"Id":"55","SyncToken":"0","sparse":true,"Active":false}'
     headers:
-      Content-Type:
-      - application/json;charset=UTF-8
       Accept:
       - application/json
+      Content-Type:
+      - application/json;charset=UTF-8
       User-Agent:
-      - Faraday v0.9.2
+      - Faraday v0.14.0
       Authorization:
-      - OAuth oauth_consumer_key="<CONSUMER_KEY>", oauth_nonce="9ec8f13f7211a8e0b3fdf46e75ded4e3",
-        oauth_signature="99V%2FuFCW7Gc9tD6sdyYo6Ao8ygk%3D", oauth_signature_method="HMAC-SHA1",
-        oauth_timestamp="1475578276", oauth_token="<ACCESS_TOKEN>", oauth_version="1.0"
+      - Bearer <OAUTH2_ACCESS_TOKEN>
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -84,11 +80,11 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Tue, 04 Oct 2016 10:51:17 GMT
+      - Sun, 08 Apr 2018 21:17:18 GMT
       Content-Type:
       - application/json;charset=UTF-8
-      Content-Length:
-      - '357'
+      Transfer-Encoding:
+      - chunked
       Connection:
       - keep-alive
       Keep-Alive:
@@ -96,22 +92,22 @@ http_interactions:
       Strict-Transport-Security:
       - max-age=15552000
       Intuit-Tid:
-      - gw-f388af9c-7f70-40a1-a3b4-840d8d1eb0ac
+      - bd417f36-a0dd-1d39-93c8-d4236237012f
       Set-Cookie:
-      - JSESSIONID=96BE9E21B59AA84F7E293DB838FCBFAA.c50-pprdsbxas901; Path=/; Secure;
-        HttpOnly
+      - JSESSIONID=9BC69AEBF788CF7B2356EBC4781B2192.c50-pprdsbxas801; Domain=qbo.intuit.com;
+        Path=/; Secure; HttpOnly
       Qbo-Version:
-      - '1608.1652'
-      X-Newrelic-App-Data:
-      - PxQEVFFbAQoTVVlVBgQCVlMTGhE1AwE2QgNWEVlbQFtcC2VOfw5BDwVaXhsDB21BWThOE1VeAlY4HkAAPkkADV0SWQxBZBsYb0pcDEENXBsBUxVNVk0IHwBKUlIFAAFSXQUaBlRKQVYDAwoDCg8EU1EHAVEAAwpAOQ==
+      - '1803.859'
       Cache-Control:
       - max-age=0, no-cache, no-store, must-revalidate, private
       Expires:
       - '0'
+      Service-Time:
+      - total=435, db=276
     body:
-      encoding: UTF-8
-      string: '{"Employee":{"BillableTime":false,"domain":"QBO","sparse":false,"Id":"55","SyncToken":"1","MetaData":{"CreateTime":"2015-10-07T11:21:48-07:00","LastUpdatedTime":"2016-10-04T03:51:17-07:00"},"GivenName":"Emily","FamilyName":"Platt","DisplayName":"Emily
-        Platt (deleted)","PrintOnCheckName":"Emily Platt","Active":false},"time":"2016-10-04T03:51:17.109-07:00"}'
+      encoding: ASCII-8BIT
+      string: '{"Employee":{"BillableTime":false,"domain":"QBO","sparse":false,"Id":"55","SyncToken":"1","MetaData":{"CreateTime":"2018-03-10T11:21:48-08:00","LastUpdatedTime":"2018-04-08T14:17:18-07:00"},"GivenName":"Emily","FamilyName":"Platt","DisplayName":"Emily
+        Platt (deleted)","PrintOnCheckName":"Emily Platt","Active":false},"time":"2018-04-08T14:17:17.918-07:00"}'
     http_version: 
-  recorded_at: Tue, 04 Oct 2016 10:51:17 GMT
-recorded_with: VCR 2.9.3
+  recorded_at: Sun, 08 Apr 2018 21:17:18 GMT
+recorded_with: VCR 4.0.0

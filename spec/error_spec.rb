@@ -4,9 +4,9 @@ describe "QboApi Error handling" do
 
   let(:api){ QboApi.new(creds.to_h) }
 
-  it 'handles a 404 error' do
+  it 'handles a 401 error' do
     api = QboApi.new(creds.to_h.merge(token: 12345))
-    use_cassette("qbo_api/error/401") do
+    use_cassette("qbo_api/oauth1/error/401") do
       expect {
         response = api.get :customer, 1
       }.to raise_error QboApi::Unauthorized
@@ -16,7 +16,7 @@ describe "QboApi Error handling" do
   it 'handles a 400 error' do
     api = QboApi.new(creds.to_h.merge(consumer_key: nil))
     sql = "SELECT * FROM Customer"
-    use_cassette("qbo_api/error/400") do
+    use_cassette("qbo_api/oauth1/error/400") do
       expect {
         response = api.query(sql)
       }.to raise_error QboApi::BadRequest
@@ -30,7 +30,7 @@ describe "QboApi Error handling" do
   end
 
   it 'handles a 500 error' do
-    use_cassette("qbo_api/error/500") do
+    use_cassette("qbo_api/oauth1/error/500") do
       expect{ response = api.get(:customer, '1/5') }.to raise_error QboApi::InternalServerError
     end
   end
