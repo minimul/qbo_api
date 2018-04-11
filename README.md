@@ -353,16 +353,22 @@ See [docs](https://developer.intuit.com/docs/0100_quickbooks_online/0100_essenti
   - If needed create an account at [https://developer.intuit.com](https://developer.intuit.com)
   - Click `Get started coding`
   - Create an app with both the `Accounting` & `Payments` selected.
-  - Go to the `Development` tab and copy and paste the client id and client secret into the `.env` file.
-- Note: the `.env` file will be automatically loaded after you run the next step.
-- Start up the example app
-  - `ruby example/app.rb`
-- Goto `http://localhost:9393/oauth2`
+  - Go to the [`Development` tab](https://developer.intuit.com/v2/ui#/app/dashboard)
+  and copy the 'Client ID' and the 'Client 'Secret' to your .env
+  as QBO_API_CLIENT_ID and QBO_API_CLIENT_SECRET respectively
+- Add a Redirect URI: `http://localhost:9393/oauth2-redirect` (or whatever PORT= is in your .env)
+- Create a new Company ([from the manage sandboxes page](https://developer.intuit.com/v2/ui#/sandbox))
+  Don't use it for anything else besides testing this app.
+-. Copy the 'Company ID' to your .env as QBO_API_COMPANY_ID
+- Start up the example OAuth2 app
+  - `ruby example/oauth2.rb`
+- Go to `http://localhost:9393/oauth2`
 - Use the `Connect to QuickBooks` button to connect to your QuickBooks sandbox, which you receive when signing up at [https://developer.intuit.com](https://developer.intuit.com).
-- After successfully connecting to your sandbox run:
+- After successfully connecting to your sandbox go to :
   - `http://localhost:9393/oauth2/customer/5`
   - You should see "Dukes Basketball Camp" displayed
-- Checkout [`example/app.rb`](https://github.com/minimul/qbo_api/blob/master/example/app.rb) to see what is going on under the hood.
+- Checkout [`example/oauth2.rb`](https://github.com/minimul/qbo_api/blob/master/example/oauth2.rb)
+  to see what is going on under the hood.
 
 ## OAuth1: Spin up an example
 ### OLD LEGACY - SEE OAUTH2 EXAMPLE ABOVE
@@ -374,19 +380,46 @@ See [docs](https://developer.intuit.com/docs/0100_quickbooks_online/0100_essenti
   - If needed create an account at [https://developer.intuit.com](https://developer.intuit.com)
   - Click `Get started coding`
   - Create an app with both the `Accounting` & `Payments` selected.
-  - Go to the `Development` tab and copy and paste the consumer key and secret into the `.env` file.
-- Note: the `.env` file will be automatically loaded after you run the next step.
+  - Go to the `Development` tab and copy and paste the consumer key and secret into the `.env` file
+  as QBO_API_CONSUMER_KEY and QBO_API_CONSUMER_SECRET respectively.
 - Start up the example app
-  - `ruby example/app.rb`
-- Goto `http://localhost:9393`
+  - `ruby example/oauth.rb`
+- Go to `http://localhost:9393`
 - Use the `Connect to QuickBooks` button to connect to your QuickBooks sandbox, which you receive when signing up at [https://developer.intuit.com](https://developer.intuit.com).
 - After successfully connecting to your sandbox run:
   - `http://localhost:9393/customer/5`
   - You should see "Dukes Basketball Camp" displayed
-- Checkout [`example/app.rb`](https://github.com/minimul/qbo_api/blob/master/example/app.rb) to see what is going on under the hood.
+- Checkout [`example/oauth.rb`](https://github.com/minimul/qbo_api/blob/master/example/oauth.rb)
+  to see what is going on under the hood.
 
 ## Webhooks
 - <a href="http://minimul.com/getting-started-with-quickbooks-online-webhooks.html" target="_blank">Check out this tutorial and screencast on handling a webhook request</a>. Also checkout [`example/app.rb`](https://github.com/minimul/qbo_api/blob/master/example/app.rb) for the request handling code.
+
+See https://www.twilio.com/blog/2015/09/6-awesome-reasons-to-use-ngrok-when-testing-webhooks.html
+for how to install ngrok and what it is.
+
+- With either the oauth1 or oauth2 examples running, run:
+  `ngrok http 9393 -subdomain=somereasonablyuniquenamehere`
+
+- Go to the [`Development` tab](https://developer.intuit.com/v2/ui#/app/dashboard)
+- Add a webhook, Select all triggers and enter the https url from the ngrok output
+  `https://somereasonablyuniquenamehere/webhooks`
+
+- After saving the webhook, click 'show token'.
+  Add the token to your .env as QBO_API_VERIFIER_TOKEN
+
+- In another tab, create a customer via the (OAuth2) API:
+  `bundle exec ruby -rqbo_api -rdotenv -e 'Dotenv.load; p QboApi.new(access_token: ENV.fetch("QBO_API_OAUTH2_ACCESS_TOKEN"), realm_id: ENV.fetch("QBO_API_COMPANY_ID")).create(:customer, payload: { DisplayName: "TestCustomer" })'`
+  (You'll also need to have added the QBO_API_COMPANY_ID and QBO_API_OAUTH2_ACCESS_TOKEN to your .env)
+
+  There could be a delay of up to a minute before the webhook fires.
+
+  It'll appear in your logs like:
+  ```
+  {"eventNotifications"=>[{"realmId"=>"XXXX", "dataChangeEvent"=>{"entities"=>[{"name"=>"Customer", "id"=>"62", "operation"=>"Create", "lastUpdated"=>"2018-04-08T04:14:39.000Z"}]}}]}
+  Verified: true
+  "POST /webhooks HTTP/1.1" 200 - 0.0013
+  ```
 
 ## Contributing
 
