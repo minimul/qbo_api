@@ -441,9 +441,7 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/minimu
 #### Protip: Once your .env file is completely filled out you can use the console to play around in your sandbox
 ```
 bin/console test
->> q = QboApi.new(creds.to_h)
->> q = QboApi.new(oauth2_creds.to_h) # FOR OAuth2
->> q.get :customer, 1
+>> @qbo_api.get :customer, 1
 ```
 
 ## License
