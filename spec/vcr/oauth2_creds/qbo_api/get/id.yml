@@ -25,7 +25,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Tue, 17 Apr 2018 15:04:02 GMT
+      - Tue, 17 Apr 2018 15:03:39 GMT
       Content-Type:
       - application/json;charset=UTF-8
       Transfer-Encoding:
@@ -37,9 +37,9 @@ http_interactions:
       Strict-Transport-Security:
       - max-age=15552000
       Intuit-Tid:
-      - 4194916b-8394-9d74-63ed-033f2d8371ce
+      - 106b7065-465c-2a96-a5c3-5702e62a1943
       Set-Cookie:
-      - JSESSIONID=4FF6FFFCC6F5362555299CD3736C7344.c50-pprdsbxas802; Domain=qbo.intuit.com;
+      - JSESSIONID=D1E8A807FF1D8C307A7C1FFCD49DC315.c50-pprdsbxas803; Domain=qbo.intuit.com;
         Path=/; Secure; HttpOnly
       Qbo-Version:
       - '1803.898'
@@ -48,7 +48,7 @@ http_interactions:
       Expires:
       - '0'
       Service-Time:
-      - total=276, db=160
+      - total=864, db=748
     body:
       encoding: ASCII-8BIT
       string: '{"Customer":{"Taxable":true,"BillAddr":{"Id":"6","Line1":"25 Court
@@ -57,7 +57,7 @@ http_interactions:
         States Dollar"},"PreferredDeliveryMethod":"Print","domain":"QBO","sparse":false,"Id":"5","SyncToken":"1","MetaData":{"CreateTime":"2018-03-04T16:54:59-08:00","LastUpdatedTime":"2018-04-09T03:26:10-07:00"},"GivenName":"Peter","FamilyName":"Dukes","FullyQualifiedName":"Dukes
         Basketball Camp","CompanyName":"Dukes Basketball Camp","DisplayName":"Dukes
         Basketball Camp","PrintOnCheckName":"Dukes Basketball Camp","Active":true,"PrimaryPhone":{"FreeFormNumber":"(520)
-        420-5638"},"PrimaryEmailAddr":{"Address":"Dukes_bball@intuit.com"},"DefaultTaxCodeRef":{"value":"2"}},"time":"2018-04-17T08:04:02.660-07:00"}'
+        420-5638"},"PrimaryEmailAddr":{"Address":"Dukes_bball@intuit.com"},"DefaultTaxCodeRef":{"value":"2"}},"time":"2018-04-17T08:03:39.175-07:00"}'
     http_version: 
-  recorded_at: Tue, 17 Apr 2018 15:04:02 GMT
+  recorded_at: Tue, 17 Apr 2018 15:03:39 GMT
 recorded_with: VCR 4.0.0

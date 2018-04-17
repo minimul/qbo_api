@@ -1,0 +1,61 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/query?query=SELECT%20*%20FROM%20Vendor%20WHERE%20DisplayName%20=%20%27Robertson%20%26%20Associates%27
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json;charset=UTF-8
+      User-Agent:
+      - Faraday v0.14.0
+      Authorization:
+      - Bearer <OAUTH2_ACCESS_TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Tue, 17 Apr 2018 15:03:42 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Content-Length:
+      - '765'
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=5
+      Strict-Transport-Security:
+      - max-age=15552000
+      Intuit-Tid:
+      - b35ac7c7-a1fb-f61b-c4ff-81196a25b2d6
+      Set-Cookie:
+      - JSESSIONID=AD3951059AA52655B9D2D8DD29DCAFAB.c50-pprdsbxas802; Domain=qbo.intuit.com;
+        Path=/; Secure; HttpOnly
+      Qbo-Version:
+      - '1803.898'
+      Cache-Control:
+      - max-age=0, no-cache, no-store, must-revalidate, private
+      Expires:
+      - '0'
+      Service-Time:
+      - total=541, db=602
+    body:
+      encoding: UTF-8
+      string: '{"QueryResponse":{"Vendor":[{"BillAddr":{"Id":"43","Line1":"P.O. Box
+        147","City":"Bayshore","CountrySubDivisionCode":"CA","PostalCode":"94326","Lat":"45.2720537","Long":"-79.7935909"},"Balance":315.00,"AcctNum":"000005641","Vendor1099":false,"CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"domain":"QBO","sparse":false,"Id":"49","SyncToken":"0","MetaData":{"CreateTime":"2018-03-05T10:38:12-08:00","LastUpdatedTime":"2018-03-12T12:36:59-07:00"},"GivenName":"Jenny","FamilyName":"Robertson","CompanyName":"Robertson
+        & Associates","DisplayName":"Robertson & Associates","PrintOnCheckName":"Robertson
+        & Associates","Active":true,"PrimaryPhone":{"FreeFormNumber":"(650) 557-1111"}}],"startPosition":1,"maxResults":1},"time":"2018-04-17T08:03:42.175-07:00"}'
+    http_version: 
+  recorded_at: Tue, 17 Apr 2018 15:03:42 GMT
+recorded_with: VCR 4.0.0

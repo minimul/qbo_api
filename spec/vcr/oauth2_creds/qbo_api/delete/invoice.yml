@@ -1,0 +1,115 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/invoice/146
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json;charset=UTF-8
+      User-Agent:
+      - Faraday v0.14.0
+      Authorization:
+      - Bearer <OAUTH2_ACCESS_TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Tue, 17 Apr 2018 15:12:45 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=5
+      Strict-Transport-Security:
+      - max-age=15552000
+      Intuit-Tid:
+      - 1bed4537-b8ab-4895-9382-a723e6aac94c
+      Set-Cookie:
+      - JSESSIONID=2D50EC4AA9490C8EF99D433F0105EE88.c50-pprdsbxas801; Domain=qbo.intuit.com;
+        Path=/; Secure; HttpOnly
+      Qbo-Version:
+      - '1803.898'
+      Cache-Control:
+      - max-age=0, no-cache, no-store, must-revalidate, private
+      Expires:
+      - '0'
+      Service-Time:
+      - total=1602, db=1325
+    body:
+      encoding: ASCII-8BIT
+      string: '{"Invoice":{"Deposit":0,"AllowIPNPayment":false,"AllowOnlinePayment":false,"AllowOnlineCreditCardPayment":false,"AllowOnlineACHPayment":false,"domain":"QBO","sparse":false,"Id":"146","SyncToken":"0","MetaData":{"CreateTime":"2018-04-17T08:03:43-07:00","LastUpdatedTime":"2018-04-17T08:03:43-07:00"},"CustomField":[{"DefinitionId":"1","Name":"Crew
+        #","Type":"StringType"}],"DocNumber":"1039","TxnDate":"2018-04-17","CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"LinkedTxn":[],"Line":[{"Id":"1","LineNum":1,"Amount":100.00,"DetailType":"SalesItemLineDetail","SalesItemLineDetail":{"ItemRef":{"value":"1","name":"Services"},"TaxCodeRef":{"value":"NON"}}},{"Amount":100.00,"DetailType":"SubTotalLineDetail","SubTotalLineDetail":{}}],"TxnTaxDetail":{"TotalTax":0},"CustomerRef":{"value":"1","name":"Amy''s
+        Bird Sanctuary"},"BillAddr":{"Id":"2","Line1":"4581 Finch St.","City":"Bayshore","CountrySubDivisionCode":"CA","PostalCode":"94326","Lat":"INVALID","Long":"INVALID"},"ShipAddr":{"Id":"2","Line1":"4581
+        Finch St.","City":"Bayshore","CountrySubDivisionCode":"CA","PostalCode":"94326","Lat":"INVALID","Long":"INVALID"},"DueDate":"2018-05-17","TotalAmt":100.00,"ApplyTaxAfterDiscount":false,"PrintStatus":"NeedToPrint","EmailStatus":"NotSet","Balance":100.00},"time":"2018-04-17T08:12:44.701-07:00"}'
+    http_version: 
+  recorded_at: Tue, 17 Apr 2018 15:12:45 GMT
+- request:
+    method: post
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/invoice?operation=delete
+    body:
+      encoding: UTF-8
+      string: '{"Id":"146","SyncToken":"0"}'
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json;charset=UTF-8
+      User-Agent:
+      - Faraday v0.14.0
+      Authorization:
+      - Bearer <OAUTH2_ACCESS_TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Tue, 17 Apr 2018 15:12:47 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=5
+      Strict-Transport-Security:
+      - max-age=15552000
+      Intuit-Tid:
+      - 7fdd0f7d-3bcb-f4f8-140b-af3e5fb7fdd2
+      Set-Cookie:
+      - JSESSIONID=5E61658239806C18FE1E3DAFDF9DFFFF.c50-pprdsbxas803; Domain=qbo.intuit.com;
+        Path=/; Secure; HttpOnly
+      Qbo-Version:
+      - '1803.898'
+      Cache-Control:
+      - max-age=0, no-cache, no-store, must-revalidate, private
+      Expires:
+      - '0'
+      Service-Time:
+      - total=1405, db=1051
+    body:
+      encoding: ASCII-8BIT
+      string: '{"Invoice":{"domain":"QBO","status":"Deleted","Id":"146"},"time":"2018-04-17T08:12:46.358-07:00"}'
+    http_version: 
+  recorded_at: Tue, 17 Apr 2018 15:12:47 GMT
+recorded_with: VCR 4.0.0

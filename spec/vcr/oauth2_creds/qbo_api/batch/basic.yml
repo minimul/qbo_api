@@ -1,0 +1,76 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/batch
+    body:
+      encoding: UTF-8
+      string: '{"BatchItemRequest":[{"bId":"bid1","operation":"create","Vendor":{"DisplayName":"Smith
+        Family Store-2"}},{"bId":"bid2","operation":"delete","Invoice":{"Id":"129","SyncToken":"0"}},{"bId":"bid3","operation":"update","SalesReceipt":{"domain":"QBO","sparse":true,"Id":"11","SyncToken":"0","PrivateNote":"A
+        private note."}},{"bId":"bid4","Query":"select * from SalesReceipt where TotalAmt
+        > ''300.00''"}]}'
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json;charset=UTF-8
+      User-Agent:
+      - Faraday v0.14.0
+      Authorization:
+      - Bearer <OAUTH2_ACCESS_TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Tue, 17 Apr 2018 15:17:45 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=5
+      Strict-Transport-Security:
+      - max-age=15552000
+      Intuit-Tid:
+      - ddbe7791-508c-468b-f8da-388879feb5d9
+      Set-Cookie:
+      - JSESSIONID=70B721B78C1A781B3605618E767563A6.c50-pprdsbxas800; Domain=qbo.intuit.com;
+        Path=/; Secure; HttpOnly
+      Qbo-Version:
+      - '1803.898'
+      Cache-Control:
+      - max-age=0, no-cache, no-store, must-revalidate, private
+      Expires:
+      - '0'
+      Service-Time:
+      - total=1504, db=970
+    body:
+      encoding: ASCII-8BIT
+      string: '{"BatchItemResponse":[{"Vendor":{"Balance":0,"Vendor1099":false,"CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"domain":"QBO","sparse":false,"Id":"68","SyncToken":"0","MetaData":{"CreateTime":"2018-04-17T08:17:44-07:00","LastUpdatedTime":"2018-04-17T08:17:44-07:00"},"DisplayName":"Smith
+        Family Store-2","PrintOnCheckName":"Smith Family Store-2","Active":true},"bId":"bid1"},{"Fault":{"Error":[{"Message":"Object
+        Not Found","Detail":"Object Not Found : Something you''re trying to use has
+        been made inactive. Check the fields with accounts, customers, items, vendors
+        or employees.","code":"610","element":""}],"type":"ValidationFault"},"bId":"bid2"},{"Fault":{"Error":[{"Message":"Stale
+        Object Error","Detail":"Stale Object Error : You and Benjamin Fleischer were
+        working on this at the same time. Benjamin Fleischer finished before you did,
+        so your work was not saved.","code":"5010","element":""}],"type":"ValidationFault"},"bId":"bid3"},{"QueryResponse":{"SalesReceipt":[{"domain":"QBO","sparse":false,"Id":"17","SyncToken":"2","MetaData":{"CreateTime":"2018-03-09T15:12:39-08:00","LastUpdatedTime":"2018-04-17T08:03:48-07:00"},"CustomField":[{"DefinitionId":"1","Name":"Crew
+        #","Type":"StringType"}],"DocNumber":"1008","TxnDate":"2018-04-17","CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"Line":[{"Id":"3","LineNum":1,"Description":"Custom Design","Amount":337.50,"DetailType":"SalesItemLineDetail","SalesItemLineDetail":{"ItemRef":{"value":"4","name":"Design"},"UnitPrice":75,"Qty":4.5,"TaxCodeRef":{"value":"NON"}}},{"Amount":337.50,"DetailType":"SubTotalLineDetail","SubTotalLineDetail":{}}],"TxnTaxDetail":{"TotalTax":0},"TotalAmt":337.50,"ApplyTaxAfterDiscount":false,"PrintStatus":"NeedToPrint","EmailStatus":"NotSet","Balance":0,"DepositToAccountRef":{"value":"4","name":"Undeposited
+        Funds"}},{"domain":"QBO","sparse":false,"Id":"11","SyncToken":"1","MetaData":{"CreateTime":"2018-03-09T14:59:48-08:00","LastUpdatedTime":"2018-04-08T14:17:34-07:00"},"CustomField":[{"DefinitionId":"1","Name":"Crew
+        #","Type":"StringType"}],"DocNumber":"1003","TxnDate":"2018-03-07","CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"PrivateNote":"A private note.","Line":[{"Id":"1","LineNum":1,"Description":"Custom
+        Design","Amount":337.50,"DetailType":"SalesItemLineDetail","SalesItemLineDetail":{"ItemRef":{"value":"4","name":"Design"},"UnitPrice":75,"Qty":4.5,"TaxCodeRef":{"value":"NON"}}},{"Amount":337.50,"DetailType":"SubTotalLineDetail","SubTotalLineDetail":{}}],"TxnTaxDetail":{"TotalTax":0},"CustomerRef":{"value":"6","name":"Dylan
+        Sollfrank"},"CustomerMemo":{"value":"Thank you for your business and have
+        a great day!"},"BillAddr":{"Id":"49","Line1":"Dylan Sollfrank","Lat":"INVALID","Long":"INVALID"},"TotalAmt":337.50,"ApplyTaxAfterDiscount":false,"PrintStatus":"NotSet","EmailStatus":"NotSet","Balance":0,"PaymentMethodRef":{"value":"2","name":"Check"},"PaymentRefNum":"10264","DepositToAccountRef":{"value":"35","name":"Checking"}}],"startPosition":1,"maxResults":2},"bId":"bid4"}],"time":"2018-04-17T08:17:44.254-07:00"}'
+    http_version: 
+  recorded_at: Tue, 17 Apr 2018 15:17:45 GMT
+recorded_with: VCR 4.0.0

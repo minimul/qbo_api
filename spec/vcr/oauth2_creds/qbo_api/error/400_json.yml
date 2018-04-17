@@ -1,0 +1,52 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/invoice
+    body:
+      encoding: UTF-8
+      string: '{"BadJson":true}'
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json;charset=UTF-8
+      User-Agent:
+      - Faraday v0.14.0
+      Authorization:
+      - Bearer <OAUTH2_ACCESS_TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Tue, 17 Apr 2018 15:04:01 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '321'
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=5
+      Strict-Transport-Security:
+      - max-age=15552000
+      Intuit-Tid:
+      - 463fb999-8188-6d0f-e59c-42aa517b0257
+      Vary:
+      - Accept-Encoding
+    body:
+      encoding: ASCII-8BIT
+      string: '{"Fault":{"Error":[{"Message":"Request has invalid or unsupported property","Detail":"Property
+        Name:Unrecognized field \"BadJson\" (class com.intuit.schema.finance.v3.Invoice),
+        not marked as ignorable (74 known properties: \"DocNumber\", \"HomeTotalAmt\",
+        \"TotalAmt\", \"TxnSource\", \"AllowOnlinePayment\", \"EmailSt specified is
+        unsupported or invalid","code":"2010"}],"type":"ValidationFault"},"time":"2018-04-17T08:04:01.797-07:00"}'
+    http_version: 
+  recorded_at: Tue, 17 Apr 2018 15:04:01 GMT
+recorded_with: VCR 4.0.0
