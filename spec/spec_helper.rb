@@ -62,6 +62,7 @@ def use_cassette(name, options={})
   # Set VCR_RECORD=once to re_record
   record_option = ENV.fetch("VCR_RECORD") { "none" }.to_sym
   options = {record: record_option }.merge!(options)
+  name = "#{creds_type}/#{name}" unless name =~ /oauth/
   VCR.use_cassette(name, options) do |cassette|
     yield cassette, Time.now.to_i
   end
