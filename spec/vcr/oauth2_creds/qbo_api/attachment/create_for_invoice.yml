@@ -5,9 +5,9 @@ http_interactions:
     uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/upload
     body:
       encoding: UTF-8
-      string: "-------------RubyMultipartPost-7ec38761b3ef974f83f5d11622318e70\r\nContent-Disposition:
+      string: "-------------RubyMultipartPost-d6b728d112b36f7b7add1b912589ef5d\r\nContent-Disposition:
         form-data; name=\"file_metadata_01\"; filename=\"attachment.json\"\r\nContent-Length:
-        117\r\nContent-Type: application/json\r\nContent-Transfer-Encoding: binary\r\n\r\n{\"AttachableRef\":[{\"EntityRef\":{\"type\":\"Invoice\",\"value\":\"75\"}}],\"FileName\":\"no_detail.xml\",\"ContentType\":\"text/xml\"}\r\n-------------RubyMultipartPost-7ec38761b3ef974f83f5d11622318e70\r\nContent-Disposition:
+        117\r\nContent-Type: application/json\r\nContent-Transfer-Encoding: binary\r\n\r\n{\"AttachableRef\":[{\"EntityRef\":{\"type\":\"Invoice\",\"value\":\"75\"}}],\"FileName\":\"no_detail.xml\",\"ContentType\":\"text/xml\"}\r\n-------------RubyMultipartPost-d6b728d112b36f7b7add1b912589ef5d\r\nContent-Disposition:
         form-data; name=\"file_content_01\"; filename=\"no_detail.xml\"\r\nContent-Length:
         538\r\nContent-Type: text/xml\r\nContent-Transfer-Encoding: binary\r\n\r\n<?xml
         version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<IntuitResponse xmlns=\"http://schema.intuit.com/finance/v3\"
@@ -16,10 +16,12 @@ http_interactions:
         errorCode=003200; statusCode=401</Message>\n    </Error>\n    <Error code=\"3200\">\n
         \     <Message>message=ApplicationAuthenticationFailed; errorCode=003200;
         statusCode=401</Message>\n      <Detail>This error does have detail</Detail>\n
-        \   </Error>\n  </Fault>\n</IntuitResponse>\n\r\n-------------RubyMultipartPost-7ec38761b3ef974f83f5d11622318e70--\r\n\r\n"
+        \   </Error>\n  </Fault>\n</IntuitResponse>\n\r\n-------------RubyMultipartPost-d6b728d112b36f7b7add1b912589ef5d--\r\n\r\n"
     headers:
       Content-Type:
-      - multipart/form-data; boundary=-----------RubyMultipartPost-7ec38761b3ef974f83f5d11622318e70
+      - multipart/form-data; boundary=-----------RubyMultipartPost-d6b728d112b36f7b7add1b912589ef5d
+      Accept:
+      - application/json
       User-Agent:
       - Faraday v0.14.0
       Authorization:
@@ -28,8 +30,6 @@ http_interactions:
       - '1197'
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
   response:
     status:
       code: 200
@@ -38,11 +38,11 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Tue, 17 Apr 2018 15:04:01 GMT
+      - Tue, 17 Apr 2018 15:21:52 GMT
       Content-Type:
-      - application/xml;charset=UTF-8
-      Content-Length:
-      - '644'
+      - application/json;charset=UTF-8
+      Transfer-Encoding:
+      - chunked
       Connection:
       - keep-alive
       Keep-Alive:
@@ -50,9 +50,9 @@ http_interactions:
       Strict-Transport-Security:
       - max-age=15552000
       Intuit-Tid:
-      - ffcaf459-e381-45ca-83be-943d692d6ff1
+      - 10200951-8624-454d-24cc-9b2a5ec64c17
       Set-Cookie:
-      - JSESSIONID=5349F790809AAEAAD8C944AE681F51E4.c50-pprdsbxas800; Domain=qbo.intuit.com;
+      - JSESSIONID=428A154F62D5E9827BE4751F4F5D5968.c50-pprdsbxas802; Domain=qbo.intuit.com;
         Path=/; Secure; HttpOnly
       Qbo-Version:
       - '1803.898'
@@ -61,13 +61,10 @@ http_interactions:
       Expires:
       - '0'
       Service-Time:
-      - total=1658, db=498
+      - total=2290, db=1231
     body:
       encoding: ASCII-8BIT
-      string: <?xml version="1.0" encoding="UTF-8" standalone="yes"?><IntuitResponse
-        xmlns="http://schema.intuit.com/finance/v3" time="2018-04-17T08:03:59.433-07:00"><AttachableResponse><Attachable
-        domain="QBO" sparse="false"><Id>5000000000000149662</Id><SyncToken>0</SyncToken><MetaData><CreateTime>2018-04-17T08:04:00-07:00</CreateTime><LastUpdatedTime>2018-04-17T08:04:00-07:00</LastUpdatedTime></MetaData><AttachableRef><EntityRef
-        type="Invoice">75</EntityRef><IncludeOnSend>false</IncludeOnSend></AttachableRef><FileName>no_detail.xml</FileName><FileAccessUri>/v3/company/<COMPANY_ID>/download/5000000000000149662</FileAccessUri><TempDownloadUri>https://intuit-qbo-prod-17.s3.amazonaws.com/<COMPANY_ID>/attachments/no_detail.xml?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Date=20180417T150401Z&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Expires=900&amp;X-Amz-Credential=AKIAJEXDXKNYCBUNCCCQ%2F20180417%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Signature=4c1f82d86cdecaa56618175a01618952dabcc633401f71f9db1b8fc7a881d862</TempDownloadUri><Size>538</Size><ContentType>text/xml</ContentType></Attachable></AttachableResponse></IntuitResponse>
+      string: '{"AttachableResponse":[{"Attachable":{"FileName":"no_detail.xml","FileAccessUri":"/v3/company/<COMPANY_ID>/download/5000000000000149663","TempDownloadUri":"https://intuit-qbo-prod-1.s3.amazonaws.com/<COMPANY_ID>/attachments/no_detail.xml?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20180417T152152Z&X-Amz-SignedHeaders=host&X-Amz-Expires=899&X-Amz-Credential=AKIAJEXDXKNYCBUNCCCQ%2F20180417%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=054d0f2ea63c9b7a2227f5fec2b060697c39333924eaa379b8eb51edabbbc721","Size":538,"ContentType":"text/xml","domain":"QBO","sparse":false,"Id":"5000000000000149663","SyncToken":"0","MetaData":{"CreateTime":"2018-04-17T08:21:52-07:00","LastUpdatedTime":"2018-04-17T08:21:52-07:00"},"AttachableRef":[{"EntityRef":{"value":"75","type":"Invoice"},"IncludeOnSend":false}]}}],"time":"2018-04-17T08:21:51.206-07:00"}'
     http_version: 
-  recorded_at: Tue, 17 Apr 2018 15:04:01 GMT
+  recorded_at: Tue, 17 Apr 2018 15:21:52 GMT
 recorded_with: VCR 4.0.0
