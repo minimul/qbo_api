@@ -2,21 +2,19 @@
 http_interactions:
 - request:
     method: get
-    uri: https://sandbox-quickbooks.api.intuit.com/v3/query?query=SELECT%20*%20FROM%20Customer%20WHERE%20DisplayName%20=%20%27Amy%5C%27s%20Bird%20Sanctuary%27
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/query?query=SELECT%20*%20FROM%20Customer%20WHERE%20DisplayName%20=%20%27Amy%5C%27s%20Bird%20Sanctuary%27
     body:
       encoding: US-ASCII
       string: ''
     headers:
-      Content-Type:
-      - application/json;charset=UTF-8
       Accept:
       - application/json
+      Content-Type:
+      - application/json;charset=UTF-8
       User-Agent:
-      - Faraday v0.13.1
+      - Faraday v0.14.0
       Authorization:
-      - OAuth oauth_consumer_key="<CONSUMER_KEY>", oauth_nonce="eabce8ba938337fc649f90db531d0c31",
-        oauth_signature="RNa%2B5F2z%2BLq60wERmIqVDxaMFuU%3D", oauth_signature_method="HMAC-SHA1",
-        oauth_timestamp="1515425233", oauth_token="<ACCESS_TOKEN>", oauth_version="1.0"
+      - Bearer <OAUTH2_ACCESS_TOKEN>
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -27,7 +25,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Mon, 08 Jan 2018 15:27:14 GMT
+      - Sun, 08 Apr 2018 21:17:07 GMT
       Content-Type:
       - application/json;charset=UTF-8
       Content-Length:
@@ -39,27 +37,27 @@ http_interactions:
       Strict-Transport-Security:
       - max-age=15552000
       Intuit-Tid:
-      - f1f6485c-12e7-7698-0db8-4054b1f94be2
+      - a12af020-56e4-5f4d-eb0e-394addabb24e
       Set-Cookie:
-      - JSESSIONID=562363CEBBA557C6CE310B2672B6B0D1.c50-pprdsbxas900; Domain=qbo.intuit.com;
+      - JSESSIONID=478220DECB0F7E00DBFB07B05F1F78DA.c50-pprdsbxas803; Domain=qbo.intuit.com;
         Path=/; Secure; HttpOnly
       Qbo-Version:
-      - '1712.1280'
+      - '1803.859'
       Cache-Control:
       - max-age=0, no-cache, no-store, must-revalidate, private
       Expires:
       - '0'
       Service-Time:
-      - total=107, db=65
+      - total=396, db=435
     body:
       encoding: UTF-8
       string: '{"QueryResponse":{"Customer":[{"Taxable":true,"BillAddr":{"Id":"2","Line1":"4581
         Finch St.","City":"Bayshore","CountrySubDivisionCode":"CA","PostalCode":"94326","Lat":"INVALID","Long":"INVALID"},"ShipAddr":{"Id":"2","Line1":"4581
         Finch St.","City":"Bayshore","CountrySubDivisionCode":"CA","PostalCode":"94326","Lat":"INVALID","Long":"INVALID"},"Job":false,"BillWithParent":false,"Balance":239.00,"BalanceWithJobs":239.00,"CurrencyRef":{"value":"USD","name":"United
-        States Dollar"},"PreferredDeliveryMethod":"Print","domain":"QBO","sparse":false,"Id":"1","SyncToken":"0","MetaData":{"CreateTime":"2015-10-01T16:48:43-07:00","LastUpdatedTime":"2015-11-05T07:12:28-08:00"},"GivenName":"Amy","FamilyName":"Lauterbach","FullyQualifiedName":"Amy''s
+        States Dollar"},"PreferredDeliveryMethod":"Print","domain":"QBO","sparse":false,"Id":"1","SyncToken":"0","MetaData":{"CreateTime":"2018-03-04T16:48:43-08:00","LastUpdatedTime":"2018-03-11T13:39:32-07:00"},"GivenName":"Amy","FamilyName":"Lauterbach","FullyQualifiedName":"Amy''s
         Bird Sanctuary","CompanyName":"Amy''s Bird Sanctuary","DisplayName":"Amy''s
         Bird Sanctuary","PrintOnCheckName":"Amy''s Bird Sanctuary","Active":true,"PrimaryPhone":{"FreeFormNumber":"(650)
-        555-3311"},"PrimaryEmailAddr":{"Address":"Birds@Intuit.com"}}],"startPosition":1,"maxResults":1},"time":"2018-01-08T07:27:14.510-08:00"}'
+        555-3311"},"PrimaryEmailAddr":{"Address":"Birds@Intuit.com"}}],"startPosition":1,"maxResults":1},"time":"2018-04-08T14:17:07.056-07:00"}'
     http_version: 
-  recorded_at: Mon, 08 Jan 2018 15:27:14 GMT
-recorded_with: VCR 3.0.3
+  recorded_at: Sun, 08 Apr 2018 21:17:07 GMT
+recorded_with: VCR 4.0.0

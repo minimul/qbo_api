@@ -7,16 +7,14 @@ http_interactions:
       encoding: US-ASCII
       string: ''
     headers:
-      Content-Type:
-      - application/json;charset=UTF-8
       Accept:
       - application/json
+      Content-Type:
+      - application/json;charset=UTF-8
       User-Agent:
-      - Faraday v0.9.2
+      - Faraday v0.14.0
       Authorization:
-      - OAuth oauth_consumer_key="<CONSUMER_KEY>", oauth_nonce="8dbdb80eea3c0fcc67983a3c392a421f",
-        oauth_signature="ScWb1eSAwe4qYUqFlEbK7JWpOo4%3D", oauth_signature_method="HMAC-SHA1",
-        oauth_timestamp="1472853700", oauth_token="<ACCESS_TOKEN>", oauth_version="1.0"
+      - Bearer <OAUTH2_ACCESS_TOKEN>
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -27,11 +25,11 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Fri, 02 Sep 2016 22:01:43 GMT
+      - Sun, 08 Apr 2018 21:17:35 GMT
       Content-Type:
       - application/json;charset=UTF-8
-      Content-Length:
-      - '1155'
+      Transfer-Encoding:
+      - chunked
       Connection:
       - keep-alive
       Keep-Alive:
@@ -39,26 +37,26 @@ http_interactions:
       Strict-Transport-Security:
       - max-age=15552000
       Intuit-Tid:
-      - gw-c3691f6a-dcb4-43c3-8fff-d44ad41044ac
+      - bb8c27ab-0c8c-0306-0c34-770cb3f597b8
       Set-Cookie:
-      - JSESSIONID=ABF59D82CD234F236E2E02316C1CF781.c50-pprdsbxas802; Path=/; Secure;
-        HttpOnly
+      - JSESSIONID=949E920B3883B0978F61FCE5C64B3EF5.c50-pprdsbxas801; Domain=qbo.intuit.com;
+        Path=/; Secure; HttpOnly
       Qbo-Version:
-      - '1608.1630'
-      X-Newrelic-App-Data:
-      - PxQEVFFbAQoTVVZaAAgOU1ETGhE1AwE2QgNWEVlbQFtcC2VOfw5BDwVaXhsDB21BWThOE1VeAlY4HkAAPkkADV0SWQxBZBsYb0pLBEEOQRYXahgxFAxeWkQlDwZ7XkQVRh0GHVJKUkwEUgxbDAEBHgNJGwRXUlBQUFBVVFJaDAZSBQdAag==
+      - '1803.859'
       Cache-Control:
       - max-age=0, no-cache, no-store, must-revalidate, private
       Expires:
       - '0'
+      Service-Time:
+      - total=173, db=108
     body:
-      encoding: UTF-8
-      string: '{"Header":{"Time":"2016-09-02T15:01:43-07:00","ReportName":"ProfitAndLoss","ReportBasis":"Accrual","StartPeriod":"2015-01-01","EndPeriod":"2015-07-31","SummarizeColumnsBy":"Customers","Currency":"USD","Customer":"1","Option":[{"Name":"AccountingStandard","Value":"GAAP"},{"Name":"NoReportData","Value":"true"}]},"Columns":{"Column":[{"ColTitle":"","ColType":"Account","MetaData":[{"Name":"ColKey","Value":"account"}]},{"ColTitle":"TOTAL","ColType":"Money","MetaData":[{"Name":"ColKey","Value":"total"}]}]},"Rows":{"Row":[{"Header":{"ColData":[{"value":"Income"},{"value":""}]},"Summary":{"ColData":[{"value":"Total
+      encoding: ASCII-8BIT
+      string: '{"Header":{"Time":"2018-04-08T14:17:35-07:00","ReportName":"ProfitAndLoss","ReportBasis":"Accrual","StartPeriod":"2015-01-01","EndPeriod":"2015-07-31","SummarizeColumnsBy":"Customers","Currency":"USD","Customer":"1","Option":[{"Name":"AccountingStandard","Value":"GAAP"},{"Name":"NoReportData","Value":"true"}]},"Columns":{"Column":[{"ColTitle":"","ColType":"Account","MetaData":[{"Name":"ColKey","Value":"account"}]},{"ColTitle":"TOTAL","ColType":"Money","MetaData":[{"Name":"ColKey","Value":"total"}]}]},"Rows":{"Row":[{"Header":{"ColData":[{"value":"Income"},{"value":""}]},"Summary":{"ColData":[{"value":"Total
         Income"},{"value":""}]},"type":"Section","group":"Income"},{"Summary":{"ColData":[{"value":"Gross
         Profit"},{"value":""}]},"type":"Section","group":"GrossProfit"},{"Header":{"ColData":[{"value":"Expenses"},{"value":""}]},"Summary":{"ColData":[{"value":"Total
         Expenses"},{"value":""}]},"type":"Section","group":"Expenses"},{"Summary":{"ColData":[{"value":"Net
         Operating Income"},{"value":""}]},"type":"Section","group":"NetOperatingIncome"},{"Summary":{"ColData":[{"value":"Net
         Income"},{"value":""}]},"type":"Section","group":"NetIncome"}]}}'
     http_version: 
-  recorded_at: Fri, 02 Sep 2016 22:01:43 GMT
-recorded_with: VCR 2.9.3
+  recorded_at: Sun, 08 Apr 2018 21:17:35 GMT
+recorded_with: VCR 4.0.0

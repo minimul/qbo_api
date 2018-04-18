@@ -8,9 +8,9 @@ describe "QboApi Attachment" do
     payload = {
       "AttachableRef":
           [
-            {"EntityRef": 
+            {"EntityRef":
               {
-                "type": "Invoice", 
+                "type": "Invoice",
                 "value": "75"
               }
             }
@@ -18,7 +18,7 @@ describe "QboApi Attachment" do
        "FileName": "no_detail.xml",
        "ContentType": "text/xml"
     }
-    VCR.use_cassette("qbo_api/create/attachment_for_invoice", record: :none) do
+    use_cassette("qbo_api/attachment/create_for_invoice") do
       response = api.upload_attachment(payload: payload, attachment: fixture_path + '/no_detail.xml')
       expect(response['Id']).to_not be_nil
     end
@@ -28,9 +28,9 @@ describe "QboApi Attachment" do
     payload = {
       "AttachableRef":
           [
-            {"EntityRef": 
+            {"EntityRef":
               {
-                "type": "Estimate", 
+                "type": "Estimate",
                 "value": "75"
               }
             }
@@ -38,7 +38,7 @@ describe "QboApi Attachment" do
        "FileName": "no_detail.xml",
        "ContentType": "text/xml"
     }
-    VCR.use_cassette("qbo_api/error/attachment_estimate", record: :none) do
+    use_cassette("qbo_api/attachment/error_estimate") do
       response = api.upload_attachment(payload: payload, attachment: fixture_path + '/no_detail.xml')
       expect(response).to include { ['AttachableResponse'].first['Fault'] }
     end

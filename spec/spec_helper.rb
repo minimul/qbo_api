@@ -54,6 +54,18 @@ VCR.configure do |config|
   config.default_cassette_options = { match_requests_on: [:method, :for_intuit] }
 end
 
+# @param name [String] cassette name, e.g. "somenamespace/some description"
+# @param options [Hash] optional options to use_cassette(name, options)
+# @yield the cassette
+# @yield an Integer (unix epoch time) for use in creating unique ids per cassette
+def use_cassette(name, options={})
+  # Set VCR_RECORD=once to re_record
+  record_option = ENV.fetch("VCR_RECORD") { "none" }.to_sym
+  options = {record: record_option }.merge!(options)
+  VCR.use_cassette(name, options) do |cassette|
+    yield cassette, Time.now.to_i
+  end
+end
 
 RSpec.configure do |config|
   config.example_status_persistence_file_path = 'spec/temp/spec_status.txt'

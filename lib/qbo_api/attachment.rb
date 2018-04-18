@@ -16,15 +16,8 @@ class QboApi
       response(raw_response, entity: :attachable)
     end
 
-    private
-
     def attachment_connection
-      return @attachment_connection if @attachment_connection
-      multipart_connection = connection.dup
-      multipart_connection.headers['Content-Type'] = 'multipart/form-data'
-      multipart_middleware_index = multipart_connection.builder.handlers.index(Faraday::Request::UrlEncoded) || 1
-      multipart_connection.builder.insert(multipart_middleware_index, Faraday::Request::Multipart)
-      @attachment_connection = multipart_connection
+      @attachment_connection ||= authorized_multipart_connection(endpoint_url)
     end
 
   end

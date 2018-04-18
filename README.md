@@ -1,8 +1,8 @@
 # QboApi
 
 Ruby client for the QuickBooks Online API version 3.
-- Built on top of the excellent Faraday gem. 
-- JSON only support. 
+- Built on top of the excellent Faraday gem.
+- JSON only support.
   - Please don't ask about XML support. [Intuit has stated](https://github.com/ruckus/quickbooks-ruby/issues/257#issuecomment-126834454) that JSON is the primary data format for the QuickBooks API (v3 and beyond). This gem will specialize in JSON only. The [`quickbooks-ruby`](https://github.com/ruckus/quickbooks-ruby) gem has fantastic support for those who favor XML.
 - Features specs built directly against a QuickBooks Online Sandbox via the VCR gem.
 - Robust error handling.
@@ -10,9 +10,9 @@ Ruby client for the QuickBooks Online API version 3.
 ## Tutorials and Screencasts
 - <a href="http://minimul.com/introducing-a-new-ruby-quickbooks-online-client.html" target="_blank">Why qbo_api is a better choice </a> than the <a href="https://github.com/ruckus/quickbooks-ruby" target="_blank">quickbooks-ruby</a> gem.
 - <a href="http://minimul.com/getting-started-with-the-modern-ruby-quickbooks-online-client-qbo_api-part-1.html" target="_blank">Part 1</a>: Learn how to spin up the <a href="https://github.com/minimul/qbo_api#spin-up-an-example">example app</a>.
-- <a href="http://minimul.com/the-modern-ruby-quickbooks-client-part-2.html" target="_blank">Part 2</a>: <a href="https://github.com/minimul/qbo_api#running-the-specs">Running the specs</a> to aid you in understanding a QuickBooks API transaction. 
+- <a href="http://minimul.com/the-modern-ruby-quickbooks-client-part-2.html" target="_blank">Part 2</a>: <a href="https://github.com/minimul/qbo_api#running-the-specs">Running the specs</a> to aid you in understanding a QuickBooks API transaction.
 - <a href="http://minimul.com/the-modern-ruby-quickbooks-client-contributing.html" target="_blank">Part 3</a>: <a href="https://github.com/minimul/qbo_api#creating-new-specs-or-modifying-existing-spec-that-have-been-recorded-using-the-vcr-gem">Contributing to the gem</a>.
-### Important Note: The videos are out of date. 
+### Important Note: The videos are out of date.
 If you signed up for a Intuit developer account after July 17th, 2017 then you will have to
 follow <a href='#OAuth2-example'>OAuth2: Spin up an example</a>
 ## The Book
@@ -79,7 +79,7 @@ Or install it yourself as:
 Intuit will be [requiring](https://developer.intuit.com/hub/blog/2017/08/03/upgrading-your-apps-to-support-tls-1-2) API client connections to be negotiated over TLS1.2 by December 31st, 2017. Using the default HTTP client (Net::HTTP) with Faraday this is the case with QboApi, however, if you are using another HTTP client you may need to directly set the TLS version negotiation manually.
 
 ### DateTime serialization
-Some QBO entities have attributes of type DateTime (e.g., Time Activities with StartTime and EndTime). All DateTimes passed to the QBO API must be serialized in ISO 8601 format. 
+Some QBO entities have attributes of type DateTime (e.g., Time Activities with StartTime and EndTime). All DateTimes passed to the QBO API must be serialized in ISO 8601 format.
 If ActiveSupport is loaded, you can achieve proper serialization with the following configuration:
 ```ruby
 ActiveSupport::JSON::Encoding.use_standard_json_time_format = true
@@ -145,7 +145,7 @@ QboApi.minor_version = 8
 
 ### Update
 ```ruby
-  customer = { 
+  customer = {
     DisplayName: 'Jack Doe',
     PrimaryPhone: {
       FreeFormNumber: "(415) 444-1234"
@@ -205,9 +205,9 @@ QboApi.minor_version = 8
 ```ruby
   payload = {"AttachableRef":
               [
-                {"EntityRef": 
+                {"EntityRef":
                   {
-                    "type": "Invoice", 
+                    "type": "Invoice",
                     "value": "111"
                   }
                 }
@@ -237,7 +237,7 @@ Be aware that any errors will not raise a `QboApi::Error`, but will be returned 
 ### Change data capture (CDC) query
 ```ruby
   response = qbo_api.cdc(entities: 'estimate', changed_since: '2011-10-10T09:00:00-07:00')
-  # You can also send in a Time object e.g. changed_since: Time.now 
+  # You can also send in a Time object e.g. changed_since: Time.now
   expect(response['CDCResponse'].size).to eq 1
   ids = response['CDCResponse'][0]['QueryResponse'][0]['Estimate'].collect{ |e| e['Id'] }
   p ids
@@ -299,7 +299,7 @@ See [docs](https://developer.intuit.com/docs/0100_quickbooks_online/0100_essenti
 
 ### Respond to an error
 ```ruby
-  customer = { DisplayName: 'Weiskopf Consulting' } 
+  customer = { DisplayName: 'Weiskopf Consulting' }
   begin
     response = qbo_api.create(:customer, payload: customer)
   rescue QboApi::BadRequest => e
@@ -327,7 +327,7 @@ See [docs](https://developer.intuit.com/docs/0100_quickbooks_online/0100_essenti
   qbo_api.all(:vendor, max: 5).each do |v|
     p v['DisplayName']
   end
-  
+
   # retrieves all customers by groups of 2 using a custom select query
   where = "WHERE Id IN ('5', '6', '7', '8', '9', '10')"
   qbo_api.all(:customer, max: 2, select: "SELECT * FROM Customer #{where}").each do |c|
@@ -349,23 +349,26 @@ See [docs](https://developer.intuit.com/docs/0100_quickbooks_online/0100_essenti
 - `git clone git://github.com/minimul/qbo_api && cd qbo_api`
 - `bundle`
 - Create a `.env` file
+  - `cp .env.example_app.oauth2 .env`
   - If needed create an account at [https://developer.intuit.com](https://developer.intuit.com)
   - Click `Get started coding`
   - Create an app with both the `Accounting` & `Payments` selected.
-  - Go to the `Development` tab and copy and paste the client id and client secret into the `.env` file.
-```ruby
-export QBO_API_CLIENT_ID=<Your QuickBooks Apps Client ID>
-export QBO_API_CLIENT_SECRET=<Your QuickBooks Apps Client Secret>
-```
-- Note: the `.env` file will be automatically loaded after you run the next step.
-- Start up the example app
-  - `ruby example/app.rb`
-- Goto `http://localhost:9393/oauth2`
+  - Go to the [`Development` tab](https://developer.intuit.com/v2/ui#/app/dashboard)
+  and copy the 'Client ID' and the 'Client 'Secret' to your .env
+  as QBO_API_CLIENT_ID and QBO_API_CLIENT_SECRET respectively
+- Add a Redirect URI: `http://localhost:9393/oauth2-redirect` (or whatever PORT= is in your .env)
+- Create a new Company ([from the manage sandboxes page](https://developer.intuit.com/v2/ui#/sandbox))
+  Don't use it for anything else besides testing this app.
+-. Copy the 'Company ID' to your .env as QBO_API_COMPANY_ID
+- Start up the example OAuth2 app
+  - `ruby example/oauth2.rb`
+- Go to `http://localhost:9393/oauth2`
 - Use the `Connect to QuickBooks` button to connect to your QuickBooks sandbox, which you receive when signing up at [https://developer.intuit.com](https://developer.intuit.com).
-- After successfully connecting to your sandbox run:
+- After successfully connecting to your sandbox go to :
   - `http://localhost:9393/oauth2/customer/5`
   - You should see "Dukes Basketball Camp" displayed
-- Checkout [`example/app.rb`](https://github.com/minimul/qbo_api/blob/master/example/app.rb) to see what is going on under the hood.
+- Checkout [`example/oauth2.rb`](https://github.com/minimul/qbo_api/blob/master/example/oauth2.rb)
+  to see what is going on under the hood.
 
 ## OAuth1: Spin up an example
 ### OLD LEGACY - SEE OAUTH2 EXAMPLE ABOVE
@@ -373,26 +376,50 @@ export QBO_API_CLIENT_SECRET=<Your QuickBooks Apps Client Secret>
 - `git clone git://github.com/minimul/qbo_api && cd qbo_api`
 - `bundle`
 - Create a `.env` file
+  - `cp .env.example_app.oauth1 .env`
   - If needed create an account at [https://developer.intuit.com](https://developer.intuit.com)
   - Click `Get started coding`
   - Create an app with both the `Accounting` & `Payments` selected.
-  - Go to the `Development` tab and copy and paste the consumer key and secret into the `.env` file.
-```ruby
-export QBO_API_CONSUMER_KEY=<Your QuickBooks apps consumer key>
-export QBO_API_CONSUMER_SECRET=<Your QuickBooks apps consumer secret>
-```
-- Note: the `.env` file will be automatically loaded after you run the next step.
+  - Go to the `Development` tab and copy and paste the consumer key and secret into the `.env` file
+  as QBO_API_CONSUMER_KEY and QBO_API_CONSUMER_SECRET respectively.
 - Start up the example app
-  - `ruby example/app.rb`
-- Goto `http://localhost:9393`
+  - `ruby example/oauth.rb`
+- Go to `http://localhost:9393`
 - Use the `Connect to QuickBooks` button to connect to your QuickBooks sandbox, which you receive when signing up at [https://developer.intuit.com](https://developer.intuit.com).
 - After successfully connecting to your sandbox run:
   - `http://localhost:9393/customer/5`
   - You should see "Dukes Basketball Camp" displayed
-- Checkout [`example/app.rb`](https://github.com/minimul/qbo_api/blob/master/example/app.rb) to see what is going on under the hood.
+- Checkout [`example/oauth.rb`](https://github.com/minimul/qbo_api/blob/master/example/oauth.rb)
+  to see what is going on under the hood.
 
 ## Webhooks
 - <a href="http://minimul.com/getting-started-with-quickbooks-online-webhooks.html" target="_blank">Check out this tutorial and screencast on handling a webhook request</a>. Also checkout [`example/app.rb`](https://github.com/minimul/qbo_api/blob/master/example/app.rb) for the request handling code.
+
+See https://www.twilio.com/blog/2015/09/6-awesome-reasons-to-use-ngrok-when-testing-webhooks.html
+for how to install ngrok and what it is.
+
+- With either the oauth1 or oauth2 examples running, run:
+  `ngrok http 9393 -subdomain=somereasonablyuniquenamehere`
+
+- Go to the [`Development` tab](https://developer.intuit.com/v2/ui#/app/dashboard)
+- Add a webhook, Select all triggers and enter the https url from the ngrok output
+  `https://somereasonablyuniquenamehere/webhooks`
+
+- After saving the webhook, click 'show token'.
+  Add the token to your .env as QBO_API_VERIFIER_TOKEN
+
+- In another tab, create a customer via the (OAuth2) API:
+  `bundle exec ruby -rqbo_api -rdotenv -e 'Dotenv.load; p QboApi.new(access_token: ENV.fetch("QBO_API_OAUTH2_ACCESS_TOKEN"), realm_id: ENV.fetch("QBO_API_COMPANY_ID")).create(:customer, payload: { DisplayName: "TestCustomer" })'`
+  (You'll also need to have added the QBO_API_COMPANY_ID and QBO_API_OAUTH2_ACCESS_TOKEN to your .env)
+
+  There could be a delay of up to a minute before the webhook fires.
+
+  It'll appear in your logs like:
+  ```
+  {"eventNotifications"=>[{"realmId"=>"XXXX", "dataChangeEvent"=>{"entities"=>[{"name"=>"Customer", "id"=>"62", "operation"=>"Create", "lastUpdated"=>"2018-04-08T04:14:39.000Z"}]}}]}
+  Verified: true
+  "POST /webhooks HTTP/1.1" 200 - 0.0013
+  ```
 
 ## Contributing
 
@@ -403,17 +430,10 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/minimu
 - `git clone git://github.com/minimul/qbo_api && cd qbo_api`
 - `bundle`
 - Create a `.env` file
-  - If you are just running the specs then at minimum your `.env` needs to look like the following:
-```ruby
-export QBO_API_CONSUMER_KEY=
-export QBO_API_CONSUMER_SECRET=
-export QBO_API_ACCESS_TOKEN=
-export QBO_API_ACCESS_TOKEN_SECRET=
-export QBO_API_OAUTH2_ACCESS_TOKEN=
-export QBO_API_COMPANY_ID=12345
-```
+  - `cp .env.test .env`
+  - Update it if your are making HTTP requests.
 - `bundle exec rspec spec/`
-  
+
 #### Creating new specs or modifying existing spec that have been recorded using the VCR gem.
 - All specs that require interaction with the API must be recorded against your personal QuickBooks sandbox. More coming on how to create or modifying existing specs against your sandbox.
 - <a href="http://minimul.com/the-modern-ruby-quickbooks-client-contributing.html" target="_blank">Check out this tutorial and screencast on contributing to qbo_api</a>.
@@ -421,9 +441,7 @@ export QBO_API_COMPANY_ID=12345
 #### Protip: Once your .env file is completely filled out you can use the console to play around in your sandbox
 ```
 bin/console test
->> q = QboApi.new(creds.to_h)
->> q = QboApi.new(oauth2_creds.to_h) # FOR OAuth2
->> q.get :customer, 1
+>> @qbo_api.get :customer, 1
 ```
 
 ## License
