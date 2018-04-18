@@ -42,4 +42,7 @@ class QboApi
 
   # Raised when QuickBooks Online returns the HTTP status code 503
   class ServiceUnavailable < Error; end
+
+  # Raised when QuickBooks Online returns the HTTP status code 504
+  class GatewayTimeout < Error; end
 end
