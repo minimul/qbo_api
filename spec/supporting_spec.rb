@@ -21,7 +21,7 @@ describe "QboApi::Supporting" do
         response = api.batch(batch_payload)
         batch_response = response['BatchItemResponse']
         expect(batch_response.size).to eq 4
-        expect(batch_response.detect{ |b| b["bId"] == "bid1" }["Vendor"]["DisplayName"]).to eq "Smith Family Store"
+        expect(batch_response.detect{ |b| b["bId"] == "bid1" }["Vendor"]["DisplayName"]).to eq "Smith Family Store#{creds_suffix}"
       end
     end
   end
@@ -53,7 +53,7 @@ describe "QboApi::Supporting" do
           "bId": "bid1",
           "operation": "create",
           "Vendor": {
-            "DisplayName": "Smith Family Store"
+            "DisplayName": "Smith Family Store#{creds_suffix}"
           }
         }, {
           "bId": "bid2",
@@ -79,5 +79,14 @@ describe "QboApi::Supporting" do
       ]
     }
 
+  end
+
+
+  def creds_suffix
+    if creds_type == :oauth2_creds
+      "-2"
+    else
+      ""
+    end
   end
 end

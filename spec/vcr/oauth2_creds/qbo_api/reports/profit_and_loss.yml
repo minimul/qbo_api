@@ -1,0 +1,62 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/reports/ProfitAndLoss?customer=1&end_date=2015-07-31&start_date=2015-01-01&summarize_column_by=Customers
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json;charset=UTF-8
+      User-Agent:
+      - Faraday v0.14.0
+      Authorization:
+      - Bearer <OAUTH2_ACCESS_TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Tue, 17 Apr 2018 15:04:05 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=5
+      Strict-Transport-Security:
+      - max-age=15552000
+      Intuit-Tid:
+      - 9c46211f-9029-1e1d-8842-0e1957010301
+      Set-Cookie:
+      - JSESSIONID=93EDBF3FA5CF374D7ABBF013B857E003.c50-pprdsbxas803; Domain=qbo.intuit.com;
+        Path=/; Secure; HttpOnly
+      Qbo-Version:
+      - '1803.898'
+      Cache-Control:
+      - max-age=0, no-cache, no-store, must-revalidate, private
+      Expires:
+      - '0'
+      Service-Time:
+      - total=202, db=114
+    body:
+      encoding: ASCII-8BIT
+      string: '{"Header":{"Time":"2018-04-17T08:04:05-07:00","ReportName":"ProfitAndLoss","ReportBasis":"Accrual","StartPeriod":"2015-01-01","EndPeriod":"2015-07-31","SummarizeColumnsBy":"Customers","Currency":"USD","Customer":"1","Option":[{"Name":"AccountingStandard","Value":"GAAP"},{"Name":"NoReportData","Value":"true"}]},"Columns":{"Column":[{"ColTitle":"","ColType":"Account","MetaData":[{"Name":"ColKey","Value":"account"}]},{"ColTitle":"TOTAL","ColType":"Money","MetaData":[{"Name":"ColKey","Value":"total"}]}]},"Rows":{"Row":[{"Header":{"ColData":[{"value":"Income"},{"value":""}]},"Summary":{"ColData":[{"value":"Total
+        Income"},{"value":""}]},"type":"Section","group":"Income"},{"Summary":{"ColData":[{"value":"Gross
+        Profit"},{"value":""}]},"type":"Section","group":"GrossProfit"},{"Header":{"ColData":[{"value":"Expenses"},{"value":""}]},"Summary":{"ColData":[{"value":"Total
+        Expenses"},{"value":""}]},"type":"Section","group":"Expenses"},{"Summary":{"ColData":[{"value":"Net
+        Operating Income"},{"value":""}]},"type":"Section","group":"NetOperatingIncome"},{"Summary":{"ColData":[{"value":"Net
+        Income"},{"value":""}]},"type":"Section","group":"NetIncome"}]}}'
+    http_version: 
+  recorded_at: Tue, 17 Apr 2018 15:04:05 GMT
+recorded_with: VCR 4.0.0

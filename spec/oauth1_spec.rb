@@ -6,7 +6,7 @@ describe QboApi do
 
   context 'reconnect' do
     it 'out of bounds' do
-      use_cassette("qbo_api/oauth1/reconnect/out_of_bounds") do
+      use_cassette("oauth1/reconnect/out_of_bounds") do
         response = api.reconnect
         expect(response['ErrorCode']).to eq 212
         expect(response['OAuthToken']).to be_nil

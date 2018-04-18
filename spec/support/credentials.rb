@@ -3,10 +3,18 @@ require 'dotenv'
 Dotenv.load
 
 def creds
+  case creds_type
+  when :oauth2_creds then oauth2_creds
+  when :oauth1_creds then oauth1_creds
+  else fail NotImplementedError, "No creds configured for type: '#{creds_type.inspect}'"
+  end
+end
+
+def creds_type
   if ENV['QBO_API_OAUTH2_ACCESS_TOKEN']
-    oauth2_creds
+    :oauth2_creds
   else
-    oauth1_creds
+    :oauth1_creds
   end
 end
 
