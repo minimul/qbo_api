@@ -15,7 +15,7 @@ require_relative 'qbo_api/api_methods'
 
 class QboApi
   extend Configuration
-  include Connection
+  prepend Connection
   include Supporting
   include Entity
   include Util
