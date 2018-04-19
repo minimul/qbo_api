@@ -1,6 +1,7 @@
 require 'faraday'
 require 'faraday_middleware'
 require 'faraday/detailed_logger'
+require_relative 'middleware'
 
 class QboApi
   module Connection
@@ -45,9 +46,11 @@ class QboApi
     #   }
     def build_connection(url, headers: nil)
       Faraday.new(url: url) { |conn|
-        conn.response :detailed_logger, QboApi.logger, LOG_TAG if QboApi.log
         conn.headers.update(headers) if headers
-        yield conn if block_given?
+        conn.response :detailed_logger, QboApi.logger, LOG_TAG if QboApi.log
+        middleware.apply(conn) do
+          yield conn if block_given?
+        end
       }
     end
 
@@ -84,6 +87,11 @@ class QboApi
       when /json/ then JSON.parse(body)
       else body
       end
+    end
+
+    def middleware
+      reset_connection
+      @middleware ||= Middleware.new
     end
 
     private
@@ -127,6 +135,10 @@ class QboApi
 
     def entity_name(entity)
       singular(entity)
+    end
+
+    def reset_connection
+      @connection = nil
     end
 
     require_relative 'connection/oauth1'
