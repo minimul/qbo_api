@@ -50,6 +50,8 @@ module FaradayMiddleware
       else
         nil
       end
+    rescue Nokogiri::XML::SyntaxError, JSON::ParserError => _error
+      nil
     end
 
     def parse_json(body)

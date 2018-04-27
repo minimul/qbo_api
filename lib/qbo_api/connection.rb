@@ -90,7 +90,7 @@ class QboApi
     end
 
     def middleware
-      @middleware ||= Middleware.new { reset_connection }
+      @middleware ||= Middleware.new(on_change: -> { reset_connection })
     end
 
     private

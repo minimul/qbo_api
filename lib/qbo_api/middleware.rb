@@ -1,18 +1,18 @@
 class QboApi
   class Middleware
 
-    def initialize(&block)
+    def initialize(on_change: nil)
       @prependable, @appendable = [], []
-      @change_block = block
+      @change_proc = on_change
     end
 
     def prepend(&block)
-      @change_block.call if @change_block
+      @change_proc.call if @change_proc
       @prependable << block
     end
 
     def append(&block)
-      @change_block.call if @change_block
+      @change_proc.call if @change_proc
       @appendable << block
     end
 
