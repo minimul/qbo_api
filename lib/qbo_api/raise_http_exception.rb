@@ -7,7 +7,7 @@ module FaradayMiddleware
   class RaiseHttpException < Faraday::Middleware
     def call(env)
       @app.call(env).on_complete do |response|
-        intuit_tid = response.headers['intuit_tid']
+        intuit_tid = response[:response_headers]['intuit_tid']
         case response.status
         when 200
         when 400
