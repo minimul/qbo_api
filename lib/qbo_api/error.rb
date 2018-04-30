@@ -7,13 +7,15 @@
 #429 Too Many Requests  API Throttling/ Rate limiting
 #500 Internal Server Error	An error occurred on the server while processing the request.  Resubmit request once; if it persists, contact developer support.
 #503 Service Unavailable	The service is temporarily unavailable.
+#504 GatewayTimeout The service timed out before completing the request.
 # Custom error class for rescuing from all QuickBooks Online errors
 class QboApi
   class Error < StandardError
-    attr_reader :fault
-    def initialize(errors = nil)
+    attr_reader :fault, :intuit_tid
+    def initialize(errors = nil, intuit_tid = nil)
       if errors
         @fault = errors
+        @intuit_tid = intuit_tid
         super(errors[:error_body])
       end
     end
