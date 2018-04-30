@@ -9,7 +9,7 @@ class QboApi
   end
 
   def access_token=(token)
-    reset_connection
+    reset_connections
     @access_token = token
   end
 
@@ -18,7 +18,7 @@ class QboApi
   end
 
   def refresh_token=(token)
-    reset_connection if refresh_token
+    reset_connections if refresh_token
     refresh_proc.call(token) if refresh_proc and refresh_token
     @refresh_token = token
   end

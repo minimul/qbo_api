@@ -90,7 +90,7 @@ class QboApi
     end
 
     def middleware
-      @middleware ||= Middleware.new(on_change: -> { reset_connection })
+      @middleware ||= Middleware.new(on_change: -> { reset_connections })
     end
 
     private
@@ -136,8 +136,10 @@ class QboApi
       singular(entity)
     end
 
-    def reset_connection
+    def reset_connections
       @connection = nil
+      @attachment_connection = nil
+      @oauth2_connection = nil
     end
 
     require_relative 'connection/oauth1'
