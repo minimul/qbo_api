@@ -11,11 +11,10 @@
 # Custom error class for rescuing from all QuickBooks Online errors
 class QboApi
   class Error < StandardError
-    attr_reader :fault, :intuit_tid
-    def initialize(errors = nil, intuit_tid = nil)
+    attr_reader :fault
+    def initialize(errors = nil)
       if errors
         @fault = errors
-        @intuit_tid = intuit_tid
         super(errors[:error_body])
       end
     end

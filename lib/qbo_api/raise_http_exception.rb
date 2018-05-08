@@ -7,25 +7,24 @@ module FaradayMiddleware
   class RaiseHttpException < Faraday::Middleware
     def call(env)
       @app.call(env).on_complete do |response|
-        intuit_tid = response[:response_headers]['intuit_tid']
         case response.status
         when 200
         when 400
-          raise QboApi::BadRequest.new(error_message(response), intuit_tid)
+          raise QboApi::BadRequest.new(error_message(response))
         when 401
-          raise QboApi::Unauthorized.new(error_message(response), intuit_tid)
+          raise QboApi::Unauthorized.new(error_message(response))
         when 403
-          raise QboApi::Forbidden.new(error_message(response), intuit_tid)
+          raise QboApi::Forbidden.new(error_message(response))
         when 404
-          raise QboApi::NotFound.new(error_message(response), intuit_tid)
+          raise QboApi::NotFound.new(error_message(response))
         when 429
-          raise QboApi::TooManyRequests.new(error_message(response), intuit_tid)
+          raise QboApi::TooManyRequests.new(error_message(response))
         when 500
-          raise QboApi::InternalServerError.new(error_message(response), intuit_tid)
+          raise QboApi::InternalServerError.new(error_message(response))
         when 503
-          raise QboApi::ServiceUnavailable.new(error_message(response), intuit_tid)
+          raise QboApi::ServiceUnavailable.new(error_message(response))
         when 504
-          raise QboApi::GatewayTimeout.new(error_message(response), intuit_tid)
+          raise QboApi::GatewayTimeout.new(error_message(response))
         end
       end
     end
@@ -41,7 +40,8 @@ module FaradayMiddleware
         method: response.method,
         url: response.url,
         status: response.status,
-        error_body: error_body(response.body)
+        error_body: error_body(response.body),
+        intuit_tid: response[:response_headers]['intuit_tid']
       }
     end
 
