@@ -16,25 +16,52 @@ instance_eval(&BASE_SETUP)
 class OAuth2App < Sinatra::Base
   instance_eval(&BASE_APP_CONFIG)
 
+  # OAuth2 credentials
   CLIENT_ID = ENV['QBO_API_CLIENT_ID']
   CLIENT_SECRET = ENV['QBO_API_CLIENT_SECRET']
+  # OAuth2 authorization endpoints
+  REDIRECT_URI = "http://localhost:#{PORT}/oauth2-redirect"
+  AUTHORIZATION_ENDPOINT = "https://appcenter.intuit.com/connect/oauth2"
+  TOKEN_ENDPOINT = "https://oauth.platform.intuit.com/oauth2/v1/tokens/bearer"
+  #
 
   helpers do
-    def oauth2_client
-      Rack::OAuth2::Client.new(
+    def oauth2_creds
+      {
         identifier: CLIENT_ID,
         secret: CLIENT_SECRET,
-        redirect_uri: "http://localhost:#{PORT}/oauth2-redirect",
-        authorization_endpoint: "https://appcenter.intuit.com/connect/oauth2",
-        token_endpoint: "https://oauth.platform.intuit.com/oauth2/v1/tokens/bearer"
-      )
+        redirect_uri: REDIRECT_URI,
+        authorization_endpoint: AUTHORIZATION_ENDPOINT,
+        token_endpoint: TOKEN_ENDPOINT
+      }
+    end
+
+    def oauth2_client
+      Rack::OAuth2::Client.new(oauth2_creds)
     end
   end
 
   get '/oauth2' do
     session[:state] = SecureRandom.uuid
-    @client = oauth2_client
-    erb :oauth2
+    url = 'https://appcenter.intuit.com'
+    authorization_endpoint = '/connect/oauth2'
+    api = QboApi.new(realm_id: ENV.fetch("QBO_API_COMPANY_ID"))
+    connection = api.build_connection(url) do |conn|
+      api.send(:add_exception_middleware, conn)
+      api.send(:add_connection_adapter, conn)
+    end
+    raw_request = connection.get do |req|
+      params = {
+        client_id: CLIENT_ID,
+        scope: "com.intuit.quickbooks.accounting",
+        response_type: "code",
+        state: session[:state],
+        redirect_uri: REDIRECT_URI
+      }
+      req.url authorization_endpoint, params
+    end
+
+    redirect raw_request.env[:url]
   end
 
   get '/oauth2-redirect' do
