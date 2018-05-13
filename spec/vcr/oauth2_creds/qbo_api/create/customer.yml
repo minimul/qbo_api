@@ -1,0 +1,59 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/customer?requestid=362743e5-03d5-4539-9b27-196bc9b743ca
+    body:
+      encoding: UTF-8
+      string: '{"DisplayName":"Doe2, Jane"}'
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json;charset=UTF-8
+      User-Agent:
+      - Faraday v0.14.0
+      Authorization:
+      - Bearer <OAUTH2_ACCESS_TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Tue, 17 Apr 2018 15:14:50 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=5
+      Strict-Transport-Security:
+      - max-age=15552000
+      Intuit-Tid:
+      - de3f463b-c6e9-e54d-e5ac-f381fcc62ad4
+      Set-Cookie:
+      - JSESSIONID=48EE758819622E106CD4115CE2FE8EA3.c50-pprdsbxas800; Domain=qbo.intuit.com;
+        Path=/; Secure; HttpOnly
+      Qbo-Version:
+      - '1803.898'
+      Cache-Control:
+      - max-age=0, no-cache, no-store, must-revalidate, private
+      Expires:
+      - '0'
+      Service-Time:
+      - total=1374, db=1135
+    body:
+      encoding: ASCII-8BIT
+      string: '{"Customer":{"Taxable":true,"Job":false,"BillWithParent":false,"Balance":0,"BalanceWithJobs":0,"CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"PreferredDeliveryMethod":"Print","domain":"QBO","sparse":false,"Id":"67","SyncToken":"0","MetaData":{"CreateTime":"2018-04-17T08:14:49-07:00","LastUpdatedTime":"2018-04-17T08:14:49-07:00"},"FullyQualifiedName":"Doe2,
+        Jane","DisplayName":"Doe2, Jane","PrintOnCheckName":"Doe2, Jane","Active":true,"DefaultTaxCodeRef":{"value":"2"}},"time":"2018-04-17T08:14:49.461-07:00"}'
+    http_version: 
+  recorded_at: Tue, 17 Apr 2018 15:14:50 GMT
+recorded_with: VCR 4.0.0

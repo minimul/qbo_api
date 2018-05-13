@@ -21,7 +21,7 @@ class OAuth2App < Sinatra::Base
 
   helpers do
     def oauth2_client
-      client = Rack::OAuth2::Client.new(
+      Rack::OAuth2::Client.new(
         identifier: CLIENT_ID,
         secret: CLIENT_SECRET,
         redirect_uri: "http://localhost:#{PORT}/oauth2-redirect",

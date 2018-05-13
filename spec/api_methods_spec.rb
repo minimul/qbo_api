@@ -80,7 +80,12 @@ describe QboApi::ApiMethods do
     end
 
     it 'a customer using a request id' do
-      customer = { DisplayName: 'Doe, Jane' }
+      customer =
+        if creds_type == :oauth2_creds
+          { DisplayName: 'Doe2, Jane' } # avoids duplicate name error
+        else
+          { DisplayName: 'Doe, Jane' }
+        end
       QboApi.request_id = true
       use_cassette("qbo_api/create/customer") do
         response = api.create(:customer, payload: customer)
@@ -137,16 +142,24 @@ describe QboApi::ApiMethods do
   end #= end '.update
 
   describe '.delete' do
+    let(:invoice_id) do
+      # Use the id of the created invoice above
+      if creds_type == :oauth2_creds
+        # spec/vcr/oauth2_creds/qbo_api/create/invoice.yml
+        146
+      else
+        145
+      end
+    end
     it 'an invoice' do
       use_cassette("qbo_api/delete/invoice") do
-        # Use the id of the created invoice above
-        response = api.delete(:invoice, id: 145)
+        response = api.delete(:invoice, id: invoice_id)
         expect(response['status']).to eq "Deleted"
       end
     end
 
     it 'only a transaction entity' do
-      expect { api.delete(:customer, id: 145) }.to raise_error QboApi::NotImplementedError, /^Delete is only for/
+      expect { api.delete(:customer, id: invoice_id) }.to raise_error QboApi::NotImplementedError, /^Delete is only for/
     end
   end
 

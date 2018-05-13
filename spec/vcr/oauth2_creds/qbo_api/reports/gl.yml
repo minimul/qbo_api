@@ -1,0 +1,203 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/reports/GeneralLedger
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json;charset=UTF-8
+      User-Agent:
+      - Faraday v0.14.0
+      Authorization:
+      - Bearer <OAUTH2_ACCESS_TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Tue, 17 Apr 2018 15:04:05 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=5
+      Strict-Transport-Security:
+      - max-age=15552000
+      Intuit-Tid:
+      - 462b0827-8206-c421-f068-76b6756e3cbe
+      Set-Cookie:
+      - JSESSIONID=15483EBBEB3112E409241CA0B667130A.c50-pprdsbxas802; Domain=qbo.intuit.com;
+        Path=/; Secure; HttpOnly
+      Qbo-Version:
+      - '1803.898'
+      Cache-Control:
+      - max-age=0, no-cache, no-store, must-revalidate, private
+      Expires:
+      - '0'
+      Service-Time:
+      - total=244, db=126
+    body:
+      encoding: ASCII-8BIT
+      string: '{"Header":{"Time":"2018-04-17T08:04:05-07:00","ReportName":"GeneralLedger","DateMacro":"this
+        month-to-date","ReportBasis":"Accrual","StartPeriod":"2018-04-01","EndPeriod":"2018-04-17","Currency":"USD","Option":[{"Name":"NoReportData","Value":"false"}]},"Columns":{"Column":[{"ColTitle":"Date","ColType":"tx_date"},{"ColTitle":"Transaction
+        Type","ColType":"txn_type"},{"ColTitle":"Num","ColType":"doc_num"},{"ColTitle":"Name","ColType":"name"},{"ColTitle":"Memo/Description","ColType":"memo"},{"ColTitle":"Split","ColType":"split_acc"},{"ColTitle":"Amount","ColType":"subt_nat_amount"},{"ColTitle":"Balance","ColType":"rbal_nat_amount"}]},"Rows":{"Row":[{"Header":{"ColData":[{"value":"Checking","id":"35"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"976.00"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Checking"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Savings","id":"36"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"800.00"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Savings"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Accounts
+        Receivable (A/R)","id":"84"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"4804.02"}],"type":"Data"},{"ColData":[{"value":"2018-04-17"},{"value":"Invoice","id":"146"},{"value":"1039"},{"value":"Amy''s
+        Bird Sanctuary","id":"1"},{"value":""},{"value":"Services","id":"1"},{"value":"100.00"},{"value":"4904.02"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Accounts Receivable (A/R)"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"100.00"},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Inventory
+        Asset","id":"81"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"731.25"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Inventory Asset"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Undeposited
+        Funds","id":"4"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"2062.52"}],"type":"Data"},{"ColData":[{"value":"2018-04-17"},{"value":"Sales
+        Receipt","id":"17"},{"value":"1008"},{"value":"","id":""},{"value":""},{"value":"Design
+        income","id":"82"},{"value":"337.50"},{"value":"2400.02"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Undeposited Funds"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"337.50"},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Truck","id":"38"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"Header":{"ColData":[{"value":"Original
+        Cost"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"13495.00"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Original Cost"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"}]},"Summary":{"ColData":[{"value":"Total
+        for Truck"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Accounts
+        Payable (A/P)","id":"33"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"1602.67"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Accounts Payable (A/P)"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Mastercard","id":"41"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"123.72"}],"type":"Data"},{"ColData":[{"value":"2018-04-06"},{"value":"Credit
+        Card Expense","id":"144"},{"value":""},{"value":"","id":""},{"value":""},{"value":"Automobile","id":"55"},{"value":"34.00"},{"value":"157.72"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Mastercard"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"34.00"},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Board
+        of Equalization Payable","id":"90"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"370.94"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Board of Equalization Payable"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Loan
+        Payable","id":"43"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"4000.00"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Loan Payable"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Notes
+        Payable","id":"44"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"25000.00"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Notes Payable"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Opening
+        Balance Equity","id":"34"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"-9337.50"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Opening Balance Equity"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Retained
+        Earnings","id":"2"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"206.25"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Retained Earnings"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Design
+        income","id":"82"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"2025.00"}],"type":"Data"},{"ColData":[{"value":"2018-04-17"},{"value":"Sales
+        Receipt","id":"17"},{"value":"1008"},{"value":"","id":""},{"value":"Custom
+        Design"},{"value":"Undeposited Funds","id":"4"},{"value":"337.50"},{"value":"2362.50"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Design income"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"337.50"},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Discounts
+        given","id":"86"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"-89.50"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Discounts given"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Landscaping
+        Services","id":"45"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"1110.00"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Landscaping Services"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Job
+        Materials","id":"48"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"Header":{"ColData":[{"value":"Fountains
+        and Garden Lighting"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"1971.50"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Fountains and Garden Lighting"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Plants
+        and Soil","id":"49"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"2120.72"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Plants and Soil"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Sprinklers
+        and Drip Systems","id":"50"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"138.00"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Sprinklers and Drip Systems"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"}]},"Summary":{"ColData":[{"value":"Total
+        for Job Materials"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Labor","id":"52"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"Header":{"ColData":[{"value":"Installation"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"250.00"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Installation"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Maintenance
+        and Repair","id":"53"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"50.00"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Maintenance and Repair"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"}]},"Summary":{"ColData":[{"value":"Total
+        for Labor"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"},{"Summary":{"ColData":[{"value":"Total
+        for Landscaping Services with sub-accounts"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Pest
+        Control Services","id":"54"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"40.00"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Pest Control Services"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Sales
+        of Product Income","id":"79"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"622.75"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Sales of Product Income"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Services","id":"1"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"503.55"}],"type":"Data"},{"ColData":[{"value":"2018-04-17"},{"value":"Invoice","id":"146"},{"value":"1039"},{"value":"Amy''s
+        Bird Sanctuary","id":"1"},{"value":""},{"value":"Accounts Receivable (A/R)","id":"84"},{"value":"100.00"},{"value":"603.55"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Services"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"100.00"},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Cost
+        of Goods Sold","id":"80"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"270.00"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Cost of Goods Sold"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Advertising","id":"7"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"74.86"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Advertising"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Automobile","id":"55"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"79.96"}],"type":"Data"},{"ColData":[{"value":"2018-04-06"},{"value":"Credit
+        Card Expense","id":"144"},{"value":""},{"value":"","id":""},{"value":""},{"value":"Mastercard","id":"41"},{"value":"34.00"},{"value":"113.96"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Automobile"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"34.00"},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Fuel","id":"56"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"349.41"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Fuel"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"},{"Summary":{"ColData":[{"value":"Total
+        for Automobile with sub-accounts"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"34.00"},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Equipment
+        Rental","id":"29"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"112.00"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Equipment Rental"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Insurance","id":"11"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"241.23"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Insurance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Job
+        Expenses","id":"58"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"155.07"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Job Expenses"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Job
+        Materials","id":"64"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"Header":{"ColData":[{"value":"Decks
+        and Patios"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"234.04"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Decks and Patios"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Plants
+        and Soil","id":"66"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"353.12"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Plants and Soil"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Sprinklers
+        and Drip Systems","id":"67"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"215.66"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Sprinklers and Drip Systems"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"}]},"Summary":{"ColData":[{"value":"Total
+        for Job Materials"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"},{"Summary":{"ColData":[{"value":"Total
+        for Job Expenses with sub-accounts"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Legal
+        & Professional Fees","id":"12"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"75.00"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Legal & Professional Fees"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Accounting","id":"69"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"390.00"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Accounting"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Bookkeeper","id":"70"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"55.00"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Bookkeeper"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Lawyer","id":"71"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"100.00"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Lawyer"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"},{"Summary":{"ColData":[{"value":"Total
+        for Legal & Professional Fees with sub-accounts"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Maintenance
+        and Repair","id":"72"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"185.00"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Maintenance and Repair"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Equipment
+        Repairs","id":"75"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"755.00"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Equipment Repairs"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"},{"Summary":{"ColData":[{"value":"Total
+        for Maintenance and Repair with sub-accounts"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Meals
+        and Entertainment","id":"13"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"28.49"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Meals and Entertainment"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Office
+        Expenses","id":"15"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"18.08"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Office Expenses"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Rent
+        or Lease","id":"17"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"900.00"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Rent or Lease"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Utilities","id":"76"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"Header":{"ColData":[{"value":"Gas
+        and Electric"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"200.53"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Gas and Electric"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Telephone","id":"77"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"130.86"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Telephone"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"}]},"Summary":{"ColData":[{"value":"Total
+        for Utilities"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Miscellaneous","id":"14"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"2916.00"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Miscellaneous"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"}]}}'
+    http_version: 
+  recorded_at: Tue, 17 Apr 2018 15:04:05 GMT
+recorded_with: VCR 4.0.0

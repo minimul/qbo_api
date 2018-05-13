@@ -1,0 +1,50 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/customer
+    body:
+      encoding: UTF-8
+      string: '{"DisplayName":"Weiskopf Consulting"}'
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json;charset=UTF-8
+      User-Agent:
+      - Faraday v0.14.0
+      Authorization:
+      - Bearer <OAUTH2_ACCESS_TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Tue, 17 Apr 2018 15:04:02 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '235'
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=5
+      Strict-Transport-Security:
+      - max-age=15552000
+      Intuit-Tid:
+      - 945b9ac3-276d-f3fc-f168-55e6ee7297ae
+      Vary:
+      - Accept-Encoding
+    body:
+      encoding: ASCII-8BIT
+      string: '{"Fault":{"Error":[{"Message":"Duplicate Name Exists Error","Detail":"The
+        name supplied already exists. : Another customer, vendor or employee is already
+        using this name. Please use a different name.","code":"6240","element":""}],"type":"ValidationFault"},"time":"2018-04-17T08:04:02.150-07:00"}'
+    http_version: 
+  recorded_at: Tue, 17 Apr 2018 15:04:02 GMT
+recorded_with: VCR 4.0.0

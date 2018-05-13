@@ -24,7 +24,10 @@ class QboApi
     end
 
     def authorized_multipart_connection(url)
-      headers = { 'Content-Type' => 'multipart/form-data' }
+      headers = {
+        'Content-Type' => 'multipart/form-data',
+        'Accept' => 'application/json'
+      }
       build_connection(url, headers: headers) do |conn|
         add_authorization_middleware(conn)
         add_exception_middleware(conn)

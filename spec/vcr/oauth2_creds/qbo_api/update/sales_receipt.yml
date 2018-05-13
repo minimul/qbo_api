@@ -1,0 +1,117 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/salesreceipt/17
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json;charset=UTF-8
+      User-Agent:
+      - Faraday v0.14.0
+      Authorization:
+      - Bearer <OAUTH2_ACCESS_TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Tue, 17 Apr 2018 15:03:47 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=5
+      Strict-Transport-Security:
+      - max-age=15552000
+      Intuit-Tid:
+      - 131278c2-40b8-1fb6-1ef5-f9e1e29e4989
+      Set-Cookie:
+      - JSESSIONID=E176D6D36D727E98EE2FE39E8AAD086A.c50-pprdsbxas802; Domain=qbo.intuit.com;
+        Path=/; Secure; HttpOnly
+      Qbo-Version:
+      - '1803.898'
+      Cache-Control:
+      - max-age=0, no-cache, no-store, must-revalidate, private
+      Expires:
+      - '0'
+      Service-Time:
+      - total=483, db=301
+    body:
+      encoding: ASCII-8BIT
+      string: '{"SalesReceipt":{"domain":"QBO","sparse":false,"Id":"17","SyncToken":"1","MetaData":{"CreateTime":"2018-03-09T15:12:39-08:00","LastUpdatedTime":"2018-04-08T14:17:14-07:00"},"CustomField":[{"DefinitionId":"1","Name":"Crew
+        #","Type":"StringType"}],"DocNumber":"1008","TxnDate":"2018-04-08","CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"Line":[{"Id":"2","LineNum":1,"Description":"Custom Design","Amount":337.50,"DetailType":"SalesItemLineDetail","SalesItemLineDetail":{"ItemRef":{"value":"4","name":"Design"},"UnitPrice":75,"Qty":4.5,"TaxCodeRef":{"value":"NON"}}},{"Amount":337.50,"DetailType":"SubTotalLineDetail","SubTotalLineDetail":{}}],"TxnTaxDetail":{"TotalTax":0},"TotalAmt":337.50,"ApplyTaxAfterDiscount":false,"PrintStatus":"NeedToPrint","EmailStatus":"NotSet","Balance":0,"DepositToAccountRef":{"value":"4","name":"Undeposited
+        Funds"}},"time":"2018-04-17T08:03:47.252-07:00"}'
+    http_version: 
+  recorded_at: Tue, 17 Apr 2018 15:03:47 GMT
+- request:
+    method: post
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/salesreceipt?minorversion=4&requestid=6e698cfe-c4ba-432a-bc4a-1fd7f1226af4
+    body:
+      encoding: UTF-8
+      string: '{"Line":[{"Description":"Custom Design","Amount":337.5,"DetailType":"SalesItemLineDetail","SalesItemLineDetail":{"ItemRef":{"value":"4","name":"Design"},"UnitPrice":75,"Qty":4.5,"TaxCodeRef":{"value":"NON"}}}],"Id":"17","SyncToken":"1"}'
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json;charset=UTF-8
+      User-Agent:
+      - Faraday v0.14.0
+      Authorization:
+      - Bearer <OAUTH2_ACCESS_TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Tue, 17 Apr 2018 15:03:48 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=5
+      Strict-Transport-Security:
+      - max-age=15552000
+      Intuit-Tid:
+      - 41cb2a3b-3244-9b48-7538-ca14c78fea85
+      Set-Cookie:
+      - JSESSIONID=5DC1870B6BCBC5EBB4EEEB52E9F9EFE3.c50-pprdsbxas800; Domain=qbo.intuit.com;
+        Path=/; Secure; HttpOnly
+      Qbo-Version:
+      - '1803.898'
+      Cache-Control:
+      - max-age=0, no-cache, no-store, must-revalidate, private
+      Expires:
+      - '0'
+      Service-Time:
+      - total=886, db=514
+    body:
+      encoding: ASCII-8BIT
+      string: '{"SalesReceipt":{"domain":"QBO","sparse":false,"Id":"17","SyncToken":"2","MetaData":{"CreateTime":"2018-03-09T15:12:39-08:00","LastUpdatedTime":"2018-04-17T08:03:48-07:00"},"CustomField":[{"DefinitionId":"1","Name":"Crew
+        #","Type":"StringType"}],"DocNumber":"1008","TxnDate":"2018-04-17","CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"Line":[{"Id":"3","LineNum":1,"Description":"Custom Design","Amount":337.50,"DetailType":"SalesItemLineDetail","SalesItemLineDetail":{"ItemRef":{"value":"4","name":"Design"},"UnitPrice":75,"Qty":4.5,"TaxCodeRef":{"value":"NON"}}},{"Amount":337.50,"DetailType":"SubTotalLineDetail","SubTotalLineDetail":{}}],"TxnTaxDetail":{"TotalTax":0},"TotalAmt":337.50,"ApplyTaxAfterDiscount":false,"PrintStatus":"NeedToPrint","EmailStatus":"NotSet","Balance":0,"DepositToAccountRef":{"value":"4","name":"Undeposited
+        Funds"}},"time":"2018-04-17T08:03:48.061-07:00"}'
+    http_version: 
+  recorded_at: Tue, 17 Apr 2018 15:03:48 GMT
+recorded_with: VCR 4.0.0

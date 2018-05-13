@@ -1,0 +1,114 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/query?query=SELECT%20COUNT(*)%20FROM%20Employee%20WHERE%20Active%20IN%20(true,%20false)%20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json;charset=UTF-8
+      User-Agent:
+      - Faraday v0.14.0
+      Authorization:
+      - Bearer <OAUTH2_ACCESS_TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Tue, 17 Apr 2018 15:03:52 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Content-Length:
+      - '73'
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=5
+      Strict-Transport-Security:
+      - max-age=15552000
+      Intuit-Tid:
+      - 29c294b0-cd10-dcf9-e957-244c59c763fe
+      Set-Cookie:
+      - JSESSIONID=D3F2F58F012E66578E9116965324588D.c50-pprdsbxas800; Domain=qbo.intuit.com;
+        Path=/; Secure; HttpOnly
+      Qbo-Version:
+      - '1803.898'
+      Cache-Control:
+      - max-age=0, no-cache, no-store, must-revalidate, private
+      Expires:
+      - '0'
+      Service-Time:
+      - total=61, db=36
+    body:
+      encoding: UTF-8
+      string: '{"QueryResponse":{"totalCount":2},"time":"2018-04-17T08:03:52.915-07:00"}'
+    http_version: 
+  recorded_at: Tue, 17 Apr 2018 15:03:53 GMT
+- request:
+    method: get
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/query?query=SELECT%20*%20FROM%20Employee%20WHERE%20Active%20IN%20(%20true,%20false%20)%20MAXRESULTS%201000%20STARTPOSITION%201
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json;charset=UTF-8
+      User-Agent:
+      - Faraday v0.14.0
+      Authorization:
+      - Bearer <OAUTH2_ACCESS_TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Tue, 17 Apr 2018 15:03:53 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Content-Length:
+      - '784'
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=5
+      Strict-Transport-Security:
+      - max-age=15552000
+      Intuit-Tid:
+      - 800d732e-1dc1-2007-9a6c-c05e042784a4
+      Set-Cookie:
+      - JSESSIONID=CDA8DC92CF11D1398B2CF568F5473E24.c50-pprdsbxas802; Domain=qbo.intuit.com;
+        Path=/; Secure; HttpOnly
+      Qbo-Version:
+      - '1803.898'
+      Cache-Control:
+      - max-age=0, no-cache, no-store, must-revalidate, private
+      Expires:
+      - '0'
+      Service-Time:
+      - total=57, db=31
+    body:
+      encoding: UTF-8
+      string: '{"QueryResponse":{"Employee":[{"BillableTime":false,"domain":"QBO","sparse":false,"Id":"55","SyncToken":"1","MetaData":{"CreateTime":"2018-03-10T11:21:48-08:00","LastUpdatedTime":"2018-04-08T14:17:18-07:00"},"GivenName":"Emily","FamilyName":"Platt","DisplayName":"Emily
+        Platt (deleted)","PrintOnCheckName":"Emily Platt","Active":false},{"BillableTime":false,"HiredDate":"2018-02-09","domain":"QBO","sparse":false,"Id":"54","SyncToken":"1","MetaData":{"CreateTime":"2018-03-10T11:21:28-08:00","LastUpdatedTime":"2018-03-10T11:46:26-08:00"},"GivenName":"John","FamilyName":"Johnson","DisplayName":"John
+        Johnson","PrintOnCheckName":"John Johnson","Active":true,"PrimaryPhone":{"FreeFormNumber":"(540)
+        555-9645"}}],"startPosition":1,"maxResults":2},"time":"2018-04-17T08:03:53.372-07:00"}'
+    http_version: 
+  recorded_at: Tue, 17 Apr 2018 15:03:53 GMT
+recorded_with: VCR 4.0.0

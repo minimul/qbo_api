@@ -1,0 +1,117 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/customer/60?minorversion=8
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json;charset=UTF-8
+      User-Agent:
+      - Faraday v0.14.0
+      Authorization:
+      - Bearer <OAUTH2_ACCESS_TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Tue, 17 Apr 2018 15:03:45 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=5
+      Strict-Transport-Security:
+      - max-age=15552000
+      Intuit-Tid:
+      - b6d71d80-d910-4a66-41c9-f9621c94de38
+      Set-Cookie:
+      - JSESSIONID=B4956661A51CC2861627C67FFAA7DE6D.c50-pprdsbxas800; Domain=qbo.intuit.com;
+        Path=/; Secure; HttpOnly
+      Qbo-Version:
+      - '1803.898'
+      Cache-Control:
+      - max-age=0, no-cache, no-store, must-revalidate, private
+      Expires:
+      - '0'
+      Service-Time:
+      - total=407, db=251
+    body:
+      encoding: ASCII-8BIT
+      string: '{"Customer":{"Taxable":true,"Job":false,"BillWithParent":false,"Balance":0,"BalanceWithJobs":0,"CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"PreferredDeliveryMethod":"Print","domain":"QBO","sparse":false,"Id":"60","SyncToken":"1","MetaData":{"CreateTime":"2018-04-07T21:05:41-07:00","LastUpdatedTime":"2018-04-08T14:17:12-07:00"},"FullyQualifiedName":"Jack
+        Doe","DisplayName":"Jack Doe","PrintOnCheckName":"Jack Doe","Active":true,"PrimaryPhone":{"FreeFormNumber":"(415)
+        444-1234"},"DefaultTaxCodeRef":{"value":"2"}},"time":"2018-04-17T08:03:45.636-07:00"}'
+    http_version: 
+  recorded_at: Tue, 17 Apr 2018 15:03:46 GMT
+- request:
+    method: post
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/customer?minorversion=8
+    body:
+      encoding: UTF-8
+      string: '{"DisplayName":"Jack Doe","PrimaryPhone":{"FreeFormNumber":"(415) 444-1234"},"Id":"60","SyncToken":"1"}'
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json;charset=UTF-8
+      User-Agent:
+      - Faraday v0.14.0
+      Authorization:
+      - Bearer <OAUTH2_ACCESS_TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Tue, 17 Apr 2018 15:03:46 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=5
+      Strict-Transport-Security:
+      - max-age=15552000
+      Intuit-Tid:
+      - 38f5c49b-f997-0789-0f53-e70fa4847882
+      Set-Cookie:
+      - JSESSIONID=314067DD2448223FE346EB21161AFB55.c50-pprdsbxas801; Domain=qbo.intuit.com;
+        Path=/; Secure; HttpOnly
+      Qbo-Version:
+      - '1803.898'
+      Cache-Control:
+      - max-age=0, no-cache, no-store, must-revalidate, private
+      Expires:
+      - '0'
+      Service-Time:
+      - total=685, db=439
+    body:
+      encoding: ASCII-8BIT
+      string: '{"Customer":{"Taxable":true,"Job":false,"BillWithParent":false,"Balance":0,"BalanceWithJobs":0,"CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"PreferredDeliveryMethod":"Print","domain":"QBO","sparse":false,"Id":"60","SyncToken":"2","MetaData":{"CreateTime":"2018-04-07T21:05:41-07:00","LastUpdatedTime":"2018-04-17T08:03:46-07:00"},"FullyQualifiedName":"Jack
+        Doe","DisplayName":"Jack Doe","PrintOnCheckName":"Jack Doe","Active":true,"PrimaryPhone":{"FreeFormNumber":"(415)
+        444-1234"},"DefaultTaxCodeRef":{"value":"2"}},"time":"2018-04-17T08:03:46.328-07:00"}'
+    http_version: 
+  recorded_at: Tue, 17 Apr 2018 15:03:46 GMT
+recorded_with: VCR 4.0.0
