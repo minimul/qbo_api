@@ -128,7 +128,7 @@ class QboApi
       payload = build_update(resp).merge('sparse': true, 'Active': false)
 
       case singular(entity)
-      when 'Account'
+      when 'Account', 'Class'
         payload['Name'] = resp['Name']
       end
       payload
