@@ -54,7 +54,8 @@ class QboApi
       }
     end
 
-    def request(method, path:, entity: nil, payload: nil, params: nil)
+    def request(method, path:, entity: nil, payload: nil, params: nil, headers: nil)
+      connection.headers.update(headers) if headers
       raw_response = raw_request(method, conn: connection, path: path, params: params, payload: payload)
       response(raw_response, entity: entity)
     end

@@ -20,7 +20,8 @@ class QboApi
 
     def send_invoice(invoice_id:)
       path = "#{realm_id}/invoice/#{invoice_id}/send"
-      request(:post, path: path)
+      headers = { 'Content-Type' => 'application/octet-stream' }
+      request(:post, path: path, headers: headers)
     end
 
   end
