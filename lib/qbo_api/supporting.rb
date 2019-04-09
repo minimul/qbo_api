@@ -18,5 +18,10 @@ class QboApi
       request(:get, path: path)
     end
 
+    def send_invoice(invoice_id:)
+      path = "#{realm_id}/invoice/#{invoice_id}/send"
+      request(:post, path: path)
+    end
+
   end
 end
