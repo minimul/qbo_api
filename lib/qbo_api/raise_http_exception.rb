@@ -35,10 +35,10 @@ module FaradayMiddleware
 
     def error_message(response)
       {
-        'method': response.method,
-        'url': response.url,
-        'status': response.status,
-        'error_body': error_body(response.body)
+        '\"method\"': response.method,
+        '\"url\"': response.url,
+        '\"status\"': response.status,
+        '\"error_body\"': error_body(response.body)
       }
     end
 
@@ -56,10 +56,10 @@ module FaradayMiddleware
       errors = fault['Error'] || fault['error']
       errors.collect do |error|
         {
-          'fault_type': fault['type'],
-          'error_code': error['code'],
-          'error_message': error['Message'] || error['message'],
-          'error_detail': error['Detail'] || error['detail']
+          '\"fault_type\"': fault['type'],
+          '\"error_code\"': error['code'],
+          '\"error_message\"': error['Message'] || error['message'],
+          '\"error_detail\"': error['Detail'] || error['detail']
         }
       end
     end
@@ -69,10 +69,10 @@ module FaradayMiddleware
       r = res.css('Error')
       r.collect do |e|
         {
-          'fault_type': res.at('Fault')['type'],
-          'error_code': res.at('Error')['code'],
-          'error_message': e.at('Message').content,
-          'error_detail': (detail = e.at('Detail')) ? detail.content : ''
+          '\"fault_type\"': res.at('Fault')['type'],
+          '\"error_code\"': res.at('Error')['code'],
+          '\"error_message\"': e.at('Message').content,
+          '\"error_detail\"': (detail = e.at('Detail')) ? detail.content : ''
         }
       end
     end
