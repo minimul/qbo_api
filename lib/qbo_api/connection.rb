@@ -100,11 +100,11 @@ class QboApi
 
     def entity_response(data, entity)
       entity_name = entity_name(entity)
-      if data.key?('QueryResponse')
+      if data['QueryResponse']
         entity_body = data['QueryResponse']
         return nil if entity_body.empty?
         entity_body.fetch(entity_name, data)
-      elsif data.key?('AttachableResponse')
+      elsif data['AttachableResponse']
         entity_body = data['AttachableResponse']
         entity_body &&= entity_body.first
         entity_body.fetch(entity_name, data)
