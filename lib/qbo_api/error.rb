@@ -6,6 +6,7 @@
 #404 Not Found	The resource is not found.
 #429 Too Many Requests  API Throttling/ Rate limiting
 #500 Internal Server Error	An error occurred on the server while processing the request.  Resubmit request once; if it persists, contact developer support.
+#502 Bad Gateway	The server, while acting as a gateway or proxy, received an invalid response from an inbound server it accessed while attempting to fulfill the request.
 #503 Service Unavailable	The service is temporarily unavailable.
 # Custom error class for rescuing from all QuickBooks Online errors
 class QboApi
@@ -39,6 +40,9 @@ class QboApi
 
   # Raised when QuickBooks Online returns the HTTP status code 500
   class InternalServerError < Error; end
+
+  # Raised when QuickBooks Online returns the HTTP status code 502
+  class BadGateway < Error; end
 
   # Raised when QuickBooks Online returns the HTTP status code 503
   class ServiceUnavailable < Error; end
