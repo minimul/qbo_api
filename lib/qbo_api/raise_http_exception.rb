@@ -21,6 +21,8 @@ module FaradayMiddleware
           raise QboApi::TooManyRequests.new(error_message(response))
         when 500
           raise QboApi::InternalServerError.new(error_message(response))
+        when 502
+          raise QboApi::BadGateway.new({ error_body: response.reason_phrase })
         when 503
           raise QboApi::ServiceUnavailable.new(error_message(response))
         end
