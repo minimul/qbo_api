@@ -10,6 +10,7 @@ Ruby client for the QuickBooks Online API version 3.
 ## Tutorials and Screencasts
 - <a href="https://minimul.com/migrating-a-quickbooks-online-app-from-oauth1-to-oauth2-using-the-qbo_api-gem.html" target="_blank">Migrating a QuickBooks Online App from OAuth1 to OAuth2 using the qbo_api gem - Step 1</a>.
 - <a href="https://minimul.com/migrating-a-quickbooks-online-app-from-oauth1-to-oauth2-using-the-qbo_api-gem-part-2.html" target="_blank">Migrating a QuickBooks Online App from OAuth1 to OAuth2 using the qbo_api gem - Step 2</a>.
+- <a href="https://minimul.com/migrating-a-quickbooks-online-app-from-oauth1-to-oauth2-using-the-qbo_api-gem-part-3.html" target="_blank">Migrating a QuickBooks Online App from OAuth1 to OAuth2 using the qbo_api gem - Step 3</a>.
 - <a href="http://minimul.com/introducing-a-new-ruby-quickbooks-online-client.html" target="_blank">Why qbo_api is a better choice </a> than the <a href="https://github.com/ruckus/quickbooks-ruby" target="_blank">quickbooks-ruby</a> gem.
 - <a href="http://minimul.com/getting-started-with-the-modern-ruby-quickbooks-online-client-qbo_api-part-1.html" target="_blank">Part 1</a>: Learn how to spin up the <a href="https://github.com/minimul/qbo_api#spin-up-an-example">example app</a>.
 - <a href="http://minimul.com/the-modern-ruby-quickbooks-client-part-2.html" target="_blank">Part 2</a>: <a href="https://github.com/minimul/qbo_api#running-the-specs">Running the specs</a> to aid you in understanding a QuickBooks API transaction.
