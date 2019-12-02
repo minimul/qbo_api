@@ -31,6 +31,7 @@ class QboApi
       }
     end
     data = parse_response_body(resp)
+    raise Unauthorized unless data['refresh_token'] && data['access_token']
     self.refresh_token = data.fetch('refresh_token')
     self.access_token = data.fetch('access_token')
   end
