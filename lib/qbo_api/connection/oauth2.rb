@@ -19,7 +19,6 @@ class QboApi
 
   def refresh_token=(token)
     reset_connections if refresh_token
-    refresh_proc.call(token) if refresh_proc and refresh_token
     @refresh_token = token
   end
 
@@ -34,6 +33,8 @@ class QboApi
     raise Unauthorized unless data['refresh_token'] && data['access_token']
     self.refresh_token = data.fetch('refresh_token')
     self.access_token = data.fetch('access_token')
+    refresh_proc.call(self.refresh_token, self.access_token) if refresh_proc
+    self.access_token
   end
 
   def oauth2_connection
@@ -80,15 +81,30 @@ module FaradayMiddleware
   # @private
   class OAuth2Refresh < Faraday::Middleware
     AUTH_HEADER = 'Authorization'.freeze
+    ATTEMPT_LIMIT = 5
+    TIME_LIMIT = 60
 
     def call(env)
       begin
         @app.call(env).tap do |resp|
           raise QboApi::Unauthorized if resp.status == 401
         end
-      rescue QboApi::Unauthorized => _error
-        env[:request_headers][AUTH_HEADER] = "Bearer #{@qbo_api.refresh_access_token!}"
-        retry
+      rescue QboApi::Unauthorized => error
+        @refresh_times ||= []
+        rate_limited = @refresh_times.count do |time|
+          (time + TIME_LIMIT) > Time.now
+        end
+        if rate_limited
+          raise error
+        else
+          @refresh_times << Time.now
+          if @refresh_times.size > ATTEMPT_LIMIT
+            @refresh_times.shift(@refresh_times.size - ATTEMPT_LIMIT)
+          end
+          new_token = @qbo_api.refresh_access_token!
+          env[:request_headers][AUTH_HEADER] = "Bearer #{new_token}"
+          retry
+        end
       end
     end
 
