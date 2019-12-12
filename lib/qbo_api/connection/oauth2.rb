@@ -81,8 +81,8 @@ module FaradayMiddleware
   # @private
   class OAuth2Refresh < Faraday::Middleware
     AUTH_HEADER = 'Authorization'.freeze
-    ATTEMPT_LIMIT = 5
-    TIME_LIMIT_SECONDS = 60
+    ATTEMPT_LIMIT = ENV['QBO_OAUTH2_REFRESH_ATTEMPT_LIMIT'] || 5
+    TIME_LIMIT_SECONDS = ENV['QBO_OAUTH2_REFRESH_TIME_LIMIT'] || 60
 
     def call(env)
       begin
