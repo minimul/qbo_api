@@ -82,7 +82,7 @@ module FaradayMiddleware
   class OAuth2Refresh < Faraday::Middleware
     AUTH_HEADER = 'Authorization'.freeze
     ATTEMPT_LIMIT = 5
-    TIME_LIMIT = 60
+    TIME_LIMIT_SECONDS = 60
 
     def call(env)
       begin
@@ -91,8 +91,8 @@ module FaradayMiddleware
         end
       rescue QboApi::Unauthorized => error
         @refresh_times ||= []
-        rate_limited = @refresh_times.count do |time|
-          (time + TIME_LIMIT) > Time.now
+        rate_limited = ATTEMPT_LIMIT < @refresh_times.count do |time|
+          (time + TIME_LIMIT_SECONDS) > Time.now
         end
         if rate_limited
           raise error
