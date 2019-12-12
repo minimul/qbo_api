@@ -91,7 +91,7 @@ module FaradayMiddleware
         end
       rescue QboApi::Unauthorized => error
         @refresh_times ||= []
-        rate_limited = ATTEMPT_LIMIT < @refresh_times.count do |time|
+        rate_limited = ATTEMPT_LIMIT <= @refresh_times.count do |time|
           (time + TIME_LIMIT_SECONDS) > Time.now
         end
         if rate_limited
