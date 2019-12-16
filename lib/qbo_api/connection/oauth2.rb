@@ -80,8 +80,8 @@ module FaradayMiddleware
   # @private
   class OAuth2Refresh < Faraday::Middleware
     AUTH_HEADER = 'Authorization'.freeze
-    ATTEMPT_LIMIT = ENV['QBO_OAUTH2_REFRESH_ATTEMPT_LIMIT'] || 5
-    TIME_LIMIT_SECONDS = ENV['QBO_OAUTH2_REFRESH_TIME_LIMIT'] || 60
+    DEFAULT_ATTEMPT_LIMIT = 5
+    DEFAULT_TIME_LIMIT_SECONDS = 60
 
     def call(env)
       begin
@@ -90,15 +90,15 @@ module FaradayMiddleware
         end
       rescue QboApi::Unauthorized => error
         @refresh_times ||= []
-        rate_limited = ATTEMPT_LIMIT <= @refresh_times.count do |time|
-          (time + TIME_LIMIT_SECONDS) > Time.now
+        rate_limited = attempt_limit <= @refresh_times.count do |time|
+          (time + time_limit_seconds) > Time.now
         end
         if rate_limited
           raise error
         else
           @refresh_times << Time.now
-          if @refresh_times.size > ATTEMPT_LIMIT
-            @refresh_times.shift(@refresh_times.size - ATTEMPT_LIMIT)
+          if @refresh_times.size > attempt_limit
+            @refresh_times.shift(@refresh_times.size - attempt_limit)
           end
           new_token = @qbo_api.refresh_access_token!
           env[:request_headers][AUTH_HEADER] = "Bearer #{new_token}"
@@ -110,6 +110,25 @@ module FaradayMiddleware
     def initialize(app, qbo_api)
       @qbo_api = qbo_api
       super app
+    end
+
+
+    private
+
+    def attempt_limit
+      if ENV['QBO_OAUTH2_REFRESH_ATTEMPT_LIMIT']
+        ENV['QBO_OAUTH2_REFRESH_ATTEMPT_LIMIT']
+      else
+        DEFAULT_ATTEMPT_LIMIT
+      end.to_i
+    end
+
+    def time_limit_seconds
+      if ENV['QBO_OAUTH2_REFRESH_TIME_LIMIT']
+        ENV['QBO_OAUTH2_REFRESH_TIME_LIMIT']
+      else
+        DEFAULT_TIME_LIMIT_SECONDS
+      end.to_i
     end
 
   end
