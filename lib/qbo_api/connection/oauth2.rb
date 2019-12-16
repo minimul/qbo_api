@@ -42,7 +42,6 @@ class QboApi
     @oauth2_connection ||= build_connection(OAUTH2_URL, headers: headers) do |conn|
       conn.basic_auth(client_id, client_secret)
       conn.request :url_encoded
-      conn.use Faraday::Response::RaiseError
       add_connection_adapter(conn)
     end
   end
