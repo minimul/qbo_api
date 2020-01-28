@@ -1,0 +1,59 @@
+---
+  http_interactions:
+  - request:
+      method: post
+      uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/attachable?operation=delete
+      body:
+        encoding: UTF-8
+        string: '{"SyncToken"=>"0", "domain"=>"QBO", "AttachableRef"=>[{"IncludeOnSend"=>false, "EntityRef"=>{"type"=>"Invoice", "value"=>"95"}}], "Note"=>"This is an attached note.", "sparse"=>false, "Id"=>"200900000000000008541", "MetaData"=>{"CreateTime"=>"2015-11-17T11:05:15-08:00", "LastUpdatedTime"=>"2015-11-17T11:05:15-08:00"}}'
+      headers:
+        Content-Type:
+        - application/json
+        Accept:
+        - application/json
+        User-Agent:
+        - Faraday v0.14.0
+        Authorization:
+        - Bearer <OAUTH2_ACCESS_TOKEN>
+        Content-Length:
+        - '1197'
+        Accept-Encoding:
+        - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+    response:
+      status:
+        code: 200
+        message: OK
+      headers:
+        Server:
+        - nginx
+        Date:
+        - Tue, 17 Apr 2018 15:21:52 GMT
+        Content-Type:
+        - application/json;charset=UTF-8
+        Transfer-Encoding:
+        - chunked
+        Connection:
+        - keep-alive
+        Keep-Alive:
+        - timeout=5
+        Strict-Transport-Security:
+        - max-age=15552000
+        Intuit-Tid:
+        - 10200951-8624-454d-24cc-9b2a5ec64c17
+        Set-Cookie:
+        - JSESSIONID=428A154F62D5E9827BE4751F4F5D5968.c50-pprdsbxas802; Domain=qbo.intuit.com;
+          Path=/; Secure; HttpOnly
+        Qbo-Version:
+        - '1803.898'
+        Cache-Control:
+        - max-age=0, no-cache, no-store, must-revalidate, private
+        Expires:
+        - '0'
+        Service-Time:
+        - total=2290, db=1231
+      body:
+        encoding: ASCII-8BIT
+        string: '{"Attachable":{"status":"Deleted","domain":"QBO","Id":"200900000000000008541"},"time":"2015-03-15T11:27:41.514-07:00"}'
+      http_version:
+    recorded_at: Tue, 17 Apr 2018 15:21:52 GMT
+  recorded_with: VCR 4.0.0

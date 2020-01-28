@@ -1,6 +1,13 @@
 class QboApi
   module Attachment
 
+    def read_attachment(id:)
+      raw_response = connection.get do |request|
+        request.url "#{realm_id}/attachable/#{id}"
+      end
+      response(raw_response, entity: :attachable)
+    end
+
     def upload_attachment(payload:, attachment:)
       content_type = payload['ContentType'] || payload[:ContentType]
       file_name = payload['FileName'] || payload[:FileName]
@@ -13,6 +20,16 @@ class QboApi
                 Faraday::UploadIO.new(attachment, content_type, file_name)
         }
       end
+      response(raw_response, entity: :attachable)
+    end
+
+    # The `attachable` must be the full payload returned in the read response
+    def delete_attachment(attachable:)
+      raw_response = connection.post do |request|
+        request.url "#{realm_id}/attachable?operation=delete"
+        request.body = attachable.to_json
+      end
+
       response(raw_response, entity: :attachable)
     end
 
