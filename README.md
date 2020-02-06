@@ -25,7 +25,7 @@ follow <a href='#OAuth2-example'>OAuth2: Spin up an example</a>
 </a>
 
 
-## Ruby >= 2.2.2 required
+## Ruby >= 2.4.0 required
 
 ## Installation
 
