@@ -43,4 +43,41 @@ describe "QboApi Attachment" do
       expect(response).to include { ['AttachableResponse'].first['Fault'] }
     end
   end
+
+  it 'reads an attachment' do
+    id = '5000000000000149663'
+    use_cassette('qbo_api/attachment/read_attachment') do
+      response = api.read_attachment(id: id)
+      expect(response['Id']).to_not be_nil
+      expect(response['Note']).to eq 'This is an attached note'
+    end
+  end
+
+  it 'deletes an attachment' do
+    attachable = {
+      "SyncToken" => "0",
+      "domain" => "QBO",
+      "AttachableRef" => [
+        {
+          "IncludeOnSend" => false,
+          "EntityRef" => {
+            "type" => "Invoice",
+            "value" => "95"
+          }
+        }
+      ],
+      "Note" => "This is an attached note.",
+      "sparse" => false,
+      "Id" => "200900000000000008541",
+      "MetaData" => {
+        "CreateTime" => "2015-11-17T11:05:15-08:00",
+        "LastUpdatedTime" => "2015-11-17T11:05:15-08:00"
+      }
+    }
+    use_cassette('qbo_api/attachment/delete_attachment') do
+      response = api.delete_attachment(attachable: attachable)
+      expect(response['status']).to eq 'Deleted'
+      expect(response['Id']).to eq '200900000000000008541'
+    end
+  end
 end
