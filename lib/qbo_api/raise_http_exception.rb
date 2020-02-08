@@ -25,6 +25,8 @@ module FaradayMiddleware
           raise QboApi::BadGateway.new({ error_body: response.reason_phrase })
         when 503
           raise QboApi::ServiceUnavailable.new(error_message(response))
+        when 504
+          raise QboApi::GatewayTimeout.new(error_message(response))
         end
       end
     end
@@ -40,7 +42,8 @@ module FaradayMiddleware
         method: response.method,
         url: response.url,
         status: response.status,
-        error_body: error_body(response.body)
+        error_body: error_body(response.body),
+        intuit_tid: response[:response_headers]['intuit_tid']
       }
     end
 
