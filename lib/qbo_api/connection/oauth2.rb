@@ -1,8 +1,7 @@
 class QboApi
   attr_accessor :client_id, :client_secret, :refresh_proc
 
-  OAUTH2_BASE           = 'https://oauth.platform.intuit.com'
-  OAUTH2_URL            =  OAUTH2_BASE + '/oauth2/v1/tokens/bearer'
+  OAUTH2_URL = (ENV['OAUTH2_TOKEN'] || 'https://oauth.platform.intuit.com/oauth2/v1/tokens/bearer')
 
   def access_token
     @access_token || (refresh_access_token! if refresh_token)
