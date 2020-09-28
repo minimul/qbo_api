@@ -1,0 +1,55 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/attachable?operation=delete
+    body:
+      encoding: UTF-8
+      string: '{"Id":"5000000000000503624"}'
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json;charset=UTF-8
+      User-Agent:
+      - Faraday v0.17.3
+      Authorization:
+      - Bearer <OAUTH2_ACCESS_TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 29 Sep 2020 13:46:41 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=15552000
+      Intuit-Tid:
+      - 1-5f733ac0-27c460634b12a135710292c6
+      X-Spanid:
+      - b002d82d-3723-41b5-92e3-f14b80d4b0b1
+      X-Amzn-Trace-Id:
+      - Root=1-5f733ac0-27c460634b12a135710292c6
+      Qbo-Version:
+      - '1944.190'
+      Service-Time:
+      - total=467, db=66
+      Expires:
+      - '0'
+      Cache-Control:
+      - max-age=0, no-cache, no-store, must-revalidate, private
+    body:
+      encoding: ASCII-8BIT
+      string: '{"Attachable":{"domain":"QBO","status":"Deleted","Id":"5000000000000503624"},"time":"2020-09-29T06:46:40.814-07:00"}'
+  recorded_at: Tue, 29 Sep 2020 13:46:41 GMT
+recorded_with: VCR 6.0.0

@@ -1,0 +1,59 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/invoice
+    body:
+      encoding: UTF-8
+      string: '{"Line":[{"Amount":100.0,"DetailType":"SalesItemLineDetail","SalesItemLineDetail":{"ItemRef":{"value":"1","name":"Services"}}}],"CustomerRef":{"value":"1"}}'
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json;charset=UTF-8
+      User-Agent:
+      - Faraday v0.17.3
+      Authorization:
+      - Bearer <OAUTH2_ACCESS_TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 29 Sep 2020 12:58:07 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=15552000
+      Intuit-Tid:
+      - 1-5f732f5f-25dcb83b777d318c396aaf06
+      X-Spanid:
+      - 0b199152-25be-40d4-a250-f047cf5df1a1
+      X-Amzn-Trace-Id:
+      - Root=1-5f732f5f-25dcb83b777d318c396aaf06
+      Qbo-Version:
+      - '1944.190'
+      Service-Time:
+      - total=161, db=57
+      Expires:
+      - '0'
+      Cache-Control:
+      - max-age=0, no-cache, no-store, must-revalidate, private
+    body:
+      encoding: ASCII-8BIT
+      string: '{"Invoice":{"AllowIPNPayment":false,"AllowOnlinePayment":false,"AllowOnlineCreditCardPayment":false,"AllowOnlineACHPayment":false,"domain":"QBO","sparse":false,"Id":"266","SyncToken":"0","MetaData":{"CreateTime":"2020-09-29T05:58:07-07:00","LastUpdatedTime":"2020-09-29T05:58:07-07:00"},"CustomField":[{"DefinitionId":"1","Name":"Crew
+        #","Type":"StringType"}],"DocNumber":"1043","TxnDate":"2020-09-29","CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"LinkedTxn":[],"Line":[{"Id":"1","LineNum":1,"Amount":100.00,"DetailType":"SalesItemLineDetail","SalesItemLineDetail":{"ItemRef":{"value":"1","name":"Services"},"TaxCodeRef":{"value":"NON"}}},{"Amount":100.00,"DetailType":"SubTotalLineDetail","SubTotalLineDetail":{}}],"TxnTaxDetail":{"TotalTax":0},"CustomerRef":{"value":"1","name":"Amy''s
+        Bird Sanctuary"},"BillAddr":{"Id":"2","Line1":"4581 Finch St.","City":"Bayshore","CountrySubDivisionCode":"CA","PostalCode":"94326","Lat":"INVALID","Long":"INVALID"},"ShipAddr":{"Id":"2","Line1":"4581
+        Finch St.","City":"Bayshore","CountrySubDivisionCode":"CA","PostalCode":"94326","Lat":"INVALID","Long":"INVALID"},"DueDate":"2020-10-29","TotalAmt":100.00,"ApplyTaxAfterDiscount":false,"PrintStatus":"NeedToPrint","EmailStatus":"NotSet","Balance":100.00},"time":"2020-09-29T05:58:07.300-07:00"}'
+  recorded_at: Tue, 29 Sep 2020 12:58:07 GMT
+recorded_with: VCR 6.0.0

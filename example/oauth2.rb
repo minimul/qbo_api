@@ -24,16 +24,29 @@ class OAuth2App < Sinatra::Base
       Rack::OAuth2::Client.new(
         identifier: CLIENT_ID,
         secret: CLIENT_SECRET,
-        redirect_uri: "http://localhost:#{PORT}/oauth2-redirect",
+        redirect_uri: redirect_url,
         authorization_endpoint: "https://appcenter.intuit.com/connect/oauth2",
         token_endpoint: "https://oauth.platform.intuit.com/oauth2/v1/tokens/bearer"
       )
+    end
+
+    def authorize_url(state:)
+      oauth2_client.authorization_uri(
+        client_id: CLIENT_ID,
+        scope: "com.intuit.quickbooks.accounting",
+        redirect_uri: redirect_url,
+        response_type: "code",
+        state: state
+      )
+    end
+
+    def redirect_url
+      "http://localhost:#{PORT}/oauth2-redirect"
     end
   end
 
   get '/oauth2' do
     session[:state] = SecureRandom.uuid
-    @client = oauth2_client
     erb :oauth2
   end
 

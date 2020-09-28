@@ -1,0 +1,109 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/employee/55
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json;charset=UTF-8
+      User-Agent:
+      - Faraday v0.17.3
+      Authorization:
+      - Bearer <OAUTH2_ACCESS_TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 29 Sep 2020 13:02:58 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=15552000
+      Intuit-Tid:
+      - 1-5f733082-7e2bf2b91cbdc0de4198df12
+      X-Spanid:
+      - c70e5cbf-f1d9-4a6f-8bad-fd5c2de0e7e9
+      X-Amzn-Trace-Id:
+      - Root=1-5f733082-7e2bf2b91cbdc0de4198df12
+      Qbo-Version:
+      - '1944.190'
+      Service-Time:
+      - total=44, db=22
+      Expires:
+      - '0'
+      Cache-Control:
+      - max-age=0, no-cache, no-store, must-revalidate, private
+    body:
+      encoding: ASCII-8BIT
+      string: '{"Employee":{"BillableTime":false,"domain":"QBO","sparse":false,"Id":"55","SyncToken":"1","MetaData":{"CreateTime":"2015-10-07T11:21:48-07:00","LastUpdatedTime":"2016-10-04T03:51:17-07:00"},"GivenName":"Emily","FamilyName":"Platt","DisplayName":"Emily
+        Platt (deleted)","PrintOnCheckName":"Emily Platt","Active":false},"time":"2020-09-29T06:02:58.977-07:00"}'
+  recorded_at: Tue, 29 Sep 2020 13:02:59 GMT
+- request:
+    method: post
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/employee
+    body:
+      encoding: UTF-8
+      string: '{"Id":"55","SyncToken":"1","sparse":true,"Active":false}'
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json;charset=UTF-8
+      User-Agent:
+      - Faraday v0.17.3
+      Authorization:
+      - Bearer <OAUTH2_ACCESS_TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 29 Sep 2020 13:02:59 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=15552000
+      Intuit-Tid:
+      - 1-5f733083-4d8c1669173122fa20930c59
+      X-Spanid:
+      - 5bff9fa0-2840-499f-9b8e-f49e2cfe3a1b
+      X-Amzn-Trace-Id:
+      - Root=1-5f733083-4d8c1669173122fa20930c59
+      Qbo-Version:
+      - '1944.190'
+      Service-Time:
+      - total=45, db=26
+      Expires:
+      - '0'
+      Cache-Control:
+      - max-age=0, no-cache, no-store, must-revalidate, private
+    body:
+      encoding: ASCII-8BIT
+      string: '{"Employee":{"BillableTime":false,"domain":"QBO","sparse":false,"Id":"55","SyncToken":"1","MetaData":{"CreateTime":"2015-10-07T11:21:48-07:00","LastUpdatedTime":"2016-10-04T03:51:17-07:00"},"GivenName":"Emily","FamilyName":"Platt","DisplayName":"Emily
+        Platt (deleted)","PrintOnCheckName":"Emily Platt","Active":false},"time":"2020-09-29T06:02:59.445-07:00"}'
+  recorded_at: Tue, 29 Sep 2020 13:02:59 GMT
+recorded_with: VCR 6.0.0

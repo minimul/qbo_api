@@ -1,9 +1,7 @@
 require 'spec_helper'
 
 describe QboApi::Util do
-
-  let(:api){ QboApi.new(creds.to_h) }
-
+  let(:api){ QboApi.new(creds) }
 
   it 'allow string to pass thru cdc_time' do
     expect(api.cdc_time("str")).to eq "str"
@@ -87,6 +85,5 @@ describe QboApi::Util do
       path = api.add_request_id_to(path)
       expect(path).to match /&requestid=.*$/
     end
-
   end
 end

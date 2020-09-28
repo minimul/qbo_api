@@ -1,6 +1,5 @@
 require 'faraday'
 require 'nokogiri'
-
 # @private
 module FaradayMiddleware
   # @private
@@ -81,6 +80,5 @@ module FaradayMiddleware
         }
       end
     end
-
   end
 end

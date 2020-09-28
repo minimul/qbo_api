@@ -22,15 +22,15 @@ class QboApi
   include Attachment
   include ApiMethods
 
-  attr_accessor :realm_id
+  attr_accessor :access_token, :realm_id
   attr_accessor :endpoint
 
   V3_ENDPOINT_BASE_URL       = 'https://sandbox-quickbooks.api.intuit.com/v3/company/'
   PAYMENTS_API_BASE_URL      = 'https://sandbox.api.intuit.com/quickbooks/v4/payments'
   LOG_TAG = "[QuickBooks]"
 
-  # @param attributes [Hash<Symbol,String>]
   def initialize(attributes = {})
+    raise ArgumentError, "missing keyword: access_token" unless attributes.key?(:access_token)
     raise ArgumentError, "missing keyword: realm_id" unless attributes.key?(:realm_id)
     attributes = default_attributes.merge!(attributes)
     attributes.each do |attribute, value|

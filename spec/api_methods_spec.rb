@@ -1,8 +1,7 @@
 require 'spec_helper'
 
 describe QboApi::ApiMethods do
-
-  let(:api) { QboApi.new(creds.to_h) }
+  let(:api) { QboApi.new(creds) }
 
   QboApi.send(:public, :to_quote_or_not)
 
@@ -18,14 +17,14 @@ describe QboApi::ApiMethods do
     end
 
     it 'get an entity by its id' do
-      use_cassette("qbo_api/get/id") do
+      use_cassette("get/id") do
         response = api.get(:customer, 5)
         expect(response['DisplayName']).to eq "Dukes Basketball Camp"
       end
     end
 
     it 'get an entity by display name with a irregular character' do
-      use_cassette("qbo_api/get/display_name") do
+      use_cassette("get/display_name") do
         name = "Amy's Bird Sanctuary"
         response = api.get(:customer,  [ 'DisplayName', name ])
         expect(response['DisplayName']).to eq name
@@ -33,14 +32,14 @@ describe QboApi::ApiMethods do
     end
 
     it 'get vendors whether active or inactive' do
-      use_cassette("qbo_api/get/inactive_vendors") do
+      use_cassette("get/inactive_vendors") do
         response = api.get(:vendor,  [ 'Active', 'IN', '(true, false)' ])
         expect(response.size).to be > 1
       end
     end
 
     it 'search with ampersand with query method' do
-      use_cassette("qbo_api/misc/ampersand") do
+      use_cassette("misc/ampersand") do
         name = "Robertson & Associates"
         response = api.query(%{SELECT * FROM Vendor WHERE DisplayName = '#{name}'})
         expect(response.first['DisplayName']).to eq name
@@ -72,23 +71,19 @@ describe QboApi::ApiMethods do
           "value": "1"
         }
       }
-      use_cassette("qbo_api/create/invoice") do
+      use_cassette("create/invoice") do
         response = api.create(:invoice, payload: invoice)
-        #p response['Id']
+        # p response['Id']
         expect(response['Id']).to_not be_nil
       end
     end
 
     it 'a customer using a request id' do
-      customer =
-        if creds_type == :oauth2_creds
-          { DisplayName: 'Doe2, Jane' } # avoids duplicate name error
-        else
-          { DisplayName: 'Doe, Jane' }
-        end
+      customer = { DisplayName: 'Doe5, Jane' } # on a re-run alter the name to avoid duplicate error
       QboApi.request_id = true
-      use_cassette("qbo_api/create/customer") do
+      use_cassette("create/customer") do
         response = api.create(:customer, payload: customer)
+        # p response['Id']
         expect(response['Id']).to_not be_nil
       end
     end
@@ -97,17 +92,18 @@ describe QboApi::ApiMethods do
   describe '.update' do
 
     it 'a customer using a minor version configuration' do
+      phone_num = "(415) 444-1234"
       customer = {
-        DisplayName: 'Jack Doe',
+        DisplayName: 'Jack Moe',
         PrimaryPhone: {
-          FreeFormNumber: "(415) 444-1234"
+          FreeFormNumber: phone_num
         }
       }
       QboApi.minor_version = 8
-      use_cassette("qbo_api/update/customer") do
-        # Use the id of the created customer above
-        response = api.update(:customer, id: 60, payload: customer)
-        expect(response.fetch('PrimaryPhone').fetch('FreeFormNumber')).to eq "(415) 444-1234"
+      use_cassette("update/customer") do
+        # Use the id of the created customer above - see describe '.create' section
+        response = api.update(:customer, id: 68, payload: customer)
+        expect(response.fetch('PrimaryPhone').fetch('FreeFormNumber')).to eq phone_num
       end
       QboApi.minor_version = false
     end
@@ -133,7 +129,7 @@ describe QboApi::ApiMethods do
           }
         ]
       }
-      use_cassette("qbo_api/update/sales_receipt") do
+      use_cassette("update/sales_receipt") do
         # SalesReceipt = 17 is part of default sandbox
         response = api.update(:sales_receipt, id: 17, payload: sales_receipt, params: { minorversion: 4, requestid: api.uuid })
         expect(response['SyncToken'].to_i).to be > 0
@@ -142,17 +138,9 @@ describe QboApi::ApiMethods do
   end #= end '.update
 
   describe '.delete' do
-    let(:invoice_id) do
-      # Use the id of the created invoice above
-      if creds_type == :oauth2_creds
-        # spec/vcr/oauth2_creds/qbo_api/create/invoice.yml
-        146
-      else
-        145
-      end
-    end
+    let(:invoice_id) { "266" }
     it 'an invoice' do
-      use_cassette("qbo_api/delete/invoice") do
+      use_cassette("delete/invoice") do
         response = api.delete(:invoice, id: invoice_id)
         expect(response['status']).to eq "Deleted"
       end
@@ -165,14 +153,14 @@ describe QboApi::ApiMethods do
 
   describe '.deactivate' do
     it 'an employee' do
-      use_cassette("qbo_api/deactivate/employee") do
+      use_cassette("deactivate/employee") do
         response = api.deactivate(:employee, id: 55)
         expect(response['Active']).to eq false
       end
     end
 
     it 'an account' do
-      use_cassette("qbo_api/deactivate/account") do
+      use_cassette("deactivate/account") do
         response = api.deactivate(:account, id: 5)
         expect(response['Active']).to eq false
       end
@@ -187,7 +175,7 @@ describe QboApi::ApiMethods do
     context "backwards compatability (with block)" do
       it 'retrieves all customers' do
         counter = []
-        use_cassette("qbo_api/all/customers") do
+        use_cassette("all/customers") do
           result = api.query("SELECT COUNT(*) FROM Customer")
           count = result['QueryResponse']['totalCount']
           _response = api.all(:customers) do |c|
@@ -199,7 +187,7 @@ describe QboApi::ApiMethods do
     end
 
     it 'retrieves all customers' do
-      use_cassette("qbo_api/all/customers") do
+      use_cassette("all/customers") do
         result = api.query("SELECT COUNT(*) FROM Customer")
         count = result['QueryResponse']['totalCount']
         response = api.all(:customers)
@@ -208,7 +196,7 @@ describe QboApi::ApiMethods do
     end
 
     it 'retrieves all employees including inactive ones' do
-      use_cassette("qbo_api/all/employees_including_active") do
+      use_cassette("all/employees_including_active") do
         result = api.query("SELECT COUNT(*) FROM Employee WHERE Active IN (true, false) ")
         count = result['QueryResponse']['totalCount']
         response = api.all(:employees, inactive: true)
@@ -217,7 +205,7 @@ describe QboApi::ApiMethods do
     end
 
     it 'retrieves all vendors by groups of 5' do
-      use_cassette("qbo_api/all/vendors_by_5") do
+      use_cassette("all/vendors_by_5") do
         result = api.query("SELECT COUNT(*) FROM Vendor")
         count = result['QueryResponse']['totalCount']
         response = api.all(:vendor, max: 5)
@@ -227,7 +215,7 @@ describe QboApi::ApiMethods do
 
     it 'retrieves all customers, including inactive ones, by groups of 2 by alternate select query' do
       where = "WHERE Id IN ('5', '6', '7', '8', '9', '10')"
-      use_cassette("qbo_api/all/alt_select") do
+      use_cassette("all/alt_select") do
         result = api.query("SELECT count(*) FROM Customer #{where}")
         count = result['QueryResponse']['totalCount']
         response = api.all(:customer, max: 2, select: "SELECT * FROM Customer #{where}", inactive: true)
@@ -236,7 +224,7 @@ describe QboApi::ApiMethods do
     end
 
     it 'retrieves sales receipts' do
-      use_cassette("qbo_api/all/sales_receipts") do
+      use_cassette("all/sales_receipts") do
         first_id = api.all(:sales_receipts).first['Id']
         expect(first_id).to eq "17"
       end

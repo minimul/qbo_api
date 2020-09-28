@@ -1,0 +1,63 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/invoice
+    body:
+      encoding: UTF-8
+      string: '{"BadJson":true}'
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json;charset=UTF-8
+      User-Agent:
+      - Faraday v0.17.3
+      Authorization:
+      - Bearer <OAUTH2_ACCESS_TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Tue, 29 Sep 2020 13:53:30 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '1458'
+      Connection:
+      - keep-alive
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=15552000
+      Intuit-Tid:
+      - 1-5f733c5a-55d0ff60812923e8b22c622b
+      X-Spanid:
+      - 2c4515c5-876e-41f8-8e3d-1d529b0600f9
+      X-Amzn-Trace-Id:
+      - Root=1-5f733c5a-55d0ff60812923e8b22c622b
+    body:
+      encoding: UTF-8
+      string: '{"Fault":{"Error":[{"Message":"Request has invalid or unsupported property","Detail":"Property
+        Name:Unrecognized field \"BadJson\" (class com.intuit.schema.finance.v3.Invoice),
+        not marked as ignorable (83 known properties: \"DocNumber\", \"HomeTotalAmt\",
+        \"TotalAmt\", \"TxnSource\", \"AllowOnlinePayment\", \"RecurringInfo\", \"EmailStatus\",
+        \"callToAction\", \"AutoDocNumber\", \"ECloudStatusTimeStamp\", \"TaxFormNum\",
+        \"TxnDate\", \"FOB\", \"ClassRef\", \"AllowOnlineACHPayment\", \"DepositToAccountRef\",
+        \"InvoiceEx\", \"AllowOnlineCreditCardPayment\", \"CurrencyRef\", \"InvoiceLink\",
+        \"PONumber\", \"ShipDate\", \"PaymentMethodRef\", \"TrackingNum\", \"TxnTaxDetail\",
+        \"CustomerRef\", \"ShipFromAddr\", \"BillAddr\", \"EInvoiceStatus\", \"Id\",
+        \"RecurDataRef\", \"ApplyTaxAfterDiscount\", \"DepartmentRef\", \"SalesRepRef\",
+        \"ExchangeRate\", \"domain\", \"invoiceStatusLog\", \"TaxFormType\", \"BillEmailBcc\",
+        \"LessCIS\", \"CustomerMemo\", \"TxnStatus\", \"HomeBalance\", \"PrintStatus\",
+        \"ConvenienceFeeDetail\", \"DiscountRate\", \"DeliveryInfo\", \"FreeFormAddress\",
+        \"AllowIPNPayment\", \"CustomField\", \"PaymentDetailsMessage\", \"TransactionLocationType\",
+        \"MetaData\", \"LinkedTxn\", \"status\", \"RemitToRef\", \"PrivateNote\",
+        \"ShipMethodRef\", \"PaymentRefNum\", \"Tag\", \"TxnApprovalInfo\" [truncated]])\n
+        specified is unsupported or invalid","code":"2010"}],"type":"ValidationFault"},"time":"2020-09-29T06:53:30.722-07:00"}'
+  recorded_at: Tue, 29 Sep 2020 13:53:30 GMT
+recorded_with: VCR 6.0.0

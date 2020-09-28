@@ -1,6 +1,5 @@
 class QboApi
   module Entity
-
     def singular(entity)
       e = snake_to_camel(entity)
       case e
@@ -96,6 +95,5 @@ class QboApi
             .tr("-", "_")
             .downcase
     end
-
   end
 end

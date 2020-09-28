@@ -1,12 +1,11 @@
 require 'spec_helper'
 
 describe "QboApi::Supporting" do
-
-  let(:api){ QboApi.new(creds.to_h) }
+  let(:api){ QboApi.new(creds) }
 
   context ".cdc" do
     it 'should grab estimates via change data capture query' do
-      use_cassette("qbo_api/cdc/basic") do
+      use_cassette("cdc/basic") do
         response = api.cdc(entities: 'estimate', changed_since: '2011-10-10T09:00:00-07:00')
         expect(response['CDCResponse'].size).to eq 1
         ids = response['CDCResponse'][0]['QueryResponse'][0]['Estimate'].collect{ |e| e['Id'] }
@@ -17,18 +16,20 @@ describe "QboApi::Supporting" do
 
   context ".batch" do
     it 'does 4 operations in one request' do
-      use_cassette("qbo_api/batch/basic") do
-        response = api.batch(batch_payload)
+      use_cassette("batch/basic") do
+        name = "Boraski Family Store" # change name on re-run to avoid duplicate
+        response = api.batch(batch_payload(name: name))
         batch_response = response['BatchItemResponse']
         expect(batch_response.size).to eq 4
-        expect(batch_response.detect{ |b| b["bId"] == "bid1" }["Vendor"]["DisplayName"]).to eq "Smith Family Store#{creds_suffix}"
+        certain_response = batch_response.detect{ |b| b["bId"] == "bid1" }
+        expect(certain_response["Vendor"]["DisplayName"]).to eq name
       end
     end
   end
 
   context ".reports" do
     it 'for Profit and Loss with query params' do
-      use_cassette("qbo_api/reports/profit_and_loss") do
+      use_cassette("reports/profit_and_loss") do
         params = { start_date: '2015-01-01', end_date: '2015-07-31', customer: 1, summarize_column_by: 'Customers' }
         name = 'ProfitAndLoss'
         response = api.reports(name: name, params: params)
@@ -37,7 +38,7 @@ describe "QboApi::Supporting" do
     end
 
     it 'for General Ledger with no query params' do
-      use_cassette("qbo_api/reports/gl") do
+      use_cassette("reports/gl") do
         name = 'GeneralLedger'
         response = api.reports(name: name)
         expect(response["Header"]["ReportName"]).to eq name
@@ -45,7 +46,7 @@ describe "QboApi::Supporting" do
     end
   end
 
-  def batch_payload
+  def batch_payload(name:)
     {
       "BatchItemRequest":
       [
@@ -53,7 +54,7 @@ describe "QboApi::Supporting" do
           "bId": "bid1",
           "operation": "create",
           "Vendor": {
-            "DisplayName": "Smith Family Store#{creds_suffix}"
+            "DisplayName": name 
           }
         }, {
           "bId": "bid2",
@@ -78,15 +79,5 @@ describe "QboApi::Supporting" do
         }
       ]
     }
-
-  end
-
-
-  def creds_suffix
-    if creds_type == :oauth2_creds
-      "-2"
-    else
-      ""
-    end
   end
 end

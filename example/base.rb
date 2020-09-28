@@ -25,6 +25,7 @@ BASE_APP_CONFIG = proc do
   configure do
     $VERBOSE = nil # silence redefined constant warning
     register Sinatra::Reloader
+    set :public_folder => "#{__dir__}/public"
   end
 
   set :sessions, :true

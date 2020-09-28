@@ -1,6 +1,5 @@
 class QboApi
   module Configuration
-
     def logger
       @logger ||= ::Logger.new($stdout)
     end

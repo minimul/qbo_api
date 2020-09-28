@@ -1,0 +1,55 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/attachable/5000000000000503624
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json;charset=UTF-8
+      User-Agent:
+      - Faraday v0.17.3
+      Authorization:
+      - Bearer <OAUTH2_ACCESS_TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 29 Sep 2020 13:38:17 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=15552000
+      Intuit-Tid:
+      - 1-5f7338c8-28c09cf431dc53a1402e5bf9
+      X-Spanid:
+      - 7671df44-726d-44d0-9bb2-8334b8cd5bd9
+      X-Amzn-Trace-Id:
+      - Root=1-5f7338c8-28c09cf431dc53a1402e5bf9
+      Qbo-Version:
+      - '1944.190'
+      Service-Time:
+      - total=32, db=10
+      Expires:
+      - '0'
+      Cache-Control:
+      - max-age=0, no-cache, no-store, must-revalidate, private
+    body:
+      encoding: ASCII-8BIT
+      string: '{"Attachable":{"FileName":"no_detail.xml","FileAccessUri":"/v3/company/<COMPANY_ID>/download/5000000000000503624","TempDownloadUri":"https://intuit-qbo-prod-23.s3.amazonaws.com/<COMPANY_ID>/attachments/8e8a930a-afa3-4ba1-9873-94238e712403no_detail.xml?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20200929T133817Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=AKIA3V3MBG4KLHZEBYNA%2F20200929%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=fb021183d9becc02f52a01ce17ddfd2d96f7c3b1c6c5182f852d1a35d9256372","Size":538,"ContentType":"text/xml","domain":"QBO","sparse":false,"Id":"5000000000000503624","SyncToken":"0","MetaData":{"CreateTime":"2020-09-29T06:33:46-07:00","LastUpdatedTime":"2020-09-29T06:33:46-07:00"},"AttachableRef":[{"EntityRef":{"value":"75","type":"Invoice"},"IncludeOnSend":false}]},"time":"2020-09-29T06:38:17.003-07:00"}'
+  recorded_at: Tue, 29 Sep 2020 13:38:17 GMT
+recorded_with: VCR 6.0.0

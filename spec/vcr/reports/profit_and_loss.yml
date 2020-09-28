@@ -1,0 +1,60 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/reports/ProfitAndLoss?customer=1&end_date=2015-07-31&start_date=2015-01-01&summarize_column_by=Customers
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json;charset=UTF-8
+      User-Agent:
+      - Faraday v0.17.3
+      Authorization:
+      - Bearer <OAUTH2_ACCESS_TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 29 Sep 2020 15:13:54 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=15552000
+      Intuit-Tid:
+      - 1-5f734f31-4b37e18680095562378a4c8a
+      X-Spanid:
+      - a441b566-4edf-4dec-b300-db68dacf846b
+      X-Amzn-Trace-Id:
+      - Root=1-5f734f31-4b37e18680095562378a4c8a
+      Qbo-Version:
+      - '1944.190'
+      Service-Time:
+      - total=508, db=367
+      Expires:
+      - '0'
+      Cache-Control:
+      - max-age=0, no-cache, no-store, must-revalidate, private
+    body:
+      encoding: ASCII-8BIT
+      string: '{"Header":{"Time":"2020-09-29T08:13:54-07:00","ReportName":"ProfitAndLoss","ReportBasis":"Accrual","StartPeriod":"2015-01-01","EndPeriod":"2015-07-31","SummarizeColumnsBy":"Customers","Currency":"USD","Customer":"1","Option":[{"Name":"AccountingStandard","Value":"GAAP"},{"Name":"NoReportData","Value":"true"}]},"Columns":{"Column":[{"ColTitle":"","ColType":"Account","MetaData":[{"Name":"ColKey","Value":"account"}]},{"ColTitle":"TOTAL","ColType":"Money","MetaData":[{"Name":"ColKey","Value":"total"}]}]},"Rows":{"Row":[{"Header":{"ColData":[{"value":"Income"},{"value":""}]},"Summary":{"ColData":[{"value":"Total
+        Income"},{"value":""}]},"type":"Section","group":"Income"},{"Summary":{"ColData":[{"value":"Gross
+        Profit"},{"value":""}]},"type":"Section","group":"GrossProfit"},{"Header":{"ColData":[{"value":"Expenses"},{"value":""}]},"Summary":{"ColData":[{"value":"Total
+        Expenses"},{"value":""}]},"type":"Section","group":"Expenses"},{"Summary":{"ColData":[{"value":"Net
+        Operating Income"},{"value":""}]},"type":"Section","group":"NetOperatingIncome"},{"Summary":{"ColData":[{"value":"Net
+        Income"},{"value":""}]},"type":"Section","group":"NetIncome"}]}}'
+  recorded_at: Tue, 29 Sep 2020 15:13:54 GMT
+recorded_with: VCR 6.0.0

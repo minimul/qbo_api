@@ -1,0 +1,71 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/upload
+    body:
+      encoding: UTF-8
+      string: "-------------RubyMultipartPost-d3ad65a17827740101595c352237da99\r\nContent-Disposition:
+        form-data; name=\"file_metadata_01\"; filename=\"attachment.json\"\r\nContent-Length:
+        118\r\nContent-Type: application/json\r\nContent-Transfer-Encoding: binary\r\n\r\n{\"AttachableRef\":[{\"EntityRef\":{\"type\":\"Estimate\",\"value\":\"75\"}}],\"FileName\":\"no_detail.xml\",\"ContentType\":\"text/xml\"}\r\n-------------RubyMultipartPost-d3ad65a17827740101595c352237da99\r\nContent-Disposition:
+        form-data; name=\"file_content_01\"; filename=\"no_detail.xml\"\r\nContent-Length:
+        538\r\nContent-Type: text/xml\r\nContent-Transfer-Encoding: binary\r\n\r\n<?xml
+        version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<IntuitResponse xmlns=\"http://schema.intuit.com/finance/v3\"
+        time=\"2017-03-29T05:39:07.929-07:00\">\n  <Fault type=\"AUTHENTICATION\">\n
+        \   <Error code=\"3200\">\n      <Message>message=ApplicationAuthenticationFailed;
+        errorCode=003200; statusCode=401</Message>\n    </Error>\n    <Error code=\"3200\">\n
+        \     <Message>message=ApplicationAuthenticationFailed; errorCode=003200;
+        statusCode=401</Message>\n      <Detail>This error does have detail</Detail>\n
+        \   </Error>\n  </Fault>\n</IntuitResponse>\n\r\n-------------RubyMultipartPost-d3ad65a17827740101595c352237da99--\r\n"
+    headers:
+      Content-Type:
+      - multipart/form-data; boundary=-----------RubyMultipartPost-d3ad65a17827740101595c352237da99
+      Accept:
+      - application/json
+      User-Agent:
+      - Faraday v0.17.3
+      Authorization:
+      - Bearer <OAUTH2_ACCESS_TOKEN>
+      Content-Length:
+      - '1196'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 29 Sep 2020 13:33:54 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=15552000
+      Intuit-Tid:
+      - 1-5f7337c2-1e4095a25de42e9e527f5013
+      X-Spanid:
+      - ceff35fb-b3d2-40f1-9683-5a2448567a1a
+      X-Amzn-Trace-Id:
+      - Root=1-5f7337c2-1e4095a25de42e9e527f5013
+      Qbo-Version:
+      - '1944.190'
+      Service-Time:
+      - total=30, db=5
+      Expires:
+      - '0'
+      Cache-Control:
+      - max-age=0, no-cache, no-store, must-revalidate, private
+    body:
+      encoding: ASCII-8BIT
+      string: '{"AttachableResponse":[{"Fault":{"Error":[{"Message":"A business validation
+        error has occurred while processing your request","Detail":"Business Validation
+        Error: The entity Estimate 75 that you are trying to link does not exist.
+        Estimate 75","code":"6000","element":""}],"type":"ValidationFault"}}],"time":"2020-09-29T06:33:54.739-07:00"}'
+  recorded_at: Tue, 29 Sep 2020 13:33:54 GMT
+recorded_with: VCR 6.0.0
