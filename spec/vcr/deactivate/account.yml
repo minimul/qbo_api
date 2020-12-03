@@ -1,0 +1,112 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/account/5
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json;charset=UTF-8
+      User-Agent:
+      - Faraday v0.17.3
+      Authorization:
+      - Bearer <OAUTH2_ACCESS_TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 29 Sep 2020 13:03:07 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=15552000
+      Intuit-Tid:
+      - 1-5f73308b-7fb81c982dbd2b9606dca5df
+      X-Spanid:
+      - 777dcdb3-ca64-429d-8c84-af74b7fe0c28
+      X-Amzn-Trace-Id:
+      - Root=1-5f73308b-7fb81c982dbd2b9606dca5df
+      Qbo-Version:
+      - '1944.190'
+      Service-Time:
+      - total=46, db=21
+      Expires:
+      - '0'
+      Cache-Control:
+      - max-age=0, no-cache, no-store, must-revalidate, private
+    body:
+      encoding: ASCII-8BIT
+      string: '{"Account":{"Name":"Fees Billed (deleted)","SubAccount":false,"FullyQualifiedName":"Fees
+        Billed (deleted)","Active":false,"Classification":"Revenue","AccountType":"Income","AccountSubType":"ServiceFeeIncome","CurrentBalance":0,"CurrentBalanceWithSubAccounts":0,"CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"domain":"QBO","sparse":false,"Id":"5","SyncToken":"1","MetaData":{"CreateTime":"2015-10-01T14:42:07-07:00","LastUpdatedTime":"2018-01-05T12:15:34-08:00"}},"time":"2020-09-29T06:03:07.405-07:00"}'
+  recorded_at: Tue, 29 Sep 2020 13:03:07 GMT
+- request:
+    method: post
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/account
+    body:
+      encoding: UTF-8
+      string: '{"Id":"5","SyncToken":"1","sparse":true,"Active":false,"Name":"Fees
+        Billed (deleted)"}'
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json;charset=UTF-8
+      User-Agent:
+      - Faraday v0.17.3
+      Authorization:
+      - Bearer <OAUTH2_ACCESS_TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 29 Sep 2020 13:03:07 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=15552000
+      Intuit-Tid:
+      - 1-5f73308b-2f2823c01f11f7ef4ca04af4
+      X-Spanid:
+      - f426ed1d-042c-4c8b-9e28-788cbd083ea6
+      X-Amzn-Trace-Id:
+      - Root=1-5f73308b-2f2823c01f11f7ef4ca04af4
+      Qbo-Version:
+      - '1944.190'
+      Service-Time:
+      - total=64, db=36
+      Expires:
+      - '0'
+      Cache-Control:
+      - max-age=0, no-cache, no-store, must-revalidate, private
+    body:
+      encoding: ASCII-8BIT
+      string: '{"Account":{"Name":"Fees Billed (deleted)","SubAccount":false,"FullyQualifiedName":"Fees
+        Billed (deleted)","Active":false,"Classification":"Revenue","AccountType":"Income","AccountSubType":"ServiceFeeIncome","CurrentBalance":0,"CurrentBalanceWithSubAccounts":0,"CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"domain":"QBO","sparse":false,"Id":"5","SyncToken":"1","MetaData":{"CreateTime":"2015-10-01T14:42:07-07:00","LastUpdatedTime":"2018-01-05T12:15:34-08:00"}},"time":"2020-09-29T06:03:07.889-07:00"}'
+  recorded_at: Tue, 29 Sep 2020 13:03:07 GMT
+recorded_with: VCR 6.0.0

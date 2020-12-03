@@ -4,16 +4,10 @@ require 'faraday/detailed_logger'
 
 class QboApi
   module Connection
-    AUTHORIZATION_MIDDLEWARES = []
-
-    def Connection.add_authorization_middleware(strategy_name)
-      Connection::AUTHORIZATION_MIDDLEWARES << strategy_name
-    end
-
     def authorized_json_connection(url, headers: nil)
       headers ||= {}
-      headers['Accept'] ||= 'application/json' # required "we'll only accept JSON". Can be changed to any `+json` media type.
-      headers['Content-Type'] ||= 'application/json;charset=UTF-8' # required when request has a body, else harmless
+      headers['Accept'] ||= 'application/json'
+      headers['Content-Type'] ||= 'application/json;charset=UTF-8'
       build_connection(url, headers: headers) do |conn|
         add_authorization_middleware(conn)
         add_exception_middleware(conn)
@@ -35,17 +29,6 @@ class QboApi
       end
     end
 
-    # @example
-    #   connection = build_connection('https://oauth.platform.intuit.com', headers: { 'Accept' => 'application/json' }) do |conn|
-    #     conn.basic_auth(client_id, client_secret)
-    #     conn.request :url_encoded # application/x-www-form-urlencoded
-    #     conn.use FaradayMiddleware::ParseJson, parser_options: { symbolize_names: true }
-    #     conn.use Faraday::Response::RaiseError
-    #   end
-    #   raw_response = connection.post {|req|
-    #     req.body = { grant_type: :refresh_token, refresh_token: current_refresh_token }
-    #     req.url '/oauth2/v1/tokens/bearer'
-    #   }
     def build_connection(url, headers: nil)
       Faraday.new(url: url) { |conn|
         conn.response :detailed_logger, QboApi.logger, LOG_TAG if QboApi.log
@@ -119,22 +102,11 @@ class QboApi
     end
 
     def add_authorization_middleware(conn)
-      Connection::AUTHORIZATION_MIDDLEWARES.find(proc do
-        raise QboApi::Error.new error_body: 'Add a configured authorization_middleware'
-      end) do |strategy_name|
-        next unless public_send("use_#{strategy_name}_middleware?")
-        public_send("add_#{strategy_name}_authorization_middleware", conn)
-        true
-      end
+      conn.request :oauth2, access_token, token_type: 'bearer'
     end
 
     def entity_name(entity)
       singular(entity)
     end
-
-    require_relative 'connection/oauth1'
-    include OAuth1
-    require_relative 'connection/oauth2'
-    include OAuth2
   end
 end

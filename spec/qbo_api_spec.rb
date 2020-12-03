@@ -1,8 +1,7 @@
 require 'spec_helper'
 
 describe QboApi do
-
-  let(:api){ QboApi.new(creds.to_h) }
+  let(:api){ QboApi.new(creds) }
 
   it 'has a version number' do
     expect(QboApi::VERSION).not_to be nil
@@ -56,5 +55,4 @@ describe QboApi do
     expect(api.send(:get_endpoint)).to eq QboApi::PAYMENTS_API_BASE_URL.sub("sandbox.", "")
     QboApi.production = false # Always end with = false
   end
-
 end

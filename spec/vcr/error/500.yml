@@ -1,0 +1,95 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/customer/1/5
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json;charset=UTF-8
+      User-Agent:
+      - Faraday v0.17.3
+      Authorization:
+      - Bearer <OAUTH2_ACCESS_TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Tue, 29 Sep 2020 13:55:31 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '338'
+      Connection:
+      - keep-alive
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=15552000
+      Intuit-Tid:
+      - 1-5f733cd3-284572515eb5f21f8e8afa62
+      X-Spanid:
+      - 9bab14d4-d610-40cb-b42d-2d0abd081fae
+      X-Amzn-Trace-Id:
+      - Root=1-5f733cd3-284572515eb5f21f8e8afa62
+    body:
+      encoding: UTF-8
+      string: '{"Fault":{"Error":[{"Message":"Unsupported Operation","Detail":"Operation
+        Could not find resource for relative : /v3/company/<COMPANY_ID>/customer/1/5
+        of full path: https://c50.sandbox.qbo.intuit.com/qbo50/v3/company/<COMPANY_ID>/customer/1/5
+        is not supported.","code":"500"}],"type":"ValidationFault"},"time":"2020-09-29T06:55:31.323-07:00"}'
+  recorded_at: Tue, 29 Sep 2020 13:55:31 GMT
+- request:
+    method: get
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/customer/1.5
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json;charset=UTF-8
+      User-Agent:
+      - Faraday v0.17.3
+      Authorization:
+      - Bearer <OAUTH2_ACCESS_TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Tue, 29 Sep 2020 13:57:55 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '159'
+      Connection:
+      - keep-alive
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=15552000
+      Intuit-Tid:
+      - 1-5f733d63-44139ea355338a7d238f5e99
+      X-Spanid:
+      - 236ed8a3-c38c-4802-ba7c-9cf8fa4401fe
+      X-Amzn-Trace-Id:
+      - Root=1-5f733d63-44139ea355338a7d238f5e99
+    body:
+      encoding: UTF-8
+      string: '{"Fault":{"Error":[{"Message":"Invalid ID","Detail":"Id should be a
+        valid number. Supplied value:1.5","code":"2030","element":"Id"}],"type":"ValidationFault"}}'
+  recorded_at: Tue, 29 Sep 2020 13:57:55 GMT
+recorded_with: VCR 6.0.0

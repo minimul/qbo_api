@@ -1,0 +1,61 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/customer/5
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json;charset=UTF-8
+      User-Agent:
+      - Faraday v0.17.3
+      Authorization:
+      - Bearer <OAUTH2_ACCESS_TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 29 Sep 2020 12:59:12 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=15552000
+      Intuit-Tid:
+      - 1-5f732fa0-904c9f2c48d92e264a539496
+      X-Spanid:
+      - b50fc6b7-da02-4031-a8a5-5d9f14200dea
+      X-Amzn-Trace-Id:
+      - Root=1-5f732fa0-904c9f2c48d92e264a539496
+      Qbo-Version:
+      - '1944.190'
+      Service-Time:
+      - total=32, db=26
+      Expires:
+      - '0'
+      Cache-Control:
+      - max-age=0, no-cache, no-store, must-revalidate, private
+    body:
+      encoding: ASCII-8BIT
+      string: '{"Customer":{"Taxable":true,"BillAddr":{"Id":"6","Line1":"25 Court
+        St.","City":"Tucson","CountrySubDivisionCode":"AZ","PostalCode":"85719","Lat":"32.2841116","Long":"-110.9744298"},"ShipAddr":{"Id":"6","Line1":"25
+        Court St.","City":"Tucson","CountrySubDivisionCode":"AZ","PostalCode":"85719","Lat":"32.2841116","Long":"-110.9744298"},"Job":false,"BillWithParent":false,"Balance":0,"BalanceWithJobs":0,"CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"PreferredDeliveryMethod":"Print","domain":"QBO","sparse":false,"Id":"5","SyncToken":"1","MetaData":{"CreateTime":"2015-10-01T16:54:59-07:00","LastUpdatedTime":"2016-08-27T01:37:57-07:00"},"GivenName":"Peter","FamilyName":"Dukes","FullyQualifiedName":"Dukes
+        Basketball Camp","CompanyName":"Dukes Basketball Camp","DisplayName":"Dukes
+        Basketball Camp","PrintOnCheckName":"Dukes Basketball Camp","Active":true,"PrimaryPhone":{"FreeFormNumber":"(520)
+        420-5638"},"PrimaryEmailAddr":{"Address":"Dukes_bball@intuit.com"},"DefaultTaxCodeRef":{"value":"2"}},"time":"2020-09-29T05:59:12.852-07:00"}'
+  recorded_at: Tue, 29 Sep 2020 12:59:12 GMT
+recorded_with: VCR 6.0.0

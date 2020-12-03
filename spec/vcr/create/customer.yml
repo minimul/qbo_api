@@ -1,0 +1,57 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/customer?requestid=
+    body:
+      encoding: UTF-8
+      string: '{"DisplayName":"Doe5, Jane"}'
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json;charset=UTF-8
+      User-Agent:
+      - Faraday v0.17.3
+      Authorization:
+      - Bearer <OAUTH2_ACCESS_TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 29 Sep 2020 12:58:16 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=15552000
+      Intuit-Tid:
+      - 1-5f732f68-d4d3c70ce72c15e07d2bc328
+      X-Spanid:
+      - 4be2a28d-7824-4414-851d-cd17e6ea3f07
+      X-Amzn-Trace-Id:
+      - Root=1-5f732f68-d4d3c70ce72c15e07d2bc328
+      Qbo-Version:
+      - '1944.190'
+      Service-Time:
+      - total=56, db=18
+      Expires:
+      - '0'
+      Cache-Control:
+      - max-age=0, no-cache, no-store, must-revalidate, private
+    body:
+      encoding: ASCII-8BIT
+      string: '{"Customer":{"Taxable":true,"Job":false,"BillWithParent":false,"Balance":0,"BalanceWithJobs":0,"CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"PreferredDeliveryMethod":"Print","domain":"QBO","sparse":false,"Id":"70","SyncToken":"0","MetaData":{"CreateTime":"2020-09-29T05:58:16-07:00","LastUpdatedTime":"2020-09-29T05:58:16-07:00"},"FullyQualifiedName":"Doe5,
+        Jane","DisplayName":"Doe5, Jane","PrintOnCheckName":"Doe5, Jane","Active":true,"DefaultTaxCodeRef":{"value":"2"}},"time":"2020-09-29T05:58:16.187-07:00"}'
+  recorded_at: Tue, 29 Sep 2020 12:58:16 GMT
+recorded_with: VCR 6.0.0

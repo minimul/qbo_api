@@ -19,3 +19,4 @@ todo.txt
 spec/temp/spec_status.txt
 *.swp
 scrap.txt
+.tool-versions

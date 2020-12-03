@@ -1,0 +1,113 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/salesreceipt/17
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json;charset=UTF-8
+      User-Agent:
+      - Faraday v0.17.3
+      Authorization:
+      - Bearer <OAUTH2_ACCESS_TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 29 Sep 2020 13:00:43 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=15552000
+      Intuit-Tid:
+      - 1-5f732ffb-af72ef3208c156652c02f3d2
+      X-Spanid:
+      - 669530d1-92fa-4540-91d6-d8be1817eadb
+      X-Amzn-Trace-Id:
+      - Root=1-5f732ffb-af72ef3208c156652c02f3d2
+      Qbo-Version:
+      - '1944.190'
+      Service-Time:
+      - total=33, db=13
+      Expires:
+      - '0'
+      Cache-Control:
+      - max-age=0, no-cache, no-store, must-revalidate, private
+    body:
+      encoding: ASCII-8BIT
+      string: '{"SalesReceipt":{"domain":"QBO","sparse":false,"Id":"17","SyncToken":"4","MetaData":{"CreateTime":"2015-10-06T15:12:39-07:00","LastUpdatedTime":"2020-09-29T04:58:13-07:00"},"CustomField":[{"DefinitionId":"1","Name":"Crew
+        #","Type":"StringType"}],"DocNumber":"1008","TxnDate":"2020-09-29","CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"Line":[{"Id":"5","LineNum":1,"Description":"Custom Design","Amount":337.50,"DetailType":"SalesItemLineDetail","SalesItemLineDetail":{"ItemRef":{"value":"4","name":"Design"},"UnitPrice":75,"Qty":4.5,"TaxCodeRef":{"value":"NON"}}},{"Amount":337.50,"DetailType":"SubTotalLineDetail","SubTotalLineDetail":{}}],"TxnTaxDetail":{"TotalTax":0},"TotalAmt":337.50,"ApplyTaxAfterDiscount":false,"PrintStatus":"NeedToPrint","EmailStatus":"NotSet","Balance":0,"DepositToAccountRef":{"value":"4","name":"Undeposited
+        Funds"}},"time":"2020-09-29T06:00:43.514-07:00"}'
+  recorded_at: Tue, 29 Sep 2020 13:00:43 GMT
+- request:
+    method: post
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/salesreceipt?minorversion=4&requestid=a90bfae9-9c6b-4179-9c7e-d8f538d09f6f
+    body:
+      encoding: UTF-8
+      string: '{"Line":[{"Description":"Custom Design","Amount":337.5,"DetailType":"SalesItemLineDetail","SalesItemLineDetail":{"ItemRef":{"value":"4","name":"Design"},"UnitPrice":75,"Qty":4.5,"TaxCodeRef":{"value":"NON"}}}],"Id":"17","SyncToken":"4"}'
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json;charset=UTF-8
+      User-Agent:
+      - Faraday v0.17.3
+      Authorization:
+      - Bearer <OAUTH2_ACCESS_TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 29 Sep 2020 13:00:44 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=15552000
+      Intuit-Tid:
+      - 1-5f732ffb-465aededac1c6ed13845fc31
+      X-Spanid:
+      - 962e3fa4-e93e-4c62-b127-f75d2229a7cd
+      X-Amzn-Trace-Id:
+      - Root=1-5f732ffb-465aededac1c6ed13845fc31
+      Qbo-Version:
+      - '1944.190'
+      Service-Time:
+      - total=94, db=37
+      Expires:
+      - '0'
+      Cache-Control:
+      - max-age=0, no-cache, no-store, must-revalidate, private
+    body:
+      encoding: ASCII-8BIT
+      string: '{"SalesReceipt":{"domain":"QBO","sparse":false,"Id":"17","SyncToken":"5","MetaData":{"CreateTime":"2015-10-06T15:12:39-07:00","LastUpdatedTime":"2020-09-29T06:00:44-07:00"},"CustomField":[{"DefinitionId":"1","Name":"Crew
+        #","Type":"StringType"}],"DocNumber":"1008","TxnDate":"2020-09-29","CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"Line":[{"Id":"6","LineNum":1,"Description":"Custom Design","Amount":337.50,"DetailType":"SalesItemLineDetail","SalesItemLineDetail":{"ItemRef":{"value":"4","name":"Design"},"UnitPrice":75,"Qty":4.5,"TaxCodeRef":{"value":"NON"}}},{"Amount":337.50,"DetailType":"SubTotalLineDetail","SubTotalLineDetail":{}}],"TxnTaxDetail":{"TotalTax":0},"TotalAmt":337.50,"ApplyTaxAfterDiscount":false,"PrintStatus":"NeedToPrint","EmailStatus":"NotSet","Balance":0,"DepositToAccountRef":{"value":"4","name":"Undeposited
+        Funds"}},"time":"2020-09-29T06:00:44.005-07:00"}'
+  recorded_at: Tue, 29 Sep 2020 13:00:44 GMT
+recorded_with: VCR 6.0.0

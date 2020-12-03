@@ -1,0 +1,456 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/query?query=SELECT%20COUNT(*)%20FROM%20Vendor
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json;charset=UTF-8
+      User-Agent:
+      - Faraday v0.17.3
+      Authorization:
+      - Bearer <OAUTH2_ACCESS_TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 29 Sep 2020 13:04:21 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=15552000
+      Intuit-Tid:
+      - 1-5f7330d5-6a5d8e9b07823cfcc094d42c
+      X-Spanid:
+      - 922941ee-105f-4743-b99c-5687d4559481
+      X-Amzn-Trace-Id:
+      - Root=1-5f7330d5-6a5d8e9b07823cfcc094d42c
+      Qbo-Version:
+      - '1944.190'
+      Service-Time:
+      - total=33, db=23
+      Expires:
+      - '0'
+      Cache-Control:
+      - max-age=0, no-cache, no-store, must-revalidate, private
+    body:
+      encoding: ASCII-8BIT
+      string: '{"QueryResponse":{"totalCount":26},"time":"2020-09-29T06:04:21.387-07:00"}'
+  recorded_at: Tue, 29 Sep 2020 13:04:21 GMT
+- request:
+    method: get
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/query?query=SELECT%20*%20FROM%20Vendor%20MAXRESULTS%205%20STARTPOSITION%201
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json;charset=UTF-8
+      User-Agent:
+      - Faraday v0.17.3
+      Authorization:
+      - Bearer <OAUTH2_ACCESS_TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 29 Sep 2020 13:04:21 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=15552000
+      Intuit-Tid:
+      - 1-5f7330d5-605cad8e1a4a839ca24702eb
+      X-Spanid:
+      - 2cc348ff-115e-4eeb-9f8b-5b5e305131a2
+      X-Amzn-Trace-Id:
+      - Root=1-5f7330d5-605cad8e1a4a839ca24702eb
+      Qbo-Version:
+      - '1944.190'
+      Service-Time:
+      - total=42, db=27
+      Expires:
+      - '0'
+      Cache-Control:
+      - max-age=0, no-cache, no-store, must-revalidate, private
+    body:
+      encoding: ASCII-8BIT
+      string: '{"QueryResponse":{"Vendor":[{"Balance":0,"Vendor1099":false,"CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"domain":"QBO","sparse":false,"Id":"56","SyncToken":"0","MetaData":{"CreateTime":"2015-10-23T14:28:52-07:00","LastUpdatedTime":"2015-10-23T14:28:52-07:00"},"DisplayName":"Bob''s
+        Burger Joint","PrintOnCheckName":"Bob''s Burger Joint","Active":true},{"BillAddr":{"Id":"31","Line1":"15
+        Main St.","City":"Palo Alto","CountrySubDivisionCode":"CA","PostalCode":"94303","Lat":"37.445013","Long":"-122.1391443"},"Balance":0,"AcctNum":"1345","Vendor1099":false,"CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"domain":"QBO","sparse":false,"Id":"30","SyncToken":"0","MetaData":{"CreateTime":"2015-10-02T10:07:56-07:00","LastUpdatedTime":"2015-10-07T11:13:46-07:00"},"GivenName":"Bessie","FamilyName":"Williams","CompanyName":"Books
+        by Bessie","DisplayName":"Books by Bessie","PrintOnCheckName":"Books by Bessie","Active":true,"PrimaryPhone":{"FreeFormNumber":"(650)
+        555-7745"},"PrimaryEmailAddr":{"Address":"Books@Intuit.com"},"WebAddr":{"URI":"http://www.booksbybessie.co"}},{"BillAddr":{"Id":"32","Line1":"P.O.
+        Box 5","City":"Middlefield","CountrySubDivisionCode":"CA","PostalCode":"94482","Lat":"43.8249453","Long":"-79.2639122"},"TaxIdentifier":"XXXXXX9875","Balance":241.23,"AcctNum":"7653412","Vendor1099":true,"CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"domain":"QBO","sparse":false,"Id":"31","SyncToken":"0","MetaData":{"CreateTime":"2015-10-02T10:12:02-07:00","LastUpdatedTime":"2015-10-06T15:28:48-07:00"},"GivenName":"Nick","FamilyName":"Brosnahan","CompanyName":"Brosnahan
+        Insurance Agency","DisplayName":"Brosnahan Insurance Agency","PrintOnCheckName":"Brosnahan
+        Insurance Agency","Active":true,"PrimaryPhone":{"FreeFormNumber":"(650) 555-9912"},"Mobile":{"FreeFormNumber":"(650)
+        555-9874"},"Fax":{"FreeFormNumber":"(555) 123-4567"},"WebAddr":{"URI":"http://BrosnahanInsuranceAgency.org"}},{"BillAddr":{"Id":"33","Line1":"10
+        Main St.","City":"Palo Alto","CountrySubDivisionCode":"CA","PostalCode":"94303","Lat":"37.445013","Long":"-122.1391443"},"TermRef":{"value":"1"},"Balance":4312.88,"Vendor1099":false,"CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"domain":"QBO","sparse":false,"Id":"32","SyncToken":"0","MetaData":{"CreateTime":"2015-10-02T10:13:24-07:00","LastUpdatedTime":"2020-07-01T01:26:50-07:00"},"CompanyName":"Cal
+        Telephone","DisplayName":"Cal Telephone","PrintOnCheckName":"Cal Telephone","Active":true,"PrimaryPhone":{"FreeFormNumber":"(650)
+        555-1616"}},{"Balance":0,"Vendor1099":false,"CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"domain":"QBO","sparse":false,"Id":"33","SyncToken":"0","MetaData":{"CreateTime":"2015-10-02T10:13:52-07:00","LastUpdatedTime":"2015-10-02T10:13:52-07:00"},"CompanyName":"Chin''s
+        Gas and Oil","DisplayName":"Chin''s Gas and Oil","PrintOnCheckName":"Chin''s
+        Gas and Oil","Active":true}],"startPosition":1,"maxResults":5},"time":"2020-09-29T06:04:21.869-07:00"}'
+  recorded_at: Tue, 29 Sep 2020 13:04:21 GMT
+- request:
+    method: get
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/query?query=SELECT%20*%20FROM%20Vendor%20MAXRESULTS%205%20STARTPOSITION%206
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json;charset=UTF-8
+      User-Agent:
+      - Faraday v0.17.3
+      Authorization:
+      - Bearer <OAUTH2_ACCESS_TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 29 Sep 2020 13:04:22 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=15552000
+      Intuit-Tid:
+      - 1-5f7330d6-90985d31980b88b294af5a36
+      X-Spanid:
+      - 80295f74-150a-4eae-b589-2c8fea6c88cf
+      X-Amzn-Trace-Id:
+      - Root=1-5f7330d6-90985d31980b88b294af5a36
+      Qbo-Version:
+      - '1944.190'
+      Service-Time:
+      - total=18, db=8
+      Expires:
+      - '0'
+      Cache-Control:
+      - max-age=0, no-cache, no-store, must-revalidate, private
+    body:
+      encoding: ASCII-8BIT
+      string: '{"QueryResponse":{"Vendor":[{"Balance":0,"AcctNum":"123456789","Vendor1099":false,"CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"domain":"QBO","sparse":false,"Id":"34","SyncToken":"0","MetaData":{"CreateTime":"2015-10-02T10:14:48-07:00","LastUpdatedTime":"2015-10-02T10:14:48-07:00"},"CompanyName":"Cigna
+        Health Care","DisplayName":"Cigna Health Care","PrintOnCheckName":"Cigna Health
+        Care","Active":true,"PrimaryPhone":{"FreeFormNumber":"(520) 555-9874"}},{"BillAddr":{"Id":"34","Line1":"1515
+        Main St.","City":"Middlefield","CountrySubDivisionCode":"CA","PostalCode":"94482","Lat":"37.3787808","Long":"-122.1158227"},"Balance":0,"Vendor1099":false,"CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"domain":"QBO","sparse":false,"Id":"35","SyncToken":"0","MetaData":{"CreateTime":"2015-10-02T10:16:29-07:00","LastUpdatedTime":"2015-10-02T10:16:29-07:00"},"GivenName":"Jenni","FamilyName":"Winslow","CompanyName":"Computers
+        by Jenni","DisplayName":"Computers by Jenni","PrintOnCheckName":"Computers
+        by Jenni","Active":true,"PrimaryPhone":{"FreeFormNumber":"(650) 555-8721"},"Mobile":{"FreeFormNumber":"(650)
+        111-5648"},"Fax":{"FreeFormNumber":"(650) 999-2663"},"PrimaryEmailAddr":{"Address":"Msfixit@Intuit.com"}},{"Balance":755.00,"Vendor1099":false,"CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"domain":"QBO","sparse":false,"Id":"36","SyncToken":"0","MetaData":{"CreateTime":"2015-10-02T10:16:54-07:00","LastUpdatedTime":"2015-10-07T11:31:42-07:00"},"CompanyName":"Diego''s
+        Road Warrior Bodyshop","DisplayName":"Diego''s Road Warrior Bodyshop","PrintOnCheckName":"Diego''s
+        Road Warrior Bodyshop","Active":true},{"Balance":0,"Vendor1099":false,"CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"domain":"QBO","sparse":false,"Id":"37","SyncToken":"0","MetaData":{"CreateTime":"2015-10-02T10:17:10-07:00","LastUpdatedTime":"2015-10-02T10:17:10-07:00"},"CompanyName":"EDD","DisplayName":"EDD","PrintOnCheckName":"EDD","Active":true},{"BillAddr":{"Id":"35","Line1":"45896
+        Main St.","City":"Middlefield","Country":"USA","CountrySubDivisionCode":"CA","PostalCode":"94303","Lat":"37.445013","Long":"-122.1391443"},"Balance":0,"AcctNum":"39765","Vendor1099":false,"CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"domain":"QBO","sparse":false,"Id":"38","SyncToken":"0","MetaData":{"CreateTime":"2015-10-02T10:19:42-07:00","LastUpdatedTime":"2015-10-02T10:19:42-07:00"},"Title":"Ms.","GivenName":"Julie","MiddleName":"I.","FamilyName":"Ellis","CompanyName":"Ellis
+        Equipment Rental","DisplayName":"Ellis Equipment Rental","PrintOnCheckName":"Ellis
+        Equipment Rental","Active":true,"PrimaryPhone":{"FreeFormNumber":"(650) 555-3333"},"Mobile":{"FreeFormNumber":"(650)
+        445-3333"},"PrimaryEmailAddr":{"Address":"Rental@intuit.com"},"WebAddr":{"URI":"http://rental.intuit.com"}}],"startPosition":6,"maxResults":5},"time":"2020-09-29T06:04:22.356-07:00"}'
+  recorded_at: Tue, 29 Sep 2020 13:04:22 GMT
+- request:
+    method: get
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/query?query=SELECT%20*%20FROM%20Vendor%20MAXRESULTS%205%20STARTPOSITION%2011
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json;charset=UTF-8
+      User-Agent:
+      - Faraday v0.17.3
+      Authorization:
+      - Bearer <OAUTH2_ACCESS_TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 29 Sep 2020 13:04:22 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=15552000
+      Intuit-Tid:
+      - 1-5f7330d6-6c13c598db98fd00b36b43fc
+      X-Spanid:
+      - 44b693f8-e9ec-4003-9d5e-9ebe9f1c5ee4
+      X-Amzn-Trace-Id:
+      - Root=1-5f7330d6-6c13c598db98fd00b36b43fc
+      Qbo-Version:
+      - '1944.190'
+      Service-Time:
+      - total=42, db=28
+      Expires:
+      - '0'
+      Cache-Control:
+      - max-age=0, no-cache, no-store, must-revalidate, private
+    body:
+      encoding: ASCII-8BIT
+      string: '{"QueryResponse":{"Vendor":[{"Balance":0,"Vendor1099":false,"CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"domain":"QBO","sparse":false,"Id":"39","SyncToken":"0","MetaData":{"CreateTime":"2015-10-02T10:20:03-07:00","LastUpdatedTime":"2015-10-02T10:20:03-07:00"},"CompanyName":"Fidelity","DisplayName":"Fidelity","PrintOnCheckName":"Fidelity","Active":true},{"BillAddr":{"Id":"36","Line1":"P.O.Box
+        357","City":"South Orange","CountrySubDivisionCode":"NJ","PostalCode":"07079","Lat":"40.7489277","Long":"-74.2609903"},"TaxIdentifier":"XXXXXX2222","Balance":52200.00,"AcctNum":"55642","Vendor1099":false,"CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"domain":"QBO","sparse":false,"Id":"40","SyncToken":"0","MetaData":{"CreateTime":"2015-10-02T10:24:28-07:00","LastUpdatedTime":"2020-07-01T01:26:49-07:00"},"GivenName":"Melanie","FamilyName":"Hall","CompanyName":"Hall
+        Properties","DisplayName":"Hall Properties","PrintOnCheckName":"Hall Properties","Active":true,"PrimaryPhone":{"FreeFormNumber":"(973)
+        555-3827"},"Mobile":{"FreeFormNumber":"(973) 888-6222"},"WebAddr":{"URI":"http://www.hallproperties.intuit.org"}},{"BillAddr":{"Id":"37","Line1":"42
+        Main St.","City":"Middlefield","CountrySubDivisionCode":"CA","PostalCode":"94303","Lat":"37.445013","Long":"-122.1391443"},"Balance":0,"AcctNum":"556223","Vendor1099":false,"CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"domain":"QBO","sparse":false,"Id":"41","SyncToken":"0","MetaData":{"CreateTime":"2015-10-02T10:26:56-07:00","LastUpdatedTime":"2015-10-08T13:01:57-07:00"},"GivenName":"Geoff","FamilyName":"Hicks","CompanyName":"Hicks
+        Hardware","DisplayName":"Hicks Hardware","PrintOnCheckName":"Hicks Hardware","Active":true,"PrimaryPhone":{"FreeFormNumber":"(650)
+        554-1973"},"Mobile":{"FreeFormNumber":"(650) 445-6666"},"WebAddr":{"URI":"http://Hickshardware.co"}},{"BillAddr":{"Id":"38","Line1":"53
+        Main St.","City":"Middlefield","CountrySubDivisionCode":"CA","PostalCode":"94303","Lat":"37.445013","Long":"-122.1391443"},"Balance":0,"AcctNum":"776543","Vendor1099":false,"CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"domain":"QBO","sparse":false,"Id":"42","SyncToken":"0","MetaData":{"CreateTime":"2015-10-02T10:28:25-07:00","LastUpdatedTime":"2015-10-02T10:28:25-07:00"},"Title":"Mrs.","GivenName":"Laurel","MiddleName":"J.","FamilyName":"Lee","CompanyName":"Lee
+        Advertising","DisplayName":"Lee Advertising","PrintOnCheckName":"Lee Advertising","Active":true,"PrimaryPhone":{"FreeFormNumber":"(650)
+        554-4622"}},{"Balance":0,"Vendor1099":false,"CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"domain":"QBO","sparse":false,"Id":"43","SyncToken":"0","MetaData":{"CreateTime":"2015-10-02T10:28:46-07:00","LastUpdatedTime":"2015-10-02T10:28:46-07:00"},"CompanyName":"Mahoney
+        Mugs","DisplayName":"Mahoney Mugs","PrintOnCheckName":"Mahoney Mugs","Active":true}],"startPosition":11,"maxResults":5},"time":"2020-09-29T06:04:22.826-07:00"}'
+  recorded_at: Tue, 29 Sep 2020 13:04:22 GMT
+- request:
+    method: get
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/query?query=SELECT%20*%20FROM%20Vendor%20MAXRESULTS%205%20STARTPOSITION%2016
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json;charset=UTF-8
+      User-Agent:
+      - Faraday v0.17.3
+      Authorization:
+      - Bearer <OAUTH2_ACCESS_TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 29 Sep 2020 13:04:23 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=15552000
+      Intuit-Tid:
+      - 1-5f7330d7-d70b2c36fc05494c1ebe6282
+      X-Spanid:
+      - 27bf16c5-a5ce-4dbc-a9d4-1eb4dee211f6
+      X-Amzn-Trace-Id:
+      - Root=1-5f7330d7-d70b2c36fc05494c1ebe6282
+      Qbo-Version:
+      - '1944.190'
+      Service-Time:
+      - total=23, db=14
+      Expires:
+      - '0'
+      Cache-Control:
+      - max-age=0, no-cache, no-store, must-revalidate, private
+    body:
+      encoding: ASCII-8BIT
+      string: '{"QueryResponse":{"Vendor":[{"Balance":0,"Vendor1099":false,"CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"domain":"QBO","sparse":false,"Id":"44","SyncToken":"0","MetaData":{"CreateTime":"2015-10-02T10:29:10-07:00","LastUpdatedTime":"2015-10-02T10:29:10-07:00"},"CompanyName":"Met
+        Life Dental","DisplayName":"Met Life Dental","PrintOnCheckName":"Met Life
+        Dental","Active":true},{"BillAddr":{"Id":"39","Line1":"123 Anywhere Ave","City":"Tucson","CountrySubDivisionCode":"AZ","PostalCode":"85704","Lat":"32.3477051","Long":"-110.9992777"},"TermRef":{"value":"3"},"Balance":0,"AcctNum":"164978565103482659421","Vendor1099":false,"CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"domain":"QBO","sparse":false,"Id":"45","SyncToken":"0","MetaData":{"CreateTime":"2015-10-02T10:31:37-07:00","LastUpdatedTime":"2015-10-02T10:31:37-07:00"},"CompanyName":"National
+        Eye Care","DisplayName":"National Eye Care","PrintOnCheckName":"National Eye
+        Care","Active":true,"PrimaryPhone":{"FreeFormNumber":"(800) 555-5555"},"Fax":{"FreeFormNumber":"(800)
+        666-6666"},"PrimaryEmailAddr":{"Address":"Nateyecare@intuit.com, pauliejones15@intuit.com"},"WebAddr":{"URI":"http://www.nateyecare.intuit.com"}},{"BillAddr":{"Id":"40","Line1":"4528
+        Country Road","City":"Middlefield","CountrySubDivisionCode":"CA","PostalCode":"94303","Lat":"37.3752919","Long":"-122.1692159"},"Balance":205.00,"AcctNum":"32980256","Vendor1099":false,"CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"domain":"QBO","sparse":false,"Id":"46","SyncToken":"0","MetaData":{"CreateTime":"2015-10-02T10:32:55-07:00","LastUpdatedTime":"2015-10-09T13:10:36-07:00"},"GivenName":"Julie","FamilyName":"Norton","CompanyName":"Norton
+        Lumber and Building Materials","DisplayName":"Norton Lumber and Building Materials","PrintOnCheckName":"Norton
+        Lumber and Building Materials","Active":true,"PrimaryPhone":{"FreeFormNumber":"(650)
+        363-6578"},"PrimaryEmailAddr":{"Address":"Materials@intuit.com"}},{"BillAddr":{"Id":"42","Line1":"4
+        Main St.","City":"Palo Alto","CountrySubDivisionCode":"CA","PostalCode":"94303","Lat":"37.445013","Long":"-122.1391443"},"Balance":86.44,"AcctNum":"00649587213","Vendor1099":false,"CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"domain":"QBO","sparse":false,"Id":"48","SyncToken":"1","MetaData":{"CreateTime":"2015-10-02T10:36:57-07:00","LastUpdatedTime":"2015-10-08T13:00:36-07:00"},"CompanyName":"PG&E","DisplayName":"PG&E","PrintOnCheckName":"PG&E","Active":true,"PrimaryPhone":{"FreeFormNumber":"(888)
+        555-9465"},"PrimaryEmailAddr":{"Address":"utilities@noemail.com"}},{"BillAddr":{"Id":"41","Line1":"P.O.
+        Box 15","City":"Bayshore","CountrySubDivisionCode":"CA","PostalCode":"94326","Lat":"45.2720537","Long":"-79.7935909"},"TermRef":{"value":"1"},"Balance":0,"AcctNum":"64132549","Vendor1099":false,"CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"domain":"QBO","sparse":false,"Id":"47","SyncToken":"0","MetaData":{"CreateTime":"2015-10-02T10:35:10-07:00","LastUpdatedTime":"2015-10-02T10:35:10-07:00"},"GivenName":"Pam","FamilyName":"Seitz","CompanyName":"Pam
+        Seitz, CPA","DisplayName":"Pam Seitz","PrintOnCheckName":"Pam Seitz","Active":true,"PrimaryPhone":{"FreeFormNumber":"(650)
+        557-8855"},"Mobile":{"FreeFormNumber":"(650) 888-4446"},"Fax":{"FreeFormNumber":"(556)
+        454-5555"},"PrimaryEmailAddr":{"Address":"SeitzCPA@noemail.com"},"WebAddr":{"URI":"http://seitzcpas.intuit.com"}}],"startPosition":16,"maxResults":5},"time":"2020-09-29T06:04:23.304-07:00"}'
+  recorded_at: Tue, 29 Sep 2020 13:04:23 GMT
+- request:
+    method: get
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/query?query=SELECT%20*%20FROM%20Vendor%20MAXRESULTS%205%20STARTPOSITION%2021
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json;charset=UTF-8
+      User-Agent:
+      - Faraday v0.17.3
+      Authorization:
+      - Bearer <OAUTH2_ACCESS_TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 29 Sep 2020 13:04:23 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=15552000
+      Intuit-Tid:
+      - 1-5f7330d7-568e0cbb1e2d996a702eeca8
+      X-Spanid:
+      - 20e56ade-6087-4ffd-86fe-73261cf8b9dc
+      X-Amzn-Trace-Id:
+      - Root=1-5f7330d7-568e0cbb1e2d996a702eeca8
+      Qbo-Version:
+      - '1944.190'
+      Service-Time:
+      - total=42, db=28
+      Expires:
+      - '0'
+      Cache-Control:
+      - max-age=0, no-cache, no-store, must-revalidate, private
+    body:
+      encoding: ASCII-8BIT
+      string: '{"QueryResponse":{"Vendor":[{"BillAddr":{"Id":"43","Line1":"P.O. Box
+        147","City":"Bayshore","CountrySubDivisionCode":"CA","PostalCode":"94326","Lat":"45.2720537","Long":"-79.7935909"},"Balance":315.00,"AcctNum":"000005641","Vendor1099":false,"CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"domain":"QBO","sparse":false,"Id":"49","SyncToken":"0","MetaData":{"CreateTime":"2015-10-02T10:38:12-07:00","LastUpdatedTime":"2015-10-09T12:36:59-07:00"},"GivenName":"Jenny","FamilyName":"Robertson","CompanyName":"Robertson
+        & Associates","DisplayName":"Robertson & Associates","PrintOnCheckName":"Robertson
+        & Associates","Active":true,"PrimaryPhone":{"FreeFormNumber":"(650) 557-1111"}},{"Balance":0,"Vendor1099":false,"CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"domain":"QBO","sparse":false,"Id":"61","SyncToken":"0","MetaData":{"CreateTime":"2016-08-10T05:03:25-07:00","LastUpdatedTime":"2016-08-10T05:03:25-07:00"},"DisplayName":"Smith
+        Family Store","PrintOnCheckName":"Smith Family Store","Active":true},{"Balance":0,"Vendor1099":false,"CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"domain":"QBO","sparse":false,"Id":"57","SyncToken":"0","MetaData":{"CreateTime":"2015-10-23T14:29:35-07:00","LastUpdatedTime":"2015-10-23T14:29:35-07:00"},"DisplayName":"Squeaky
+        Kleen Car Wash","PrintOnCheckName":"Squeaky Kleen Car Wash","Active":true},{"BillAddr":{"Id":"44","Line1":"1111
+        Elm St.","City":"Middlefield","Country":"USA","CountrySubDivisionCode":"CA","PostalCode":"94482","Lat":"37.4604972","Long":"-122.1547528"},"Balance":0,"AcctNum":"2154","Vendor1099":false,"CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"domain":"QBO","sparse":false,"Id":"50","SyncToken":"1","MetaData":{"CreateTime":"2015-10-02T10:40:09-07:00","LastUpdatedTime":"2015-10-07T15:10:33-07:00"},"GivenName":"Tania","FamilyName":"Kronberg","CompanyName":"Tania''s
+        Nursery","DisplayName":"Tania''s Nursery","PrintOnCheckName":"Tania''s Nursery","Active":true,"PrimaryPhone":{"FreeFormNumber":"(886)
+        554-2265"},"PrimaryEmailAddr":{"Address":"plantqueen@taniasnursery.com"}},{"BillAddr":{"Id":"45","Line1":"3948
+        Elm St.","City":"Middlefield","CountrySubDivisionCode":"CA","PostalCode":"94482","Lat":"37.4604972","Long":"-122.1547528"},"TaxIdentifier":"XXXXXX5555","Balance":0,"AcctNum":"0078965","Vendor1099":false,"CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"domain":"QBO","sparse":false,"Id":"51","SyncToken":"0","MetaData":{"CreateTime":"2015-10-02T10:42:31-07:00","LastUpdatedTime":"2015-10-08T13:06:58-07:00"},"GivenName":"Tim","FamilyName":"Philip","CompanyName":"Tim
+        Philip Masonry","DisplayName":"Tim Philip Masonry","PrintOnCheckName":"Tim
+        Philip Masonry","Active":true,"PrimaryPhone":{"FreeFormNumber":"(800) 556-1254"},"Mobile":{"FreeFormNumber":"(650)
+        555-1549"},"PrimaryEmailAddr":{"Address":"tim.philip@timphilipmasonry.com"},"WebAddr":{"URI":"http://www.bricksbytim4less.co"}}],"startPosition":21,"maxResults":5},"time":"2020-09-29T06:04:23.783-07:00"}'
+  recorded_at: Tue, 29 Sep 2020 13:04:23 GMT
+- request:
+    method: get
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/query?query=SELECT%20*%20FROM%20Vendor%20MAXRESULTS%205%20STARTPOSITION%2026
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json;charset=UTF-8
+      User-Agent:
+      - Faraday v0.17.3
+      Authorization:
+      - Bearer <OAUTH2_ACCESS_TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 29 Sep 2020 13:04:24 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=15552000
+      Intuit-Tid:
+      - 1-5f7330d8-c3336012b6eaba4938784275
+      X-Spanid:
+      - a84cd6cf-90ad-443d-9822-10bd3a540048
+      X-Amzn-Trace-Id:
+      - Root=1-5f7330d8-c3336012b6eaba4938784275
+      Qbo-Version:
+      - '1944.190'
+      Service-Time:
+      - total=42, db=29
+      Expires:
+      - '0'
+      Cache-Control:
+      - max-age=0, no-cache, no-store, must-revalidate, private
+    body:
+      encoding: ASCII-8BIT
+      string: '{"QueryResponse":{"Vendor":[{"Balance":0,"Vendor1099":false,"CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"domain":"QBO","sparse":false,"Id":"52","SyncToken":"0","MetaData":{"CreateTime":"2015-10-02T10:43:57-07:00","LastUpdatedTime":"2015-10-02T10:43:57-07:00"},"Title":"Mr.","GivenName":"Tony","MiddleName":"L","FamilyName":"Rodonuwu","Suffix":"Jr.","DisplayName":"Tony
+        Rondonuwu","PrintOnCheckName":"Tony Rondonuwu","Active":true,"PrimaryEmailAddr":{"Address":"tonyrjr@intuit.com"}}],"startPosition":26,"maxResults":1},"time":"2020-09-29T06:04:24.267-07:00"}'
+  recorded_at: Tue, 29 Sep 2020 13:04:24 GMT
+recorded_with: VCR 6.0.0

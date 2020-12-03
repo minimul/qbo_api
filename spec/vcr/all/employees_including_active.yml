@@ -1,0 +1,110 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/query?query=SELECT%20COUNT(*)%20FROM%20Employee%20WHERE%20Active%20IN%20(true,%20false)%20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json;charset=UTF-8
+      User-Agent:
+      - Faraday v0.17.3
+      Authorization:
+      - Bearer <OAUTH2_ACCESS_TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 29 Sep 2020 13:04:13 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=15552000
+      Intuit-Tid:
+      - 1-5f7330cd-1fc9497d6a66d95b7c8d19a1
+      X-Spanid:
+      - 463f9949-b964-43e8-92a5-51231d9beec7
+      X-Amzn-Trace-Id:
+      - Root=1-5f7330cd-1fc9497d6a66d95b7c8d19a1
+      Qbo-Version:
+      - '1944.190'
+      Service-Time:
+      - total=19, db=12
+      Expires:
+      - '0'
+      Cache-Control:
+      - max-age=0, no-cache, no-store, must-revalidate, private
+    body:
+      encoding: ASCII-8BIT
+      string: '{"QueryResponse":{"totalCount":2},"time":"2020-09-29T06:04:13.414-07:00"}'
+  recorded_at: Tue, 29 Sep 2020 13:04:13 GMT
+- request:
+    method: get
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/query?query=SELECT%20*%20FROM%20Employee%20WHERE%20Active%20IN%20(%20true,%20false%20)%20MAXRESULTS%201000%20STARTPOSITION%201
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json;charset=UTF-8
+      User-Agent:
+      - Faraday v0.17.3
+      Authorization:
+      - Bearer <OAUTH2_ACCESS_TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 29 Sep 2020 13:04:13 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=15552000
+      Intuit-Tid:
+      - 1-5f7330cd-de0837287f5fe5f574a192f6
+      X-Spanid:
+      - 70b98727-0241-42ea-b9d6-f0af480cfb96
+      X-Amzn-Trace-Id:
+      - Root=1-5f7330cd-de0837287f5fe5f574a192f6
+      Qbo-Version:
+      - '1944.190'
+      Service-Time:
+      - total=53, db=39
+      Expires:
+      - '0'
+      Cache-Control:
+      - max-age=0, no-cache, no-store, must-revalidate, private
+    body:
+      encoding: ASCII-8BIT
+      string: '{"QueryResponse":{"Employee":[{"BillableTime":false,"domain":"QBO","sparse":false,"Id":"55","SyncToken":"1","MetaData":{"CreateTime":"2015-10-07T11:21:48-07:00","LastUpdatedTime":"2016-10-04T03:51:17-07:00"},"GivenName":"Emily","FamilyName":"Platt","DisplayName":"Emily
+        Platt (deleted)","PrintOnCheckName":"Emily Platt","Active":false},{"BillableTime":false,"BirthDate":"1984-10-02","HiredDate":"2015-09-08","domain":"QBO","sparse":false,"Id":"54","SyncToken":"1","MetaData":{"CreateTime":"2015-10-07T11:21:28-07:00","LastUpdatedTime":"2015-10-07T11:46:26-07:00"},"GivenName":"John","FamilyName":"Johnson","DisplayName":"John
+        Johnson","PrintOnCheckName":"John Johnson","Active":true,"PrimaryPhone":{"FreeFormNumber":"(540)
+        555-9645"}}],"startPosition":1,"maxResults":2},"time":"2020-09-29T06:04:13.880-07:00"}'
+  recorded_at: Tue, 29 Sep 2020 13:04:13 GMT
+recorded_with: VCR 6.0.0

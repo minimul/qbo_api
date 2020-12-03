@@ -1,0 +1,80 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/query?query=SELECT%20*%20FROM%20SalesReceipt%20MAXRESULTS%201000%20STARTPOSITION%201
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json;charset=UTF-8
+      User-Agent:
+      - Faraday v0.17.3
+      Authorization:
+      - Bearer <OAUTH2_ACCESS_TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 29 Sep 2020 13:04:58 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=15552000
+      Intuit-Tid:
+      - 1-5f7330f9-e62ba7be319a8846dac96abc
+      X-Spanid:
+      - 382ef769-0724-4d5d-b6ef-1652e188964f
+      X-Amzn-Trace-Id:
+      - Root=1-5f7330f9-e62ba7be319a8846dac96abc
+      Qbo-Version:
+      - '1944.190'
+      Service-Time:
+      - total=873, db=841
+      Expires:
+      - '0'
+      Cache-Control:
+      - max-age=0, no-cache, no-store, must-revalidate, private
+    body:
+      encoding: ASCII-8BIT
+      string: '{"QueryResponse":{"SalesReceipt":[{"domain":"QBO","sparse":false,"Id":"17","SyncToken":"5","MetaData":{"CreateTime":"2015-10-06T15:12:39-07:00","LastUpdatedTime":"2020-09-29T06:00:44-07:00"},"CustomField":[{"DefinitionId":"1","Name":"Crew
+        #","Type":"StringType"}],"DocNumber":"1008","TxnDate":"2020-09-29","CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"Line":[{"Id":"6","LineNum":1,"Description":"Custom Design","Amount":337.50,"DetailType":"SalesItemLineDetail","SalesItemLineDetail":{"ItemRef":{"value":"4","name":"Design"},"UnitPrice":75,"Qty":4.5,"TaxCodeRef":{"value":"NON"}}},{"Amount":337.50,"DetailType":"SubTotalLineDetail","SubTotalLineDetail":{}}],"TxnTaxDetail":{"TotalTax":0},"TotalAmt":337.50,"ApplyTaxAfterDiscount":false,"PrintStatus":"NeedToPrint","EmailStatus":"NotSet","Balance":0,"DepositToAccountRef":{"value":"4","name":"Undeposited
+        Funds"}},{"domain":"QBO","sparse":false,"Id":"11","SyncToken":"1","MetaData":{"CreateTime":"2015-10-06T14:59:48-07:00","LastUpdatedTime":"2016-08-10T05:03:26-07:00"},"CustomField":[{"DefinitionId":"1","Name":"Crew
+        #","Type":"StringType"}],"DocNumber":"1003","TxnDate":"2015-10-04","CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"PrivateNote":"A private note.","Line":[{"Id":"1","LineNum":1,"Description":"Custom
+        Design","Amount":337.50,"DetailType":"SalesItemLineDetail","SalesItemLineDetail":{"ItemRef":{"value":"4","name":"Design"},"UnitPrice":75,"Qty":4.5,"TaxCodeRef":{"value":"NON"}}},{"Amount":337.50,"DetailType":"SubTotalLineDetail","SubTotalLineDetail":{}}],"TxnTaxDetail":{"TotalTax":0},"CustomerRef":{"value":"6","name":"Dylan
+        Sollfrank"},"CustomerMemo":{"value":"Thank you for your business and have
+        a great day!"},"BillAddr":{"Id":"49","Line1":"Dylan Sollfrank","Lat":"INVALID","Long":"INVALID"},"TotalAmt":337.50,"ApplyTaxAfterDiscount":false,"PrintStatus":"NotSet","EmailStatus":"NotSet","Balance":0,"PaymentMethodRef":{"value":"2","name":"Check"},"PaymentRefNum":"10264","DepositToAccountRef":{"value":"35","name":"Checking"}},{"domain":"QBO","sparse":false,"Id":"47","SyncToken":"0","MetaData":{"CreateTime":"2015-10-07T11:40:52-07:00","LastUpdatedTime":"2015-10-07T11:40:52-07:00"},"CustomField":[{"DefinitionId":"1","Name":"Crew
+        #","Type":"StringType"}],"DocNumber":"1014","TxnDate":"2015-10-05","CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"LinkedTxn":[{"TxnId":"62","TxnType":"Deposit"}],"Line":[{"Id":"1","LineNum":1,"Description":"Weekly
+        Gardening Service","Amount":140.00,"DetailType":"SalesItemLineDetail","SalesItemLineDetail":{"ItemRef":{"value":"6","name":"Gardening"},"UnitPrice":35,"Qty":4,"TaxCodeRef":{"value":"NON"}}},{"Amount":140.00,"DetailType":"SubTotalLineDetail","SubTotalLineDetail":{}}],"TxnTaxDetail":{"TotalTax":0},"CustomerRef":{"value":"4","name":"Diego
+        Rodriguez"},"CustomerMemo":{"value":"Thank you for your business and have
+        a great day!"},"BillAddr":{"Id":"66","Line1":"Diego Rodriguez","Line2":"321
+        Channing","Line3":"Palo Alto, CA  94303","Lat":"37.4530553","Long":"-122.1178261"},"TotalAmt":140.00,"ApplyTaxAfterDiscount":false,"PrintStatus":"NotSet","EmailStatus":"NotSet","BillEmail":{"Address":"Diego@Rodriguez.com"},"Balance":0,"DepositToAccountRef":{"value":"4","name":"Undeposited
+        Funds"}},{"domain":"QBO","sparse":false,"Id":"38","SyncToken":"0","MetaData":{"CreateTime":"2015-10-07T11:15:46-07:00","LastUpdatedTime":"2015-10-07T11:15:46-07:00"},"CustomField":[{"DefinitionId":"1","Name":"Crew
+        #","Type":"StringType"}],"DocNumber":"1011","TxnDate":"2015-10-07","CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"LinkedTxn":[{"TxnId":"62","TxnType":"Deposit"}],"Line":[{"Id":"1","LineNum":1,"Description":"Pest
+        Control Services","Amount":87.50,"DetailType":"SalesItemLineDetail","SalesItemLineDetail":{"ItemRef":{"value":"10","name":"Pest
+        Control"},"UnitPrice":35,"Qty":2.5,"TaxCodeRef":{"value":"NON"}}},{"Amount":87.50,"DetailType":"SubTotalLineDetail","SubTotalLineDetail":{}},{"Amount":8.75,"DetailType":"DiscountLineDetail","DiscountLineDetail":{"PercentBased":true,"DiscountPercent":10,"DiscountAccountRef":{"value":"86","name":"Discounts
+        given"}}}],"TxnTaxDetail":{"TotalTax":0},"CustomerRef":{"value":"15","name":"Pye''s
+        Cakes"},"CustomerMemo":{"value":"Thank you for your business and have a great
+        day!"},"BillAddr":{"Id":"57","Line1":"Karen Pye","Line2":"Pye''s Cakes","Line3":"350
+        Mountain View Dr.","Line4":"South Orange, NJ  07079","Lat":"40.7489277","Long":"-74.2609903"},"ShipAddr":{"Id":"15","Line1":"350
+        Mountain View Dr.","City":"South Orange","CountrySubDivisionCode":"NJ","PostalCode":"07079","Lat":"40.7633073","Long":"-74.2426072"},"TotalAmt":78.75,"ApplyTaxAfterDiscount":false,"PrintStatus":"NotSet","EmailStatus":"NotSet","BillEmail":{"Address":"karen@pye.com"},"Balance":0,"PaymentMethodRef":{"value":"1","name":"Cash"},"DepositToAccountRef":{"value":"4","name":"Undeposited
+        Funds"}}],"startPosition":1,"maxResults":4},"time":"2020-09-29T06:04:57.774-07:00"}'
+  recorded_at: Tue, 29 Sep 2020 13:04:58 GMT
+recorded_with: VCR 6.0.0

@@ -1,0 +1,59 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/query?query=SELECT%20*%20FROM%20Vendor%20WHERE%20DisplayName%20=%20%27Robertson%20%26%20Associates%27
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json;charset=UTF-8
+      User-Agent:
+      - Faraday v0.17.3
+      Authorization:
+      - Bearer <OAUTH2_ACCESS_TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 29 Sep 2020 12:59:34 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=15552000
+      Intuit-Tid:
+      - 1-5f732fb6-177997429b9a533ac6b7aee6
+      X-Spanid:
+      - 34531db0-3366-4cd5-a2ef-859100845841
+      X-Amzn-Trace-Id:
+      - Root=1-5f732fb6-177997429b9a533ac6b7aee6
+      Qbo-Version:
+      - '1944.190'
+      Service-Time:
+      - total=64, db=33
+      Expires:
+      - '0'
+      Cache-Control:
+      - max-age=0, no-cache, no-store, must-revalidate, private
+    body:
+      encoding: ASCII-8BIT
+      string: '{"QueryResponse":{"Vendor":[{"BillAddr":{"Id":"43","Line1":"P.O. Box
+        147","City":"Bayshore","CountrySubDivisionCode":"CA","PostalCode":"94326","Lat":"45.2720537","Long":"-79.7935909"},"Balance":315.00,"AcctNum":"000005641","Vendor1099":false,"CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"domain":"QBO","sparse":false,"Id":"49","SyncToken":"0","MetaData":{"CreateTime":"2015-10-02T10:38:12-07:00","LastUpdatedTime":"2015-10-09T12:36:59-07:00"},"GivenName":"Jenny","FamilyName":"Robertson","CompanyName":"Robertson
+        & Associates","DisplayName":"Robertson & Associates","PrintOnCheckName":"Robertson
+        & Associates","Active":true,"PrimaryPhone":{"FreeFormNumber":"(650) 557-1111"}}],"startPosition":1,"maxResults":1},"time":"2020-09-29T05:59:34.880-07:00"}'
+  recorded_at: Tue, 29 Sep 2020 12:59:34 GMT
+recorded_with: VCR 6.0.0

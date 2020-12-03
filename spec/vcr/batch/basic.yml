@@ -1,0 +1,74 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/batch
+    body:
+      encoding: UTF-8
+      string: '{"BatchItemRequest":[{"bId":"bid1","operation":"create","Vendor":{"DisplayName":"Boraski
+        Family Store"}},{"bId":"bid2","operation":"delete","Invoice":{"Id":"129","SyncToken":"0"}},{"bId":"bid3","operation":"update","SalesReceipt":{"domain":"QBO","sparse":true,"Id":"11","SyncToken":"0","PrivateNote":"A
+        private note."}},{"bId":"bid4","Query":"select * from SalesReceipt where TotalAmt
+        > ''300.00''"}]}'
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json;charset=UTF-8
+      User-Agent:
+      - Faraday v0.17.3
+      Authorization:
+      - Bearer <OAUTH2_ACCESS_TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 29 Sep 2020 15:13:20 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=15552000
+      Intuit-Tid:
+      - 1-5f734f0e-58baa045003ab251111c54e6
+      X-Spanid:
+      - 3fc30670-72a8-4f84-a66f-466b125a0130
+      X-Amzn-Trace-Id:
+      - Root=1-5f734f0e-58baa045003ab251111c54e6
+      Qbo-Version:
+      - '1944.190'
+      Service-Time:
+      - total=1680, db=1591
+      Expires:
+      - '0'
+      Cache-Control:
+      - max-age=0, no-cache, no-store, must-revalidate, private
+    body:
+      encoding: ASCII-8BIT
+      string: '{"BatchItemResponse":[{"Vendor":{"Balance":0,"Vendor1099":false,"CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"domain":"QBO","sparse":false,"Id":"71","SyncToken":"0","MetaData":{"CreateTime":"2020-09-29T08:13:18-07:00","LastUpdatedTime":"2020-09-29T08:13:20-07:00"},"DisplayName":"Boraski
+        Family Store","PrintOnCheckName":"Boraski Family Store","Active":true},"bId":"bid1"},{"Fault":{"Error":[{"Message":"Object
+        Not Found","Detail":"Object Not Found : Something you''re trying to use has
+        been made inactive. Check the fields with accounts, customers, items, vendors
+        or employees.","code":"610","element":""}],"type":"ValidationFault"},"bId":"bid2"},{"Fault":{"Error":[{"Message":"Stale
+        Object Error","Detail":"Stale Object Error : You and Christian Pelczarski
+        were working on this at the same time. Christian Pelczarski finished before
+        you did, so your work was not saved.","code":"5010","element":""}],"type":"ValidationFault"},"bId":"bid3"},{"QueryResponse":{"SalesReceipt":[{"domain":"QBO","sparse":false,"Id":"17","SyncToken":"5","MetaData":{"CreateTime":"2015-10-06T15:12:39-07:00","LastUpdatedTime":"2020-09-29T06:00:44-07:00"},"CustomField":[{"DefinitionId":"1","Name":"Crew
+        #","Type":"StringType"}],"DocNumber":"1008","TxnDate":"2020-09-29","CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"Line":[{"Id":"6","LineNum":1,"Description":"Custom Design","Amount":337.50,"DetailType":"SalesItemLineDetail","SalesItemLineDetail":{"ItemRef":{"value":"4","name":"Design"},"UnitPrice":75,"Qty":4.5,"TaxCodeRef":{"value":"NON"}}},{"Amount":337.50,"DetailType":"SubTotalLineDetail","SubTotalLineDetail":{}}],"TxnTaxDetail":{"TotalTax":0},"TotalAmt":337.50,"ApplyTaxAfterDiscount":false,"PrintStatus":"NeedToPrint","EmailStatus":"NotSet","Balance":0,"DepositToAccountRef":{"value":"4","name":"Undeposited
+        Funds"}},{"domain":"QBO","sparse":false,"Id":"11","SyncToken":"1","MetaData":{"CreateTime":"2015-10-06T14:59:48-07:00","LastUpdatedTime":"2016-08-10T05:03:26-07:00"},"CustomField":[{"DefinitionId":"1","Name":"Crew
+        #","Type":"StringType"}],"DocNumber":"1003","TxnDate":"2015-10-04","CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"PrivateNote":"A private note.","Line":[{"Id":"1","LineNum":1,"Description":"Custom
+        Design","Amount":337.50,"DetailType":"SalesItemLineDetail","SalesItemLineDetail":{"ItemRef":{"value":"4","name":"Design"},"UnitPrice":75,"Qty":4.5,"TaxCodeRef":{"value":"NON"}}},{"Amount":337.50,"DetailType":"SubTotalLineDetail","SubTotalLineDetail":{}}],"TxnTaxDetail":{"TotalTax":0},"CustomerRef":{"value":"6","name":"Dylan
+        Sollfrank"},"CustomerMemo":{"value":"Thank you for your business and have
+        a great day!"},"BillAddr":{"Id":"49","Line1":"Dylan Sollfrank","Lat":"INVALID","Long":"INVALID"},"TotalAmt":337.50,"ApplyTaxAfterDiscount":false,"PrintStatus":"NotSet","EmailStatus":"NotSet","Balance":0,"PaymentMethodRef":{"value":"2","name":"Check"},"PaymentRefNum":"10264","DepositToAccountRef":{"value":"35","name":"Checking"}}],"startPosition":1,"maxResults":2},"bId":"bid4"}],"time":"2020-09-29T08:13:18.783-07:00"}'
+  recorded_at: Tue, 29 Sep 2020 15:13:20 GMT
+recorded_with: VCR 6.0.0

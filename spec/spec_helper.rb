@@ -3,16 +3,14 @@ require 'qbo_api'
 require 'rspec'
 require 'webmock/rspec'
 require 'vcr'
-require 'awesome_print'
+require 'amazing_print'
 require_relative 'support/credentials'
 
 VCR.configure do |config|
   config.cassette_library_dir = File.expand_path("../vcr", __FILE__)
   config.hook_into :webmock
-  config.filter_sensitive_data('<ACCESS_TOKEN>') { URI.encode_www_form_component(creds.token) }
-  config.filter_sensitive_data('<OAUTH2_ACCESS_TOKEN>') { URI.encode_www_form_component(oauth2_creds.access_token) }
-  config.filter_sensitive_data('<CONSUMER_KEY>') { URI.encode_www_form_component(creds.consumer_key) }
-  config.filter_sensitive_data('<COMPANY_ID>') { URI.encode_www_form_component(creds.realm_id) }
+  config.filter_sensitive_data('<OAUTH2_ACCESS_TOKEN>') { URI.encode_www_form_component(oauth2_creds[:access_token]) }
+  config.filter_sensitive_data('<COMPANY_ID>') { URI.encode_www_form_component(creds[:realm_id]) }
 
   uri_matcher = VCR.request_matchers[:uri]
   # Don't check sandbox company id or trailing URL id
@@ -59,10 +57,9 @@ end
 # @yield the cassette
 # @yield an Integer (unix epoch time) for use in creating unique ids per cassette
 def use_cassette(name, options={})
-  # Set VCR_RECORD=once to re_record
-  record_option = ENV.fetch("VCR_RECORD") { "none" }.to_sym
-  options = {record: record_option }.merge!(options)
-  name = "#{creds_type}/#{name}" unless name =~ /oauth/
+  # Set VCR_RECORD=all to re_record
+  record_option = ENV.fetch("VCR_RECORD") { "once" }.to_sym
+  options = { record: record_option }.merge!(options)
   VCR.use_cassette(name, options) do |cassette|
     yield cassette, Time.now.to_i
   end

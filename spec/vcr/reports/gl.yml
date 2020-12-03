@@ -1,0 +1,111 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/reports/GeneralLedger
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json;charset=UTF-8
+      User-Agent:
+      - Faraday v0.17.3
+      Authorization:
+      - Bearer <OAUTH2_ACCESS_TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 29 Sep 2020 15:14:02 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=15552000
+      Intuit-Tid:
+      - 1-5f734f39-0ee64c7f0c957b72405d8b64
+      X-Spanid:
+      - 2b481535-db8f-42e2-860a-924394abd73f
+      X-Amzn-Trace-Id:
+      - Root=1-5f734f39-0ee64c7f0c957b72405d8b64
+      Qbo-Version:
+      - '1944.190'
+      Service-Time:
+      - total=532, db=256
+      Expires:
+      - '0'
+      Cache-Control:
+      - max-age=0, no-cache, no-store, must-revalidate, private
+    body:
+      encoding: ASCII-8BIT
+      string: '{"Header":{"Time":"2020-09-29T08:14:02-07:00","ReportName":"GeneralLedger","DateMacro":"this
+        month-to-date","ReportBasis":"Accrual","StartPeriod":"2020-09-01","EndPeriod":"2020-09-29","Currency":"USD","Option":[{"Name":"NoReportData","Value":"false"}]},"Columns":{"Column":[{"ColTitle":"Date","ColType":"tx_date"},{"ColTitle":"Transaction
+        Type","ColType":"txn_type"},{"ColTitle":"Num","ColType":"doc_num"},{"ColTitle":"Name","ColType":"name"},{"ColTitle":"Memo/Description","ColType":"memo"},{"ColTitle":"Split","ColType":"split_acc"},{"ColTitle":"Amount","ColType":"subt_nat_amount"},{"ColTitle":"Balance","ColType":"rbal_nat_amount"}]},"Rows":{"Row":[{"Header":{"ColData":[{"value":"Checking","id":"35"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"976.00"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Checking"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Savings","id":"36"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"800.00"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Savings"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Accounts
+        Receivable (A/R)","id":"84"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"5004.02"}],"type":"Data"},{"ColData":[{"value":"2020-09-29"},{"value":"Invoice","id":"264"},{"value":"1041"},{"value":"Amy''s
+        Bird Sanctuary","id":"1"},{"value":""},{"value":"Services","id":"1"},{"value":"100.00"},{"value":"5104.02"}],"type":"Data"},{"ColData":[{"value":"2020-09-29"},{"value":"Invoice","id":"265"},{"value":"1042"},{"value":"Amy''s
+        Bird Sanctuary","id":"1"},{"value":""},{"value":"Services","id":"1"},{"value":"100.00"},{"value":"5204.02"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Accounts Receivable (A/R)"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"200.00"},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Inventory
+        Asset","id":"81"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"731.25"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Inventory Asset"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Undeposited
+        Funds","id":"4"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"2062.52"}],"type":"Data"},{"ColData":[{"value":"2020-09-29"},{"value":"Sales
+        Receipt","id":"17"},{"value":"1008"},{"value":"","id":""},{"value":""},{"value":"Design
+        income","id":"82"},{"value":"337.50"},{"value":"2400.02"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Undeposited Funds"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"337.50"},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Truck","id":"38"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"Header":{"ColData":[{"value":"Original
+        Cost"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"13495.00"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Original Cost"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"}]},"Summary":{"ColData":[{"value":"Total
+        for Truck"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Accounts
+        Payable (A/P)","id":"33"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"58115.55"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Accounts Payable (A/P)"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Mastercard","id":"41"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"157.72"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Mastercard"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Board
+        of Equalization Payable","id":"90"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"370.94"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Board of Equalization Payable"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Loan
+        Payable","id":"43"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"4000.00"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Loan Payable"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Notes
+        Payable","id":"44"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"25000.00"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Notes Payable"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Opening
+        Balance Equity","id":"34"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"-9337.50"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Opening Balance Equity"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Retained
+        Earnings","id":"2"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"-48417.40"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Retained Earnings"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Design
+        income","id":"82"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"2020-09-29"},{"value":"Sales
+        Receipt","id":"17"},{"value":"1008"},{"value":"","id":""},{"value":"Custom
+        Design"},{"value":"Undeposited Funds","id":"4"},{"value":"337.50"},{"value":"337.50"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Design income"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"337.50"},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Services","id":"1"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"2020-09-29"},{"value":"Invoice","id":"264"},{"value":"1041"},{"value":"Amy''s
+        Bird Sanctuary","id":"1"},{"value":""},{"value":"Accounts Receivable (A/R)","id":"84"},{"value":"100.00"},{"value":"100.00"}],"type":"Data"},{"ColData":[{"value":"2020-09-29"},{"value":"Invoice","id":"265"},{"value":"1042"},{"value":"Amy''s
+        Bird Sanctuary","id":"1"},{"value":""},{"value":"Accounts Receivable (A/R)","id":"84"},{"value":"100.00"},{"value":"200.00"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Services"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"200.00"},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Rent
+        or Lease","id":"17"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"6300.00"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Rent or Lease"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"},{"Header":{"ColData":[{"value":"Utilities","id":"77"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"Header":{"ColData":[{"value":"Telephone"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"Rows":{"Row":[{"ColData":[{"value":"Beginning
+        Balance"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":"520.52"}],"type":"Data"}]},"Summary":{"ColData":[{"value":"Total
+        for Telephone"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"}]},"Summary":{"ColData":[{"value":"Total
+        for Utilities"},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""},{"value":""}]},"type":"Section"}]}}'
+  recorded_at: Tue, 29 Sep 2020 15:14:02 GMT
+recorded_with: VCR 6.0.0

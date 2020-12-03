@@ -53,7 +53,6 @@ class QboApi
       end
       uri.to_s
     end
-
   end
 end
 

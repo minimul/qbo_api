@@ -1,6 +1,5 @@
 class QboApi
   module Supporting
-
     def cdc(entities:, changed_since:)
       path = "#{realm_id}/cdc"
       path = add_params_to_path(path: path, params: { entities: entities, changedSince: cdc_time(changed_since) })
@@ -17,6 +16,5 @@ class QboApi
       path = add_params_to_path(path: path, params: params) if params
       request(:get, path: path)
     end
-
   end
 end

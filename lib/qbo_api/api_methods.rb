@@ -1,9 +1,8 @@
 class QboApi
   module ApiMethods
-
     def all(entity, max: 1000, select: nil, inactive: false, params: nil, &block)
-      enumerator = create_all_enumerator(entity, max: max, select: select, inactive: inactive, params: params)
-
+      enumerator = create_all_enumerator(entity, max: max, select: select,
+                                         inactive: inactive, params: params)
       if block_given?
         enumerator.each(&block)
       else
@@ -17,9 +16,6 @@ class QboApi
       request(:get, entity: entity, path: path, params: params)
     end
 
-    # @example
-    #   get(:customer, 5)
-    # @see #get_by_query_filter
     def get(entity, id_or_query_filter_args, params: nil)
       if id_or_query_filter_args.is_a?(Array)
         get_by_query_filter(entity, id_or_query_filter_args, params: params)
@@ -29,11 +25,6 @@ class QboApi
       end
     end
 
-    # @example
-    #   get_by_query_filter(:customer, ["DisplayName", "Dukes Basketball Camp"])
-    #   get_by_query_filter(:customer, ["DisplayName", "LIKE", "Dukes%"])
-    #   get_by_query_filter(:vendor, ["DisplayName", "IN", "(true, false)"])
-    #   get_by_query_filter(:customer, ["DisplayName", "Amy's Bird Sanctuary"])
     def get_by_query_filter(entity, query_filter_args, params: nil)
       query_str = get_query_str(entity, query_filter_args)
       if resp = query(query_str, params: params)
@@ -143,6 +134,5 @@ class QboApi
       resp = get(entity, id)
       build_deactivate(entity, resp)
     end
-
   end
 end

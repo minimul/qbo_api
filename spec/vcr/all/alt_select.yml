@@ -1,0 +1,297 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/query?query=SELECT%20count(*)%20FROM%20Customer%20WHERE%20Id%20IN%20(%275%27,%20%276%27,%20%277%27,%20%278%27,%20%279%27,%20%2710%27)
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json;charset=UTF-8
+      User-Agent:
+      - Faraday v0.17.3
+      Authorization:
+      - Bearer <OAUTH2_ACCESS_TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 29 Sep 2020 13:04:48 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=15552000
+      Intuit-Tid:
+      - 1-5f7330f0-039c03dd45f293121d775612
+      X-Spanid:
+      - 5b835d22-b9b7-4622-afc2-b02e0b65e3cd
+      X-Amzn-Trace-Id:
+      - Root=1-5f7330f0-039c03dd45f293121d775612
+      Qbo-Version:
+      - '1944.190'
+      Service-Time:
+      - total=20, db=14
+      Expires:
+      - '0'
+      Cache-Control:
+      - max-age=0, no-cache, no-store, must-revalidate, private
+    body:
+      encoding: ASCII-8BIT
+      string: '{"QueryResponse":{"totalCount":6},"time":"2020-09-29T06:04:48.863-07:00"}'
+  recorded_at: Tue, 29 Sep 2020 13:04:48 GMT
+- request:
+    method: get
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/query?query=SELECT%20*%20FROM%20Customer%20WHERE%20Id%20IN%20(%275%27,%20%276%27,%20%277%27,%20%278%27,%20%279%27,%20%2710%27)%20AND%20Active%20IN%20(%20true,%20false%20)%20MAXRESULTS%202%20STARTPOSITION%201
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json;charset=UTF-8
+      User-Agent:
+      - Faraday v0.17.3
+      Authorization:
+      - Bearer <OAUTH2_ACCESS_TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 29 Sep 2020 13:04:49 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=15552000
+      Intuit-Tid:
+      - 1-5f7330f1-15bf6dfd7334981c7256a300
+      X-Spanid:
+      - 333893ae-f024-4432-88c2-24abc65a5a21
+      X-Amzn-Trace-Id:
+      - Root=1-5f7330f1-15bf6dfd7334981c7256a300
+      Qbo-Version:
+      - '1944.190'
+      Service-Time:
+      - total=63, db=40
+      Expires:
+      - '0'
+      Cache-Control:
+      - max-age=0, no-cache, no-store, must-revalidate, private
+    body:
+      encoding: ASCII-8BIT
+      string: '{"QueryResponse":{"Customer":[{"Taxable":true,"BillAddr":{"Id":"6","Line1":"25
+        Court St.","City":"Tucson","CountrySubDivisionCode":"AZ","PostalCode":"85719","Lat":"32.2841116","Long":"-110.9744298"},"ShipAddr":{"Id":"6","Line1":"25
+        Court St.","City":"Tucson","CountrySubDivisionCode":"AZ","PostalCode":"85719","Lat":"32.2841116","Long":"-110.9744298"},"Job":false,"BillWithParent":false,"Balance":0,"BalanceWithJobs":0,"CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"PreferredDeliveryMethod":"Print","domain":"QBO","sparse":false,"Id":"5","SyncToken":"1","MetaData":{"CreateTime":"2015-10-01T16:54:59-07:00","LastUpdatedTime":"2015-10-08T13:28:29-07:00"},"GivenName":"Peter","FamilyName":"Dukes","FullyQualifiedName":"Dukes
+        Basketball Camp","CompanyName":"Dukes Basketball Camp","DisplayName":"Dukes
+        Basketball Camp","PrintOnCheckName":"Dukes Basketball Camp","Active":true,"PrimaryPhone":{"FreeFormNumber":"(520)
+        420-5638"},"PrimaryEmailAddr":{"Address":"Dukes_bball@intuit.com"}},{"Taxable":false,"Job":false,"BillWithParent":false,"Balance":0,"BalanceWithJobs":0,"CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"PreferredDeliveryMethod":"Print","domain":"QBO","sparse":false,"Id":"6","SyncToken":"0","MetaData":{"CreateTime":"2015-10-01T16:55:21-07:00","LastUpdatedTime":"2015-10-01T16:55:21-07:00"},"GivenName":"Dylan","FamilyName":"Sollfrank","FullyQualifiedName":"Dylan
+        Sollfrank","DisplayName":"Dylan Sollfrank","PrintOnCheckName":"Dylan Sollfrank","Active":true}],"startPosition":1,"maxResults":2},"time":"2020-09-29T06:04:49.352-07:00"}'
+  recorded_at: Tue, 29 Sep 2020 13:04:49 GMT
+- request:
+    method: get
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/query?query=SELECT%20*%20FROM%20Customer%20WHERE%20Id%20IN%20(%275%27,%20%276%27,%20%277%27,%20%278%27,%20%279%27,%20%2710%27)%20AND%20Active%20IN%20(%20true,%20false%20)%20MAXRESULTS%202%20STARTPOSITION%203
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json;charset=UTF-8
+      User-Agent:
+      - Faraday v0.17.3
+      Authorization:
+      - Bearer <OAUTH2_ACCESS_TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 29 Sep 2020 13:04:49 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=15552000
+      Intuit-Tid:
+      - 1-5f7330f1-0c186fd84304e635433043c4
+      X-Spanid:
+      - 22e63f1c-490f-4549-8856-339f10fc5048
+      X-Amzn-Trace-Id:
+      - Root=1-5f7330f1-0c186fd84304e635433043c4
+      Qbo-Version:
+      - '1944.190'
+      Service-Time:
+      - total=20, db=9
+      Expires:
+      - '0'
+      Cache-Control:
+      - max-age=0, no-cache, no-store, must-revalidate, private
+    body:
+      encoding: ASCII-8BIT
+      string: '{"QueryResponse":{"Customer":[{"Taxable":false,"BillAddr":{"Id":"7","Line1":"370
+        Easy St.","City":"Middlefield","CountrySubDivisionCode":"CA","PostalCode":"94482","Lat":"37.4031672","Long":"-122.0642815"},"ShipAddr":{"Id":"7","Line1":"370
+        Easy St.","City":"Middlefield","CountrySubDivisionCode":"CA","PostalCode":"94482","Lat":"37.4031672","Long":"-122.0642815"},"Job":false,"BillWithParent":false,"Balance":0,"BalanceWithJobs":85.00,"CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"PreferredDeliveryMethod":"Print","domain":"QBO","sparse":false,"Id":"7","SyncToken":"0","MetaData":{"CreateTime":"2015-10-01T16:57:10-07:00","LastUpdatedTime":"2016-08-10T05:03:26-07:00"},"GivenName":"Kirby","FamilyName":"Freeman","FullyQualifiedName":"Freeman
+        Sporting Goods","CompanyName":"Freeman Sporting Goods","DisplayName":"Freeman
+        Sporting Goods","PrintOnCheckName":"Freeman Sporting Goods","Active":true,"PrimaryPhone":{"FreeFormNumber":"(650)
+        555-0987"},"Mobile":{"FreeFormNumber":"(973) 555-8849"},"Fax":{"FreeFormNumber":"(520)
+        555-7894"},"PrimaryEmailAddr":{"Address":"Sporting_goods@intuit.com"},"WebAddr":{"URI":"http://sportinggoods.intuit.com"}},{"Taxable":false,"BillAddr":{"Id":"8","Line1":"370
+        Easy St.","City":"Middlefield","CountrySubDivisionCode":"CA","PostalCode":"94482","Lat":"37.4031672","Long":"-122.0642815"},"ShipAddr":{"Id":"8","Line1":"370
+        Easy St.","City":"Middlefield","CountrySubDivisionCode":"CA","PostalCode":"94482","Lat":"37.4031672","Long":"-122.0642815"},"Job":true,"BillWithParent":false,"ParentRef":{"value":"7"},"Level":1,"Balance":0,"BalanceWithJobs":0,"CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"PreferredDeliveryMethod":"Print","domain":"QBO","sparse":false,"Id":"8","SyncToken":"0","MetaData":{"CreateTime":"2015-10-01T17:00:01-07:00","LastUpdatedTime":"2016-08-10T05:03:26-07:00"},"GivenName":"Sasha","FamilyName":"Tillou","FullyQualifiedName":"Freeman
+        Sporting Goods:0969 Ocean View Road","CompanyName":"Freeman Sporting Goods","DisplayName":"0969
+        Ocean View Road","PrintOnCheckName":"Freeman Sporting Goods","Active":true,"PrimaryPhone":{"FreeFormNumber":"(415)
+        555-9933"},"Mobile":{"FreeFormNumber":"(973) 555-8849"},"Fax":{"FreeFormNumber":"(520)
+        555-7894"},"PrimaryEmailAddr":{"Address":"Sporting_goods@intuit.com"},"WebAddr":{"URI":"http://sportinggoods.intuit.com"}}],"startPosition":3,"maxResults":2},"time":"2020-09-29T06:04:49.846-07:00"}'
+  recorded_at: Tue, 29 Sep 2020 13:04:49 GMT
+- request:
+    method: get
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/query?query=SELECT%20*%20FROM%20Customer%20WHERE%20Id%20IN%20(%275%27,%20%276%27,%20%277%27,%20%278%27,%20%279%27,%20%2710%27)%20AND%20Active%20IN%20(%20true,%20false%20)%20MAXRESULTS%202%20STARTPOSITION%205
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json;charset=UTF-8
+      User-Agent:
+      - Faraday v0.17.3
+      Authorization:
+      - Bearer <OAUTH2_ACCESS_TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 29 Sep 2020 13:04:50 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=15552000
+      Intuit-Tid:
+      - 1-5f7330f2-3f8a11df60020d0b575743b5
+      X-Spanid:
+      - debf9d01-e4fa-425e-a0a9-4a304a49a279
+      X-Amzn-Trace-Id:
+      - Root=1-5f7330f2-3f8a11df60020d0b575743b5
+      Qbo-Version:
+      - '1944.190'
+      Service-Time:
+      - total=19, db=10
+      Expires:
+      - '0'
+      Cache-Control:
+      - max-age=0, no-cache, no-store, must-revalidate, private
+    body:
+      encoding: ASCII-8BIT
+      string: '{"QueryResponse":{"Customer":[{"Taxable":false,"BillAddr":{"Id":"9","Line1":"370
+        Easy St.","City":"Middlefield","CountrySubDivisionCode":"CA","PostalCode":"94482","Lat":"37.4031672","Long":"-122.0642815"},"ShipAddr":{"Id":"9","Line1":"370
+        Easy St.","City":"Middlefield","CountrySubDivisionCode":"CA","PostalCode":"94482","Lat":"37.4031672","Long":"-122.0642815"},"Job":true,"BillWithParent":false,"ParentRef":{"value":"7"},"Level":1,"Balance":85.00,"BalanceWithJobs":85.00,"CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"PreferredDeliveryMethod":"Print","domain":"QBO","sparse":false,"Id":"9","SyncToken":"0","MetaData":{"CreateTime":"2015-10-01T17:01:00-07:00","LastUpdatedTime":"2015-10-08T13:23:52-07:00"},"GivenName":"Amelia","FullyQualifiedName":"Freeman
+        Sporting Goods:55 Twin Lane","CompanyName":"Freeman Sporting Goods","DisplayName":"55
+        Twin Lane","PrintOnCheckName":"Freeman Sporting Goods","Active":true,"PrimaryPhone":{"FreeFormNumber":"(650)
+        555-0987"},"Mobile":{"FreeFormNumber":"(973) 555-8849"},"Fax":{"FreeFormNumber":"(520)
+        555-7894"},"PrimaryEmailAddr":{"Address":"Sporting_goods@intuit.com"},"WebAddr":{"URI":"http://sportinggoods.intuit.com"}},{"Taxable":false,"BillAddr":{"Id":"10","Line1":"1987
+        Main St.","City":"Middlefield","CountrySubDivisionCode":"CA","PostalCode":"94303","Lat":"37.445013","Long":"-122.1391443"},"ShipAddr":{"Id":"10","Line1":"1987
+        Main St.","City":"Middlefield","CountrySubDivisionCode":"CA","PostalCode":"94303","Lat":"37.445013","Long":"-122.1391443"},"Job":false,"BillWithParent":false,"Balance":629.10,"BalanceWithJobs":629.10,"CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"PreferredDeliveryMethod":"Print","domain":"QBO","sparse":false,"Id":"10","SyncToken":"0","MetaData":{"CreateTime":"2015-10-01T17:02:22-07:00","LastUpdatedTime":"2015-10-08T13:41:59-07:00"},"GivenName":"Geeta","FamilyName":"Kalapatapu","FullyQualifiedName":"Geeta
+        Kalapatapu","DisplayName":"Geeta Kalapatapu","PrintOnCheckName":"Geeta Kalapatapu","Active":true,"PrimaryPhone":{"FreeFormNumber":"(650)
+        555-0022"},"PrimaryEmailAddr":{"Address":"Geeta@Kalapatapu.com"}}],"startPosition":5,"maxResults":2},"time":"2020-09-29T06:04:50.314-07:00"}'
+  recorded_at: Tue, 29 Sep 2020 13:04:50 GMT
+- request:
+    method: get
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/query?query=SELECT%20*%20FROM%20Customer%20WHERE%20Id%20IN%20(%275%27,%20%276%27,%20%277%27,%20%278%27,%20%279%27,%20%2710%27)%20AND%20Active%20IN%20(%20true,%20false%20)%20MAXRESULTS%202%20STARTPOSITION%207
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json;charset=UTF-8
+      User-Agent:
+      - Faraday v0.17.3
+      Authorization:
+      - Bearer <OAUTH2_ACCESS_TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 29 Sep 2020 13:04:50 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=15552000
+      Intuit-Tid:
+      - 1-5f7330f2-399126d63a41a0b934812a2e
+      X-Spanid:
+      - 4bbd2b54-4bf5-4a38-8851-bd710a4f262d
+      X-Amzn-Trace-Id:
+      - Root=1-5f7330f2-399126d63a41a0b934812a2e
+      Qbo-Version:
+      - '1944.190'
+      Service-Time:
+      - total=17, db=10
+      Expires:
+      - '0'
+      Cache-Control:
+      - max-age=0, no-cache, no-store, must-revalidate, private
+    body:
+      encoding: ASCII-8BIT
+      string: '{"QueryResponse":{},"time":"2020-09-29T06:04:50.776-07:00"}'
+  recorded_at: Tue, 29 Sep 2020 13:04:50 GMT
+recorded_with: VCR 6.0.0
