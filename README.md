@@ -13,7 +13,7 @@ Ruby client for the QuickBooks Online API version 3.
 </a>
 
 
-## Ruby >= 2.4.0 required
+## Ruby >= 2.5 required
 
 ## Installation
 
@@ -39,7 +39,7 @@ Or install it yourself as:
 - qbo_api.get :customer, 1
 ```
 
-### Super fast way to use QboApi no matter your current tech stack as long as Ruby > 2.2.2 is installed
+### Super fast way to use QboApi as long as Ruby >= 2.5 is installed
 ```
 - cd ~/<local dir>
 - git clone git@github.com:minimul/qbo_api.git && cd qbo_api
