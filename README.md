@@ -91,7 +91,6 @@ QboApi.minor_version = 8
   # Works with .get, .create, .update, .query methods
 ```
 
-
 ### Create
 ```ruby
   invoice = {
@@ -161,6 +160,40 @@ QboApi.minor_version = 8
 ```ruby
   response = qbo_api.get(:vendor, ["DisplayName", "IN", "(true, false)"])
   p response.size # => 28
+```
+
+### Import/retrieve all
+*Note: There is some overlap with the `all` and the `get` methods. The `get` method is limited to 1000 results where the `all` method will return all the results no matter the number.*
+```ruby
+  # retrieves all active customers
+  qbo_api.all(:customers).each do |c|
+    p "#{c['Id']} #{c['DisplayName']}"
+  end
+
+  # retrieves all active or inactive employees
+  qbo_api.all(:employees, inactive: true).each do |e|
+    p "#{e['Id']} #{e['DisplayName']}"
+  end
+
+  # retrieves all vendors by groups of 5
+  qbo_api.all(:vendor, max: 5).each do |v|
+    p v['DisplayName']
+  end
+
+  # retrieves all customers by groups of 2 using a custom select query
+  where = "WHERE Id IN ('5', '6', '7', '8', '9', '10')"
+  qbo_api.all(:customer, max: 2, select: "SELECT * FROM Customer #{where}").each do |c|
+    p c['DisplayName']
+  end
+```
+
+#### Note: .all() returns a Ruby Enumerator
+
+```
+api.all(:clients).take(50).each { |c| p c["Id"] }
+api.all(:clients).count
+api.all(:clients).first
+api.all(:clients).to_a
 ```
 
 ### Search with irregular characters
@@ -279,31 +312,6 @@ See [docs](https://developer.intuit.com/docs/0100_quickbooks_online/0100_essenti
       # Query for Id using DisplayName
       # Do an qbo_api.update instead
     end
-  end
-```
-
-### Import/retrieve all
-*Note: There is some overlap with the `all` and the `get` methods. The `get` method is limited to 1000 results where the `all` method will return all the results no matter the number.*
-```ruby
-  # retrieves all active customers
-  qbo_api.all(:customers).each do |c|
-    p "#{c['Id']} #{c['DisplayName']}"
-  end
-
-  # retrieves all active or inactive employees
-  qbo_api.all(:employees, inactive: true).each do |e|
-    p "#{e['Id']} #{e['DisplayName']}"
-  end
-
-  # retrieves all vendors by groups of 5
-  qbo_api.all(:vendor, max: 5).each do |v|
-    p v['DisplayName']
-  end
-
-  # retrieves all customers by groups of 2 using a custom select query
-  where = "WHERE Id IN ('5', '6', '7', '8', '9', '10')"
-  qbo_api.all(:customer, max: 2, select: "SELECT * FROM Customer #{where}").each do |c|
-    p c['DisplayName']
   end
 ```
 
