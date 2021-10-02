@@ -13,7 +13,7 @@ Ruby client for the QuickBooks Online API version 3.
 </a>
 
 
-## Ruby >= 2.5 required
+## Ruby >= 2.6 required
 
 ## Installation
 
