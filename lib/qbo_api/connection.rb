@@ -37,14 +37,17 @@ class QboApi
       }
     end
 
-    def request(method, path:, entity: nil, payload: nil, params: nil)
-      raw_response = raw_request(method, conn: connection, path: path, params: params, payload: payload)
+    def request(method, path:, entity: nil, payload: nil, params: nil, headers: nil)
+      raw_response = raw_request(method, conn: connection, path: path, params: params, payload: payload, headers: headers)
       response(raw_response, entity: entity)
     end
 
-    def raw_request(method, conn:, path:, payload: nil, params: nil)
+    def raw_request(method, conn:, path:, payload: nil, params: nil, headers: nil)
       path = finalize_path(path, method: method, params: params)
+
       conn.public_send(method) do |req|
+        req.headers = headers if headers
+
         case method
         when :get, :delete
           req.url path
