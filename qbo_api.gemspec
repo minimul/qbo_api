@@ -22,12 +22,10 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake"
   spec.add_development_dependency "rspec"
   spec.add_development_dependency 'webmock'
-  spec.add_development_dependency 'rexml'
-  spec.add_development_dependency 'simple_oauth'
   spec.add_development_dependency 'dotenv'
   spec.add_development_dependency 'vcr'
   spec.add_development_dependency 'amazing_print'
-  spec.add_runtime_dependency 'faraday'
+  spec.add_runtime_dependency 'faraday', '~> 1.10.0'
   spec.add_runtime_dependency 'faraday_middleware'
   spec.add_runtime_dependency 'faraday-detailed_logger'
   spec.add_runtime_dependency 'nokogiri'

@@ -46,6 +46,43 @@ describe "QboApi::Supporting" do
     end
   end
 
+  shared_examples :deliver_email do |entity|
+    context ".deliver #{entity}" do
+      it "requires #{entity}_id" do
+        expect {api.deliver()}.to raise_error ArgumentError
+      end
+
+      it "requires valid entity" do
+        expect {api.deliver(:bad_entity, entity_id: 1)}.to raise_error ArgumentError
+      end
+
+      it "adds header 'Content-Type' => 'application/octet-stream' to request" do
+        expect(api).to receive(:request).with(
+            :post,
+            path: "12345/#{entity}/1/send",
+            headers: {"Content-Type"=>"application/octet-stream"}
+          )
+        api.deliver(entity, entity_id: 1)
+      end
+
+      it "adds minorversion and sendTo when email_address provided" do
+        expect(api).to receive(:request).with(
+            :post,
+            path: "12345/#{entity}/1/send?minorversion=63&sendTo=billy%40joe.com",
+            headers: {"Content-Type"=>"application/octet-stream"}
+          )
+        api.deliver(entity, entity_id: 1, email_address: 'billy@joe.com')
+      end
+    end
+  end
+
+  it_should_behave_like :deliver_email, :invoice
+  it_should_behave_like :deliver_email, :estimate
+  it_should_behave_like :deliver_email, :purchaseorder
+  it_should_behave_like :deliver_email, :creditmemo
+  it_should_behave_like :deliver_email, :salesreceipt
+  it_should_behave_like :deliver_email, :refundreceipt
+
   def batch_payload(name:)
     {
       "BatchItemRequest":
@@ -54,7 +91,7 @@ describe "QboApi::Supporting" do
           "bId": "bid1",
           "operation": "create",
           "Vendor": {
-            "DisplayName": name 
+            "DisplayName": name
           }
         }, {
           "bId": "bid2",

@@ -206,6 +206,12 @@ api.all(:clients).to_a
   p response['Id'] # => 1
 ```
 
+
+### Email a transaction entity
+```ruby
+api.send_invoice(invoice_id: 1, email_address: 'billy@joe.com')
+```
+
 ### Uploading an attachment
 ```ruby
   payload = {"AttachableRef":
