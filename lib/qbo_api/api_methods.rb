@@ -58,6 +58,14 @@ class QboApi
       request(:post, entity: entity, path: entity_path(entity), payload: payload)
     end
 
+    def void(entity, id:)
+      err_msg = "Void is only for voidable transaction entities. Use .delete or .deactivate instead"
+      raise QboApi::NotImplementedError.new, err_msg unless is_voidable_transaction_entity?(entity)
+      path = add_params_to_path(path: entity_path(entity), params: { operation: :void })
+      payload = set_update(entity, id)
+      request(:post, entity: entity, path: path, payload: payload)
+    end
+
     private
 
     def get_query_str(entity, query_filter_args)

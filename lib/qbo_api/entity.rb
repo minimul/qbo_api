@@ -20,6 +20,19 @@ class QboApi
       sym.to_s.split('_').collect(&:capitalize).join
     end
 
+    def is_voidable_transaction_entity?(entity)
+      voidable_transaction_entities.include?(singular(entity))
+    end
+
+    def voidable_transaction_entities
+      %w{
+        BillPayment
+        Invoice
+        Payment
+        SalesReceipt
+      }
+    end
+
     def is_transaction_entity?(entity)
       transaction_entities.include?(singular(entity))
     end
