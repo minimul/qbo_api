@@ -159,7 +159,7 @@ describe QboApi::ApiMethods do
       end
     end
 
-    it 'only a voidabled entity' do
+    it 'only a voidable entity' do
       expect { api.void(:vendor, id: 34) }.to raise_error QboApi::NotImplementedError, /^Void is only for/
     end
   end
