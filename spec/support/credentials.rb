@@ -8,7 +8,7 @@ end
 
 def oauth2_creds
   OpenStruct.new({
-      access_token: ENV['QBO_API_ACCESS_TOKEN'],
-      realm_id: ENV['QBO_API_COMPANY_ID']
+    access_token: ENV['QBO_API_ACCESS_TOKEN'],
+    realm_id: ENV['QBO_API_COMPANY_ID']
   })
 end

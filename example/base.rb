@@ -3,6 +3,7 @@ BASE_GEMS = proc do
   # This app
   gem 'sinatra'
   gem 'sinatra-contrib'
+  gem 'puma'
 
   # Creds from ../.env
   gem 'dotenv'

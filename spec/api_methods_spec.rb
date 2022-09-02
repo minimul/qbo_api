@@ -151,6 +151,19 @@ describe QboApi::ApiMethods do
     end
   end
 
+  describe '.void' do
+    it 'an invoice' do
+      use_cassette("void/invoice") do
+        response = api.void(:invoice, id: 264)
+        expect(response['PrivateNote']).to eq "Voided"
+      end
+    end
+
+    it 'only a voidabled entity' do
+      expect { api.void(:vendor, id: 34) }.to raise_error QboApi::NotImplementedError, /^Void is only for/
+    end
+  end
+
   describe '.deactivate' do
     it 'an employee' do
       use_cassette("deactivate/employee") do
