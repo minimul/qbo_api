@@ -372,8 +372,8 @@ for how to install ngrok and what it is.
   Add the token to your .env as QBO_API_VERIFIER_TOKEN
 
 - In another tab, create a customer via the API:
-  `bundle exec ruby -rqbo_api -rdotenv -e 'Dotenv.load; p QboApi.new(access_token: ENV.fetch("QBO_API_OAUTH2_ACCESS_TOKEN"), realm_id: ENV.fetch("QBO_API_COMPANY_ID")).create(:customer, payload: { DisplayName: "TestCustomer" })'`
-  (You'll also need to have added the QBO_API_COMPANY_ID and QBO_API_OAUTH2_ACCESS_TOKEN to your .env)
+  `bundle exec ruby -rqbo_api -rdotenv -e 'Dotenv.load; p QboApi.new(access_token: ENV.fetch("QBO_API_ACCESS_TOKEN"), realm_id: ENV.fetch("QBO_API_COMPANY_ID")).create(:customer, payload: { DisplayName: "TestCustomer" })'`
+  (You'll also need to have added the QBO_API_COMPANY_ID and QBO_API_ACCESS_TOKEN to your .env)
 
   There could be a delay of up to a minute before the webhook fires.
 
