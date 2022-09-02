@@ -59,7 +59,7 @@ describe "QboApi::Supporting" do
       it "adds header 'Content-Type' => 'application/octet-stream' to request" do
         expect(api).to receive(:request).with(
             :post,
-            path: "12345/#{entity}/1/send",
+            path: "#{creds[:realm_id]}/#{entity}/1/send",
             headers: {"Content-Type"=>"application/octet-stream"}
           )
         api.deliver(entity, entity_id: 1)
@@ -68,7 +68,7 @@ describe "QboApi::Supporting" do
       it "adds minorversion and sendTo when email_address provided" do
         expect(api).to receive(:request).with(
             :post,
-            path: "12345/#{entity}/1/send?minorversion=63&sendTo=billy%40joe.com",
+            path: "#{creds[:realm_id]}/#{entity}/1/send?minorversion=63&sendTo=billy%40joe.com",
             headers: {"Content-Type"=>"application/octet-stream"}
           )
         api.deliver(entity, entity_id: 1, email_address: 'billy@joe.com')

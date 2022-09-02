@@ -1,0 +1,127 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/invoice/264
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json;charset=UTF-8
+      User-Agent:
+      - Faraday v1.10.2
+      Authorization:
+      - Bearer <OAUTH2_ACCESS_TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 02 Sep 2022 12:58:56 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Intuit-Tid:
+      - 1-6311fe0f-195899772f3e23b955243e7b
+      X-Spanid:
+      - e307db62-1620-4d45-a764-eb6677a21af8
+      X-Amzn-Trace-Id:
+      - Root=1-6311fe0f-195899772f3e23b955243e7b
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Qbo-Version:
+      - '1988.128'
+      Service-Time:
+      - total=85, db=77
+      Expires:
+      - '0'
+      Cache-Control:
+      - max-age=0, no-cache, no-store, must-revalidate, private
+      X-Envoy-Upstream-Service-Time:
+      - '432'
+      Strict-Transport-Security:
+      - max-age=31536000
+      Server:
+      - envoy
+    body:
+      encoding: ASCII-8BIT
+      string: '{"Invoice":{"AllowIPNPayment":false,"AllowOnlinePayment":false,"AllowOnlineCreditCardPayment":false,"AllowOnlineACHPayment":false,"domain":"QBO","sparse":false,"Id":"264","SyncToken":"0","MetaData":{"CreateTime":"2020-09-29T04:46:06-07:00","LastUpdatedTime":"2020-09-29T04:46:06-07:00"},"CustomField":[{"DefinitionId":"1","Name":"Crew
+        #","Type":"StringType"}],"DocNumber":"1041","TxnDate":"2020-09-29","CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"LinkedTxn":[],"Line":[{"Id":"1","LineNum":1,"Amount":100.00,"DetailType":"SalesItemLineDetail","SalesItemLineDetail":{"ItemRef":{"value":"1","name":"Services"},"TaxCodeRef":{"value":"NON"}}},{"Amount":100.00,"DetailType":"SubTotalLineDetail","SubTotalLineDetail":{}}],"TxnTaxDetail":{"TotalTax":0},"CustomerRef":{"value":"1","name":"Amy''s
+        Bird Sanctuary"},"BillAddr":{"Id":"2","Line1":"4581 Finch St.","City":"Bayshore","CountrySubDivisionCode":"CA","PostalCode":"94326","Lat":"INVALID","Long":"INVALID"},"ShipAddr":{"Id":"2","Line1":"4581
+        Finch St.","City":"Bayshore","CountrySubDivisionCode":"CA","PostalCode":"94326","Lat":"INVALID","Long":"INVALID"},"DueDate":"2020-10-29","TotalAmt":100.00,"ApplyTaxAfterDiscount":false,"PrintStatus":"NeedToPrint","EmailStatus":"NotSet","Balance":100.00},"time":"2022-09-02T05:58:56.017-07:00"}'
+  recorded_at: Fri, 02 Sep 2022 12:58:56 GMT
+- request:
+    method: post
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/invoice?operation=void
+    body:
+      encoding: UTF-8
+      string: '{"Id":"264","SyncToken":"0"}'
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json;charset=UTF-8
+      User-Agent:
+      - Faraday v1.10.2
+      Authorization:
+      - Bearer <OAUTH2_ACCESS_TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 02 Sep 2022 12:58:56 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Intuit-Tid:
+      - 1-6311fe10-20fabd787f7cb6145fb6fa91
+      X-Spanid:
+      - 6af59e69-e0a1-4495-a29d-e463ead91385
+      X-Amzn-Trace-Id:
+      - Root=1-6311fe10-20fabd787f7cb6145fb6fa91
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Qbo-Version:
+      - '1988.128'
+      Service-Time:
+      - total=228, db=115
+      Expires:
+      - '0'
+      Cache-Control:
+      - max-age=0, no-cache, no-store, must-revalidate, private
+      X-Envoy-Upstream-Service-Time:
+      - '265'
+      Strict-Transport-Security:
+      - max-age=31536000
+      Server:
+      - envoy
+    body:
+      encoding: ASCII-8BIT
+      string: '{"Invoice":{"AllowIPNPayment":false,"AllowOnlinePayment":false,"AllowOnlineCreditCardPayment":false,"AllowOnlineACHPayment":false,"domain":"QBO","sparse":false,"Id":"264","SyncToken":"1","MetaData":{"CreateTime":"2020-09-29T04:46:06-07:00","LastUpdatedTime":"2022-09-02T05:58:56-07:00"},"CustomField":[{"DefinitionId":"1","Name":"Crew
+        #","Type":"StringType"}],"DocNumber":"1041","TxnDate":"2020-09-29","CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"PrivateNote":"Voided","LinkedTxn":[],"Line":[{"Id":"1","LineNum":1,"Amount":0,"DetailType":"SalesItemLineDetail","SalesItemLineDetail":{"ItemRef":{"value":"1","name":"Services"},"TaxCodeRef":{"value":"NON"}}},{"Amount":0,"DetailType":"SubTotalLineDetail","SubTotalLineDetail":{}}],"TxnTaxDetail":{"TotalTax":0},"CustomerRef":{"value":"1","name":"Amy''s
+        Bird Sanctuary"},"BillAddr":{"Id":"2","Line1":"4581 Finch St.","City":"Bayshore","CountrySubDivisionCode":"CA","PostalCode":"94326","Lat":"INVALID","Long":"INVALID"},"ShipAddr":{"Id":"2","Line1":"4581
+        Finch St.","City":"Bayshore","CountrySubDivisionCode":"CA","PostalCode":"94326","Lat":"INVALID","Long":"INVALID"},"DueDate":"2020-10-29","TotalAmt":0,"ApplyTaxAfterDiscount":false,"PrintStatus":"NeedToPrint","EmailStatus":"NotSet","Balance":0},"time":"2022-09-02T05:58:56.463-07:00"}'
+  recorded_at: Fri, 02 Sep 2022 12:58:56 GMT
+recorded_with: VCR 6.1.0
