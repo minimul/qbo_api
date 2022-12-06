@@ -43,7 +43,7 @@ describe "QboApi Error handling" do
 
   it "handles XML error in which the first error does not have a 'Detail' error" do
     xml = fixture('no_detail.xml')
-    f = FaradayMiddleware::RaiseHttpException.new(double('app'))
+    f = QboApi::RaiseHttpException.new(double('app'))
     err = f.send(:error_body, xml)
     expect(err[0][:error_detail]).to eq ""
     expect(err[1][:error_detail]).to match /does have detail/

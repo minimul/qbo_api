@@ -25,8 +25,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'dotenv'
   spec.add_development_dependency 'vcr'
   spec.add_development_dependency 'amazing_print'
-  spec.add_runtime_dependency 'faraday', '~> 1.10.0'
-  spec.add_runtime_dependency 'faraday_middleware'
+  spec.add_runtime_dependency 'faraday', '>= 1.10.0'
   spec.add_runtime_dependency 'faraday-detailed_logger'
   spec.add_runtime_dependency 'nokogiri'
 end

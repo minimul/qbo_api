@@ -1,5 +1,6 @@
 require 'faraday'
-require 'faraday_middleware'
+require 'faraday/response/json'
+require 'qbo_api/raise_http_error'
 require 'faraday/detailed_logger'
 
 class QboApi
@@ -9,6 +10,7 @@ class QboApi
       headers['Accept'] ||= 'application/json'
       headers['Content-Type'] ||= 'application/json;charset=UTF-8'
       build_connection(url, headers: headers) do |conn|
+        conn.use ::Faraday::Response::Json
         add_authorization_middleware(conn)
         add_exception_middleware(conn)
         conn.request :url_encoded
@@ -68,11 +70,7 @@ class QboApi
     end
 
     def parse_response_body(resp)
-      body = resp.body
-      case resp.headers['Content-Type']
-      when /json/ then JSON.parse(body)
-      else body
-      end
+      resp.body
     end
 
     private
@@ -101,7 +99,7 @@ class QboApi
     end
 
     def add_exception_middleware(conn)
-      conn.use FaradayMiddleware::RaiseHttpException
+      conn.use QboApi::RaiseHttpException
     end
 
     def add_authorization_middleware(conn)
