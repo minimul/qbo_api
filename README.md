@@ -391,7 +391,7 @@ for how to install ngrok and what it is.
 connection = build_connection('https://oauth.platform.intuit.com', headers: { 'Accept' => 'application/json' }) do |conn|
   conn.basic_auth(client_id, client_secret)
   conn.request :url_encoded # application/x-www-form-urlencoded
-  conn.use Faraday::Response::Json, parser_options: { symbolize_names: true }
+  conn.response :json, :parser_options => { :symbolize_names => true }
   conn.use QboApi::RaiseHttpException
 end
 

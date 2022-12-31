@@ -2,6 +2,7 @@ require 'faraday'
 require 'faraday/response/json'
 require 'qbo_api/raise_http_exception'
 require 'faraday/detailed_logger'
+require 'faraday/multipart'
 
 class QboApi
   module Connection
@@ -10,10 +11,11 @@ class QboApi
       headers['Accept'] ||= 'application/json'
       headers['Content-Type'] ||= 'application/json;charset=UTF-8'
       build_connection(url, headers: headers) do |conn|
-        conn.use ::Faraday::Response::Json
+        conn.request :json
         add_authorization_middleware(conn)
-        add_exception_middleware(conn)
         conn.request :url_encoded
+        add_exception_middleware(conn)
+        conn.response :json, :parser_options => { :symbolize_names => true }
         add_connection_adapter(conn)
       end
     end
@@ -103,7 +105,7 @@ class QboApi
     end
 
     def add_authorization_middleware(conn)
-      conn.request :oauth2, access_token, token_type: 'bearer'
+      conn.request :authorization, access_token, token_type: 'bearer'
     end
 
     def entity_name(entity)
