@@ -1,9 +1,10 @@
 require 'faraday'
+require 'faraday/response'
 require 'nokogiri'
 # @private
 class QboApi
   # @private
-  class RaiseHttpException < Faraday::Reponse::RaiseError
+  class RaiseHttpException < Faraday::Response::RaiseError
     def on_complete(env)
       case env[:status]
       when 400
