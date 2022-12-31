@@ -1,7 +1,7 @@
 require 'faraday'
 require 'nokogiri'
 # @private
-module QboApi
+class QboApi
   # @private
   class RaiseHttpException < Faraday::Reponse::RaiseError
     def on_complete(env)

@@ -1,6 +1,6 @@
 require 'faraday'
 require 'faraday/response/json'
-require 'qbo_api/raise_http_error'
+require 'qbo_api/raise_http_exception'
 require 'faraday/detailed_logger'
 
 class QboApi
