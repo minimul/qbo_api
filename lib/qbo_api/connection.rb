@@ -11,11 +11,10 @@ class QboApi
       headers['Accept'] ||= 'application/json'
       headers['Content-Type'] ||= 'application/json;charset=UTF-8'
       build_connection(url, headers: headers) do |conn|
-        conn.request :json
+        conn.response :json
         add_authorization_middleware(conn)
         conn.request :url_encoded
         add_exception_middleware(conn)
-        conn.response :json, :parser_options => { :symbolize_names => true }
         add_connection_adapter(conn)
       end
     end
@@ -26,6 +25,7 @@ class QboApi
         'Accept' => 'application/json'
       }
       build_connection(url, headers: headers) do |conn|
+        conn.response :json
         add_authorization_middleware(conn)
         add_exception_middleware(conn)
         conn.request :multipart
@@ -42,6 +42,7 @@ class QboApi
     end
 
     def request(method, path:, entity: nil, payload: nil, params: nil, headers: nil)
+      # TODO: there is a #raw_response method in Faraday::Response::Json
       raw_response = raw_request(method, conn: connection, path: path, params: params, payload: payload, headers: headers)
       response(raw_response, entity: entity)
     end
