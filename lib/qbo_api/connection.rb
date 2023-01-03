@@ -1,6 +1,8 @@
 require 'faraday'
-require 'faraday_middleware'
+require 'faraday/response/json'
+require 'qbo_api/raise_http_exception'
 require 'faraday/detailed_logger'
+require 'faraday/multipart'
 
 class QboApi
   module Connection
@@ -9,9 +11,10 @@ class QboApi
       headers['Accept'] ||= 'application/json'
       headers['Content-Type'] ||= 'application/json;charset=UTF-8'
       build_connection(url, headers: headers) do |conn|
+        conn.response :json
         add_authorization_middleware(conn)
-        add_exception_middleware(conn)
         conn.request :url_encoded
+        add_exception_middleware(conn)
         add_connection_adapter(conn)
       end
     end
@@ -22,6 +25,7 @@ class QboApi
         'Accept' => 'application/json'
       }
       build_connection(url, headers: headers) do |conn|
+        conn.response :json
         add_authorization_middleware(conn)
         add_exception_middleware(conn)
         conn.request :multipart
@@ -60,19 +64,11 @@ class QboApi
     end
 
     def response(resp, entity: nil)
-      data = parse_response_body(resp)
+      data = resp.body
       entity ? entity_response(data, entity) : data
     rescue => e
       QboApi.logger.debug { "#{LOG_TAG} response parsing error: entity=#{entity.inspect} body=#{resp.body.inspect} exception=#{e.inspect}" }
       data
-    end
-
-    def parse_response_body(resp)
-      body = resp.body
-      case resp.headers['Content-Type']
-      when /json/ then JSON.parse(body)
-      else body
-      end
     end
 
     private
@@ -101,11 +97,14 @@ class QboApi
     end
 
     def add_exception_middleware(conn)
-      conn.use FaradayMiddleware::RaiseHttpException
+      conn.use QboApi::RaiseHttpException
     end
 
+    # Faraday 2 deprecated the FaradayMiddleware gem. Middleware is
+    # now part of Faraday itself, and :authorization can be used to pass
+    # the Bearer token.
     def add_authorization_middleware(conn)
-      conn.request :oauth2, access_token, token_type: 'bearer'
+      conn.request :authorization, access_token, token_type: 'bearer'
     end
 
     def entity_name(entity)

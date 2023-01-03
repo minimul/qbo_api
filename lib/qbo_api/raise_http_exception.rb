@@ -1,32 +1,44 @@
 require 'faraday'
+require 'faraday/response'
 require 'nokogiri'
 # @private
-module FaradayMiddleware
+class QboApi
   # @private
-  class RaiseHttpException < Faraday::Middleware
-    def call(env)
-      @app.call(env).on_complete do |response|
-        case response.status
-        when 200
-        when 400
-          raise QboApi::BadRequest.new(error_message(response))
-        when 401
-          raise QboApi::Unauthorized.new(error_message(response))
-        when 403
-          raise QboApi::Forbidden.new(error_message(response))
-        when 404
-          raise QboApi::NotFound.new(error_message(response))
-        when 429
-          raise QboApi::TooManyRequests.new(error_message(response))
-        when 500
-          raise QboApi::InternalServerError.new(error_message(response))
-        when 502
-          raise QboApi::BadGateway.new({ error_body: response.reason_phrase })
-        when 503
-          raise QboApi::ServiceUnavailable.new(error_message(response))
-        when 504
-          raise QboApi::GatewayTimeout.new(error_message(response))
-        end
+  class RaiseHttpException < Faraday::Response::RaiseError
+    def on_complete(env)
+      case env[:status]
+      when 400
+        raise QboApi::BadRequest.new(error_message(env))
+      when 401
+        raise QboApi::Unauthorized.new(error_message(env))
+      when 403
+        raise QboApi::Forbidden.new(error_message(env))
+      when 404
+        raise QboApi::NotFound.new(error_message(env))
+      when 407
+        # mimic the behavior that we get with proxy requests with HTTPS
+        msg = %(407 "Proxy Authentication Required")
+        raise Faraday::ProxyAuthError.new(msg, response_values(env))
+      when 409
+        raise Faraday::ConflictError, response_values(env)
+      when 422
+        raise Faraday::UnprocessableEntityError, response_values(env)
+      when 429
+        raise QboApi::TooManyRequests.new(error_message(env))
+      when 500
+        raise QboApi::InternalServerError.new(error_message(env))
+      when 502
+        raise QboApi::BadGateway.new({ error_body: env.reason_phrase })
+      when 503
+        raise QboApi::ServiceUnavailable.new(error_message(env))
+      when 504
+        raise QboApi::GatewayTimeout.new(error_message(env))
+      when ClientErrorStatuses
+        raise Faraday::ClientError, response_values(env)
+      when ServerErrorStatuses
+        raise Faraday::ServerError, response_values(env)
+      when nil
+        raise Faraday::NilStatusError, response_values(env)
       end
     end
 
@@ -36,13 +48,13 @@ module FaradayMiddleware
 
     private
 
-    def error_message(response)
+    def error_message(env)
       {
-        method: response.method,
-        url: response.url,
-        status: response.status,
-        error_body: error_body(response.body),
-        intuit_tid: response[:response_headers]['intuit_tid']
+        method: env.method,
+        url: env.url,
+        status: env.status,
+        error_body: error_body(env.body),
+        intuit_tid: env[:response_headers]['intuit_tid']
       }
     end
 
