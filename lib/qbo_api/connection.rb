@@ -42,7 +42,6 @@ class QboApi
     end
 
     def request(method, path:, entity: nil, payload: nil, params: nil, headers: nil)
-      # TODO: there is a #raw_response method in Faraday::Response::Json
       raw_response = raw_request(method, conn: connection, path: path, params: params, payload: payload, headers: headers)
       response(raw_response, entity: entity)
     end
@@ -65,15 +64,11 @@ class QboApi
     end
 
     def response(resp, entity: nil)
-      data = parse_response_body(resp)
+      data = resp.body
       entity ? entity_response(data, entity) : data
     rescue => e
       QboApi.logger.debug { "#{LOG_TAG} response parsing error: entity=#{entity.inspect} body=#{resp.body.inspect} exception=#{e.inspect}" }
       data
-    end
-
-    def parse_response_body(resp)
-      resp.body
     end
 
     private
@@ -105,6 +100,9 @@ class QboApi
       conn.use QboApi::RaiseHttpException
     end
 
+    # Faraday 2 deprecated the FaradayMiddleware gem. Middleware is
+    # now part of Faraday itself, and :authorization can be used to pass
+    # the Bearer token.
     def add_authorization_middleware(conn)
       conn.request :authorization, access_token, token_type: 'bearer'
     end
