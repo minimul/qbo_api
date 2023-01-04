@@ -104,7 +104,7 @@ class QboApi
     # now part of Faraday itself, and :authorization can be used to pass
     # the Bearer token.
     def add_authorization_middleware(conn)
-      conn.request :authorization, access_token, token_type: 'bearer'
+      conn.request :authorization, 'Bearer', access_token
     end
 
     def entity_name(entity)
