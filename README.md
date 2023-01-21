@@ -81,7 +81,7 @@ QboApi.request_id = true
   resp = qbo_api.create(:bill, payload: bill_hash, params: { requestid: qbo_api.uuid })
   # Works with .get, .create, .update, .query methods
 ```
-- To run all requests with a [Minor version](https://developer.intuit.com/docs/0100_quickbooks_online/0200_dev_guides/accounting/minor_versions).
+- By default, this client runs against the current "base" or major version of the QBO API. This client does not run against the latest QBO API [minor version](https://developer.intuit.com/app/developer/qbo/docs/learn/explore-the-quickbooks-online-api/minor-versions) by default. To run all requests with a specific minor version, you must specify it:
 ```ruby
 QboApi.minor_version = 8
 ```
