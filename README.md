@@ -329,29 +329,46 @@ See [docs](https://developer.intuit.com/docs/0100_quickbooks_online/0100_essenti
   p qbo_api.is_transaction_entity?(:customer) # => false
   p qbo_api.is_name_list_entity?(:vendors) # => true
 ```
-## <a name='OAuth2-example'>Spin up an example</a>
+## Spin up an example
 - <a href="http://minimul.com/access-the-quickbooks-online-api-with-oauth2.html" target="_blank">Check out this article on spinning up the example</a>.
-- `git clone git://github.com/minimul/qbo_api && cd qbo_api`
-- `bundle`
+
+- Create a Intuit developer account at [https://developer.intuit.com](https://developer.intuit.com)
+- Create an app in the intuit developer backend
+  - Go to [myapps](https://developer.intuit.com/app/developer/myapps)
+  - Create an app with both the `Accounting` & `Payments` selected.
+
+- Setup the app and gather credentials
+  - Go to the [Development Dashboard](https://developer.intuit.com/app/developer/dashboard)
+  - Click on your App name
+  - Click "Keys & credentials" under Development Settings in left menu
+  - Copy the 'Client ID' and the 'Client Secret'
+  - Add a Redirect URI: `http://localhost:9393/oauth2-redirect` (or whatever PORT= is in your .env)
+  - Create a new Sandbox Company by clicking on "View Sandbox companies"
+    Don't use it for anything else besides testing this app.
+  - Copy the 'Company ID' for use later
+    1. Within 'Sandbox Company_US_1' click on the COG -> Additional info
+    2. Copy the 'Company ID'
+  
+- Setup qbo_api
+  - `git clone git://github.com/minimul/qbo_api && cd qbo_api`
+  - `bundle`
+
 - Create a `.env` file
   - `cp .env.example_app.oauth2 .env`
-  - If needed create an account at [https://developer.intuit.com](https://developer.intuit.com)
-  - Click `Get started coding`
-  - Create an app with both the `Accounting` & `Payments` selected.
-  - Go to the [`Development` tab](https://developer.intuit.com/v2/ui#/app/dashboard)
-  and copy the 'Client ID' and the 'Client 'Secret' to your .env
-  as QBO_API_CLIENT_ID and QBO_API_CLIENT_SECRET respectively
-- Add a Redirect URI: `http://localhost:9393/oauth2-redirect` (or whatever PORT= is in your .env)
-- Create a new Company ([from the manage sandboxes page](https://developer.intuit.com/v2/ui#/sandbox))
-  Don't use it for anything else besides testing this app.
--. Copy the 'Company ID' to your .env as QBO_API_COMPANY_ID
-- Start up the example app
+  - Edit your .env and enter the following
+    ```
+    export QBO_API_CLIENT_ID=[YOUR CLIENT ID]
+    export QBO_API_CLIENT_SECRET=[YOUR CLIENT SECRET]
+    export QBO_API_COMPANY_ID=[YOUR COMPANY ID]
+    ```
+
+- Start up the example app and test
   - `ruby example/oauth2.rb`
-- Go to `http://localhost:9393/oauth2`
-- Use the `Connect to QuickBooks` button to connect to your QuickBooks sandbox, which you receive when signing up at [https://developer.intuit.com](https://developer.intuit.com).
-- After successfully connecting to your sandbox go to :
-  - `http://localhost:9393/oauth2/customer/5`
+  - Go to `http://localhost:9393/oauth2`
+  - Use the `Connect to QuickBooks` button to connect to your QuickBooks sandbox, which you receive when signing up at [https://developer.intuit.com](https://developer.intuit.com).
+  - After successfully connecting to your sandbox go to `http://localhost:9393/oauth2/customer/5`
   - You should see "Dukes Basketball Camp" displayed
+
 - Checkout [`example/oauth2.rb`](https://github.com/minimul/qbo_api/blob/master/example/oauth2.rb)
   to see what is going on under the hood.
 
