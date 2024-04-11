@@ -132,6 +132,12 @@ QboApi.minor_version = 8
   p response['status'] # => "Deleted"
 ```
 
+NOTE: If you are deleting a journal entry you have to use the following syntax with the underscore, even though this is inconsistent with how you create journal entries.
+```ruby
+  response = qbo_api.delete(:journal_entry, id: 145)
+  p response['status'] # => "Deleted"
+```
+
 ### Deactivate (only works for name list entities)
 ```ruby
   response = qbo_api.deactivate(:employee, id: 55)
