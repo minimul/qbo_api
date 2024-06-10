@@ -43,7 +43,7 @@ class QboApi
 
     def request(method, path:, entity: nil, payload: nil, params: nil, headers: nil)
       raw_response = raw_request(method, conn: connection, path: path, params: params, payload: payload, headers: headers)
-      response(raw_response, entity: entity)
+      response(raw_response, entity: entity, headers: headers)
     end
 
     def raw_request(method, conn:, path:, payload: nil, params: nil, headers: nil)
@@ -63,9 +63,25 @@ class QboApi
       end
     end
 
-    def response(resp, entity: nil)
+    # def response(resp, entity: nil)
+    #   data = resp.body
+    #   entity ? entity_response(data, entity) : data
+    # rescue => e
+    #   QboApi.logger.debug { "#{LOG_TAG} response parsing error: entity=#{entity.inspect} body=#{resp.body.inspect} exception=#{e.inspect}" }
+    #   data
+    # end
+
+    def response(resp, entity: nil, headers: nil)
+      puts headers
       data = resp.body
-      entity ? entity_response(data, entity) : data
+      content_type = headers['Accept'] || headers['Content-Type'] if headers
+
+      if content_type and content_type.include?('application/pdf')
+        data # return raw pdf stream
+      else
+        # headers are optional, must assume that application/json is default
+        entity ? entity_response(data, entity) : data
+      end
     rescue => e
       QboApi.logger.debug { "#{LOG_TAG} response parsing error: entity=#{entity.inspect} body=#{resp.body.inspect} exception=#{e.inspect}" }
       data

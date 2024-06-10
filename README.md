@@ -335,6 +335,38 @@ See [docs](https://developer.intuit.com/docs/0100_quickbooks_online/0100_essenti
   p qbo_api.is_transaction_entity?(:customer) # => false
   p qbo_api.is_name_list_entity?(:vendors) # => true
 ```
+
+### Download Quickbooks PDF
+A quickbooks supplied PDF can be downloaded for api endpoints which offer a PDF.
+```ruby
+qbo_api.get_pdf(:invoice, 121) # produces a pdf stream.
+```
+The PDF stream can then be saved using your preferred method.
+```ruby
+# example using Ruby on Rails with ActiveStorage
+class Invoice
+  has_one_attached :pdf_file
+end
+invoice_number = 121
+pdf_data = qbo_api.get_pdf(:invoice, invoice_numer) # returns raw pdf stream
+pdf_io = StringIO.new(pdf_data) # convert to a StringIO object
+filename = "invoice_no_#{invoice_number}"
+
+invoice.pdf_file.attach(
+    io: pdf_io,
+    filename: filename,
+    content_type: 'application/pdf'
+)
+```
+
+```ruby
+# plain ruby example
+invoice_number = 121
+pdf_data = qbo_api.get_pdf(:invoice, invoice_numer) # returns raw pdf stream
+filename = "invoice_no_#{invoice_number}.pdf"
+
+File.write(filename, pdf_data)
+```
 ## Spin up an example
 - <a href="http://minimul.com/access-the-quickbooks-online-api-with-oauth2.html" target="_blank">Check out this article on spinning up the example</a>.
 
