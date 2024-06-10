@@ -63,14 +63,6 @@ class QboApi
       end
     end
 
-    # def response(resp, entity: nil)
-    #   data = resp.body
-    #   entity ? entity_response(data, entity) : data
-    # rescue => e
-    #   QboApi.logger.debug { "#{LOG_TAG} response parsing error: entity=#{entity.inspect} body=#{resp.body.inspect} exception=#{e.inspect}" }
-    #   data
-    # end
-
     def response(resp, entity: nil, headers: nil)
       puts headers
       data = resp.body
