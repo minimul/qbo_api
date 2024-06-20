@@ -64,7 +64,6 @@ class QboApi
     end
 
     def response(resp, entity: nil, headers: nil)
-      puts headers
       data = resp.body
       content_type = headers['Accept'] || headers['Content-Type'] if headers
 
