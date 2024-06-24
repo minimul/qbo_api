@@ -251,8 +251,9 @@ describe QboApi::ApiMethods do
     it 'requests the pdf of an invoice' do
       use_cassette('get_pdf/invoice') do
         result = api.get_pdf(entity, id)
-        pdf_starts_correctly = !!(result =~ /^%PDF-\d+(\.\d+)?/)
-        expect(pdf_starts_correctly).to be true
+        # Ensure result is not nil and is a pdf stream
+        pdf_starts_correctly = result&.match(/^%PDF-\d+(\.\d+)?/)
+        expect(pdf_starts_correctly).to be_truthy
       end
     end
   end

@@ -63,16 +63,17 @@ class QboApi
       end
     end
 
-    def response(resp, entity: nil, headers: nil)
+    def response(resp, entity: nil, headers: false)
       data = resp.body
-      content_type = headers['Accept'] || headers['Content-Type'] if headers
 
-      if content_type and content_type.include?('application/pdf')
-        data # return raw pdf stream
-      else
-        # headers are optional, must assume that application/json is default
-        entity ? entity_response(data, entity) : data
+      if headers
+        # headers are an optional argument
+        # if present we should check to see if a specific response type is called out
+        content_type = headers['Accept'] || headers['Content-Type']
+        return data if content_type&.include?('application/pdf') # return raw pdf stream if pdf content type requested
       end
+
+      entity ? entity_response(data, entity) : data
     rescue => e
       QboApi.logger.debug { "#{LOG_TAG} response parsing error: entity=#{entity.inspect} body=#{resp.body.inspect} exception=#{e.inspect}" }
       data
