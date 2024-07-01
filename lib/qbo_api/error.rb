@@ -13,11 +13,25 @@ class QboApi
   class Error < StandardError
     attr_reader :fault
 
-    def initialize(errors = nil)
-      if errors
-        @fault = errors
-        super(errors[:error_body])
-      end
+    def initialize(errors = {})
+      @fault = errors
+      super(errors[:error_body])
+    end
+
+    def fault_type
+      fault.dig(:error_body, 0, :fault_type)
+    end
+
+    def error_code
+      fault.dig(:error_body, 0, :error_code)
+    end
+
+    def error_message
+      fault.dig(:error_body, 0, :error_message)
+    end
+
+    def error_detail
+      fault.dig(:error_body, 0, :error_detail)
     end
   end
 

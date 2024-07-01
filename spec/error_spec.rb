@@ -29,13 +29,16 @@ describe "QboApi Error handling" do
     end
   end
 
-  it 'handles a validation error' do
+  it 'handles a validation error and provides helpers' do
     customer = { DisplayName: 'Weiskopf Consulting' }
     use_cassette("error/validation") do
       begin
         response = api.create(:customer, payload: customer)
       rescue QboApi::BadRequest => e
-        expect(e.fault[:error_body][0][:error_detail]).to match /already exists/
+        expect(e.fault_type).to match /ValidationFault/
+        expect(e.error_code).to match /6240/
+        expect(e.error_message).to match /Duplicate Name/
+        expect(e.error_detail).to match /already exists/
         expect(e.message).to match /already exists/
       end
     end
