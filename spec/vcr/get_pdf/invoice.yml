@@ -31,6 +31,6 @@ http_interactions:
           - istio-envoy
       body:
         encoding: ASCII-8BIT
-        string: '%PDF-1.4...'  # The actual PDF content
+        string: '%PDF-1.4...'
     recorded_at: Mon, 10 Jun 2024 00:34:21 GMT
 recorded_with: VCR 6.2.0
