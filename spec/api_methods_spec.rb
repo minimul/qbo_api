@@ -243,4 +243,18 @@ describe QboApi::ApiMethods do
       end
     end
   end
+
+  describe 'get pdf' do
+    let(:entity) { :invoice }
+    let(:id) { '130' }
+
+    it 'requests the pdf of an invoice' do
+      use_cassette('get_pdf/invoice') do
+        result = api.get_pdf(entity, id)
+        # Ensure result is not nil and is a pdf stream
+        pdf_starts_correctly = result&.match(/^%PDF-\d+(\.\d+)?/)
+        expect(pdf_starts_correctly).to be_truthy
+      end
+    end
+  end
 end

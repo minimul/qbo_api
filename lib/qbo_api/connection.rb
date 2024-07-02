@@ -43,7 +43,7 @@ class QboApi
 
     def request(method, path:, entity: nil, payload: nil, params: nil, headers: nil)
       raw_response = raw_request(method, conn: connection, path: path, params: params, payload: payload, headers: headers)
-      response(raw_response, entity: entity)
+      response(raw_response, entity: entity, headers: headers)
     end
 
     def raw_request(method, conn:, path:, payload: nil, params: nil, headers: nil)
@@ -63,8 +63,14 @@ class QboApi
       end
     end
 
-    def response(resp, entity: nil)
+    def response(resp, entity: nil, headers: false)
       data = resp.body
+
+      if headers
+        content_type = headers['Accept'] || headers['Content-Type']
+        return data if content_type&.include?('application/pdf')
+      end
+
       entity ? entity_response(data, entity) : data
     rescue => e
       QboApi.logger.debug { "#{LOG_TAG} response parsing error: entity=#{entity.inspect} body=#{resp.body.inspect} exception=#{e.inspect}" }

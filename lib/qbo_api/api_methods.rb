@@ -34,6 +34,11 @@ class QboApi
       end
     end
 
+    def get_pdf(entity, id)
+      path = "#{entity_path(entity)}/#{id}/pdf"
+      request(:get, entity: entity, path: path, headers: { 'Accept' => 'application/pdf' })
+    end
+
     def create(entity, payload:, params: nil)
       request(:post, entity: entity, path: entity_path(entity), payload: payload, params: params)
     end
