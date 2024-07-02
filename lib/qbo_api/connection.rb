@@ -67,10 +67,8 @@ class QboApi
       data = resp.body
 
       if headers
-        # headers are an optional argument
-        # if present we should check to see if a specific response type is called out
         content_type = headers['Accept'] || headers['Content-Type']
-        return data if content_type&.include?('application/pdf') # return raw pdf stream if pdf content type requested
+        return data if content_type&.include?('application/pdf')
       end
 
       entity ? entity_response(data, entity) : data
