@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/query?query=SELECT%20COUNT(*)%20FROM%20Employee%20WHERE%20Active%20IN%20(true,%20false)%20
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/-COMPANY_ID-/query?query=SELECT%20COUNT(*)%20FROM%20Employee%20WHERE%20Active%20IN%20(true,%20false)%20
     body:
       encoding: US-ASCII
       string: ''
@@ -54,7 +54,7 @@ http_interactions:
   recorded_at: Tue, 29 Sep 2020 13:04:13 GMT
 - request:
     method: get
-    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/query?query=SELECT%20*%20FROM%20Employee%20WHERE%20Active%20IN%20(%20true,%20false%20)%20MAXRESULTS%201000%20STARTPOSITION%201
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/-COMPANY_ID-/query?query=SELECT%20*%20FROM%20Employee%20WHERE%20Active%20IN%20(%20true,%20false%20)%20MAXRESULTS%201000%20STARTPOSITION%201
     body:
       encoding: US-ASCII
       string: ''

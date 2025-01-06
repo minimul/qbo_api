@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/query?query=SELECT%20count(*)%20FROM%20Customer%20WHERE%20Id%20IN%20(%275%27,%20%276%27,%20%277%27,%20%278%27,%20%279%27,%20%2710%27)
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/-COMPANY_ID-/query?query=SELECT%20count(*)%20FROM%20Customer%20WHERE%20Id%20IN%20(%275%27,%20%276%27,%20%277%27,%20%278%27,%20%279%27,%20%2710%27)
     body:
       encoding: US-ASCII
       string: ''
@@ -54,7 +54,7 @@ http_interactions:
   recorded_at: Tue, 29 Sep 2020 13:04:48 GMT
 - request:
     method: get
-    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/query?query=SELECT%20*%20FROM%20Customer%20WHERE%20Id%20IN%20(%275%27,%20%276%27,%20%277%27,%20%278%27,%20%279%27,%20%2710%27)%20AND%20Active%20IN%20(%20true,%20false%20)%20MAXRESULTS%202%20STARTPOSITION%201
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/-COMPANY_ID-/query?query=SELECT%20*%20FROM%20Customer%20WHERE%20Id%20IN%20(%275%27,%20%276%27,%20%277%27,%20%278%27,%20%279%27,%20%2710%27)%20AND%20Active%20IN%20(%20true,%20false%20)%20MAXRESULTS%202%20STARTPOSITION%201
     body:
       encoding: US-ASCII
       string: ''
@@ -114,7 +114,7 @@ http_interactions:
   recorded_at: Tue, 29 Sep 2020 13:04:49 GMT
 - request:
     method: get
-    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/query?query=SELECT%20*%20FROM%20Customer%20WHERE%20Id%20IN%20(%275%27,%20%276%27,%20%277%27,%20%278%27,%20%279%27,%20%2710%27)%20AND%20Active%20IN%20(%20true,%20false%20)%20MAXRESULTS%202%20STARTPOSITION%203
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/-COMPANY_ID-/query?query=SELECT%20*%20FROM%20Customer%20WHERE%20Id%20IN%20(%275%27,%20%276%27,%20%277%27,%20%278%27,%20%279%27,%20%2710%27)%20AND%20Active%20IN%20(%20true,%20false%20)%20MAXRESULTS%202%20STARTPOSITION%203
     body:
       encoding: US-ASCII
       string: ''
@@ -180,7 +180,7 @@ http_interactions:
   recorded_at: Tue, 29 Sep 2020 13:04:49 GMT
 - request:
     method: get
-    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/query?query=SELECT%20*%20FROM%20Customer%20WHERE%20Id%20IN%20(%275%27,%20%276%27,%20%277%27,%20%278%27,%20%279%27,%20%2710%27)%20AND%20Active%20IN%20(%20true,%20false%20)%20MAXRESULTS%202%20STARTPOSITION%205
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/-COMPANY_ID-/query?query=SELECT%20*%20FROM%20Customer%20WHERE%20Id%20IN%20(%275%27,%20%276%27,%20%277%27,%20%278%27,%20%279%27,%20%2710%27)%20AND%20Active%20IN%20(%20true,%20false%20)%20MAXRESULTS%202%20STARTPOSITION%205
     body:
       encoding: US-ASCII
       string: ''
@@ -244,7 +244,7 @@ http_interactions:
   recorded_at: Tue, 29 Sep 2020 13:04:50 GMT
 - request:
     method: get
-    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/query?query=SELECT%20*%20FROM%20Customer%20WHERE%20Id%20IN%20(%275%27,%20%276%27,%20%277%27,%20%278%27,%20%279%27,%20%2710%27)%20AND%20Active%20IN%20(%20true,%20false%20)%20MAXRESULTS%202%20STARTPOSITION%207
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/-COMPANY_ID-/query?query=SELECT%20*%20FROM%20Customer%20WHERE%20Id%20IN%20(%275%27,%20%276%27,%20%277%27,%20%278%27,%20%279%27,%20%2710%27)%20AND%20Active%20IN%20(%20true,%20false%20)%20MAXRESULTS%202%20STARTPOSITION%207
     body:
       encoding: US-ASCII
       string: ''

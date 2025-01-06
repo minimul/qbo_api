@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/account/5
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/-COMPANY_ID-/account/5
     body:
       encoding: US-ASCII
       string: ''
@@ -56,7 +56,7 @@ http_interactions:
   recorded_at: Tue, 29 Sep 2020 13:03:07 GMT
 - request:
     method: post
-    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/account
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/-COMPANY_ID-/account
     body:
       encoding: UTF-8
       string: '{"Id":"5","SyncToken":"1","sparse":true,"Active":false,"Name":"Fees

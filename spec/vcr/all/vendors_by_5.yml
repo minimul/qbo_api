@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/query?query=SELECT%20COUNT(*)%20FROM%20Vendor
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/-COMPANY_ID-/query?query=SELECT%20COUNT(*)%20FROM%20Vendor
     body:
       encoding: US-ASCII
       string: ''
@@ -54,7 +54,7 @@ http_interactions:
   recorded_at: Tue, 29 Sep 2020 13:04:21 GMT
 - request:
     method: get
-    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/query?query=SELECT%20*%20FROM%20Vendor%20MAXRESULTS%205%20STARTPOSITION%201
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/-COMPANY_ID-/query?query=SELECT%20*%20FROM%20Vendor%20MAXRESULTS%205%20STARTPOSITION%201
     body:
       encoding: US-ASCII
       string: ''
@@ -124,7 +124,7 @@ http_interactions:
   recorded_at: Tue, 29 Sep 2020 13:04:21 GMT
 - request:
     method: get
-    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/query?query=SELECT%20*%20FROM%20Vendor%20MAXRESULTS%205%20STARTPOSITION%206
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/-COMPANY_ID-/query?query=SELECT%20*%20FROM%20Vendor%20MAXRESULTS%205%20STARTPOSITION%206
     body:
       encoding: US-ASCII
       string: ''
@@ -193,7 +193,7 @@ http_interactions:
   recorded_at: Tue, 29 Sep 2020 13:04:22 GMT
 - request:
     method: get
-    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/query?query=SELECT%20*%20FROM%20Vendor%20MAXRESULTS%205%20STARTPOSITION%2011
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/-COMPANY_ID-/query?query=SELECT%20*%20FROM%20Vendor%20MAXRESULTS%205%20STARTPOSITION%2011
     body:
       encoding: US-ASCII
       string: ''
@@ -260,7 +260,7 @@ http_interactions:
   recorded_at: Tue, 29 Sep 2020 13:04:22 GMT
 - request:
     method: get
-    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/query?query=SELECT%20*%20FROM%20Vendor%20MAXRESULTS%205%20STARTPOSITION%2016
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/-COMPANY_ID-/query?query=SELECT%20*%20FROM%20Vendor%20MAXRESULTS%205%20STARTPOSITION%2016
     body:
       encoding: US-ASCII
       string: ''
@@ -332,7 +332,7 @@ http_interactions:
   recorded_at: Tue, 29 Sep 2020 13:04:23 GMT
 - request:
     method: get
-    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/query?query=SELECT%20*%20FROM%20Vendor%20MAXRESULTS%205%20STARTPOSITION%2021
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/-COMPANY_ID-/query?query=SELECT%20*%20FROM%20Vendor%20MAXRESULTS%205%20STARTPOSITION%2021
     body:
       encoding: US-ASCII
       string: ''
@@ -401,7 +401,7 @@ http_interactions:
   recorded_at: Tue, 29 Sep 2020 13:04:23 GMT
 - request:
     method: get
-    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/query?query=SELECT%20*%20FROM%20Vendor%20MAXRESULTS%205%20STARTPOSITION%2026
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/-COMPANY_ID-/query?query=SELECT%20*%20FROM%20Vendor%20MAXRESULTS%205%20STARTPOSITION%2026
     body:
       encoding: US-ASCII
       string: ''

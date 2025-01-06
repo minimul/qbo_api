@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/reports/ProfitAndLoss?customer=1&end_date=2015-07-31&start_date=2015-01-01&summarize_column_by=Customers
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/-COMPANY_ID-/reports/ProfitAndLoss?customer=1&end_date=2015-07-31&start_date=2015-01-01&summarize_column_by=Customers
     body:
       encoding: US-ASCII
       string: ''

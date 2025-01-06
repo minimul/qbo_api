@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/customer/68?minorversion=8
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/-COMPANY_ID-/customer/68?minorversion=8
     body:
       encoding: US-ASCII
       string: ''
@@ -56,7 +56,7 @@ http_interactions:
   recorded_at: Tue, 29 Sep 2020 13:00:06 GMT
 - request:
     method: post
-    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/customer?minorversion=8
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/-COMPANY_ID-/customer?minorversion=8
     body:
       encoding: UTF-8
       string: '{"DisplayName":"Jack Moe","PrimaryPhone":{"FreeFormNumber":"(415) 444-1234"},"Id":"68","SyncToken":"0"}'

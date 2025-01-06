@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/invoice/266
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/-COMPANY_ID-/invoice/266
     body:
       encoding: US-ASCII
       string: ''
@@ -58,7 +58,7 @@ http_interactions:
   recorded_at: Tue, 29 Sep 2020 13:02:34 GMT
 - request:
     method: post
-    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/invoice?operation=delete
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/-COMPANY_ID-/invoice?operation=delete
     body:
       encoding: UTF-8
       string: '{"Id":"266","SyncToken":"0"}'

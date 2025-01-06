@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/salesreceipt/17
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/-COMPANY_ID-/salesreceipt/17
     body:
       encoding: US-ASCII
       string: ''
@@ -57,7 +57,7 @@ http_interactions:
   recorded_at: Tue, 29 Sep 2020 13:00:43 GMT
 - request:
     method: post
-    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/salesreceipt?minorversion=4&requestid=a90bfae9-9c6b-4179-9c7e-d8f538d09f6f
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/-COMPANY_ID-/salesreceipt?minorversion=4&requestid=a90bfae9-9c6b-4179-9c7e-d8f538d09f6f
     body:
       encoding: UTF-8
       string: '{"Line":[{"Description":"Custom Design","Amount":337.5,"DetailType":"SalesItemLineDetail","SalesItemLineDetail":{"ItemRef":{"value":"4","name":"Design"},"UnitPrice":75,"Qty":4.5,"TaxCodeRef":{"value":"NON"}}}],"Id":"17","SyncToken":"4"}'

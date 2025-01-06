@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/upload
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/-COMPANY_ID-/upload
     body:
       encoding: UTF-8
       string: "-------------RubyMultipartPost-d3ad65a17827740101595c352237da99\r\nContent-Disposition:

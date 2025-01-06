@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/query?query=SELECT%20*%20FROM%20Vendor%20WHERE%20DisplayName%20=%20%27Robertson%20%26%20Associates%27
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/-COMPANY_ID-/query?query=SELECT%20*%20FROM%20Vendor%20WHERE%20DisplayName%20=%20%27Robertson%20%26%20Associates%27
     body:
       encoding: US-ASCII
       string: ''

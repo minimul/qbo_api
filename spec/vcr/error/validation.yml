@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/customer
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/-COMPANY_ID-/customer
     body:
       encoding: UTF-8
       string: '{"DisplayName":"Weiskopf Consulting"}'

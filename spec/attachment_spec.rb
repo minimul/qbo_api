@@ -60,7 +60,7 @@ describe "QboApi Attachment" do
     }
     use_cassette("attachment/error_estimate") do
       response = api.upload_attachment(payload: payload, attachment: fixture_path + '/no_detail.xml')
-      expect(response).to include { ['AttachableResponse'].first['Fault'] }
+      expect(response['AttachableResponse'].first.dig('Fault')).to be_a Hash
     end
   end
 end

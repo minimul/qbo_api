@@ -43,8 +43,8 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"Fault":{"Error":[{"Message":"Unsupported Operation","Detail":"Operation
-        Could not find resource for relative : /v3/company/<COMPANY_ID>/customer/1/5
-        of full path: https://c50.sandbox.qbo.intuit.com/qbo50/v3/company/<COMPANY_ID>/customer/1/5
+        Could not find resource for relative : /v3/company/-COMPANY_ID-/customer/1/5
+        of full path: https://c50.sandbox.qbo.intuit.com/qbo50/v3/company/-COMPANY_ID-/customer/1/5
         is not supported.","code":"500"}],"type":"ValidationFault"},"time":"2020-09-29T06:55:31.323-07:00"}'
   recorded_at: Tue, 29 Sep 2020 13:55:31 GMT
 - request:

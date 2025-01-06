@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/invoice
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/-COMPANY_ID-/invoice
     body:
       encoding: UTF-8
       string: '{"Line":[{"Amount":100.0,"DetailType":"SalesItemLineDetail","SalesItemLineDetail":{"ItemRef":{"value":"1","name":"Services"}}}],"CustomerRef":{"value":"1"}}'

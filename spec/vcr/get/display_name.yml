@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/query?query=SELECT%20*%20FROM%20Customer%20WHERE%20DisplayName%20=%20%27Amy%5C%27s%20Bird%20Sanctuary%27
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/-COMPANY_ID-/query?query=SELECT%20*%20FROM%20Customer%20WHERE%20DisplayName%20=%20%27Amy%5C%27s%20Bird%20Sanctuary%27
     body:
       encoding: US-ASCII
       string: ''

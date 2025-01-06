@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/upload
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/-COMPANY_ID-/upload
     body:
       encoding: UTF-8
       string: "-------------RubyMultipartPost-9c1abaa2ebc0a964ff482b00f4711e31\r\nContent-Disposition:
@@ -63,6 +63,6 @@ http_interactions:
       - max-age=0, no-cache, no-store, must-revalidate, private
     body:
       encoding: ASCII-8BIT
-      string: '{"AttachableResponse":[{"Attachable":{"FileName":"no_detail.xml","FileAccessUri":"/v3/company/<COMPANY_ID>/download/5000000000000503624","TempDownloadUri":"https://intuit-qbo-prod-23.s3.amazonaws.com/<COMPANY_ID>/attachments/8e8a930a-afa3-4ba1-9873-94238e712403no_detail.xml?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20200929T133346Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=AKIA3V3MBG4KLHZEBYNA%2F20200929%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=ea9ec6e9d8757df5a2844c176dffb7120601d4e7c394cfa9bd3ce2241abb5586","Size":538,"ContentType":"text/xml","domain":"QBO","sparse":false,"Id":"5000000000000503624","SyncToken":"0","MetaData":{"CreateTime":"2020-09-29T06:33:46-07:00","LastUpdatedTime":"2020-09-29T06:33:46-07:00"},"AttachableRef":[{"EntityRef":{"value":"75","type":"Invoice"},"IncludeOnSend":false}]}}],"time":"2020-09-29T06:33:45.445-07:00"}'
+      string: '{"AttachableResponse":[{"Attachable":{"FileName":"no_detail.xml","FileAccessUri":"/v3/company/-COMPANY_ID-/download/5000000000000503624","TempDownloadUri":"https://intuit-qbo-prod-23.s3.amazonaws.com/-COMPANY_ID-/attachments/8e8a930a-afa3-4ba1-9873-94238e712403no_detail.xml?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20200929T133346Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=AKIA3V3MBG4KLHZEBYNA%2F20200929%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=ea9ec6e9d8757df5a2844c176dffb7120601d4e7c394cfa9bd3ce2241abb5586","Size":538,"ContentType":"text/xml","domain":"QBO","sparse":false,"Id":"5000000000000503624","SyncToken":"0","MetaData":{"CreateTime":"2020-09-29T06:33:46-07:00","LastUpdatedTime":"2020-09-29T06:33:46-07:00"},"AttachableRef":[{"EntityRef":{"value":"75","type":"Invoice"},"IncludeOnSend":false}]}}],"time":"2020-09-29T06:33:45.445-07:00"}'
   recorded_at: Tue, 29 Sep 2020 13:33:46 GMT
 recorded_with: VCR 6.0.0

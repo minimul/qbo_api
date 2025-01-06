@@ -9,8 +9,8 @@ require_relative 'support/credentials'
 VCR.configure do |config|
   config.cassette_library_dir = File.expand_path("../vcr", __FILE__)
   config.hook_into :webmock
-  config.filter_sensitive_data('<OAUTH2_ACCESS_TOKEN>') { URI.encode_www_form_component(oauth2_creds[:access_token]) }
-  config.filter_sensitive_data('<COMPANY_ID>') { URI.encode_www_form_component(creds[:realm_id]) }
+  config.filter_sensitive_data('<OAUTH2_ACCESS_TOKEN>') { URI.encode_www_form_component(creds[:access_token]) }
+  config.filter_sensitive_data('-COMPANY_ID-') { URI.encode_www_form_component(creds[:realm_id]) }
 
   uri_matcher = VCR.request_matchers[:uri]
   # Don't check sandbox company id or trailing URL id
@@ -35,8 +35,9 @@ VCR.configure do |config|
   end
 
   def strip_url_company_id(*args)
-    regexp_company_id = %r((company)/\d+/?)
+    regexp_company_id = %r((company)/-COMPANY_ID-/?)
     args.each do |ref|
+      ref.sub!(%r(v3/), '')
       ref.sub!(regexp_company_id, '')
     end
   end

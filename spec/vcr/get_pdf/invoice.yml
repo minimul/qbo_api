@@ -1,7 +1,7 @@
 http_interactions:
   - request:
       method: get
-      uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/invoice/130/pdf
+      uri: https://sandbox-quickbooks.api.intuit.com/v3/company/-COMPANY_ID-/invoice/130/pdf
       body:
         encoding: US-ASCII
         string: ''

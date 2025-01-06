@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/<COMPANY_ID>/customer/5
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/-COMPANY_ID-/customer/5
     body:
       encoding: US-ASCII
       string: ''
