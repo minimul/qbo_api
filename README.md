@@ -294,26 +294,6 @@ Be aware that any errors will not raise a `QboApi::Error`, but will be returned 
         p response["Header"]["ReportName"]) #=> 'ProfitAndLoss'
 ```
 
-### Reconnect
-
-See [docs](https://developer.intuit.com/docs/0100_quickbooks_online/0100_essentials/0085_develop_quickbooks_apps/0004_authentication_and_authorization/oauth_management_api#/Reconnect)
-```ruby
-        response = qbo_api.reconnect
-        #=> if response['ErrorCode'] == 0
-        #=>   p response['OAuthToken'] #=> rewq23423424afadsdfs==
-        #=>   p response['OAuthTokenSecret'] #=> ertwwetu12345312005343453yy=Fg
-```
-
-### Disconnect
-
-See [docs](https://developer.intuit.com/docs/0100_quickbooks_online/0100_essentials/0085_develop_quickbooks_apps/0004_authentication_and_authorization/oauth_management_api#/Disconnect)
-```ruby
-        response = qbo_api.disconnect
-        #=> if response['ErrorCode'] == 0
-        #=>   # Successful disconnect
-```
-
-
 ### Respond to an error
 ```ruby
   customer = { DisplayName: 'Weiskopf Consulting' }
