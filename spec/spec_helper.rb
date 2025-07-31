@@ -53,6 +53,10 @@ VCR.configure do |config|
   config.default_cassette_options = { match_requests_on: [:method, :for_intuit] }
 end
 
+def with_cannot_match_cassette_error
+  'Need to re-run VCR cassette as it is failing with "An HTTP request has been made that VCR does not know how to handle:"'
+end
+
 # @param name [String] cassette name, e.g. "somenamespace/some description"
 # @param options [Hash] optional options to use_cassette(name, options)
 # @yield the cassette

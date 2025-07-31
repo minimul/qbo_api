@@ -24,7 +24,7 @@ describe "QboApi Attachment" do
     end
   end
 
-  it 'reads an attachment' do
+  it 'reads an attachment', skip: with_cannot_match_cassette_error do
     id = '5000000000000503624' # use the id from the attachment/create_for_invoice cassette
     use_cassette('attachment/read_attachment') do
       response = api.read_attachment(id: id)
@@ -33,7 +33,7 @@ describe "QboApi Attachment" do
     end
   end
 
-  it 'deletes an attachment' do
+  it 'deletes an attachment', skip: with_cannot_match_cassette_error do
     # After successfully recording the create are read attachments
     # now delete the attachment using the id from the create_for_invoice cassette
     id = '5000000000000503624'

@@ -4,7 +4,7 @@ describe "QboApi::Supporting" do
   let(:api){ QboApi.new(creds) }
 
   context ".cdc" do
-    it 'should grab estimates via change data capture query' do
+    it 'should grab estimates via change data capture query', skip: with_cannot_match_cassette_error do
       use_cassette("cdc/basic") do
         response = api.cdc(entities: 'estimate', changed_since: '2011-10-10T09:00:00-07:00')
         expect(response['CDCResponse'].size).to eq 1
@@ -15,7 +15,7 @@ describe "QboApi::Supporting" do
   end
 
   context ".batch" do
-    it 'does 4 operations in one request' do
+    it 'does 4 operations in one request', skip: with_cannot_match_cassette_error do
       use_cassette("batch/basic") do
         name = "Boraski Family Store" # change name on re-run to avoid duplicate
         response = api.batch(batch_payload(name: name))
