@@ -12,7 +12,7 @@ describe "QboApi Error handling" do
     end
   end
 
-  it 'handles a 400 error' do
+  it 'handles a 400 error', skip: with_cannot_match_cassette_error do
     sql = "SELECT * FROM Custmoer" # Customer is misspelled
     use_cassette("error/400") do
       expect {
