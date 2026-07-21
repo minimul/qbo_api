@@ -1,0 +1,58 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/-COMPANY_ID-/employee
+    body:
+      encoding: UTF-8
+      string: '{"Id":400000001,"SyncToken":"0","sparse":true,"Active":false}'
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json;charset=UTF-8
+      User-Agent:
+      - Faraday v2.14.3
+      Authorization:
+      - Bearer <OAUTH2_ACCESS_TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 21 Jul 2026 14:14:41 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '433'
+      Connection:
+      - keep-alive
+      X-Envoy-Upstream-Service-Time:
+      - '1014'
+      Server:
+      - istio-envoy
+      X-Envoy-Decorator-Operation:
+      - v3-facade-service-desired-service.dev-devx-v3facadeservice-usw2-stg-ids.svc.cluster.local:8090/*
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Request-Id:
+      - 1-6a5f7ed0-369ca6e224ebf6d07531ae6a
+      X-Intuit-Upstream-Locality-Region:
+      - us-west-2
+      X-Content-Type-Options:
+      - nosniff
+      X-Spanid:
+      - 6db60a9a-dcf3-bb91-bdf1-0178c7e016b2
+      Intuit-Tid:
+      - 1-6a5f7ed0-369ca6e224ebf6d07531ae6a
+      X-Amzn-Trace-Id:
+      - Root=1-6a5f7ed0-369ca6e224ebf6d07531ae6a
+    body:
+      encoding: ASCII-8BIT
+      string: '{"Employee":{"BillableTime":false,"domain":"QBO","sparse":false,"Id":"400000001","SyncToken":"1","MetaData":{"CreateTime":"2026-07-21T07:14:18-07:00","LastUpdatedTime":"2026-07-21T07:14:41-07:00"},"Organization":false,"GivenName":"John","FamilyName":"Doe","DisplayName":"John
+        Doe (deleted)","PrintOnCheckName":"John Doe","Active":false,"V4IDPseudonym":"002098a67ceec37e19455b8e8e5ea3c388d7a4"},"time":"2026-07-21T07:14:41.577-07:00"}'
+  recorded_at: Tue, 21 Jul 2026 14:14:41 GMT
+recorded_with: VCR 6.4.0

@@ -82,6 +82,12 @@ class QboApi
       }
     end
 
+    # Account and Class reject a sparse deactivate unless the current Name is
+    # echoed back, so deactivating these always requires a fetch to read that Name.
+    def deactivate_requires_name?(entity)
+      %w[Account Class].include?(singular(entity))
+    end
+
     def supporting_entities
       %w{
         Attachable

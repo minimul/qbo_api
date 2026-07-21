@@ -126,6 +126,13 @@ QboApi.minor_version = 76
   p response.fetch('PrimaryPhone').fetch('FreeFormNumber') # => "(415) 444-1234"
 ```
 
+`update`, `delete`, `void`, and `deactivate` all send the entity's `SyncToken`, which QuickBooks uses for optimistic locking: a write is only accepted if its `SyncToken` matches the current server version. By default the gem fetches the latest `SyncToken` with a `GET` immediately before the write — which means any change that landed between your own read and your write is silently overwritten (last write wins).
+
+Pass `sync_token:` to send a `SyncToken` you obtained earlier instead. QuickBooks then rejects the write if the entity changed in the meantime, so you can read a version, decide what to do, and write back knowing nothing slipped in between. (As a side effect it also skips the extra `GET`.)
+```ruby
+  response = qbo_api.update(:customer, id: 60, payload: customer, sync_token: '2')
+```
+
 ### Delete (only works for transaction entities)
 ```ruby
   response = qbo_api.delete(:invoice, id: 145)
@@ -138,11 +145,33 @@ NOTE: If you are deleting a journal entry you have to use the following syntax w
   p response['status'] # => "Deleted"
 ```
 
+`sync_token:` is accepted here too:
+```ruby
+  response = qbo_api.delete(:invoice, id: 145, sync_token: '0')
+```
+
+### Void (only works for voidable transaction entities)
+```ruby
+  response = qbo_api.void(:invoice, id: 145)
+  p response['PrivateNote'] # => "Voided"
+```
+
+`sync_token:` is accepted here too:
+```ruby
+  response = qbo_api.void(:invoice, id: 145, sync_token: '0')
+```
+
 ### Deactivate (only works for name list entities)
 ```ruby
   response = qbo_api.deactivate(:employee, id: 55)
   p response['Active'] # => false
 ```
+
+`sync_token:` is accepted here too:
+```ruby
+  response = qbo_api.deactivate(:employee, id: 55, sync_token: '1')
+```
+NOTE: For `Account` and `Class` entities, deactivating also requires the entity's current `Name`, so the `GET` still happens in that case even if you pass `sync_token:` — but the `SyncToken` you supplied is what's sent, not the freshly fetched one.
 
 ### Get an entity by its id
 ```ruby

@@ -1,0 +1,57 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/-COMPANY_ID-/invoice?operation=delete
+    body:
+      encoding: UTF-8
+      string: '{"Id":213,"SyncToken":"0"}'
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json;charset=UTF-8
+      User-Agent:
+      - Faraday v2.14.3
+      Authorization:
+      - Bearer <OAUTH2_ACCESS_TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 21 Jul 2026 14:07:23 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '97'
+      Connection:
+      - keep-alive
+      X-Envoy-Upstream-Service-Time:
+      - '357'
+      Server:
+      - istio-envoy
+      X-Envoy-Decorator-Operation:
+      - v3-facade-service-desired-service.dev-devx-v3facadeservice-usw2-stg-ids.svc.cluster.local:8090/*
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Request-Id:
+      - 1-6a5f7d1b-31d217e33b576e2d6b40ff66
+      X-Intuit-Upstream-Locality-Region:
+      - us-west-2
+      X-Spanid:
+      - cd6ee940-1b05-bc20-1af0-fd56e654bdae
+      X-Amzn-Trace-Id:
+      - Root=1-6a5f7d1b-31d217e33b576e2d6b40ff66
+      X-Content-Type-Options:
+      - nosniff
+      Intuit-Tid:
+      - 1-6a5f7d1b-31d217e33b576e2d6b40ff66
+    body:
+      encoding: ASCII-8BIT
+      string: '{"Invoice":{"domain":"QBO","status":"Deleted","Id":"213"},"time":"2026-07-21T07:07:23.722-07:00"}'
+  recorded_at: Tue, 21 Jul 2026 14:07:23 GMT
+recorded_with: VCR 6.4.0
