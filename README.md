@@ -62,7 +62,7 @@ If you're not using ActiveSupport, you'll need to use `#iso8601` method to conve
 ### Configuration options
 - By default this client runs against a QBO sandbox. To run against the production QBO API URL do:
 ```ruby
-QboApi.production = true
+QboApi.production = true # or pass `production:` to QboApi.new(...)
 ```
 - Logging:
 ```ruby

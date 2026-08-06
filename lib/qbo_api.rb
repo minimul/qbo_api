@@ -32,6 +32,7 @@ class QboApi
   def initialize(attributes = {})
     raise ArgumentError, "missing keyword: access_token" unless attributes.key?(:access_token)
     raise ArgumentError, "missing keyword: realm_id" unless attributes.key?(:realm_id)
+    @production = attributes.delete(:production)
     attributes = default_attributes.merge!(attributes)
     attributes.each do |attribute, value|
       public_send("#{attribute}=", value)
@@ -53,13 +54,22 @@ class QboApi
     @endpoint_url.dup
   end
 
+  # Use the `production:` from initialization,
+  # or fall back to the current setting at `QboApi.production`
+  def production
+    if @production.nil?
+      self.class.production
+    else
+      @production
+    end
+  end
+
   private
 
   def get_endpoint
-    prod = self.class.production
     {
-      accounting: prod ? V3_ENDPOINT_BASE_URL.sub("sandbox-", '') : V3_ENDPOINT_BASE_URL,
-      payments: prod ? PAYMENTS_API_BASE_URL.sub("sandbox.", '') : PAYMENTS_API_BASE_URL
+      accounting: production ? V3_ENDPOINT_BASE_URL.sub("sandbox-", '') : V3_ENDPOINT_BASE_URL,
+      payments: production ? PAYMENTS_API_BASE_URL.sub("sandbox.", '') : PAYMENTS_API_BASE_URL
     }.fetch(endpoint) do
       raise KeyError, "Invalid endpoint: #{endpoint.inspect}"
     end

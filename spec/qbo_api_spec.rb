@@ -43,11 +43,21 @@ describe QboApi do
   end
 
   it '.get_endpoint' do
+    # These two use their initialized value, not the global setting:
+    prod_api = QboApi.new(creds.merge(production: true))
+    sandbox_api = QboApi.new(creds.merge(production: false))
+
     expect(api.send(:get_endpoint)).to eq QboApi::V3_ENDPOINT_BASE_URL
+    expect(prod_api.send(:get_endpoint)).to_not match /sandbox/
+    expect(sandbox_api.send(:get_endpoint)).to match /sandbox/
+
     QboApi.production = true
     expect(api.send(:get_endpoint)).to_not match /sandbox/
     new_api = QboApi.new(creds.to_h)
     expect(new_api.send(:get_endpoint)).to_not match /sandbox/
+
+    expect(prod_api.send(:get_endpoint)).to_not match /sandbox/
+    expect(sandbox_api.send(:get_endpoint)).to match /sandbox/
     QboApi.production = false
     api = QboApi.new(creds.to_h.merge(endpoint: :payments))
     expect(api.send(:get_endpoint)).to eq QboApi::PAYMENTS_API_BASE_URL
