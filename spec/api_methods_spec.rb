@@ -5,6 +5,17 @@ describe QboApi::ApiMethods do
 
   QboApi.send(:public, :to_quote_or_not)
 
+  # Proves the caller's SyncToken - not a server-fetched one - is what goes on the
+  # wire: the POST body carries exactly the supplied token, and no GET was made to
+  # fetch a fresh one first. (VCR matches on method+URI only, so webmock still
+  # records the real outgoing body for us to inspect.)
+  def expect_supplied_sync_token_sent(entity_path:, sync_token:)
+    expect(a_request(:get, %r{#{entity_path}})).not_to have_been_made
+    expect(
+      a_request(:post, %r{#{entity_path}}).with { |req| JSON.parse(req.body)['SyncToken'] == sync_token }
+    ).to have_been_made, "Expected request to have sync token '#{sync_token}' in the body, but it did not."
+  end
+
   describe "get, filtered get, and query" do
 
     it '.to_quote_or_not' do
@@ -135,19 +146,38 @@ describe QboApi::ApiMethods do
         expect(response['SyncToken'].to_i).to be > 0
       end
     end
+
+    it 'sends the supplied sync_token for a customer instead of fetching the current one' do
+      customer = {
+        DisplayName: 'Jack Moe',
+        PrimaryPhone: {
+          FreeFormNumber: "(415) 444-1234"
+        }
+      }
+      use_cassette("update/customer_with_sync_token") do
+        api.update(:customer, id: 483, payload: customer, sync_token: '99')
+        expect_supplied_sync_token_sent(entity_path: '/customer', sync_token: '99')
+      end
+    end
   end #= end '.update
 
   describe '.delete' do
-    let(:invoice_id) { "266" }
     it 'an invoice' do
       use_cassette("delete/invoice") do
-        response = api.delete(:invoice, id: invoice_id)
+        response = api.delete(:invoice, id: 266)
         expect(response['status']).to eq "Deleted"
       end
     end
 
     it 'only a transaction entity' do
-      expect { api.delete(:customer, id: invoice_id) }.to raise_error QboApi::NotImplementedError, /^Delete is only for/
+      expect { api.delete(:customer, id: 266) }.to raise_error QboApi::NotImplementedError, /^Delete is only for/
+    end
+
+    it 'sends the supplied sync_token for an invoice instead of fetching the current one' do
+      use_cassette("delete/invoice_with_sync_token") do
+        api.delete(:invoice, id: 213, sync_token: '99')
+        expect_supplied_sync_token_sent(entity_path: '/invoice', sync_token: '99')
+      end
     end
   end
 
@@ -161,6 +191,13 @@ describe QboApi::ApiMethods do
 
     it 'only a voidable entity' do
       expect { api.void(:vendor, id: 34) }.to raise_error QboApi::NotImplementedError, /^Void is only for/
+    end
+
+    it 'sends the supplied sync_token for an invoice instead of fetching the current one' do
+      use_cassette("void/invoice_with_sync_token") do
+        api.void(:invoice, id: 214, sync_token: '99')
+        expect_supplied_sync_token_sent(entity_path: '/invoice', sync_token: '99')
+      end
     end
   end
 
@@ -176,6 +213,27 @@ describe QboApi::ApiMethods do
       use_cassette("deactivate/account") do
         response = api.deactivate(:account, id: 5)
         expect(response['Active']).to eq false
+      end
+    end
+
+    it 'sends the supplied sync_token for an employee instead of fetching the current one' do
+      use_cassette("deactivate/employee_with_sync_token") do
+        api.deactivate(:employee, id: 400000001, sync_token: '99')
+        expect_supplied_sync_token_sent(entity_path: '/employee', sync_token: '99')
+      end
+    end
+
+    it 'an account with a supplied sync_token still fetches (for Name) but sends the supplied SyncToken' do
+      use_cassette("deactivate/account") do
+        # Account/Class still GET (to read the current Name), so unlike the other entities a fetch
+        # does happen here. The cassette's fetched SyncToken is "1"; we deliberately supply a
+        # different value so the assertion proves the caller's value - not the freshly fetched one -
+        # is what's sent in the payload.
+        response = api.deactivate(:account, id: 5, sync_token: '99')
+        expect(response['Active']).to eq false
+        expect(
+          a_request(:post, %r{/account\z}).with { |req| JSON.parse(req.body)['SyncToken'] == '99' }
+        ).to have_been_made, "Expected request to have sync token '99' in the body, but it did not."
       end
     end
 

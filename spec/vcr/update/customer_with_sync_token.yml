@@ -1,0 +1,60 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/-COMPANY_ID-/customer
+    body:
+      encoding: UTF-8
+      string: '{"DisplayName":"Jack Moe","PrimaryPhone":{"FreeFormNumber":"(415) 444-1234"},"Id":483,"SyncToken":"0"}'
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json;charset=UTF-8
+      User-Agent:
+      - Faraday v2.14.3
+      Authorization:
+      - Bearer <OAUTH2_ACCESS_TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 21 Jul 2026 13:49:16 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '556'
+      Connection:
+      - keep-alive
+      X-Envoy-Upstream-Service-Time:
+      - '298'
+      Server:
+      - istio-envoy
+      X-Envoy-Decorator-Operation:
+      - v3-facade-service-desired-service.dev-devx-v3facadeservice-usw2-stg-ids.svc.cluster.local:8090/*
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Request-Id:
+      - 1-6a5f78db-166ce9ba7c143e2a7c7d8aec
+      X-Intuit-Upstream-Locality-Region:
+      - us-west-2
+      X-Spanid:
+      - ad818476-a1ae-8933-e05f-036cb68123c2
+      X-Amzn-Trace-Id:
+      - Root=1-6a5f78db-166ce9ba7c143e2a7c7d8aec
+      X-Content-Type-Options:
+      - nosniff
+      Intuit-Tid:
+      - 1-6a5f78db-166ce9ba7c143e2a7c7d8aec
+    body:
+      encoding: ASCII-8BIT
+      string: '{"Customer":{"Taxable":true,"Job":false,"BillWithParent":false,"Balance":0,"BalanceWithJobs":0,"CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"PreferredDeliveryMethod":"Print","IsProject":false,"domain":"QBO","sparse":false,"Id":"483","SyncToken":"1","MetaData":{"CreateTime":"2026-07-21T06:47:35-07:00","LastUpdatedTime":"2026-07-21T06:49:16-07:00"},"FullyQualifiedName":"Jack
+        Moe","DisplayName":"Jack Moe","PrintOnCheckName":"Jack Moe","Active":true,"PrimaryPhone":{"FreeFormNumber":"(415)
+        444-1234"}},"time":"2026-07-21T06:49:15.995-07:00"}'
+  recorded_at: Tue, 21 Jul 2026 13:49:16 GMT
+recorded_with: VCR 6.4.0

@@ -1,0 +1,60 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://sandbox-quickbooks.api.intuit.com/v3/company/-COMPANY_ID-/invoice?operation=void
+    body:
+      encoding: UTF-8
+      string: '{"Id":214,"SyncToken":"0"}'
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json;charset=UTF-8
+      User-Agent:
+      - Faraday v2.14.3
+      Authorization:
+      - Bearer <OAUTH2_ACCESS_TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 21 Jul 2026 14:12:24 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '1207'
+      Connection:
+      - keep-alive
+      X-Envoy-Upstream-Service-Time:
+      - '574'
+      Server:
+      - istio-envoy
+      X-Envoy-Decorator-Operation:
+      - v3-facade-service-desired-service.dev-devx-v3facadeservice-usw2-stg-ids.svc.cluster.local:8090/*
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Request-Id:
+      - 1-6a5f7e47-13c0bf725c62f0c54e0c8a5c
+      X-Intuit-Upstream-Locality-Region:
+      - us-west-2
+      X-Spanid:
+      - 4df03851-8f3d-1b47-094e-21b45aeb5ae2
+      X-Amzn-Trace-Id:
+      - Root=1-6a5f7e47-13c0bf725c62f0c54e0c8a5c
+      X-Content-Type-Options:
+      - nosniff
+      Intuit-Tid:
+      - 1-6a5f7e47-13c0bf725c62f0c54e0c8a5c
+    body:
+      encoding: ASCII-8BIT
+      string: '{"Invoice":{"AllowIPNPayment":false,"AllowOnlinePayment":true,"AllowOnlineCreditCardPayment":true,"AllowOnlineACHPayment":true,"domain":"QBO","sparse":false,"Id":"214","SyncToken":"1","MetaData":{"CreateTime":"2026-07-21T07:12:04-07:00","LastModifiedByRef":{"value":"9341457536842450"},"LastUpdatedTime":"2026-07-21T07:12:24-07:00"},"CustomField":[],"DocNumber":"1039","TxnDate":"2026-07-21","CurrencyRef":{"value":"USD","name":"United
+        States Dollar"},"PrivateNote":"Voided","LinkedTxn":[],"Line":[{"Id":"1","LineNum":1,"Description":"Test","Amount":0,"DetailType":"SalesItemLineDetail","SalesItemLineDetail":{"ItemRef":{"value":"25","name":"Hours"},"Qty":0,"ItemAccountRef":{"value":"121","name":"Services"},"TaxCodeRef":{"value":"NON"}},"CustomExtensions":[]},{"Amount":0,"DetailType":"SubTotalLineDetail","SubTotalLineDetail":{}}],"CustomerRef":{"value":"482","name":"Example
+        Customer"},"CustomerMemo":{"value":"Thank you for your business and have a
+        great day!"},"BillAddr":{"Id":"407"},"ShipAddr":{"Id":"407"},"FreeFormAddress":true,"DueDate":"2026-07-21","TotalAmt":0,"ApplyTaxAfterDiscount":false,"PrintStatus":"NeedToPrint","EmailStatus":"NotSet","Balance":0},"time":"2026-07-21T07:12:24.045-07:00"}'
+  recorded_at: Tue, 21 Jul 2026 14:12:24 GMT
+recorded_with: VCR 6.4.0

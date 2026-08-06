@@ -43,31 +43,31 @@ class QboApi
       request(:post, entity: entity, path: entity_path(entity), payload: payload, params: params)
     end
 
-    def update(entity, id:, payload:, params: nil)
-      payload.merge!(set_update(entity, id))
+    def update(entity, id:, payload:, params: nil, sync_token: nil)
+      payload.merge!(set_update(entity, id, sync_token: sync_token))
       request(:post, entity: entity, path: entity_path(entity), payload: payload, params: params)
     end
 
-    def delete(entity, id:)
+    def delete(entity, id:, sync_token: nil)
       err_msg = "Delete is only for transaction entities. Use .deactivate instead"
       raise QboApi::NotImplementedError.new, err_msg unless is_transaction_entity?(entity)
       path = add_params_to_path(path: entity_path(entity), params: { operation: :delete })
-      payload = set_update(entity, id)
+      payload = set_update(entity, id, sync_token: sync_token)
       request(:post, entity: entity, path: path, payload: payload)
     end
 
-    def deactivate(entity, id:)
+    def deactivate(entity, id:, sync_token: nil)
       err_msg = "Deactivate is only for name list entities. Use .delete instead"
       raise QboApi::NotImplementedError.new, err_msg unless is_name_list_entity?(entity)
-      payload = set_deactivate(entity, id)
+      payload = set_deactivate(entity, id, sync_token: sync_token)
       request(:post, entity: entity, path: entity_path(entity), payload: payload)
     end
 
-    def void(entity, id:)
+    def void(entity, id:, sync_token: nil)
       err_msg = "Void is only for voidable transaction entities. Use .delete or .deactivate instead"
       raise QboApi::NotImplementedError.new, err_msg unless is_voidable_transaction_entity?(entity)
       path = add_params_to_path(path: entity_path(entity), params: { operation: :void })
-      payload = set_update(entity, id)
+      payload = set_update(entity, id, sync_token: sync_token)
       request(:post, entity: entity, path: path, payload: payload)
     end
 
@@ -124,28 +124,23 @@ class QboApi
       select
     end
 
-    def build_update(resp)
-      { Id: resp['Id'], SyncToken: resp['SyncToken'] }
+    def build_update(id:, sync_token:)
+      { Id: id, SyncToken: sync_token }
     end
 
-    def build_deactivate(entity, resp)
-      payload = build_update(resp).merge('sparse': true, 'Active': false)
+    def set_update(entity, id, sync_token: nil)
+      build_update(id: id, sync_token: sync_token || get(entity, id)['SyncToken'])
+    end
 
-      case singular(entity)
-      when 'Account', 'Class'
-        payload['Name'] = resp['Name']
-      end
+    def set_deactivate(entity, id, sync_token: nil)
+      needs_name = deactivate_requires_name?(entity)
+      resp = get(entity, id) if sync_token.nil? || needs_name
+
+      # A supplied sync_token always wins; we only fall back to the fetched one.
+      payload = build_update(id: id, sync_token: sync_token || resp['SyncToken'])
+                  .merge(sparse: true, Active: false)
+      payload[:Name] = resp['Name'] if needs_name
       payload
-    end
-
-    def set_update(entity, id)
-      resp = get(entity, id)
-      build_update(resp)
-    end
-
-    def set_deactivate(entity, id)
-      resp = get(entity, id)
-      build_deactivate(entity, resp)
     end
   end
 end
